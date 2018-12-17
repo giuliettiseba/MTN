@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "MTN_RestAPI\API.csproj", "{EB3EB9C8-D7BF-4E3C-9B05-FB6EC1E284E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Administracion", "MTN_Administration\Administracion.csproj", "{BB3E3759-CAFE-454F-B1E8-733EF93B4118}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB3EB9C8-D7BF-4E3C-9B05-FB6EC1E284E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB3EB9C8-D7BF-4E3C-9B05-FB6EC1E284E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB3EB9C8-D7BF-4E3C-9B05-FB6EC1E284E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB3EB9C8-D7BF-4E3C-9B05-FB6EC1E284E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB3E3759-CAFE-454F-B1E8-733EF93B4118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB3E3759-CAFE-454F-B1E8-733EF93B4118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB3E3759-CAFE-454F-B1E8-733EF93B4118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB3E3759-CAFE-454F-B1E8-733EF93B4118}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4719D7C6-09F3-4B10-95DB-EDACA6421819}
+	EndGlobalSection
+EndGlobal
