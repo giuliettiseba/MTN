@@ -3,3 +3,10 @@
 ################################################################################
 
 /MTN_Administration/bin/Debug
+/MTN_Administration/obj
+/.vs
+/MTN_RestAPI/bin
+/MTN_RestAPI/obj
+/MTN_RestAPI/Properties/PublishProfiles
+/MTN_RestAPI/API.csproj.user
+/packages

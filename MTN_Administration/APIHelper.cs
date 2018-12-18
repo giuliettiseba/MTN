@@ -69,7 +69,6 @@ namespace MTN_Administration
 
         internal string RemoveTecnico(int id_tecnico)
         {
-            
             tecnicos.Remove(tecnicos.Find(x => x.id == id_tecnico)); // actualizo cache
 
             String url = _partialurl + "tecnicos/" + id_tecnico;
@@ -78,8 +77,6 @@ namespace MTN_Administration
                 var responseArray = webClient.UploadValues(url, "DELETE", webClient.QueryString);
                 return Encoding.ASCII.GetString(responseArray);
             }
-            
-
         }
 
         internal string PostTecnico(Tecnico tecnico)
@@ -97,7 +94,6 @@ namespace MTN_Administration
                 webClient.QueryString.Add("id_tipo_documento", tecnico.id_tipo_documento.ToString());
                 webClient.QueryString.Add("id_tipo_empleado", tecnico.id_tipo_empleado.ToString());
                 //   webClient.QueryString.Add("foto", tecnico.foto.ToString());
-
                 if (tecnico.id == 0)
                 {
                     tecnicos.Add(tecnico); // actualizo cache
@@ -109,18 +105,14 @@ namespace MTN_Administration
                     tecnicos.Add(tecnico); // actualizo cache
                     webClient.QueryString.Add("id", tecnico.id.ToString());
                     webClient.UploadValues(url, "PUT", webClient.QueryString);
-
                 }
                 return "Se agrego correctamente el empleado " + tecnico.legajo;
             }
-
         }
-
 
         public List<Object> Get(String tipo)
         {
             String url = "";
-
             switch (tipo)
             {
                 case "Provincia": url = _partialurl + "Utiles/Provincias"; break;
@@ -134,9 +126,6 @@ namespace MTN_Administration
             String content = client.DownloadString(url);
             return serializer.Deserialize<List<dynamic>>(content);
         }
-
-
-
 
         private void CacheLocalidades()
         {
@@ -159,11 +148,6 @@ namespace MTN_Administration
             return localidades;
         }
 
-
-
-
-
-
         private void CacheProvincias()
         {
             List<object> list = Get("Provincia");
@@ -182,7 +166,6 @@ namespace MTN_Administration
             }
             return provincias;
         }
-
 
         private void CacheTipoDocumento()
         {
@@ -223,17 +206,12 @@ namespace MTN_Administration
 
         public Dictionary<int, string> GetLocalidades(int id_provincia)
         {
-
-
             Dictionary<int, string> dicLocalidades = new Dictionary<int, string>();
             foreach (Localidad l in GetLocalidades())
             {
                 if (l.id_provincia == id_provincia) dicLocalidades.Add(l.id, l.nombre);
             }
-
             return dicLocalidades;
-
-
         }
 
         public int GetProvincia(int id_localidad)

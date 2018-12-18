@@ -76,7 +76,7 @@
             this.buttonCancelarAltaTecnico.Margin = new System.Windows.Forms.Padding(5);
             this.buttonCancelarAltaTecnico.Name = "buttonCancelarAltaTecnico";
             this.buttonCancelarAltaTecnico.Size = new System.Drawing.Size(181, 41);
-            this.buttonCancelarAltaTecnico.TabIndex = 1;
+            this.buttonCancelarAltaTecnico.TabIndex = 11;
             this.buttonCancelarAltaTecnico.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.buttonCancelarAltaTecnico.Click += new System.EventHandler(this.ButtonCancelarAltaTecnico_Click);
             // 
@@ -102,7 +102,7 @@
             this.buttonGuardarAltaTecnico.Margin = new System.Windows.Forms.Padding(5);
             this.buttonGuardarAltaTecnico.Name = "buttonGuardarAltaTecnico";
             this.buttonGuardarAltaTecnico.Size = new System.Drawing.Size(181, 41);
-            this.buttonGuardarAltaTecnico.TabIndex = 0;
+            this.buttonGuardarAltaTecnico.TabIndex = 10;
             this.buttonGuardarAltaTecnico.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.buttonGuardarAltaTecnico.Click += new System.EventHandler(this.buttonGuardarAltaTecnico_Click);
             // 
@@ -113,7 +113,7 @@
             this.bunifuCustomLabel5.Location = new System.Drawing.Point(245, 121);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
             this.bunifuCustomLabel5.Size = new System.Drawing.Size(86, 17);
-            this.bunifuCustomLabel5.TabIndex = 8;
+            this.bunifuCustomLabel5.TabIndex = 15;
             this.bunifuCustomLabel5.Text = "Documento";
             // 
             // textDocumento
@@ -130,7 +130,7 @@
             this.textDocumento.Margin = new System.Windows.Forms.Padding(4);
             this.textDocumento.Name = "textDocumento";
             this.textDocumento.Size = new System.Drawing.Size(178, 29);
-            this.textDocumento.TabIndex = 5;
+            this.textDocumento.TabIndex = 3;
             this.textDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuCustomLabel6
@@ -140,7 +140,7 @@
             this.bunifuCustomLabel6.Location = new System.Drawing.Point(16, 262);
             this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
             this.bunifuCustomLabel6.Size = new System.Drawing.Size(68, 17);
-            this.bunifuCustomLabel6.TabIndex = 10;
+            this.bunifuCustomLabel6.TabIndex = 18;
             this.bunifuCustomLabel6.Text = "Provincia";
             // 
             // bunifuCustomLabel4
@@ -150,7 +150,7 @@
             this.bunifuCustomLabel4.Location = new System.Drawing.Point(19, 322);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
             this.bunifuCustomLabel4.Size = new System.Drawing.Size(69, 17);
-            this.bunifuCustomLabel4.TabIndex = 6;
+            this.bunifuCustomLabel4.TabIndex = 20;
             this.bunifuCustomLabel4.Text = "Direccion";
             // 
             // textDireccion
@@ -167,7 +167,7 @@
             this.textDireccion.Margin = new System.Windows.Forms.Padding(4);
             this.textDireccion.Name = "textDireccion";
             this.textDireccion.Size = new System.Drawing.Size(407, 29);
-            this.textDireccion.TabIndex = 4;
+            this.textDireccion.TabIndex = 8;
             this.textDireccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // pictureFoto
@@ -203,7 +203,7 @@
             this.botonCargarFoto.Margin = new System.Windows.Forms.Padding(5);
             this.botonCargarFoto.Name = "botonCargarFoto";
             this.botonCargarFoto.Size = new System.Drawing.Size(253, 30);
-            this.botonCargarFoto.TabIndex = 3;
+            this.botonCargarFoto.TabIndex = 9;
             this.botonCargarFoto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.botonCargarFoto.Click += new System.EventHandler(this.BotonCargarFoto_click);
             // 
@@ -216,7 +216,7 @@
             this.comboBoxProvincia.Location = new System.Drawing.Point(19, 283);
             this.comboBoxProvincia.Name = "comboBoxProvincia";
             this.comboBoxProvincia.Size = new System.Drawing.Size(178, 25);
-            this.comboBoxProvincia.TabIndex = 19;
+            this.comboBoxProvincia.TabIndex = 6;
             this.comboBoxProvincia.SelectedIndexChanged += new System.EventHandler(this.ComboBoxProvincia_onItemSelected);
             // 
             // comboBoxLocalidad
@@ -228,7 +228,7 @@
             this.comboBoxLocalidad.Location = new System.Drawing.Point(248, 283);
             this.comboBoxLocalidad.Name = "comboBoxLocalidad";
             this.comboBoxLocalidad.Size = new System.Drawing.Size(178, 25);
-            this.comboBoxLocalidad.TabIndex = 32;
+            this.comboBoxLocalidad.TabIndex = 7;
             // 
             // comboBoxTipoEmpleado
             // 
@@ -239,7 +239,7 @@
             this.comboBoxTipoEmpleado.Location = new System.Drawing.Point(19, 206);
             this.comboBoxTipoEmpleado.Name = "comboBoxTipoEmpleado";
             this.comboBoxTipoEmpleado.Size = new System.Drawing.Size(178, 25);
-            this.comboBoxTipoEmpleado.TabIndex = 31;
+            this.comboBoxTipoEmpleado.TabIndex = 4;
             // 
             // comboBoxTipoDocumento
             // 
@@ -250,7 +250,7 @@
             this.comboBoxTipoDocumento.Location = new System.Drawing.Point(19, 146);
             this.comboBoxTipoDocumento.Name = "comboBoxTipoDocumento";
             this.comboBoxTipoDocumento.Size = new System.Drawing.Size(178, 25);
-            this.comboBoxTipoDocumento.TabIndex = 30;
+            this.comboBoxTipoDocumento.TabIndex = 2;
             // 
             // labelTipoDocumento
             // 
@@ -259,7 +259,7 @@
             this.labelTipoDocumento.Location = new System.Drawing.Point(22, 126);
             this.labelTipoDocumento.Name = "labelTipoDocumento";
             this.labelTipoDocumento.Size = new System.Drawing.Size(116, 17);
-            this.labelTipoDocumento.TabIndex = 28;
+            this.labelTipoDocumento.TabIndex = 14;
             this.labelTipoDocumento.Text = "Tipo Documento";
             // 
             // bunifuCustomLabel8
@@ -269,7 +269,7 @@
             this.bunifuCustomLabel8.Location = new System.Drawing.Point(19, 179);
             this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
             this.bunifuCustomLabel8.Size = new System.Drawing.Size(51, 17);
-            this.bunifuCustomLabel8.TabIndex = 29;
+            this.bunifuCustomLabel8.TabIndex = 16;
             this.bunifuCustomLabel8.Text = "Puesto";
             // 
             // bunifuCustomLabel7
@@ -279,7 +279,7 @@
             this.bunifuCustomLabel7.Location = new System.Drawing.Point(245, 258);
             this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
             this.bunifuCustomLabel7.Size = new System.Drawing.Size(73, 17);
-            this.bunifuCustomLabel7.TabIndex = 27;
+            this.bunifuCustomLabel7.TabIndex = 19;
             this.bunifuCustomLabel7.Text = "Localidad";
             // 
             // textLegajo
@@ -296,7 +296,7 @@
             this.textLegajo.Margin = new System.Windows.Forms.Padding(4);
             this.textLegajo.Name = "textLegajo";
             this.textLegajo.Size = new System.Drawing.Size(178, 29);
-            this.textLegajo.TabIndex = 25;
+            this.textLegajo.TabIndex = 5;
             this.textLegajo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuCustomLabel3
@@ -306,7 +306,7 @@
             this.bunifuCustomLabel3.Location = new System.Drawing.Point(245, 185);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
             this.bunifuCustomLabel3.Size = new System.Drawing.Size(52, 17);
-            this.bunifuCustomLabel3.TabIndex = 26;
+            this.bunifuCustomLabel3.TabIndex = 17;
             this.bunifuCustomLabel3.Text = "Legajo";
             // 
             // textApellido
@@ -323,7 +323,7 @@
             this.textApellido.Margin = new System.Windows.Forms.Padding(4);
             this.textApellido.Name = "textApellido";
             this.textApellido.Size = new System.Drawing.Size(178, 29);
-            this.textApellido.TabIndex = 23;
+            this.textApellido.TabIndex = 1;
             this.textApellido.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuCustomLabel2
@@ -333,7 +333,7 @@
             this.bunifuCustomLabel2.Location = new System.Drawing.Point(245, 62);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(61, 17);
-            this.bunifuCustomLabel2.TabIndex = 24;
+            this.bunifuCustomLabel2.TabIndex = 13;
             this.bunifuCustomLabel2.Text = "Apellido";
             // 
             // textNombre
@@ -350,7 +350,7 @@
             this.textNombre.Margin = new System.Windows.Forms.Padding(4);
             this.textNombre.Name = "textNombre";
             this.textNombre.Size = new System.Drawing.Size(178, 29);
-            this.textNombre.TabIndex = 22;
+            this.textNombre.TabIndex = 0;
             this.textNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuCustomLabel1
@@ -360,7 +360,7 @@
             this.bunifuCustomLabel1.Location = new System.Drawing.Point(19, 64);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(61, 17);
-            this.bunifuCustomLabel1.TabIndex = 21;
+            this.bunifuCustomLabel1.TabIndex = 12;
             this.bunifuCustomLabel1.Text = "Nombre";
             // 
             // Alta_Tecnico

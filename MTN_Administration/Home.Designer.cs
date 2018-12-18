@@ -46,7 +46,6 @@
             this.TituloHeader = new System.Windows.Forms.Label();
             this.headerDashboardPicture = new System.Windows.Forms.PictureBox();
             this.dashboard1 = new MTN_Administration.Tabs.Dashboard();
-            this.amB_Tecnicos1 = new MTN_Administration.AMB_Tecnicos();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.sidePanel.SuspendLayout();
             this.logoPanel.SuspendLayout();
@@ -155,6 +154,7 @@
             this.SucuralesButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SucuralesButton.Textcolor = System.Drawing.Color.LightGray;
             this.SucuralesButton.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SucuralesButton.Click += new System.EventHandler(this.SucuralesButton_Click);
             // 
             // ClientesButton
             // 
@@ -303,7 +303,7 @@
             this.minimize.Text = "-";
             this.minimize.Click += new System.EventHandler(this.Minimize_Click);
             // 
-            // Close
+            // close
             // 
             this.close.AutoSize = true;
             this.close.BackColor = System.Drawing.SystemColors.Window;
@@ -311,7 +311,7 @@
             this.close.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.close.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.close.Location = new System.Drawing.Point(693, 12);
-            this.close.Name = "Close";
+            this.close.Name = "close";
             this.close.Size = new System.Drawing.Size(16, 17);
             this.close.TabIndex = 3;
             this.close.Text = "X";
@@ -347,15 +347,6 @@
             this.dashboard1.Size = new System.Drawing.Size(739, 561);
             this.dashboard1.TabIndex = 3;
             // 
-            // amB_Tecnicos1
-            // 
-            this.amB_Tecnicos1.BackColor = System.Drawing.Color.Gainsboro;
-            this.amB_Tecnicos1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.amB_Tecnicos1.Location = new System.Drawing.Point(236, 39);
-            this.amB_Tecnicos1.Name = "amB_Tecnicos1";
-            this.amB_Tecnicos1.Size = new System.Drawing.Size(739, 561);
-            this.amB_Tecnicos1.TabIndex = 2;
-            // 
             // bunifuDragControl1
             // 
             this.bunifuDragControl1.Fixed = true;
@@ -370,7 +361,6 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(975, 600);
             this.Controls.Add(this.dashboard1);
-            this.Controls.Add(this.amB_Tecnicos1);
             this.Controls.Add(this.headerPanel);
             this.Controls.Add(this.sidePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -403,7 +393,7 @@
         private System.Windows.Forms.Label close;
         private Bunifu.Framework.UI.BunifuFlatButton TecnicosButton;
         private System.Windows.Forms.Panel panel1;
-        private AMB_Tecnicos amB_Tecnicos1;
+        
         private Tabs.Dashboard dashboard1;
         private System.Windows.Forms.PictureBox headerTecnicoPicture;
         private System.Windows.Forms.PictureBox headerClientePicture;

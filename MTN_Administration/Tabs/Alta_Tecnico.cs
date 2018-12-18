@@ -22,16 +22,20 @@ namespace MTN_Administration
 
         public Alta_Tecnico()
         {
-
-            InitializeComponent();
-            
+            if (!this.DesignMode)
+            {
+                InitializeComponent();
+            }
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            aPIHelper = ((Home)this.Parent.Parent).GetAPIHelper();
+        }
 
         private void LimpiarTodo()
         {
-            aPIHelper = ((AMB_Tecnicos)this.Parent).GetAPIHelper();
-
             provincias = aPIHelper.GetProvincias();
             comboBoxProvincia.DisplayMember = "value";
             comboBoxProvincia.ValueMember = "key";
@@ -46,8 +50,6 @@ namespace MTN_Administration
             comboBoxTipoEmpleado.DataSource = new BindingSource(tipo_empleado, null);
             comboBoxTipoEmpleado.DisplayMember = "value";
             comboBoxTipoEmpleado.ValueMember = "key";
-
-
 
             id_tecnico = 0;
             textNombre.Text = "";
@@ -67,7 +69,6 @@ namespace MTN_Administration
 
         private void ButtonCancelarAltaTecnico_Click(object sender, EventArgs e)
         {
-            
             this.SendToBack();
         }
 
@@ -152,7 +153,7 @@ namespace MTN_Administration
 
             System.Windows.Forms.MessageBox.Show(result);
             this.SendToBack();
-             ((AMB_Tecnicos)this.Parent).RefreshTable();
+             ((AMB_Tecnicos)this.Parent).RefreshTable(0);
             
         }
 

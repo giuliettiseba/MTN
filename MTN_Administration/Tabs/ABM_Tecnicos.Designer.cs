@@ -32,8 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.BuscarTecnico = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.filtroJefes = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.textBuscarTecnico = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.SearchIcon = new System.Windows.Forms.PictureBox();
             this.filtroAnalistas = new Bunifu.Framework.UI.BunifuFlatButton();
             this.FiltroLideres = new Bunifu.Framework.UI.BunifuFlatButton();
             this.FiltroSupervisores = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -49,12 +50,12 @@
             this.direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo_empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.provincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.BotonEliminarTecnico = new Bunifu.Framework.UI.BunifuThinButton2();
             this.alta_Tecnico1 = new MTN_Administration.Alta_Tecnico();
-            this.provincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderFiltroTecnicos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablaTecnicos)).BeginInit();
             this.panel2.SuspendLayout();
@@ -62,8 +63,9 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.BuscarTecnico);
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.filtroJefes);
+            this.panel1.Controls.Add(this.textBuscarTecnico);
+            this.panel1.Controls.Add(this.SearchIcon);
             this.panel1.Controls.Add(this.filtroAnalistas);
             this.panel1.Controls.Add(this.FiltroLideres);
             this.panel1.Controls.Add(this.FiltroSupervisores);
@@ -75,32 +77,70 @@
             this.panel1.Size = new System.Drawing.Size(727, 35);
             this.panel1.TabIndex = 4;
             // 
-            // BuscarTecnico
+            // filtroJefes
             // 
-            this.BuscarTecnico.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.BuscarTecnico.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.BuscarTecnico.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(43)))), ((int)(((byte)(55)))));
-            this.BuscarTecnico.BorderThickness = 1;
-            this.BuscarTecnico.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.BuscarTecnico.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BuscarTecnico.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.BuscarTecnico.isPassword = false;
-            this.BuscarTecnico.Location = new System.Drawing.Point(334, 7);
-            this.BuscarTecnico.Margin = new System.Windows.Forms.Padding(4);
-            this.BuscarTecnico.Name = "BuscarTecnico";
-            this.BuscarTecnico.Size = new System.Drawing.Size(103, 18);
-            this.BuscarTecnico.TabIndex = 12;
-            this.BuscarTecnico.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.filtroJefes.Activecolor = System.Drawing.Color.Gainsboro;
+            this.filtroJefes.BackColor = System.Drawing.Color.Gainsboro;
+            this.filtroJefes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.filtroJefes.BorderRadius = 0;
+            this.filtroJefes.ButtonText = "Jefes";
+            this.filtroJefes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.filtroJefes.DisabledColor = System.Drawing.Color.Gray;
+            this.filtroJefes.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtroJefes.Iconcolor = System.Drawing.Color.Transparent;
+            this.filtroJefes.Iconimage = null;
+            this.filtroJefes.Iconimage_right = null;
+            this.filtroJefes.Iconimage_right_Selected = null;
+            this.filtroJefes.Iconimage_Selected = null;
+            this.filtroJefes.IconMarginLeft = 0;
+            this.filtroJefes.IconMarginRight = 0;
+            this.filtroJefes.IconRightVisible = true;
+            this.filtroJefes.IconRightZoom = 0D;
+            this.filtroJefes.IconVisible = true;
+            this.filtroJefes.IconZoom = 90D;
+            this.filtroJefes.IsTab = false;
+            this.filtroJefes.Location = new System.Drawing.Point(83, 9);
+            this.filtroJefes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.filtroJefes.Name = "filtroJefes";
+            this.filtroJefes.Normalcolor = System.Drawing.Color.Gainsboro;
+            this.filtroJefes.OnHovercolor = System.Drawing.Color.Gainsboro;
+            this.filtroJefes.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.filtroJefes.selected = false;
+            this.filtroJefes.Size = new System.Drawing.Size(74, 16);
+            this.filtroJefes.TabIndex = 13;
+            this.filtroJefes.Text = "Jefes";
+            this.filtroJefes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.filtroJefes.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(33)))), ((int)(((byte)(45)))));
+            this.filtroJefes.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtroJefes.Click += new System.EventHandler(this.FiltroJefes_Click);
             // 
-            // pictureBox1
+            // textBuscarTecnico
             // 
-            this.pictureBox1.Image = global::MTN_Administration.Properties.Resources._029_search;
-            this.pictureBox1.Location = new System.Drawing.Point(444, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(21, 22);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
+            this.textBuscarTecnico.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.textBuscarTecnico.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.textBuscarTecnico.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(43)))), ((int)(((byte)(55)))));
+            this.textBuscarTecnico.BorderThickness = 1;
+            this.textBuscarTecnico.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBuscarTecnico.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBuscarTecnico.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBuscarTecnico.isPassword = false;
+            this.textBuscarTecnico.Location = new System.Drawing.Point(468, 5);
+            this.textBuscarTecnico.Margin = new System.Windows.Forms.Padding(4);
+            this.textBuscarTecnico.Name = "textBuscarTecnico";
+            this.textBuscarTecnico.Size = new System.Drawing.Size(202, 18);
+            this.textBuscarTecnico.TabIndex = 12;
+            this.textBuscarTecnico.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.textBuscarTecnico.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBuscarTecnico_KeyDown);
+            // 
+            // SearchIcon
+            // 
+            this.SearchIcon.Image = global::MTN_Administration.Properties.Resources._029_search;
+            this.SearchIcon.Location = new System.Drawing.Point(678, 6);
+            this.SearchIcon.Name = "SearchIcon";
+            this.SearchIcon.Size = new System.Drawing.Size(21, 22);
+            this.SearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.SearchIcon.TabIndex = 11;
+            this.SearchIcon.TabStop = false;
             // 
             // filtroAnalistas
             // 
@@ -124,7 +164,7 @@
             this.filtroAnalistas.IconVisible = true;
             this.filtroAnalistas.IconZoom = 90D;
             this.filtroAnalistas.IsTab = false;
-            this.filtroAnalistas.Location = new System.Drawing.Point(263, 9);
+            this.filtroAnalistas.Location = new System.Drawing.Point(336, 9);
             this.filtroAnalistas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.filtroAnalistas.Name = "filtroAnalistas";
             this.filtroAnalistas.Normalcolor = System.Drawing.Color.Gainsboro;
@@ -161,7 +201,7 @@
             this.FiltroLideres.IconVisible = true;
             this.FiltroLideres.IconZoom = 90D;
             this.FiltroLideres.IsTab = false;
-            this.FiltroLideres.Location = new System.Drawing.Point(189, 9);
+            this.FiltroLideres.Location = new System.Drawing.Point(265, 9);
             this.FiltroLideres.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.FiltroLideres.Name = "FiltroLideres";
             this.FiltroLideres.Normalcolor = System.Drawing.Color.Gainsboro;
@@ -198,7 +238,7 @@
             this.FiltroSupervisores.IconVisible = true;
             this.FiltroSupervisores.IconZoom = 90D;
             this.FiltroSupervisores.IsTab = false;
-            this.FiltroSupervisores.Location = new System.Drawing.Point(86, 9);
+            this.FiltroSupervisores.Location = new System.Drawing.Point(165, 9);
             this.FiltroSupervisores.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.FiltroSupervisores.Name = "FiltroSupervisores";
             this.FiltroSupervisores.Normalcolor = System.Drawing.Color.Gainsboro;
@@ -408,6 +448,13 @@
             this.tipo_empleado.ReadOnly = true;
             this.tipo_empleado.Width = 71;
             // 
+            // provincia
+            // 
+            this.provincia.HeaderText = "Provincia";
+            this.provincia.Name = "provincia";
+            this.provincia.ReadOnly = true;
+            this.provincia.Width = 87;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.BotonEliminarTecnico);
@@ -453,13 +500,6 @@
             this.alta_Tecnico1.Size = new System.Drawing.Size(727, 561);
             this.alta_Tecnico1.TabIndex = 6;
             // 
-            // provincia
-            // 
-            this.provincia.HeaderText = "Provincia";
-            this.provincia.Name = "provincia";
-            this.provincia.ReadOnly = true;
-            this.provincia.Width = 87;
-            // 
             // AMB_Tecnicos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -471,7 +511,7 @@
             this.Name = "AMB_Tecnicos";
             this.Size = new System.Drawing.Size(727, 561);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderFiltroTecnicos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablaTecnicos)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -487,8 +527,8 @@
         private Bunifu.Framework.UI.BunifuFlatButton filtroAnalistas;
         private Bunifu.Framework.UI.BunifuFlatButton FiltroLideres;
         private Bunifu.Framework.UI.BunifuFlatButton FiltroSupervisores;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private Bunifu.Framework.UI.BunifuMetroTextbox BuscarTecnico;
+        private System.Windows.Forms.PictureBox SearchIcon;
+        private Bunifu.Framework.UI.BunifuMetroTextbox textBuscarTecnico;
         private Bunifu.Framework.UI.BunifuCustomDataGrid tablaTecnicos;
         private Alta_Tecnico alta_Tecnico1;
         private System.Windows.Forms.Panel panel2;
@@ -502,5 +542,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo_empleado;
         private Bunifu.Framework.UI.BunifuThinButton2 BotonEliminarTecnico;
         private System.Windows.Forms.DataGridViewTextBoxColumn provincia;
+        private Bunifu.Framework.UI.BunifuFlatButton filtroJefes;
     }
 }
