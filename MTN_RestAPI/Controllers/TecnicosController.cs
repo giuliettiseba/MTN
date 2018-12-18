@@ -1,11 +1,8 @@
 ﻿using MTN_RestAPI.Models;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using Dapper;
 using System.Data;
@@ -14,7 +11,7 @@ namespace MTN_RestAPI.Controllers
 {
     public class TecnicosController : ApiController
     {
-        // GET api/Tecnico/5s
+        // GET api/Tecnicos/
         public IHttpActionResult GetAll()
         {
             List<Tecnico> TecnicoList = new List<Tecnico>();

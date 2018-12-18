@@ -52,6 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tabs\ABM_Clientes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tabs\ABM_Clientes.Designer.cs">
+      <DependentUpon>ABM_Clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs\Alta_Cliente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tabs\Alta_Cliente.Designer.cs">
+      <DependentUpon>Alta_Cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tabs\Alta_Tecnico.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -80,6 +92,12 @@
     <Compile Include="Tabs\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Tabs\ABM_Clientes.resx">
+      <DependentUpon>ABM_Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabs\Alta_Cliente.resx">
+      <DependentUpon>Alta_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tabs\Alta_Tecnico.resx">
       <DependentUpon>Alta_Tecnico.cs</DependentUpon>
     </EmbeddedResource>

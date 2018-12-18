@@ -1,4 +1,5 @@
-﻿using MTN_RestAPI.Models;
+﻿using MTN_Administration.Tabs;
+using MTN_RestAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace MTN_Administration
 
         private APIHelper aPIHelper;
         private AMB_Tecnicos amB_Tecnicos;
+        private ABM_Clientes aBM_Clientes;
 
 
         protected override CreateParams CreateParams
@@ -90,6 +92,20 @@ namespace MTN_Administration
 
         private void ClientesButton_Click(object sender, EventArgs e)
         {
+
+            // 
+            // ABM_CLIENTES
+            // 
+            aBM_Clientes = new ABM_Clientes();
+            aBM_Clientes.BackColor = System.Drawing.Color.Gainsboro;
+            aBM_Clientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            aBM_Clientes.Location = new System.Drawing.Point(236, 39);
+            aBM_Clientes.Name = "aBM_Clientes1";
+            aBM_Clientes.Size = new System.Drawing.Size(739, 561);
+            aBM_Clientes.TabIndex = 2;
+            Controls.Add(this.aBM_Clientes);
+            
+            aBM_Clientes.BringToFront();
             TituloHeader.Text = "Administracion de Clientes";
             headerDashboardPicture.Hide();
             headerTecnicoPicture.Hide();

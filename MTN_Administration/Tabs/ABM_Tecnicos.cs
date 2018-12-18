@@ -33,7 +33,6 @@ namespace MTN_Administration
         {
             base.OnLoad(e);
             if (aPIHelper == null) aPIHelper = ((Home)this.Parent).GetAPIHelper();
-
         }
 
         /// <summary>

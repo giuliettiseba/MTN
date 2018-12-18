@@ -11,28 +11,39 @@ namespace MTN_Administration
 {
     class APIHelper
     {
-      
+
         static readonly string host = "http://localhost";
-    //    static readonly string port = "2510";
+        //    static readonly string port = "2510";
         static readonly string port = "50411";
         static readonly string apiRoute = "api";
         static readonly string _partialurl = host + ":" + port + "/" + apiRoute + "/";
 
+
+        /// <summary>
+        /// Constructor . ver si es necesario hacer cache de todas estas listas. En particular Clientes y empleados 
+        /// 
+        /// </summary>
         public APIHelper()
         {
             GetTipoDocumento();
             GetTipoEmpleado();
             GetLocalidades();
             GetProvincias();
+            GetClientes();
         }
 
         // CACHES
+        List<Cliente> clientes;
         List<Tecnico> tecnicos;
         List<Localidad> localidades;
         private Dictionary<int, string> provincias;
         private Dictionary<int, string> tipoDocumento;
         private Dictionary<int, string> tipoEmpleado;
-
+        
+        /// <summary>
+        /// Ver como actualizar los caches sin tener que pulear toda las tablas
+        /// 
+        /// </summary>
         public void clearCache()
         {
             tecnicos = null;
@@ -40,8 +51,28 @@ namespace MTN_Administration
             provincias = null;
             tipoDocumento = null;
             tipoEmpleado = null;
+            clientes = null;
+
         }
-        
+
+
+        private void clearCache(string v)
+        {
+            switch (v)
+            {
+                case "clientes": clientes = null; break;
+                case "tecnicos": clientes = null; break;
+                default:
+                    break;
+            }
+        }
+
+
+        /// <summary>
+        /// Obtiene la lista de tecnicos. Si la lista no esta la consulta a la API 
+        /// </summary>
+        /// <returns>Lista de tecnicos</returns>
+
         public List<Tecnico> GetTecnicos()
         {
             if (tecnicos == null)
@@ -52,6 +83,9 @@ namespace MTN_Administration
             return tecnicos;
         }
 
+        /// <summary>
+        /// Consulta la API para traer la lista de los tecnicos completa.
+        /// </summary>
         public void CacheTecnicos()
         {
             String url = _partialurl + "tecnicos/";
@@ -69,9 +103,20 @@ namespace MTN_Administration
 
         internal string RemoveTecnico(int id_tecnico)
         {
-            tecnicos.Remove(tecnicos.Find(x => x.id == id_tecnico)); // actualizo cache
-
+            clearCache("tecnicos");
             String url = _partialurl + "tecnicos/" + id_tecnico;
+            using (WebClient webClient = new WebClient())
+            {
+                var responseArray = webClient.UploadValues(url, "DELETE", webClient.QueryString);
+                return Encoding.ASCII.GetString(responseArray);
+            }
+
+        }
+
+        internal string RemoveCliente(int id_cliente)
+        {
+            clearCache("clientes");
+            String url = _partialurl + "clientes/" + id_cliente;
             using (WebClient webClient = new WebClient())
             {
                 var responseArray = webClient.UploadValues(url, "DELETE", webClient.QueryString);
@@ -79,9 +124,14 @@ namespace MTN_Administration
             }
         }
 
+        internal Cliente GetCliente(int id_cliente)
+        {
+            return clientes.Find(x => x.id == id_cliente);
+        }
+
         internal string PostTecnico(Tecnico tecnico)
         {
-            
+            clearCache("tecnicos");
             String url = _partialurl + "tecnicos";
             using (WebClient webClient = new WebClient())
             {
@@ -96,19 +146,47 @@ namespace MTN_Administration
                 //   webClient.QueryString.Add("foto", tecnico.foto.ToString());
                 if (tecnico.id == 0)
                 {
-                    tecnicos.Add(tecnico); // actualizo cache
                     webClient.UploadValues(url, "POST", webClient.QueryString);
                 }
                 else
                 {
-                    tecnicos.Remove(tecnicos.Find(x => x.id == tecnico.id)); // actualizo cache
-                    tecnicos.Add(tecnico); // actualizo cache
                     webClient.QueryString.Add("id", tecnico.id.ToString());
                     webClient.UploadValues(url, "PUT", webClient.QueryString);
                 }
                 return "Se agrego correctamente el empleado " + tecnico.legajo;
             }
         }
+
+        internal string PostCliente(Cliente newCliente)
+        {
+            clearCache("clientes");
+            String url = _partialurl + "clientes/";
+            using (WebClient webClient = new WebClient())
+            {
+                webClient.QueryString.Add("razonSocial", newCliente.RazonSocial);
+                webClient.QueryString.Add("CUIT", newCliente.CUIT);
+                webClient.QueryString.Add("direccion", newCliente.direccion);
+                webClient.QueryString.Add("id_localidad", newCliente.id_localidad.ToString());
+                //   webClient.QueryString.Add("foto", tecnico.foto.ToString());
+                if (newCliente.id == 0)
+                {
+                    webClient.UploadValues(url, "POST", webClient.QueryString);
+                }
+                else
+                {
+                    webClient.QueryString.Add("id", newCliente.id.ToString());
+                    webClient.UploadValues(url, "PUT", webClient.QueryString);
+                }
+                return "Se agrego correctamente el empleado " + newCliente.CUIT;
+            }
+
+
+
+
+
+
+        }
+
 
         public List<Object> Get(String tipo)
         {
@@ -222,20 +300,52 @@ namespace MTN_Administration
             return tipoEmpleado;
         }
 
-    
+        ////////////////////////////////////CLIENTES/////////////////////////////////////////////////
 
-        
-        
-        
-        
+
+        public List<Cliente> GetClientes()
+        {
+            if (clientes == null)
+            {
+                clientes = new List<Cliente>();
+                CacheClientes();
+            }
+            return clientes;
+        }
+
+        public void CacheClientes()
+        {
+            String url = _partialurl + "Clientes";
+            using (WebClient client = new WebClient())
+            {
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                String content = client.DownloadString(url);
+                clientes = serializer.Deserialize<List<Cliente>>(content);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
         // Obtener nombres
-                     
+
+        /// <summary>
+        /// Obtiene la provincia de una localidad
+        /// </summary>
+        /// <param name="id_localidad"></param>
+        /// <returns></returns>        
         public int GetProvincia(int id_localidad)
         {
             return localidades.Find(x => x.id == id_localidad).id_provincia;
         }
 
-         public string GetTipoEmpleado(int i)
+        public string GetTipoEmpleado(int i)
         {
             return tipoEmpleado[i];
         }
@@ -245,7 +355,8 @@ namespace MTN_Administration
             return localidades.Find(x => x.id == i).nombre;
         }
 
-        public string GetNombreProvincia(int i) {
+        public string GetNombreProvincia(int i)
+        {
             return provincias[i];
         }
 
