@@ -28,7 +28,6 @@ namespace MTN_RestAPI.Controllers
         // GET api/Tecnico/id
         public IHttpActionResult Get(int id)
         {
-
             List<Tecnico> TecnicoList = new List<Tecnico>();
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
             {
@@ -60,18 +59,14 @@ namespace MTN_RestAPI.Controllers
                 if (affectedRows == 1)
                     return Ok(affectedRows);
                 else return BadRequest("No se pudo insertar el tecnico con id: "+ tecnico.id);
-
             }
-
         }
 
 
         // PUT api/values/id
         public IHttpActionResult Put(int id, [FromUri] Tecnico tecnico)
         {
-
             string sql = "UPDATE Tecnico SET nombre = @nombre,apellido = @apellido,legajo = @legajo,direccion = @direccion,id_localidad =@id_localidad,documento = @documento,id_tipo_documento = @id_tipo_documento, id_tipo_empleado = @id_tipo_empleado WHERE ID =" + id;
-
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
             {
                 var affectedRows = db.Execute(sql, new
@@ -88,11 +83,8 @@ namespace MTN_RestAPI.Controllers
                 if (affectedRows == 1)
                     return Ok(affectedRows);
                 else return BadRequest("No se encuentro un tecnico con el ID" + tecnico.id);
-
             }
-
         }
-
 
         // DELETE api/Tecnicos/id
         public IHttpActionResult Delete(int id)
@@ -105,9 +97,7 @@ namespace MTN_RestAPI.Controllers
                 if (affectedRows == 1)
                     return Ok(affectedRows);
                     else return BadRequest("No se encuentro un tecnico con el ID" + id);
-
             }
-
         }
     }
 }

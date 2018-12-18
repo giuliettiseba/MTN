@@ -11,9 +11,10 @@ namespace MTN_Administration
 {
     class APIHelper
     {
-
+      
         static readonly string host = "http://localhost";
-        static readonly string port = "2510";
+    //    static readonly string port = "2510";
+        static readonly string port = "50411";
         static readonly string apiRoute = "api";
         static readonly string _partialurl = host + ":" + port + "/" + apiRoute + "/";
 
@@ -40,8 +41,7 @@ namespace MTN_Administration
             tipoDocumento = null;
             tipoEmpleado = null;
         }
-
-
+        
         public List<Tecnico> GetTecnicos()
         {
             if (tecnicos == null)
@@ -127,9 +127,14 @@ namespace MTN_Administration
             return serializer.Deserialize<List<dynamic>>(content);
         }
 
+
+
+
+
+
         private void CacheLocalidades()
         {
-            String url = _partialurl + "Utiles/LocalidadesTodas";
+            String url = _partialurl + "Utiles/Localidades";
             using (WebClient client = new WebClient())
             {
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -147,6 +152,19 @@ namespace MTN_Administration
             }
             return localidades;
         }
+
+
+        public Dictionary<int, string> GetLocalidades(int id_provincia)
+        {
+            Dictionary<int, string> dicLocalidades = new Dictionary<int, string>();
+            foreach (Localidad l in GetLocalidades())
+            {
+                if (l.id_provincia == id_provincia) dicLocalidades.Add(l.id, l.nombre);
+            }
+            return dicLocalidades;
+        }
+
+
 
         private void CacheProvincias()
         {
@@ -204,16 +222,14 @@ namespace MTN_Administration
             return tipoEmpleado;
         }
 
-        public Dictionary<int, string> GetLocalidades(int id_provincia)
-        {
-            Dictionary<int, string> dicLocalidades = new Dictionary<int, string>();
-            foreach (Localidad l in GetLocalidades())
-            {
-                if (l.id_provincia == id_provincia) dicLocalidades.Add(l.id, l.nombre);
-            }
-            return dicLocalidades;
-        }
+    
 
+        
+        
+        
+        
+        // Obtener nombres
+                     
         public int GetProvincia(int id_localidad)
         {
             return localidades.Find(x => x.id == id_localidad).id_provincia;

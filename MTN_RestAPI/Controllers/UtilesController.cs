@@ -18,39 +18,15 @@ namespace MTN_RestAPI.Controllers
 
         public IHttpActionResult Get(String id)
         {
-            return Get(id, 0);
-        }
-
-
-            public IHttpActionResult Get(String id, int param1)
-        {
             switch (id)
             {
-
-                case "LocalidadesTodas":
+                case "Localidades":
                     List<Localidad> localidadesTodasList = new List<Localidad>();
                     using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
                     {
                         localidadesTodasList = db.Query<Localidad>("Select * FROM Localidades").ToList();
                     }
                     return Ok(localidadesTodasList);
-
-
-                case "Localidades":
-                    List<Localidad> localidadesList = new List<Localidad>();
-                    using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
-                    {
-                        localidadesList = db.Query<Localidad>("Select * FROM Localidades WHERE id_provincia = " + param1).ToList();
-                    }
-                    return Ok(localidadesList);
-
-                case "Provincia":
-                    Provincia prov = new Provincia();
-                    using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
-                    {
-                        prov = db.Query<Provincia>("SELECT Provincias.id id, Provincias.nombre nombre, Provincias.codigo31662 codigo31662 FROM Localidades JOIN Provincias ON Localidades.id_provincia = Provincias.id WHERE Localidades.ID =" + param1).FirstOrDefault();
-                    }
-                    return Ok(prov);
 
                 case "Provincias":
                     List<Provincia> provinciaList = new List<Provincia>();
@@ -77,14 +53,8 @@ namespace MTN_RestAPI.Controllers
                     return Ok(tipo_Documentos);
 
                 default:
-                    return BadRequest("Parametros no validos. ID: " + id + "Param: "+ param1 );
+                    return BadRequest("Parametros no validos. ID: " + id);
             }
-
         }
-
-
-
-
-
     }
 }
