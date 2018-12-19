@@ -141,9 +141,21 @@ namespace MTN_Administration
             RefreshTable(0);
         }
 
+        private Alta_Tecnico alta_Tecnico;
+
         private void ButtonAgregarTecnico_Click(object sender, EventArgs e)
         {
-            alta_Tecnico1.AgregarNuevo();
+            // 
+            // alta_Tecnico1
+            // 
+            this.alta_Tecnico = new MTN_Administration.Alta_Tecnico();
+            this.alta_Tecnico.BackColor = System.Drawing.Color.Gainsboro;
+            this.alta_Tecnico.Location = new System.Drawing.Point(0, 0);
+            this.alta_Tecnico.Name = "alta_Tecnico1";
+            this.alta_Tecnico.Size = new System.Drawing.Size(727, 561);
+            this.alta_Tecnico.TabIndex = 6;
+            this.Controls.Add(this.alta_Tecnico);
+            alta_Tecnico.AgregarNuevo();
         }
 
         private void ButtonEditar_Click(object sender, EventArgs e)
@@ -151,7 +163,8 @@ namespace MTN_Administration
             DataGridViewSelectedRowCollection selectedRow = tablaTecnicos.SelectedRows;
             int id_tecnico = (int)selectedRow[0].Cells["id"].Value;
             Tecnico tecnico = aPIHelper.GetTecnico(id_tecnico);
-            alta_Tecnico1.Cargar(tecnico);
+            ButtonAgregarTecnico_Click(sender, e);
+            alta_Tecnico.Cargar(tecnico);
         }
 
         private void TablaTecnicos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

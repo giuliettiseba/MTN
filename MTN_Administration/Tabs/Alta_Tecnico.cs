@@ -69,7 +69,7 @@ namespace MTN_Administration
 
         private void ButtonCancelarAltaTecnico_Click(object sender, EventArgs e)
         {
-            this.SendToBack();
+            Dispose();
         }
 
         private void BotonCargarFoto_click(object sender, EventArgs e)
@@ -152,9 +152,10 @@ namespace MTN_Administration
             string result = aPIHelper.PostTecnico(newTecnico);
 
             System.Windows.Forms.MessageBox.Show(result);
-            this.SendToBack();
-             ((AMB_Tecnicos)this.Parent).RefreshTable(0);
             
+             ((AMB_Tecnicos)this.Parent).RefreshTable(0);
+            Dispose();
+
         }
 
         

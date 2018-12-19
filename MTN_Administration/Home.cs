@@ -16,8 +16,9 @@ namespace MTN_Administration
     {
 
         private APIHelper aPIHelper;
-        private AMB_Tecnicos amB_Tecnicos;
+        private AMB_Tecnicos aBM_Tecnicos;
         private ABM_Clientes aBM_Clientes;
+        private ABM_Sucursales aBM_Sucursales;
 
 
         protected override CreateParams CreateParams
@@ -62,37 +63,46 @@ namespace MTN_Administration
             headerDashboardPicture.Show();
             headerTecnicoPicture.Hide();
             headerClientePicture.Hide();
+            headerSucursalesPicture.Hide();
         }
 
 
         private void TecnicosButton_Click(object sender, EventArgs e)
         {
+
+            if (aBM_Sucursales != null) aBM_Sucursales.Dispose();
+            if (aBM_Clientes != null) aBM_Clientes.Dispose();
+
+
             // 
             // amB_Tecnicos1
             // 
-            amB_Tecnicos = new MTN_Administration.AMB_Tecnicos();
-            amB_Tecnicos.BackColor = System.Drawing.Color.Gainsboro;
-            amB_Tecnicos.Dock = System.Windows.Forms.DockStyle.Fill;
-            amB_Tecnicos.Location = new System.Drawing.Point(236, 39);
-            amB_Tecnicos.Name = "amB_Tecnicos1";
-            amB_Tecnicos.Size = new System.Drawing.Size(739, 561);
-            amB_Tecnicos.TabIndex = 2;
-            Controls.Add(this.amB_Tecnicos);
+            aBM_Tecnicos = new MTN_Administration.AMB_Tecnicos();
+            aBM_Tecnicos.BackColor = System.Drawing.Color.Gainsboro;
+            aBM_Tecnicos.Dock = System.Windows.Forms.DockStyle.Fill;
+            aBM_Tecnicos.Location = new System.Drawing.Point(236, 39);
+            aBM_Tecnicos.Name = "aBM_Tecnicos";
+            aBM_Tecnicos.Size = new System.Drawing.Size(739, 561);
+            aBM_Tecnicos.TabIndex = 2;
+            Controls.Add(this.aBM_Tecnicos);
 
-            
-            amB_Tecnicos.RefreshTable(0);
-            amB_Tecnicos.BringToFront();
+
+            aBM_Tecnicos.RefreshTable(0);
+            aBM_Tecnicos.BringToFront();
 
             TituloHeader.Text = "Administracion de Tecnicos";
             headerDashboardPicture.Hide();
             headerTecnicoPicture.Show();
             headerClientePicture.Hide();
+            headerSucursalesPicture.Hide();
 
         }
 
         private void ClientesButton_Click(object sender, EventArgs e)
         {
 
+            if (aBM_Tecnicos != null) aBM_Tecnicos.Dispose();
+            if (aBM_Sucursales != null) aBM_Sucursales.Dispose();
             // 
             // ABM_CLIENTES
             // 
@@ -110,12 +120,35 @@ namespace MTN_Administration
             headerDashboardPicture.Hide();
             headerTecnicoPicture.Hide();
             headerClientePicture.Show();
+            headerSucursalesPicture.Hide();
+
 
         }
 
         private void SucuralesButton_Click(object sender, EventArgs e)
         {
-            amB_Tecnicos.Dispose();
+            if (aBM_Tecnicos != null) aBM_Tecnicos.Dispose();
+            if (aBM_Clientes != null) aBM_Clientes.Dispose();
+
+
+            aBM_Sucursales = new ABM_Sucursales();
+            aBM_Sucursales.BackColor = System.Drawing.Color.Gainsboro;
+            aBM_Sucursales.Dock = System.Windows.Forms.DockStyle.Fill;
+            aBM_Sucursales.Location = new System.Drawing.Point(236, 39);
+            aBM_Sucursales.Name = "aBM_Sucursales";
+            aBM_Sucursales.Size = new System.Drawing.Size(739, 561);
+            aBM_Sucursales.TabIndex = 2;
+            Controls.Add(this.aBM_Sucursales);
+
+            aBM_Sucursales.BringToFront();
+            TituloHeader.Text = "Administracion de Sucursales";
+            headerDashboardPicture.Hide();
+            headerTecnicoPicture.Hide();
+            headerClientePicture.Hide();
+            headerSucursalesPicture.Show();
         }
+
+
+
     }
 }

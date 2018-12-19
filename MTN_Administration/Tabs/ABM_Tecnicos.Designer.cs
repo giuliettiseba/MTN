@@ -53,7 +53,7 @@
             this.provincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.BotonEliminarTecnico = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.alta_Tecnico1 = new MTN_Administration.Alta_Tecnico();
+            
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderFiltroTecnicos)).BeginInit();
@@ -491,14 +491,7 @@
             this.BotonEliminarTecnico.TabIndex = 14;
             this.BotonEliminarTecnico.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BotonEliminarTecnico.Click += new System.EventHandler(this.BotonEliminarTecnico_Click);
-            // 
-            // alta_Tecnico1
-            // 
-            this.alta_Tecnico1.BackColor = System.Drawing.Color.Gainsboro;
-            this.alta_Tecnico1.Location = new System.Drawing.Point(0, 0);
-            this.alta_Tecnico1.Name = "alta_Tecnico1";
-            this.alta_Tecnico1.Size = new System.Drawing.Size(727, 561);
-            this.alta_Tecnico1.TabIndex = 6;
+        
             // 
             // AMB_Tecnicos
             // 
@@ -507,8 +500,7 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.alta_Tecnico1);
-            this.Name = "AMB_Tecnicos";
+             this.Name = "AMB_Tecnicos";
             this.Size = new System.Drawing.Size(727, 561);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SearchIcon)).EndInit();
@@ -530,7 +522,7 @@
         private System.Windows.Forms.PictureBox SearchIcon;
         private Bunifu.Framework.UI.BunifuMetroTextbox textBuscarTecnico;
         private Bunifu.Framework.UI.BunifuCustomDataGrid tablaTecnicos;
-        private Alta_Tecnico alta_Tecnico1;
+        
         private System.Windows.Forms.Panel panel2;
         private Bunifu.Framework.UI.BunifuThinButton2 buttonEditar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;

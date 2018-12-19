@@ -83,6 +83,16 @@ namespace MTN_Administration.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _019_market {
+            get {
+                object obj = ResourceManager.GetObject("019-market", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _029_search {
             get {
                 object obj = ResourceManager.GetObject("029-search", resourceCulture);

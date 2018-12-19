@@ -39,6 +39,7 @@
             this.logoPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.headerPanel = new System.Windows.Forms.Panel();
+            this.headerSucursalesPicture = new System.Windows.Forms.PictureBox();
             this.headerClientePicture = new System.Windows.Forms.PictureBox();
             this.headerTecnicoPicture = new System.Windows.Forms.PictureBox();
             this.minimize = new System.Windows.Forms.Label();
@@ -51,6 +52,7 @@
             this.logoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.headerPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.headerSucursalesPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerClientePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerTecnicoPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerDashboardPicture)).BeginInit();
@@ -255,6 +257,7 @@
             // headerPanel
             // 
             this.headerPanel.BackColor = System.Drawing.Color.White;
+            this.headerPanel.Controls.Add(this.headerSucursalesPicture);
             this.headerPanel.Controls.Add(this.headerClientePicture);
             this.headerPanel.Controls.Add(this.headerTecnicoPicture);
             this.headerPanel.Controls.Add(this.minimize);
@@ -266,6 +269,17 @@
             this.headerPanel.Name = "headerPanel";
             this.headerPanel.Size = new System.Drawing.Size(739, 39);
             this.headerPanel.TabIndex = 1;
+            // 
+            // headerSucursalesPicture
+            // 
+            this.headerSucursalesPicture.Image = global::MTN_Administration.Properties.Resources._019_market;
+            this.headerSucursalesPicture.Location = new System.Drawing.Point(6, 9);
+            this.headerSucursalesPicture.Name = "headerSucursalesPicture";
+            this.headerSucursalesPicture.Size = new System.Drawing.Size(20, 20);
+            this.headerSucursalesPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.headerSucursalesPicture.TabIndex = 7;
+            this.headerSucursalesPicture.TabStop = false;
+            this.headerSucursalesPicture.Visible = false;
             // 
             // headerClientePicture
             // 
@@ -371,6 +385,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.headerPanel.ResumeLayout(false);
             this.headerPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.headerSucursalesPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerClientePicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerTecnicoPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerDashboardPicture)).EndInit();
@@ -398,6 +413,7 @@
         private System.Windows.Forms.PictureBox headerTecnicoPicture;
         private System.Windows.Forms.PictureBox headerClientePicture;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
+        private System.Windows.Forms.PictureBox headerSucursalesPicture;
     }
 }
 

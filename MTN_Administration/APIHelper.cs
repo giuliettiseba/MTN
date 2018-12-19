@@ -39,7 +39,7 @@ namespace MTN_Administration
         private Dictionary<int, string> provincias;
         private Dictionary<int, string> tipoDocumento;
         private Dictionary<int, string> tipoEmpleado;
-        
+
         /// <summary>
         /// Ver como actualizar los caches sin tener que pulear toda las tablas
         /// 
@@ -61,7 +61,8 @@ namespace MTN_Administration
             switch (v)
             {
                 case "clientes": clientes = null; break;
-                case "tecnicos": clientes = null; break;
+                case "tecnicos": tecnicos = null; break;
+                case "sucursales": sucursales = null; break;
                 default:
                     break;
             }
@@ -124,6 +125,7 @@ namespace MTN_Administration
             }
         }
 
+
         internal Cliente GetCliente(int id_cliente)
         {
             return clientes.Find(x => x.id == id_cliente);
@@ -156,6 +158,8 @@ namespace MTN_Administration
                 return "Se agrego correctamente el empleado " + tecnico.legajo;
             }
         }
+
+       
 
         internal string PostCliente(Cliente newCliente)
         {
@@ -360,5 +364,91 @@ namespace MTN_Administration
             return provincias[i];
         }
 
+
+
+
+
+
+
+        ////////////////////////////////////CLIENTES SUCURSALES/////////////////////////////////////////////////List<Sucursal> sucursales;
+        List<Sucursal> sucursales;
+
+
+        internal Sucursal GetSucursal(int id_sucursal)
+        {
+            if (sucursales == null) GetSucursales();
+            return sucursales.Find(x => x.id == id_sucursal);
+        }
+
+
+        public List<Sucursal> GetSucursales()
+        {
+            if (sucursales == null)
+            {
+                sucursales = new List<Sucursal>();
+                CacheSucursales();
+            }
+            return sucursales;
+        }
+
+        public void CacheSucursales()
+        {
+            String url = _partialurl + "Sucursales";
+            using (WebClient client = new WebClient())
+            {
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                String content = client.DownloadString(url);
+                sucursales = serializer.Deserialize<List<Sucursal>>(content);
+            }
+        }
+
+
+        internal string RemoveSucursal(int id_sucursal)
+        {
+            clearCache("sucursales");
+            String url = _partialurl + "sucursales/" + id_sucursal;
+            using (WebClient webClient = new WebClient())
+            {
+                var responseArray = webClient.UploadValues(url, "DELETE", webClient.QueryString);
+                return Encoding.ASCII.GetString(responseArray);
+            }
+        }
+
+        internal string PostSucursal(Sucursal newSucursal)
+        {
+
+            clearCache("sucursales");
+            String url = _partialurl + "sucursales";
+            using (WebClient webClient = new WebClient())
+            {
+                webClient.QueryString.Add("numero", newSucursal.numero);
+                webClient.QueryString.Add("nombre", newSucursal.nombre);
+                webClient.QueryString.Add("id_cliente", newSucursal.id_cliente.ToString());
+                webClient.QueryString.Add("direccion", newSucursal.direccion);
+                webClient.QueryString.Add("id_localidad", newSucursal.id_localidad.ToString());
+                //   webClient.QueryString.Add("foto", tecnico.foto.ToString());
+                if (newSucursal.id == 0)
+                {
+                    webClient.UploadValues(url, "POST", webClient.QueryString);
+                }
+                else
+                {
+                    webClient.QueryString.Add("id", newSucursal.id.ToString());
+                    webClient.UploadValues(url, "PUT", webClient.QueryString);
+                }
+                return "Se agrego correctamente la sucursal";
+            }
+        }
+
+
+
+
+
+
+
+
+
     }
+
+
 }

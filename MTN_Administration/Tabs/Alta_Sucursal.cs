@@ -12,13 +12,15 @@ using MTN_Administration.Tabs;
 
 namespace MTN_Administration
 {
-    public partial class Alta_Cliente : UserControl
+    public partial class Alta_Sucursal : UserControl
     {
         
         private APIHelper aPIHelper;
+        private int id_cliente;
 
-        public Alta_Cliente()
+        public Alta_Sucursal(int id_cliente)
         {
+            this.id_cliente = id_cliente;
             if (!this.DesignMode)
             {
                 InitializeComponent();
@@ -33,23 +35,22 @@ namespace MTN_Administration
             comboBoxProvincia.DisplayMember = "value";
             comboBoxProvincia.ValueMember = "key";
             comboBoxProvincia.DataSource = new BindingSource(aPIHelper.GetProvincias(), null);
-
         }
 
 
 
         private void LimpiarTodo()
         {
-            id_cliente = 0;
-            textRazonSocial.Text = "";
-            textCUIT.Text = "";
+            id_sucursal = 0;
+            textNumero.Text = "";
+            textNombre.Text = "";
             textDireccion.Text = "";
             comboBoxProvincia.SelectedIndex = -1;
             comboBoxLocalidad.SelectedIndex = -1;
             this.pictureFoto.Image = global::MTN_Administration.Properties.Resources._036_suitcase;
         }
 
-        private void ButtonCancelarAltaTecnico_Click(object sender, EventArgs e)
+        private void ButtonCancelarAlta_Click(object sender, EventArgs e)
         {
            this.Dispose();
         }
@@ -92,30 +93,31 @@ namespace MTN_Administration
             }
         }
 
-        private int id_cliente;
+        private int id_sucursal;
 
-        internal void Cargar(Cliente cliente)
+        internal void Cargar(Sucursal sucursal)
         {
-            id_cliente = cliente.id;
-            textRazonSocial.Text = cliente.RazonSocial;
-            textCUIT.Text = cliente.CUIT;
-            comboBoxProvincia.SelectedValue = aPIHelper.GetProvincia(cliente.id_localidad);
-            comboBoxLocalidad.SelectedValue = cliente.id_localidad;
-            textDireccion.Text = cliente.direccion;
+            id_sucursal = sucursal.id;
+            textNumero.Text = sucursal.numero;
+            textNombre.Text = sucursal.nombre;
+            comboBoxProvincia.SelectedValue = aPIHelper.GetProvincia(sucursal.id_localidad);
+            comboBoxLocalidad.SelectedValue = sucursal.id_localidad;
+            textDireccion.Text = sucursal.direccion;
         }
 
-        private void buttonGuardarAltaTecnico_Click(object sender, EventArgs e)
+        private void buttonGuardarAltaSucursal_Click(object sender, EventArgs e)
         {
-            Cliente newCliente = new Cliente();
-            newCliente.id = id_cliente;
-            newCliente.RazonSocial = textRazonSocial.Text;
-            newCliente.CUIT = textCUIT.Text;
-            newCliente.direccion = textDireccion.Text;
-            newCliente.id_localidad = (int) comboBoxLocalidad.SelectedValue;
+            Sucursal newSucursal = new Sucursal();
+            newSucursal.id = id_sucursal;
+            newSucursal.numero = textNumero.Text;
+            newSucursal.nombre = textNombre.Text;
+            newSucursal.id_cliente = id_cliente;
+            newSucursal.direccion = textDireccion.Text;
+            newSucursal.id_localidad = (int) comboBoxLocalidad.SelectedValue;
          //   newTecnico.foto = ImageProcess.imageToByteArray(pictureFoto.Image);
-            string result = aPIHelper.PostCliente(newCliente);
+            string result = aPIHelper.PostSucursal(newSucursal);
             System.Windows.Forms.MessageBox.Show(result);
-            ((ABM_Clientes)this.Parent).RefreshTable(0);
+            ((ABM_Sucursales)this.Parent).RefreshTable(0);
             this.Dispose();
         }
     }

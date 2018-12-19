@@ -117,23 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="001-advertising" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\001-advertising.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="botonCargarFoto.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAP0AAAAeCAYAAADn5RjQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACbSURBVHhe7dQxEQJBAARB7CAAAQgiI0TIJwT4Oi9P3QUU
+        Gm466GAFzF7GGCfQIXqIET3EiB5iRA8xooeYFf3x/pzX2x3Y3Gx9RT/H/xMAe5qtix5CRA8xoocY0UOM
+        6CFG9BAjeogRPcSIHmJEDzGihxjRQ4zoIUb0ECN6iBE9xPyifzxfawB7m62v6IEO0UOM6CFG9BAjekgZ
+        5xdmI+VGYXfoJQAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="036-suitcase" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\036-suitcase.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="buttonCancelarAlta.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAALUAAAApCAYAAABz92iRAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACrSURBVHhe7dKhEQIxAABB2qEACqATJJZS3mBoLb2E+ehv
+        IDcrVp292xhjQompyTE1OaYmx9TkmJqcNfXx/c374wnbO19eU19F2JWpyTE1OaYmx9TkmJocU5NjanJM
+        TY6pyTE1OaYmx9TkmJocU5NjanJMTY6pyTE1OaYmx9TkmJocU5NjanJMTY6pyTE1OaYmZ039en8uI+zm
+        fHlNDSWmJsfU5JiaHFMTM+Yf9ARbbGm2uwwAAAAASUVORK5CYII=
+</value>
   </data>
-  <data name="029-search" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\029-search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="030-setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\030-setting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="008-friend" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\008-friend.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="019-market" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\019-market.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="buttonGuardarAlta.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAALUAAAApCAYAAABz92iRAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACrSURBVHhe7dKhEQIxAABB2qEACqATJJZS3mBoLb2E+ehv
+        IDcrVp292xhjQompyTE1OaYmx9TkmJqcNfXx/c374wnbO19eU19F2JWpyTE1OaYmx9TkmJocU5NjanJM
+        TY6pyTE1OaYmx9TkmJocU5NjanJMTY6pyTE1OaYmx9TkmJocU5NjanJMTY6pyTE1OaYmZ039en8uI+zm
+        fHlNDSWmJsfU5JiaHFMTM+Yf9ARbbGm2uwwAAAAASUVORK5CYII=
+</value>
   </data>
 </root>

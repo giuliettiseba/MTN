@@ -52,11 +52,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tabs\ABM_Sucursales.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tabs\ABM_Sucursales.Designer.cs">
+      <DependentUpon>ABM_Sucursales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tabs\ABM_Clientes.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Tabs\ABM_Clientes.Designer.cs">
       <DependentUpon>ABM_Clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs\Alta_Sucursal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tabs\Alta_Sucursal.Designer.cs">
+      <DependentUpon>Alta_Sucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="Tabs\Alta_Cliente.cs">
       <SubType>UserControl</SubType>
@@ -92,8 +104,14 @@
     <Compile Include="Tabs\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Tabs\ABM_Sucursales.resx">
+      <DependentUpon>ABM_Sucursales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tabs\ABM_Clientes.resx">
       <DependentUpon>ABM_Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabs\Alta_Sucursal.resx">
+      <DependentUpon>Alta_Sucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tabs\Alta_Cliente.resx">
       <DependentUpon>Alta_Cliente.cs</DependentUpon>
@@ -156,6 +174,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\001-advertising.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\019-market.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
