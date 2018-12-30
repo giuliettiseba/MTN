@@ -8,11 +8,20 @@ namespace MTN_RestAPI.Models
 {
     public class Sucursal
     {
-        public int id { get; set; }
-        public int id_cliente { get; set; }
-        public String numero { get; set; }
-        public String nombre { get; set; }
-        public String direccion { get; set; }
-        public int id_localidad { get; set; }
+        public int Id { get; set; }
+        public int Id_cliente { get; set; }
+        public String Numero { get; set; }
+        public String Nombre { get; set; }
+        public String Direccion { get; set; }
+        public int Id_localidad { get; set; }
+
+        public String Nombreynumero  // read-only instance property
+        {
+            get
+            {
+                return Numero + " - " + Nombre;
+            }
+        }
+
     }
 }

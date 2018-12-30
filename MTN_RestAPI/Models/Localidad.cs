@@ -7,10 +7,10 @@ namespace MTN_RestAPI.Models
 {
     public class Localidad
     {
-        public int id { get; set; }
-        public int id_provincia { get; set; }
-        public String nombre { get; set; }
-        public int codigoPostal { get; set; }
+        public int Id { get; set; }
+        public int Id_provincia { get; set; }
+        public String Nombre { get; set; }
+        public int CodigoPostal { get; set; }
 
     }
 }

@@ -8,7 +8,7 @@ namespace MTN_RestAPI.Models
     public class Tipo_Empleado
     {
 
-        public int id { get; set; }
-        public String nombre { get; set; }
+        public int Id { get; set; }
+        public String Nombre { get; set; }
     }
 }

@@ -31,14 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.sidePanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.botonDispositivosCCTV = new Bunifu.Framework.UI.BunifuFlatButton();
             this.TecnicosButton = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SucuralesButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.ClientesButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.DashBoardButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.logoPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.headerPanel = new System.Windows.Forms.Panel();
+            this.headerDipsitivosPicture = new System.Windows.Forms.PictureBox();
             this.headerSucursalesPicture = new System.Windows.Forms.PictureBox();
             this.headerClientePicture = new System.Windows.Forms.PictureBox();
             this.headerTecnicoPicture = new System.Windows.Forms.PictureBox();
@@ -46,12 +48,12 @@
             this.close = new System.Windows.Forms.Label();
             this.TituloHeader = new System.Windows.Forms.Label();
             this.headerDashboardPicture = new System.Windows.Forms.PictureBox();
-            this.dashboard1 = new MTN_Administration.Tabs.Dashboard();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.sidePanel.SuspendLayout();
             this.logoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.headerPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.headerDipsitivosPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerSucursalesPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerClientePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerTecnicoPicture)).BeginInit();
@@ -61,8 +63,9 @@
             // sidePanel
             // 
             this.sidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.sidePanel.Controls.Add(this.panel1);
+            this.sidePanel.Controls.Add(this.botonDispositivosCCTV);
             this.sidePanel.Controls.Add(this.TecnicosButton);
+            this.sidePanel.Controls.Add(this.panel1);
             this.sidePanel.Controls.Add(this.SucuralesButton);
             this.sidePanel.Controls.Add(this.ClientesButton);
             this.sidePanel.Controls.Add(this.DashBoardButton);
@@ -73,14 +76,43 @@
             this.sidePanel.Size = new System.Drawing.Size(236, 600);
             this.sidePanel.TabIndex = 0;
             // 
-            // panel1
+            // botonDispositivosCCTV
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(43)))), ((int)(((byte)(55)))));
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 534);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(236, 66);
-            this.panel1.TabIndex = 5;
+            this.botonDispositivosCCTV.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(43)))), ((int)(((byte)(55)))));
+            this.botonDispositivosCCTV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.botonDispositivosCCTV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.botonDispositivosCCTV.BorderRadius = 0;
+            this.botonDispositivosCCTV.ButtonText = "Dispositivos CCTV";
+            this.botonDispositivosCCTV.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonDispositivosCCTV.DisabledColor = System.Drawing.Color.Gray;
+            this.botonDispositivosCCTV.Dock = System.Windows.Forms.DockStyle.Top;
+            this.botonDispositivosCCTV.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.botonDispositivosCCTV.Iconcolor = System.Drawing.Color.Transparent;
+            this.botonDispositivosCCTV.Iconimage = null;
+            this.botonDispositivosCCTV.Iconimage_right = null;
+            this.botonDispositivosCCTV.Iconimage_right_Selected = null;
+            this.botonDispositivosCCTV.Iconimage_Selected = null;
+            this.botonDispositivosCCTV.IconMarginLeft = 0;
+            this.botonDispositivosCCTV.IconMarginRight = 0;
+            this.botonDispositivosCCTV.IconRightVisible = true;
+            this.botonDispositivosCCTV.IconRightZoom = 0D;
+            this.botonDispositivosCCTV.IconVisible = true;
+            this.botonDispositivosCCTV.IconZoom = 90D;
+            this.botonDispositivosCCTV.IsTab = true;
+            this.botonDispositivosCCTV.Location = new System.Drawing.Point(0, 231);
+            this.botonDispositivosCCTV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.botonDispositivosCCTV.Name = "botonDispositivosCCTV";
+            this.botonDispositivosCCTV.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.botonDispositivosCCTV.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(43)))), ((int)(((byte)(55)))));
+            this.botonDispositivosCCTV.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(210)))), ((int)(((byte)(4)))));
+            this.botonDispositivosCCTV.selected = false;
+            this.botonDispositivosCCTV.Size = new System.Drawing.Size(236, 48);
+            this.botonDispositivosCCTV.TabIndex = 7;
+            this.botonDispositivosCCTV.Text = "Dispositivos CCTV";
+            this.botonDispositivosCCTV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.botonDispositivosCCTV.Textcolor = System.Drawing.Color.LightGray;
+            this.botonDispositivosCCTV.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonDispositivosCCTV.Click += new System.EventHandler(this.BotonDispositivos_Click);
             // 
             // TecnicosButton
             // 
@@ -113,12 +145,21 @@
             this.TecnicosButton.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(210)))), ((int)(((byte)(4)))));
             this.TecnicosButton.selected = false;
             this.TecnicosButton.Size = new System.Drawing.Size(236, 48);
-            this.TecnicosButton.TabIndex = 4;
+            this.TecnicosButton.TabIndex = 6;
             this.TecnicosButton.Text = "Tecnicos";
             this.TecnicosButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.TecnicosButton.Textcolor = System.Drawing.Color.LightGray;
             this.TecnicosButton.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TecnicosButton.Click += new System.EventHandler(this.TecnicosButton_Click);
+            this.TecnicosButton.Click += new System.EventHandler(this.TecnicosButton_Click_1);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(43)))), ((int)(((byte)(55)))));
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 534);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(236, 66);
+            this.panel1.TabIndex = 5;
             // 
             // SucuralesButton
             // 
@@ -257,6 +298,7 @@
             // headerPanel
             // 
             this.headerPanel.BackColor = System.Drawing.Color.White;
+            this.headerPanel.Controls.Add(this.headerDipsitivosPicture);
             this.headerPanel.Controls.Add(this.headerSucursalesPicture);
             this.headerPanel.Controls.Add(this.headerClientePicture);
             this.headerPanel.Controls.Add(this.headerTecnicoPicture);
@@ -269,6 +311,17 @@
             this.headerPanel.Name = "headerPanel";
             this.headerPanel.Size = new System.Drawing.Size(739, 39);
             this.headerPanel.TabIndex = 1;
+            // 
+            // headerDipsitivosPicture
+            // 
+            this.headerDipsitivosPicture.Image = global::MTN_Administration.Properties.Resources._019_video;
+            this.headerDipsitivosPicture.Location = new System.Drawing.Point(6, 9);
+            this.headerDipsitivosPicture.Name = "headerDipsitivosPicture";
+            this.headerDipsitivosPicture.Size = new System.Drawing.Size(20, 20);
+            this.headerDipsitivosPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.headerDipsitivosPicture.TabIndex = 8;
+            this.headerDipsitivosPicture.TabStop = false;
+            this.headerDipsitivosPicture.Visible = false;
             // 
             // headerSucursalesPicture
             // 
@@ -353,14 +406,6 @@
             this.headerDashboardPicture.TabIndex = 1;
             this.headerDashboardPicture.TabStop = false;
             // 
-            // dashboard1
-            // 
-            this.dashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dashboard1.Location = new System.Drawing.Point(236, 39);
-            this.dashboard1.Name = "dashboard1";
-            this.dashboard1.Size = new System.Drawing.Size(739, 561);
-            this.dashboard1.TabIndex = 3;
-            // 
             // bunifuDragControl1
             // 
             this.bunifuDragControl1.Fixed = true;
@@ -374,7 +419,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(975, 600);
-            this.Controls.Add(this.dashboard1);
             this.Controls.Add(this.headerPanel);
             this.Controls.Add(this.sidePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -385,6 +429,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.headerPanel.ResumeLayout(false);
             this.headerPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.headerDipsitivosPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerSucursalesPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerClientePicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerTecnicoPicture)).EndInit();
@@ -406,14 +451,14 @@
         private System.Windows.Forms.PictureBox headerDashboardPicture;
         private System.Windows.Forms.Label minimize;
         private System.Windows.Forms.Label close;
-        private Bunifu.Framework.UI.BunifuFlatButton TecnicosButton;
         private System.Windows.Forms.Panel panel1;
-        
-        private Tabs.Dashboard dashboard1;
         private System.Windows.Forms.PictureBox headerTecnicoPicture;
         private System.Windows.Forms.PictureBox headerClientePicture;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.PictureBox headerSucursalesPicture;
+        private Bunifu.Framework.UI.BunifuFlatButton TecnicosButton;
+        private Bunifu.Framework.UI.BunifuFlatButton botonDispositivosCCTV;
+        private System.Windows.Forms.PictureBox headerDipsitivosPicture;
     }
 }
 

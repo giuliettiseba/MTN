@@ -13,20 +13,39 @@ namespace MTN_RestAPI.Controllers
     {
         static readonly string connectionStringSettings = "MTNdb";
 
-           
-        // GET api/Clientes/
+
+        /// <summary>
+        /// Obtiene todos los los clientes 
+        /// GET api/Clientes/
+        /// </summary>
+        /// <returns>Resultado con un campo checksum y otro la lista de clientes </returns>
         public IHttpActionResult GetAll()
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
-                return Ok(db.Query<Cliente>("SELECT * FROM CLIENTES").ToList());
+                db.Open();
+                IDbTransaction transaction = db.BeginTransaction();
+                List<Cliente> clientes = db.Query<Cliente>("SELECT * FROM CLIENTES", transaction: transaction).ToList(); // Consulto la lista 
+                int checksum = db.Query<int>("SELECT checksums FROM checksums WHERE table_name = 'clientes'", transaction: transaction).First(); // consulto el checksum
+                transaction.Commit();
+                db.Close();
+
+                Resultado<Cliente> resultado = new Resultado<Cliente>(checksum , clientes); // armo la respuesta
+
+                return Ok(resultado);
             }
         }
 
         // GET api/Clientes/id
+        /// <summary>
+        /// Obtiene el cliente con el ID pasado
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
+
             {
                 return Ok(db.Query<Cliente>("SELECT * FROM CLIENTES WHERE id=" + id).FirstOrDefault<Cliente>());
             }
@@ -36,21 +55,21 @@ namespace MTN_RestAPI.Controllers
         // POST api/Tecnico
         public IHttpActionResult Post([FromUri] Cliente cliente)
         {
-            string sql = "INSERT INTO CLIENTES (razonSocial,CUIT,direccion,id_localidad) VALUES (@razonSocial,@CUIT,@direccion,@id_localidad)";
+            string sql = "INSERT INTO CLIENTES (nombre,CUIT,direccion,id_localidad) VALUES (@nombre,@CUIT,@direccion,@id_localidad)";
 
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
                 var affectedRows = db.Execute(sql, new
                 {
-                    cliente.RazonSocial,
+                    cliente.Nombre,
                     cliente.CUIT,
-                    cliente.direccion,
-                    cliente.id_localidad,
+                    cliente.Direccion,
+                    cliente.Id_localidad,
                   //  cliente.image
                 });
                 if (affectedRows == 1)
                     return Ok(affectedRows);
-                else return BadRequest("No se pudo insertar el tecnico con id: " + cliente.id);
+                else return BadRequest("No se pudo insertar el tecnico con id: " + cliente.Id);
             }
         }
 
@@ -58,20 +77,20 @@ namespace MTN_RestAPI.Controllers
         // PUT api/values/id
         public IHttpActionResult Put(int id, [FromUri] Cliente cliente)
         {
-            string sql = "UPDATE CLIENTES SET razonSocial = @razonSocial,CUIT = @CUIT,direccion = @direccion,id_localidad = @id_localidad WHERE ID =" + id;
+            string sql = "UPDATE CLIENTES SET nombre = @nombre,CUIT = @CUIT,direccion = @direccion,id_localidad = @id_localidad WHERE ID =" + id;
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
                 var affectedRows = db.Execute(sql, new
                 {
-                    cliente.RazonSocial,
+                    cliente.Nombre,
                     cliente.CUIT,
-                    cliente.direccion,
-                    cliente.id_localidad,
+                    cliente.Direccion,
+                    cliente.Id_localidad,
                 //    cliente.image
                 });
                 if (affectedRows == 1)
                     return Ok(affectedRows);
-                else return BadRequest("No se pudo insertar el tecnico con id: " + cliente.id);
+                else return BadRequest("No se pudo insertar el tecnico con id: " + cliente.Id);
             }
         }
 

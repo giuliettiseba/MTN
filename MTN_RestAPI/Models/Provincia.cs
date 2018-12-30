@@ -7,9 +7,9 @@ namespace MTN_RestAPI.Models
 {
     public class Provincia
     {
-        public int id { get; set; }
-        public String nombre { get; set; }
-        public String codigo31662 { get; set; }
+        public int Id { get; set; }
+        public String Nombre { get; set; }
+        public String Codigo31662 { get; set; }
 
     }
 }
