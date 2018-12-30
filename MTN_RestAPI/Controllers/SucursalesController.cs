@@ -1,11 +1,11 @@
 ﻿using MTN_RestAPI.Models;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web.Http;
 using Dapper;
 using System.Data;
+using System.Collections.Generic;
 
 namespace MTN_RestAPI.Controllers
 {
@@ -19,7 +19,14 @@ namespace MTN_RestAPI.Controllers
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
-                return Ok(db.Query<Sucursal>("SELECT * FROM SUCURSALES").ToList());
+                db.Open();
+                IDbTransaction transaction = db.BeginTransaction();
+                List<Sucursal> respuesta = db.Query<Sucursal>("SELECT * FROM SUCURSALES", transaction: transaction).ToList();
+                int checksum = db.Query<int>("SELECT checksums FROM checksums WHERE table_name = 'Sucursales'", transaction: transaction).First();
+                transaction.Commit();
+                db.Close();
+                Resultado<Sucursal> resultado = new Resultado<Sucursal>(checksum, respuesta);
+                return Ok(resultado);
             }
         }
 
@@ -33,75 +40,64 @@ namespace MTN_RestAPI.Controllers
         }
 
 
-        
-               // POST api/Sucursales
-                public IHttpActionResult Post([FromUri] Sucursal sucursal)
+
+        // POST api/Sucursales
+        public IHttpActionResult Post([FromUri] Sucursal sucursal)
+        {
+            string sql = "INSERT INTO SUCURSALES (id_cliente, numero,nombre,direccion,id_localidad) VALUES (@id_cliente,@numero,@nombre,@direccion,@id_localidad)";
+
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
+            {
+                var affectedRows = db.Execute(sql, new
                 {
-                    string sql = "INSERT INTO SUCURSALES (id_cliente, numero,nombre,direccion,id_localidad) VALUES (@id_cliente,@numero,@nombre,@direccion,@id_localidad)";
+                    sucursal.Id_cliente,
+                    sucursal.Numero,
+                    sucursal.Nombre,
+                    sucursal.Direccion,
+                    sucursal.Id_localidad,
+                    //  sucursal.image
+                });
+                if (affectedRows == 1)
+                    return Ok(affectedRows);
+                else return BadRequest("No se pudo insertar la sucursal con id: " + sucursal.Id);
+            }
+        }
 
-                    using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
-                    {
-                        var affectedRows = db.Execute(sql, new
-                        {
-                            sucursal.id_cliente,
-                            sucursal.numero,
-                            sucursal.nombre,
-                            sucursal.direccion,
-                            sucursal.id_localidad,
-                            //  sucursal.image
-                        });
-                        if (affectedRows == 1)
-                            return Ok(affectedRows);
-                        else return BadRequest("No se pudo insertar el tecnico con id: " + sucursal.id);
-                    }
-                }
 
-        
-                // PUT api/Sucursales/id
-                public IHttpActionResult Put(int id, [FromUri] Sucursal sucursal)
+        // PUT api/Sucursales/id
+        public IHttpActionResult Put(int id, [FromUri] Sucursal sucursal)
+        {
+            string sql = "UPDATE SUCURSALES SET id_cliente = @id_cliente,numero = @numero,nombre = @nombre,direccion = @direccion,id_localidad = @id_localidad WHERE ID =" + id;
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
+            {
+                var affectedRows = db.Execute(sql, new
                 {
-                    string sql = "UPDATE SUCURSALES SET id_cliente = @id_cliente,numero = @numero,nombre = @nombre,direccion = @direccion,id_localidad = @id_localidad WHERE ID =" + id;
-                    using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
-                    {
-                        var affectedRows = db.Execute(sql, new
-                        {
-                            sucursal.id_cliente,
-                            sucursal.numero,
-                            sucursal.nombre,
-                            sucursal.direccion,
-                            sucursal.id_localidad,
-                            //    cliente.image
-                        });
-                        if (affectedRows == 1)
-                            return Ok(affectedRows);
-                        else return BadRequest("No se pudo insertar el tecnico con id: " + sucursal.id);
-                    }
-                }
-
-
-
-        
+                    sucursal.Id_cliente,
+                    sucursal.Numero,
+                    sucursal.Nombre,
+                    sucursal.Direccion,
+                    sucursal.Id_localidad,
+                    //    cliente.image
+                });
+                if (affectedRows == 1)
+                    return Ok(affectedRows);
+                else return BadRequest("No se pudo insertar la sucursal con id: " + sucursal.Id);
+            }
+        }
 
         // DELETE api/Tecnicos/id
         public IHttpActionResult Delete(int id)
         {
             string sql = "DELETE FROM SUCURSALES WHERE id=" + id;
 
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
             {
-
-                try
-                {
-                    db.Execute(sql);
-                }
-                catch (System.Exception e)
-                {
-
-                    return BadRequest(e.ToString());
-                }
-                return Ok(1);
-
+                var affectedRows = db.Execute(sql);
+                if (affectedRows == 1)
+                    return Ok(affectedRows);
+                else return BadRequest("No se pudo elimanar la sucursal con id: " + id);
             }
+
         }
 
 

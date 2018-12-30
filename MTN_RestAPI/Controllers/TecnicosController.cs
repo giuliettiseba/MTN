@@ -11,51 +11,60 @@ namespace MTN_RestAPI.Controllers
 {
     public class TecnicosController : ApiController
     {
+
+        static readonly string connectionStringSettings = "MTNdb";
+
+
+
         // GET api/Tecnicos/
         public IHttpActionResult GetAll()
         {
-            List<Tecnico> TecnicoList = new List<Tecnico>();
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
-                TecnicoList = db.Query<Tecnico>("Select * From Tecnico").ToList();
+                db.Open();
+                IDbTransaction transaction = db.BeginTransaction();
+                List<Tecnico> respuesta = db.Query<Tecnico>("SELECT * FROM Tecnicos", transaction: transaction).ToList();
+                int checksum = db.Query<int>("SELECT checksums FROM checksums WHERE table_name = 'tecnicos'", transaction: transaction).First();
+                transaction.Commit();
+                db.Close();
+                Resultado<Tecnico> resultado = new Resultado<Tecnico>(checksum, respuesta);
+                return Ok(resultado);
             }
-            return Ok(TecnicoList);
+
         }
 
         // GET api/Tecnico/id
         public IHttpActionResult Get(int id)
         {
             List<Tecnico> TecnicoList = new List<Tecnico>();
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
-                TecnicoList = db.Query<Tecnico>("Select * FROM Tecnico WHERE id=" + id).ToList();
+                return Ok(db.Query<Tecnico>("Select * FROM Tecnicos WHERE id=" + id).ToList());
             }
-            if (TecnicoList.Count == 0) return BadRequest("No se encuentro un tecnico con ese ID");
-            else return Ok(TecnicoList);
         }
 
         // POST api/Tecnico
         public IHttpActionResult Post([FromUri] Tecnico tecnico)
         {
-            string sql = "INSERT INTO Tecnico (nombre,apellido,legajo,direccion,id_localidad,documento,id_tipo_documento,id_tipo_empleado) VALUES (@nombre,@apellido,@legajo,@direccion,@id_localidad,@documento,@id_tipo_documento, @id_tipo_empleado)";
+            string sql = "INSERT INTO Tecnicos (nombre,apellido,legajo,direccion,id_localidad,documento,id_tipo_documento,id_tipo_empleado) VALUES (@nombre,@apellido,@legajo,@direccion,@id_localidad,@documento,@id_tipo_documento, @id_tipo_empleado)";
 
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
                 var affectedRows = db.Execute(sql, new
                 {
-                    tecnico.nombre,
-                    tecnico.apellido,
-                    tecnico.legajo,
-                    tecnico.direccion,
-                    tecnico.id_localidad,
-                    tecnico.documento,
-                    tecnico.id_tipo_documento,
-                    tecnico.id_tipo_empleado,
+                    tecnico.Nombre,
+                    tecnico.Apellido,
+                    tecnico.Legajo,
+                    tecnico.Direccion,
+                    tecnico.Id_localidad,
+                    tecnico.Documento,
+                    tecnico.Id_tipo_documento,
+                    tecnico.Id_tipo_empleado,
                 
                 });
                 if (affectedRows == 1)
                     return Ok(affectedRows);
-                else return BadRequest("No se pudo insertar el tecnico con id: "+ tecnico.id);
+                else return BadRequest("No se pudo insertar el tecnico con id: "+ tecnico.Id);
             }
         }
 
@@ -63,32 +72,32 @@ namespace MTN_RestAPI.Controllers
         // PUT api/values/id
         public IHttpActionResult Put(int id, [FromUri] Tecnico tecnico)
         {
-            string sql = "UPDATE Tecnico SET nombre = @nombre,apellido = @apellido,legajo = @legajo,direccion = @direccion,id_localidad =@id_localidad,documento = @documento,id_tipo_documento = @id_tipo_documento, id_tipo_empleado = @id_tipo_empleado WHERE ID =" + id;
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
+            string sql = "UPDATE Tecnicos SET nombre = @nombre,apellido = @apellido,legajo = @legajo,direccion = @direccion,id_localidad =@id_localidad,documento = @documento,id_tipo_documento = @id_tipo_documento, id_tipo_empleado = @id_tipo_empleado WHERE ID =" + id;
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
                 var affectedRows = db.Execute(sql, new
                 {
-                    tecnico.nombre,
-                    tecnico.apellido,
-                    tecnico.legajo,
-                    tecnico.direccion,
-                    tecnico.id_localidad,
-                    tecnico.documento,
-                    tecnico.id_tipo_documento,
-                    tecnico.id_tipo_empleado,
+                    tecnico.Nombre,
+                    tecnico.Apellido,
+                    tecnico.Legajo,
+                    tecnico.Direccion,
+                    tecnico.Id_localidad,
+                    tecnico.Documento,
+                    tecnico.Id_tipo_documento,
+                    tecnico.Id_tipo_empleado,
                 });
                 if (affectedRows == 1)
                     return Ok(affectedRows);
-                else return BadRequest("No se encuentro un tecnico con el ID" + tecnico.id);
+                else return BadRequest("No se encuentro un tecnico con el ID" + tecnico.Id);
             }
         }
 
         // DELETE api/Tecnicos/id
         public IHttpActionResult Delete(int id)
         {
-            string sql = "DELETE FROM TECNICO WHERE id=" + id;
+            string sql = "DELETE FROM TECNICOS WHERE id=" + id;
 
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
                 var affectedRows = db.Execute(sql);
                 if (affectedRows == 1)

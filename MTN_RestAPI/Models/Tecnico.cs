@@ -7,15 +7,15 @@ namespace MTN_RestAPI.Models
 {
     public class Tecnico
     {
-        public int id { get; set; }
-        public String nombre { get; set; }
-        public String apellido { get; set; }
-        public int legajo { get; set; }
-        public String direccion { get; set; }
-        public int id_localidad { get; set; }
-        public int documento { get; set; }
-        public int id_tipo_documento { get; set; }
-        public int id_tipo_empleado{ get; set; }
-        public string foto { get; set; }
+        public int Id { get; set; }
+        public String Nombre { get; set; }
+        public String Apellido { get; set; }
+        public int Legajo { get; set; }
+        public String Direccion { get; set; }
+        public int Id_localidad { get; set; }
+        public int Documento { get; set; }
+        public int Id_tipo_documento { get; set; }
+        public int Id_tipo_empleado{ get; set; }
+        //public string Foto { get; set; }
     }
 }
