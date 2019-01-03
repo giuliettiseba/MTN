@@ -1,4 +1,5 @@
-﻿using MTN_RestAPI.Models;
+﻿using MTN_Administration.Alerts;
+using MTN_RestAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,121 +14,88 @@ namespace MTN_Administration.APIHelpers
 
         private String _partialurl;
         private ChecksumHelper _checksumHelper;
-        private List<Sucursal> sucursales;
+        Dictionary<int, List<Sucursal>> cacheSucursales = new Dictionary<int, List<Sucursal>>();
 
-        /// <summary>
-        /// 
-        /// 
-        /// </summary>
-        /// <param name="partialurl"></param>
-        /// <param name="checksumHelper"></param>
         public SucursalesHelper(String partialurl, ChecksumHelper checksumHelper)
         {
             _partialurl = partialurl;
             _checksumHelper = checksumHelper;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public List<Sucursal> GetSucursales()
+        public List<Sucursal> GetSucursales(int id_cliente)
         {
-            if (sucursales == null || !(_checksumHelper.VerificarChecksum("sucursales")))
+            if (!cacheSucursales.ContainsKey(id_cliente) || !_checksumHelper.VerificarChecksum("sucursales_" + id_cliente))
+
             {
-                sucursales = new List<Sucursal>();
-                CacheSucursales();
+                cacheSucursales[id_cliente] = new List<Sucursal>();
+                CacheSucursales(id_cliente);
             }
-            return sucursales;
+            return cacheSucursales[id_cliente];
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void CacheSucursales()
+        public void CacheSucursales(int id_cliente)
         {
-            String url = _partialurl + "Sucursales";
-               using (WebClient client = new WebClient())
+            String url = _partialurl + "Sucursales/" + id_cliente;
+            using (WebClient client = new WebClient())
             {
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 String content = client.DownloadString(url);
                 Resultado<Sucursal> resultado = serializer.Deserialize<Resultado<Sucursal>>(content);
-                sucursales = resultado.Lista.Cast<Sucursal>().ToList();
-                _checksumHelper.ActualizarChecksum("sucursales", resultado.Checksum);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id_cliente"></param>
-        /// <returns></returns>
-        public List<Sucursal> GetSucursales(int id_cliente)
-        {
-            if (sucursales == null) GetSucursales();
-            List<Sucursal> sucursalesCliente = new List<Sucursal>();
-            foreach (Sucursal sucursal in sucursales)
-            {
-                if (sucursal.Id_cliente.Equals(id_cliente)) sucursalesCliente.Add(sucursal);
+                cacheSucursales[id_cliente] = resultado.Lista.Cast<Sucursal>().ToList();
+                _checksumHelper.ActualizarChecksum("sucursales_" + id_cliente, resultado.Checksum);
             }
 
-            return sucursalesCliente;
         }
 
-        internal int getClienteDeSucursal(int id_sucursal)
+        internal Sucursal GetSucursal(int id_cliente, int id_sucursal)
         {
-            if (sucursales == null) GetSucursales();
-            return sucursales.Find(x => x.Id == id_sucursal).Id_cliente;
+            if (cacheSucursales[id_cliente] == null) GetSucursales(id_cliente);
+            return cacheSucursales[id_cliente].Find(x => x.Id == id_sucursal);
 
         }
 
-        /// <summary>
-        /// 
-        /// 
-        /// </summary>
-        /// <param name="id_sucursal"></param>
-        /// <returns></returns>
-        internal Sucursal GetSucursal(int id_sucursal)
+        internal MensajeAlerta RemoveSucursal(Sucursal removeSucursal)
         {
-            if (sucursales == null) GetSucursales();
-            return sucursales.Find(x => x.Id == id_sucursal);
-        }
-
-        internal string RemoveSucursal(int id_sucursal)
-        {
-            String url = _partialurl + "sucursales/" + id_sucursal;
+            String url = _partialurl + "sucursales/" + removeSucursal.Id;
             using (WebClient webClient = new WebClient())
             {
                 var responseArray = webClient.UploadValues(url, "DELETE", webClient.QueryString);
-                return Encoding.ASCII.GetString(responseArray);
+                return new MensajeAlerta("ELIMINADO" + Environment.NewLine + removeSucursal.Nombre, AlertType.warning);
             }
         }
 
-        internal string PostSucursal(Sucursal newSucursal)
+        internal MensajeAlerta AddCliente(Sucursal newSucursal)
         {
             String url = _partialurl + "sucursales";
-            using (WebClient webClient = new WebClient())
+            try
             {
-                webClient.QueryString.Add("numero", newSucursal.Numero);
-                webClient.QueryString.Add("nombre", newSucursal.Nombre);
-                webClient.QueryString.Add("id_cliente", newSucursal.Id_cliente.ToString());
-                webClient.QueryString.Add("direccion", newSucursal.Direccion);
-                webClient.QueryString.Add("id_localidad", newSucursal.Id_localidad.ToString());
-                //   webClient.QueryString.Add("foto", tecnico.foto.ToString());
-                if (newSucursal.Id == 0)
+                using (WebClient webClient = new WebClient())
                 {
-                    webClient.UploadValues(url, "POST", webClient.QueryString);
+                    webClient.QueryString.Add("numero", newSucursal.Numero);
+                    webClient.QueryString.Add("nombre", newSucursal.Nombre);
+                    webClient.QueryString.Add("id_cliente", newSucursal.Id_cliente.ToString());
+                    webClient.QueryString.Add("direccion", newSucursal.Direccion);
+                    webClient.QueryString.Add("id_localidad", newSucursal.Id_localidad.ToString());
+                    //   webClient.QueryString.Add("foto", tecnico.foto.ToString());
+                    if (newSucursal.Id == 0)
+                    {
+                        webClient.UploadValues(url, "POST", webClient.QueryString);
+                        return new MensajeAlerta("Agregado" + Environment.NewLine + newSucursal.Nombre, AlertType.success);
+                    }
+                    else
+                    {
+                        webClient.QueryString.Add("id", newSucursal.Id.ToString());
+                        webClient.UploadValues(url, "PUT", webClient.QueryString);
+                        return new MensajeAlerta("Modificado" + Environment.NewLine + newSucursal.Nombre, AlertType.success);
+
+                    }
                 }
-                else
-                {
-                    webClient.QueryString.Add("id", newSucursal.Id.ToString());
-                    webClient.UploadValues(url, "PUT", webClient.QueryString);
-                }
-                return "Se agrego correctamente la sucursal" + newSucursal.Numero;
             }
+            catch (Exception e)
+            {
 
+                return new MensajeAlerta("Error" + Environment.NewLine + newSucursal.Nombre, AlertType.error);
+            }
         }
-
-
     }
 }

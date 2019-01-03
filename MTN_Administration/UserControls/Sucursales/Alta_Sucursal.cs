@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MTN_RestAPI.Models;
 using MTN_Administration.Tabs;
+using MTN_Administration.Alerts;
 
 namespace MTN_Administration
 {
@@ -103,11 +104,13 @@ namespace MTN_Administration
             newSucursal.Id_localidad = (int) comboBoxLocalidad.SelectedValue;
             //   newTecnico.foto = ImageProcess.imageToByteArray(pictureFoto.Image);
 
-            string result = aPIHelper.GetSucursalesHelper().PostSucursal(newSucursal);
+            MensajeAlerta resultado = aPIHelper.GetSucursalesHelper().AddCliente(newSucursal);
+            Alert.ShowAlert(resultado);
 
-            System.Windows.Forms.MessageBox.Show(result);
+
             ((ABM_Sucursales)this.Parent).RefreshTable();
             this.Dispose();
         }
+
     }
 }

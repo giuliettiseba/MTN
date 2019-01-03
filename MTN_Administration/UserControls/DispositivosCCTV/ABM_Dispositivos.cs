@@ -49,11 +49,11 @@ namespace MTN_Administration.Tabs
         {
             tablaGrabadoresDigitales.Rows.Clear();
             tablaGrabadoresDigitales.Refresh();
-            listaGrabadores = aPIHelper.GetCCTVHelper().GetDispositivosCCTV();
+            listaGrabadores = aPIHelper.GetCCTVHelper().GetDispositivosCCTVSucursal(SucursalSeleccionada());
 
             foreach (DispositivoCCTV grabador in listaGrabadores)
             {
-                if (grabador.Id_sucursal == SucursalSeleccionada()) AddItem(grabador);
+                 AddItem(grabador);
             }
 
         }
@@ -91,7 +91,6 @@ namespace MTN_Administration.Tabs
         private void BotonAgregarDispotivo_Click(object sender, EventArgs e)
         {
             this.alta_Dispositivo = new Alta_Dispositivo(aPIHelper,SucursalSeleccionada());
-            this.alta_Dispositivo.BackColor = System.Drawing.Color.Gainsboro;
             this.alta_Dispositivo.Location = new System.Drawing.Point(0, 0);
             this.alta_Dispositivo.Name = "alta_Cliente";
             this.alta_Dispositivo.Size = new System.Drawing.Size(727, 561);
@@ -107,13 +106,13 @@ namespace MTN_Administration.Tabs
             int id_dispositivoCCTV = (int)tablaGrabadoresDigitales.SelectedRows[0].Cells["id"].Value;
 
             // obtengo el dispositivo con el APIhelper
-            DispositivoCCTV dispositivoCCTV = aPIHelper.GetCCTVHelper().GetDispositivoCCTV(id_dispositivoCCTV);
+            DispositivoCCTV dispositivoCCTV = aPIHelper.GetCCTVHelper().GetDispositivoCCTV(SucursalSeleccionada(), id_dispositivoCCTV);
 
             // Cargo la interfaz 
             BotonAgregarDispotivo_Click(sender, e);
 
            // completo los campos
-            alta_Dispositivo.Cargar(dispositivoCCTV);
+            alta_Dispositivo.Cargar((int)comboCliente.SelectedValue, dispositivoCCTV);
         }
 
         private void TablaSucursal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -166,5 +165,7 @@ namespace MTN_Administration.Tabs
                 return (int)selectedRow[0].Cells["idSuc"].Value;
             return 0;
         }
+
+   
     }
 }

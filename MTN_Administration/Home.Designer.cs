@@ -477,7 +477,10 @@
             this.Controls.Add(this.sidePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Home";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Home_Load);
             this.sidePanel.ResumeLayout(false);
             this.logoPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -509,13 +512,13 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox headerTecnicoPicture;
         private System.Windows.Forms.PictureBox headerClientePicture;
-        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.PictureBox headerSucursalesPicture;
         private Bunifu.Framework.UI.BunifuFlatButton TecnicosButton;
         private Bunifu.Framework.UI.BunifuFlatButton botonDispositivosCCTV;
         private System.Windows.Forms.PictureBox headerDipsitivosPicture;
         private Bunifu.Framework.UI.BunifuFlatButton BottonIncidente;
         private System.Windows.Forms.PictureBox headerIncidentePicture;
+        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
     }
 }
 

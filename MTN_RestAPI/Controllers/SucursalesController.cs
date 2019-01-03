@@ -15,7 +15,7 @@ namespace MTN_RestAPI.Controllers
 
 
         // GET api/Sucursales/
-        public IHttpActionResult GetAll()
+   /*     public IHttpActionResult GetAll()
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
@@ -29,17 +29,27 @@ namespace MTN_RestAPI.Controllers
                 return Ok(resultado);
             }
         }
-
+        */
         // GET api/Sucursales/id
         public IHttpActionResult Get(int id)
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
-                return Ok(db.Query<Sucursal>("SELECT * FROM SUCURSALES WHERE id=" + id).FirstOrDefault<Sucursal>());
+
+                db.Open();
+                IDbTransaction transaction = db.BeginTransaction();
+                List<Sucursal> respuesta = db.Query<Sucursal>("SELECT * FROM SUCURSALES WHERE id_cliente = " + id, transaction: transaction).ToList();
+                int checksum = 0;
+                if (respuesta.Count != 0)
+                {
+                    checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM Sucursales WHERE id_cliente = " + id, transaction: transaction).FirstOrDefault();
+                }
+                transaction.Commit();
+                db.Close();
+                Resultado<Sucursal> resultado = new Resultado<Sucursal>(checksum, respuesta);
+                return Ok(resultado);
             }
         }
-
-
 
         // POST api/Sucursales
         public IHttpActionResult Post([FromUri] Sucursal sucursal)
@@ -62,7 +72,6 @@ namespace MTN_RestAPI.Controllers
                 else return BadRequest("No se pudo insertar la sucursal con id: " + sucursal.Id);
             }
         }
-
 
         // PUT api/Sucursales/id
         public IHttpActionResult Put(int id, [FromUri] Sucursal sucursal)

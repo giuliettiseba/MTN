@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MTN_RestAPI.Models;
+using MTN_Administration.Alerts;
 
 namespace MTN_Administration
 {
@@ -15,63 +10,76 @@ namespace MTN_Administration
     {
         private APIHelper aPIHelper;
         private List<Tecnico> listaTecnicos;
+        private Alta_Tecnico alta_Tecnico;
+
+        private FiltosTecnicos filtroSeleccionado;
 
         public ABM_Tecnicos(APIHelper aPIHelper)
         {
             this.aPIHelper = aPIHelper;
-            if (!this.DesignMode)
-            {
-                InitializeComponent();
-            }
+            InitializeComponent();
         }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            RefreshTable(0);
+            RefreshTable();
         }
 
         /// <summary>
-        /// Se utiliza sobrecarga de metodo para refrescar la tabla de empleados 
+        /// 
+        /// 
         /// </summary>
-        /// <returns></returns>
         public void RefreshTable()
         {
-            tablaTecnicos.Rows.Clear();
-            tablaTecnicos.Refresh();
             listaTecnicos = aPIHelper.GetTecnicosHelper().GetTecnicos();
+            RefreshTable(filtroSeleccionado);
+            RefreshTable(textBuscarTecnico.Text);
         }
 
-        public void RefreshTable(string s)
+
+        
+
+
+        /// <summary>
+        /// 
+        /// 
+        /// </summary>
+        /// <param name="str"></param>        
+        public void RefreshTable(string str)
         {
-            RefreshTable();
+            tablaTecnicos.Rows.Clear();
+
             foreach (Tecnico tecnico in listaTecnicos)
             {
-                if (tecnico.Nombre.ToUpper().Contains(s.ToUpper()) || tecnico.Apellido.ToUpper().Contains(s.ToUpper()))
+                if (tecnico.Nombre.ToUpper().Contains(str.ToUpper()) || tecnico.Apellido.ToUpper().Contains(str.ToUpper()))
                 {
-                    AddItem(tecnico);
+                  
+                        if ((int)filtroSeleccionado == 0)
+                        {
+                            AddItem(tecnico);
+                        }
+                        else if ((int)filtroSeleccionado == tecnico.Id_tipo_empleado)
+                            AddItem(tecnico);
+                  
                 }
             }
+            tablaTecnicos.Refresh();
         }
 
-        public void RefreshTable(int i)
-        {
-            RefreshTable();
-            foreach (Tecnico tecnico in listaTecnicos)
-            {
-                if (i == 0)
-                {
-                    AddItem(tecnico);
-                }
-                else if (i == tecnico.Id_tipo_empleado)
-                    AddItem(tecnico);
+
+        private enum FiltosTecnicos{
+            todos, jefes, supervisores, lideres, analistas
             }
+
+        private void RefreshTable(FiltosTecnicos filtro)
+        {
+            RefreshTable(textBuscarTecnico.Text);
         }
 
 
         private void AddItem(Tecnico tecnico)
         {
-
             tablaTecnicos.Rows.Add();
             tablaTecnicos.Rows[tablaTecnicos.Rows.Count - 1].Cells["id"].Value = tecnico.Id;
             tablaTecnicos.Rows[tablaTecnicos.Rows.Count - 1].Cells["apellido"].Value = tecnico.Apellido;
@@ -94,32 +102,37 @@ namespace MTN_Administration
         private void FiltroTodosTecnicos_Click(object sender, EventArgs e)
         {
             MoverSlider(sender);
-            RefreshTable(0);
+            filtroSeleccionado = FiltosTecnicos.todos;
+            RefreshTable(FiltosTecnicos.todos);
         }
 
         private void FiltroJefes_Click(object sender, EventArgs e)
         {
             MoverSlider(sender);
-            RefreshTable(1);
+            filtroSeleccionado = FiltosTecnicos.jefes;
+            RefreshTable(FiltosTecnicos.jefes);
         }
 
 
         private void FiltroSupervisores_Click(object sender, EventArgs e)
         {
             MoverSlider(sender);
-            RefreshTable(2);
+            filtroSeleccionado = FiltosTecnicos.supervisores;
+            RefreshTable(FiltosTecnicos.supervisores);
         }
 
         private void FiltroLideres_Click(object sender, EventArgs e)
         {
             MoverSlider(sender);
-            RefreshTable(3);
+            filtroSeleccionado = FiltosTecnicos.lideres;
+            RefreshTable(FiltosTecnicos.lideres);
         }
 
         private void FiltroAnalistas_Click(object sender, EventArgs e)
         {
             MoverSlider(sender);
-            RefreshTable(4);
+            filtroSeleccionado = FiltosTecnicos.analistas;
+            RefreshTable(FiltosTecnicos.analistas);
         }
 
         private void TextBuscarTecnico_KeyDown(object sender, KeyEventArgs e)
@@ -134,11 +147,8 @@ namespace MTN_Administration
             DataGridViewSelectedRowCollection selectedRow = tablaTecnicos.SelectedRows;
             int id_tecnico = (int)selectedRow[0].Cells["id"].Value;
             aPIHelper.GetTecnicosHelper().RemoveTecnico(id_tecnico);
-            RefreshTable(0);
+            RefreshTable();
         }
-
-
-        private Alta_Tecnico alta_Tecnico;
 
         private void ButtonAgregarTecnico_Click(object sender, EventArgs e)
         {
@@ -146,7 +156,6 @@ namespace MTN_Administration
             // alta_Tecnico1
             // 
             this.alta_Tecnico = new Alta_Tecnico(aPIHelper);
-            this.alta_Tecnico.BackColor = System.Drawing.Color.Gainsboro;
             this.alta_Tecnico.Location = new System.Drawing.Point(0, 0);
             this.alta_Tecnico.Name = "alta_Tecnico1";
             this.alta_Tecnico.Size = new System.Drawing.Size(727, 561);

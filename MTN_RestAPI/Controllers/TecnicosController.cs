@@ -33,7 +33,7 @@ namespace MTN_RestAPI.Controllers
 
         }
 
-        // GET api/Tecnico/id
+/*        // GET api/Tecnico/id
         public IHttpActionResult Get(int id)
         {
             List<Tecnico> TecnicoList = new List<Tecnico>();
@@ -42,6 +42,7 @@ namespace MTN_RestAPI.Controllers
                 return Ok(db.Query<Tecnico>("Select * FROM Tecnicos WHERE id=" + id).ToList());
             }
         }
+*/
 
         // POST api/Tecnico
         public IHttpActionResult Post([FromUri] Tecnico tecnico)

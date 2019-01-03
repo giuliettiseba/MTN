@@ -19,7 +19,7 @@ namespace MTN_RestAPI.Controllers
         /// GET api/Clientes/
         /// </summary>
         /// <returns>Resultado con un campo checksum y otro la lista de clientes </returns>
-        public IHttpActionResult GetAll()
+      public IHttpActionResult GetAll()
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
@@ -35,7 +35,7 @@ namespace MTN_RestAPI.Controllers
                 return Ok(resultado);
             }
         }
-
+        /*
         // GET api/Clientes/id
         /// <summary>
         /// Obtiene el cliente con el ID pasado
@@ -50,7 +50,7 @@ namespace MTN_RestAPI.Controllers
                 return Ok(db.Query<Cliente>("SELECT * FROM CLIENTES WHERE id=" + id).FirstOrDefault<Cliente>());
             }
         }
-
+        */
 
         // POST api/Tecnico
         public IHttpActionResult Post([FromUri] Cliente cliente)

@@ -12,9 +12,9 @@ namespace MTN_Administration.APIHelpers
     public class CCTVHelper
     {
         private String _partialurl;
-        private ChecksumHelper checksumHelper;
+        private ChecksumHelper _checksumHelper;
 
-        private List<DispositivoCCTV> dispositivosCCTV;
+
         private List<MarcaCCTV> marcasCCTV;
         private List<ModeloCCTV> modelosCCTV;
         private List<ModeloCamara> modelosCamara;
@@ -22,9 +22,9 @@ namespace MTN_Administration.APIHelpers
         public CCTVHelper(String partialurl, ChecksumHelper checksumHelper)
         {
             _partialurl = partialurl;
-            this.checksumHelper = checksumHelper;
-            //GetMarcaCCTV();
-            //GetModelosCCTV();
+            this._checksumHelper = checksumHelper;
+            GetMarcaCCTV();
+            GetModelosCCTV();
         }
 
         ////////////////////////////////////////////////MARCAS CCTV////////////////////////////////////////////////
@@ -48,12 +48,14 @@ namespace MTN_Administration.APIHelpers
                 String content = client.DownloadString(url);
                 Resultado<MarcaCCTV> resultado = serializer.Deserialize<Resultado<MarcaCCTV>>(content);
                 marcasCCTV = resultado.Lista.Cast<MarcaCCTV>().ToList();
-                checksumHelper.ActualizarChecksum("marcaCCTV", resultado.Checksum);
+                _checksumHelper.ActualizarChecksum("marcaCCTV", resultado.Checksum);
             }
         }
 
         internal List<int> GetPosicionesDisponibles(int id_dispositivo)
         {
+
+ 
             return new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
             /// Implementar verificacion 
@@ -61,9 +63,6 @@ namespace MTN_Administration.APIHelpers
             /// Complemento de canales disponibles con los canales asignados.. 
 
         }
-
-
-
 
         internal MarcaCCTV GetMarcaCCTV(int id_marca)
         {
@@ -79,7 +78,7 @@ namespace MTN_Administration.APIHelpers
 
         public List<DispositivoCCTV> GetDispositivosCCTVSucursal(int id_sucursal)
         {
-            if (!cacheDispositivosSucursal.ContainsKey(id_sucursal) || !checksumHelper.VerificarChecksum("dispositivosCCTV_"+id_sucursal))
+            if (!cacheDispositivosSucursal.ContainsKey(id_sucursal) || !_checksumHelper.VerificarChecksum("dispositivosCCTV_"+id_sucursal))
             {
                 cacheDispositivosSucursal[id_sucursal] = new List<DispositivoCCTV>();
                 CacheDispositivosCCTVSucursal(id_sucursal);
@@ -96,37 +95,14 @@ namespace MTN_Administration.APIHelpers
                 String content = client.DownloadString(url);
                 Resultado<DispositivoCCTV> resultado = serializer.Deserialize<Resultado<DispositivoCCTV>>(content);
                 cacheDispositivosSucursal[id_sucursal] = resultado.Lista.Cast<DispositivoCCTV>().ToList();
-                checksumHelper.ActualizarChecksum("dispositivosCCTV_" + id_sucursal, resultado.Checksum);
+                _checksumHelper.ActualizarChecksum("dispositivosCCTV_" + id_sucursal, resultado.Checksum);
             }
         }
 
-
-        public List<DispositivoCCTV> GetDispositivosCCTV()
+    
+        public DispositivoCCTV GetDispositivoCCTV(int id_sucursal, int id_dispositivoCCTV)
         {
-            if (dispositivosCCTV == null || !checksumHelper.VerificarChecksum("dispositivosCCTV"))
-            {
-                dispositivosCCTV = new List<DispositivoCCTV>();
-                CacheDispositivosCCTV();
-            }
-            return dispositivosCCTV;
-        }
-
-        public void CacheDispositivosCCTV()
-        {
-            String url = _partialurl + "DispositivosCCTV";
-            using (WebClient client = new WebClient())
-            {
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-                String content = client.DownloadString(url);
-                Resultado<DispositivoCCTV> resultado = serializer.Deserialize<Resultado<DispositivoCCTV>>(content);
-                dispositivosCCTV = resultado.Lista.Cast<DispositivoCCTV>().ToList();
-                checksumHelper.ActualizarChecksum("dispositivosCCTV", resultado.Checksum);
-            }
-        }
-
-        public DispositivoCCTV GetDispositivoCCTV(int id_dispositivoCCTV)
-        {
-            return dispositivosCCTV.Find(x => x.Id == id_dispositivoCCTV);
+            return cacheDispositivosSucursal[id_sucursal].Find(x => x.Id == id_dispositivoCCTV);
         }
 
 
@@ -181,7 +157,7 @@ namespace MTN_Administration.APIHelpers
 
         public List<ModeloCCTV> GetModelosCCTV()
         {
-            if (modelosCCTV != null && checksumHelper.VerificarChecksum("modelosCCTV"))
+            if (modelosCCTV != null && _checksumHelper.VerificarChecksum("modelosCCTV"))
             {
                 return modelosCCTV;
             }
@@ -200,7 +176,7 @@ namespace MTN_Administration.APIHelpers
                 String content = client.DownloadString(url);
                 Resultado<ModeloCCTV> resultado = serializer.Deserialize<Resultado<ModeloCCTV>>(content);
                 modelosCCTV = resultado.Lista.Cast<ModeloCCTV>().ToList();
-                checksumHelper.ActualizarChecksum("modelosCCTV", resultado.Checksum);
+                _checksumHelper.ActualizarChecksum("modelosCCTV", resultado.Checksum);
             }
         }
 
@@ -228,7 +204,7 @@ namespace MTN_Administration.APIHelpers
 
         public List<Camara> GetCamarasDispositivo(int id_dispositivo)
         {
-            if (!cacheCamarasDispositivo.ContainsKey(id_dispositivo) || !checksumHelper.VerificarChecksum("camaras_" + id_dispositivo))
+            if (!cacheCamarasDispositivo.ContainsKey(id_dispositivo) || !_checksumHelper.VerificarChecksum("camaras_" + id_dispositivo))
             {
                 cacheCamarasDispositivo.Remove(id_dispositivo);
                 cacheCamarasDispositivo.Add(id_dispositivo, new List<Camara>());
@@ -249,7 +225,7 @@ namespace MTN_Administration.APIHelpers
                 String content = client.DownloadString(url);
                 Resultado<Camara> resultado = serializer.Deserialize<Resultado<Camara>>(content);
                 cacheCamarasDispositivo[id_dispositivo] = resultado.Lista.Cast<Camara>().ToList();
-                checksumHelper.ActualizarChecksum("camaras_" + id_dispositivo, resultado.Checksum);
+                _checksumHelper.ActualizarChecksum("camaras_" + id_dispositivo, resultado.Checksum);
             }
         }
 
@@ -263,7 +239,7 @@ namespace MTN_Administration.APIHelpers
 
         public List<ModeloCamara> GetModelosCamaras()
         {
-            if (modelosCamara == null || !checksumHelper.VerificarChecksum("modelosCamara"))
+            if (modelosCamara == null || !_checksumHelper.VerificarChecksum("modelosCamara"))
             {
                 modelosCamara = new List<ModeloCamara>();
                 CacheModelosCamaras();
@@ -280,7 +256,7 @@ namespace MTN_Administration.APIHelpers
                 String content = client.DownloadString(url);
                 Resultado<ModeloCamara> resultado = serializer.Deserialize<Resultado<ModeloCamara>>(content);
                 modelosCamara = resultado.Lista.Cast<ModeloCamara>().ToList();
-                checksumHelper.ActualizarChecksum("modelosCamara", resultado.Checksum);
+                _checksumHelper.ActualizarChecksum("modelosCamara", resultado.Checksum);
             }
         }
 

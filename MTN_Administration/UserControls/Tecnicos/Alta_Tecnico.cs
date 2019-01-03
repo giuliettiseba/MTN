@@ -8,16 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MTN_RestAPI.Models;
+using MTN_Administration.Alerts;
 
 namespace MTN_Administration
 {
     public partial class Alta_Tecnico : UserControl
     {
-        
+
         Dictionary<int, string> provincias;
         Dictionary<int, string> tipo_empleado;
         Dictionary<int, string> tipo_documento;
-
+        private int id_tecnico;
         APIHelper aPIHelper;
 
         public Alta_Tecnico(APIHelper aPIHelper)
@@ -59,12 +60,8 @@ namespace MTN_Administration
             textDireccion.Text = "";
 
             comboBoxTipoEmpleado.SelectedIndex = -1;
-            comboBoxTipoDocumento.SelectedIndex = -1;
-            comboBoxProvincia.SelectedIndex = -1;
-            comboBoxLocalidad.SelectedIndex = -1;
 
             this.pictureFoto.Image = global::MTN_Administration.Properties.Resources._008_friend;
-            
         }
 
         private void ButtonCancelarAltaTecnico_Click(object sender, EventArgs e)
@@ -100,7 +97,7 @@ namespace MTN_Administration
             if (comboBoxProvincia.SelectedValue == null) { comboBoxLocalidad.Enabled = false; }
             else
             {
-                comboBoxLocalidad.SelectedIndex = -1;
+                //comboBoxLocalidad.SelectedIndex = -1;
                 int id_provincia = (int)comboBoxProvincia.SelectedValue;
                 Dictionary<int, string> localidades = aPIHelper.GetLocalidades(id_provincia);
                 comboBoxLocalidad.DataSource = new BindingSource(localidades, null);
@@ -110,7 +107,6 @@ namespace MTN_Administration
             }
         }
 
-        private int id_tecnico;
 
         internal void Cargar(Tecnico tecnico)
         {
@@ -118,7 +114,7 @@ namespace MTN_Administration
             id_tecnico = tecnico.Id;
             textNombre.Text = tecnico.Nombre;
             textApellido.Text = tecnico.Apellido;
-            comboBoxTipoEmpleado.SelectedIndex = tecnico.Id_tipo_empleado -1;
+            comboBoxTipoEmpleado.SelectedIndex = tecnico.Id_tipo_empleado - 1;
             comboBoxTipoDocumento.SelectedIndex = tecnico.Id_tipo_documento - 1;
             textDocumento.Text = tecnico.Documento.ToString();
             textLegajo.Text = tecnico.Legajo.ToString();
@@ -137,26 +133,60 @@ namespace MTN_Administration
 
         private void buttonGuardarAltaTecnico_Click(object sender, EventArgs e)
         {
-            Tecnico newTecnico = new Tecnico();
-            newTecnico.Id = id_tecnico;
-            newTecnico.Nombre = textNombre.Text;
-            newTecnico.Apellido = textApellido.Text;
-            newTecnico.Documento = int.Parse(textDocumento.Text);
-            newTecnico.Legajo = int.Parse(textLegajo.Text);
-            newTecnico.Direccion = textDireccion.Text;
-            newTecnico.Id_tipo_empleado = (int) comboBoxTipoEmpleado.SelectedValue;
-            newTecnico.Id_tipo_documento = (int) comboBoxTipoDocumento.SelectedValue;
-            newTecnico.Id_localidad = (int) comboBoxLocalidad.SelectedValue;
-         //   newTecnico.foto = ImageProcess.imageToByteArray(pictureFoto.Image);
+            Tecnico newTecnico = new Tecnico { Id = id_tecnico };
 
-            string result = aPIHelper.GetTecnicosHelper().PostTecnico(newTecnico);
+            try
+            {
+                if (textNombre.Text != "")
+                    newTecnico.Nombre = textNombre.Text;
+                else
+                    throw new Exception("Debe ingresar un nombre");
 
-            System.Windows.Forms.MessageBox.Show(result);
-             ((ABM_Tecnicos)this.Parent).RefreshTable(0);
-            Dispose();
+                if (textApellido.Text != "")
+                    newTecnico.Apellido = textApellido.Text;
+                else
+                    throw new Exception("Debe ingresar un apellido");
 
+                if (int.TryParse(textDocumento.Text, out int nd))
+                    newTecnico.Documento = nd;
+                else
+                    throw new Exception("Numero de documento invalido");
+
+                if (int.TryParse(textLegajo.Text, out int nl))
+                    newTecnico.Legajo = nl;
+                else
+                    throw new Exception("Numero de legajo invalido");
+
+
+                newTecnico.Direccion = textDireccion.Text;
+
+                if (comboBoxTipoEmpleado.SelectedValue != null)
+                    newTecnico.Id_tipo_empleado = (int)comboBoxTipoEmpleado.SelectedValue;
+                else
+                {
+                    throw new Exception("Elejir tipo de empleado");
+                }
+
+                if (comboBoxTipoDocumento.SelectedValue != null)
+                    newTecnico.Id_tipo_documento = (int)comboBoxTipoDocumento.SelectedValue;
+                else
+                {
+                    throw new Exception("Elejir tipo de documento");
+                }
+
+                newTecnico.Id_localidad = (int)comboBoxLocalidad.SelectedValue;
+
+                //   newTecnico.foto = ImageProcess.imageToByteArray(pictureFoto.Image);
+
+                MensajeAlerta resultado = aPIHelper.GetTecnicosHelper().AddTecnico(newTecnico);
+                Alert.ShowAlert(resultado);
+                ((ABM_Tecnicos)this.Parent).RefreshTable();
+                Dispose();
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlert("ERROR" + Environment.NewLine + ex.Message, AlertType.error);
+            }
         }
-
-        
     }
 }

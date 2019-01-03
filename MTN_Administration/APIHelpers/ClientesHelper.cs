@@ -1,4 +1,5 @@
-﻿using MTN_RestAPI.Models;
+﻿using MTN_Administration.Alerts;
+using MTN_RestAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,11 @@ namespace MTN_Administration.APIHelpers
     {
         private readonly String _partialurl;
         private ChecksumHelper _checksumHelper;
-        private List<Cliente> clientes;
+        private List<Cliente> _clientes;
 
         /// <summary>
         /// 
-        /// 
+        /// Constructor, Se pasa como parametros la URL parcial del WEB API y el ayudante de checksums
         /// </summary>
         /// <param name="partialurl"></param>
         /// <param name="checksumHelper"></param>
@@ -24,6 +25,7 @@ namespace MTN_Administration.APIHelpers
         {
             _partialurl = partialurl;
             _checksumHelper = checksumHelper;
+           // GetClientes();
         }
 
         /// <summary>
@@ -34,12 +36,12 @@ namespace MTN_Administration.APIHelpers
         /// <returns>Lista actualizada de los clientes</returns>
         public List<Cliente> GetClientes()
         {
-            if ((clientes == null) || !(_checksumHelper.VerificarChecksum("clientes")))
+            if ((_clientes == null) || !(_checksumHelper.VerificarChecksum("clientes")))
             {
-                clientes = new List<Cliente>();
+                _clientes = new List<Cliente>();
                 CacheClientes();
             }
-            return clientes;
+            return _clientes;
         }
 
         /// <summary>
@@ -56,7 +58,7 @@ namespace MTN_Administration.APIHelpers
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 String content = client.DownloadString(url);
                 Resultado<Cliente> resultado = serializer.Deserialize<Resultado<Cliente>>(content);
-                clientes = resultado.Lista.Cast<Cliente>().ToList();
+                _clientes = resultado.Lista.Cast<Cliente>().ToList();
                 _checksumHelper.ActualizarChecksum("clientes", resultado.Checksum);
             }
         }
@@ -68,7 +70,7 @@ namespace MTN_Administration.APIHelpers
         /// <returns>Cliente con el ID pasdo</returns>
         public Cliente GetCliente(int id_cliente)
         {
-            return clientes.Find(x => x.Id == id_cliente);
+            return _clientes.Find(x => x.Id == id_cliente);
         }
         
         /// <summary>
@@ -76,41 +78,60 @@ namespace MTN_Administration.APIHelpers
         /// </summary>
         /// <param name="id_cliente">ID del cliente a eliminar</param>
         /// <returns>resultado de la eliminacion</returns>
-        public string RemoveCliente(int id_cliente)
+        public MensajeAlerta RemoveCliente(Cliente removeCliente)
         {
-            String url = _partialurl + "clientes/" + id_cliente;
+            String url = _partialurl + "clientes/" + removeCliente.Id;
             using (WebClient webClient = new WebClient())
             {
                 var responseArray = webClient.UploadValues(url, "DELETE", webClient.QueryString);
-                return Encoding.ASCII.GetString(responseArray);
+                return new MensajeAlerta("ELIMINADO" + Environment.NewLine + removeCliente.Nombre, AlertType.warning);
             }
         }
-        
+
         /// <summary>
         /// Crea en la base de datos un nuevo cliente o modifica uno existente si se pasa un ID existente. 
         /// </summary>
         /// <param name="newCliente">Cliente a agregar en la base de datos</param>
         /// <returns>Resultado de la insercion</returns>
-        public string AddCliente(Cliente newCliente)
+        public MensajeAlerta AddCliente(Cliente newCliente)
         {
-            String url = _partialurl + "clientes/";
-            using (WebClient webClient = new WebClient())
+            try
             {
-                webClient.QueryString.Add("nombre", newCliente.Nombre);
-                webClient.QueryString.Add("CUIT", newCliente.CUIT);
-                webClient.QueryString.Add("direccion", newCliente.Direccion);
-                webClient.QueryString.Add("id_localidad", newCliente.Id_localidad.ToString());
-                //   webClient.QueryString.Add("foto", tecnico.foto.ToString());
-                if (newCliente.Id == 0)
+                Convert.ToInt64(newCliente.CUIT);
+            }
+            catch (Exception)
+            {
+                return new MensajeAlerta("ERROR" + Environment.NewLine + "El numero de CUIT deben ser solo numeros", AlertType.error);
+            }
+            
+
+            String url = _partialurl + "clientes/";
+            try
+            {
+                using (WebClient webClient = new WebClient())
                 {
-                    webClient.UploadValues(url, "POST", webClient.QueryString);
+                    webClient.QueryString.Add("nombre", newCliente.Nombre);
+                    webClient.QueryString.Add("CUIT", newCliente.CUIT);
+                    webClient.QueryString.Add("direccion", newCliente.Direccion);
+                    webClient.QueryString.Add("id_localidad", newCliente.Id_localidad.ToString());
+                    //   webClient.QueryString.Add("foto", tecnico.foto.ToString());
+                    if (newCliente.Id == 0)
+                    {
+                        webClient.UploadValues(url, "POST", webClient.QueryString);
+                        return new MensajeAlerta("Agregado" + Environment.NewLine + newCliente.Nombre, AlertType.success);
+                    }
+                    else
+                    {
+                        webClient.QueryString.Add("id", newCliente.Id.ToString());
+                        webClient.UploadValues(url, "PUT", webClient.QueryString);
+                        return new MensajeAlerta("Modificado" + Environment.NewLine + newCliente.Nombre, AlertType.success);
+                    }
                 }
-                else
-                {
-                    webClient.QueryString.Add("id", newCliente.Id.ToString());
-                    webClient.UploadValues(url, "PUT", webClient.QueryString);
-                }
-                return "Se agrego correctamente el cliente: " + newCliente.CUIT;
+            }
+            catch (Exception e)
+            {
+
+                return new MensajeAlerta("Error" + Environment.NewLine + newCliente.Nombre, AlertType.error);
             }
         }
     }

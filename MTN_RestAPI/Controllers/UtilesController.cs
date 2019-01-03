@@ -70,7 +70,7 @@ namespace MTN_RestAPI.Controllers
 
 
 
-                //// MEJORAR 
+                //// NO SE CONTROLA CHECKSUM POR EL MOMENTO, VER COMO GUARDAR EN EL CLIENTE EN ARCHIVO Y SOLO CONTROLAR CHECKSUM AL INICIO. 
 
                 case "Localidades":
                     List<Localidad> localidadesTodasList = new List<Localidad>();
@@ -111,10 +111,6 @@ namespace MTN_RestAPI.Controllers
                         estados = db.Query<Estado>("Select * FROM Estados").ToList();
                     }
                     return Ok(estados);
-
-
-
-
 
                 case "TecnologiaCamara":
                     List<TecnologiaCamara> tecnologias = new List<TecnologiaCamara>();

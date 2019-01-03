@@ -20,7 +20,7 @@ namespace MTN_RestAPI.Controllers
         /// <returns>valor numerico que se utiliza para saber si la tabla cambio desde la ultima consulta.</returns>
         public IHttpActionResult Get(String id)
         {
-            string sqlquery = "SELECT CHECKSUM_AGG(binary_checksum(*)) FROM " + id ;
+            string sqlquery = "SELECT CHECKSUM_AGG(binary_checksum(*)) FROM " + id;
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
             {
                 return Ok(db.Query<int>(sqlquery).FirstOrDefault());
@@ -30,16 +30,30 @@ namespace MTN_RestAPI.Controllers
         /// <summary>
         /// Se utiliza para obtener de solo el check sum de las camaras asociadas a los dispositivos de una sucursal
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="id_sucursal"></param>
+        /// <param name="id"> Nombre de la tabla</param>
+        /// <param name="id_2">Id que se usa para filtar la tabla, 
+        /// Para camaras es el id del dispositivo
+        /// Para dispositivos es el id de la sucursal</param>
         /// <returns></returns>
-        public IHttpActionResult Get(String id, [FromUri] int id_dispositivo)
+        public IHttpActionResult Get(String id, [FromUri] int id_2)
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
             {
-                int checksum = db.Query<int>("sp_getChecksumCamarasDispositivo", new { id_dispositivo = id_dispositivo }, commandType: CommandType.StoredProcedure).First();
-
-                return Ok(checksum);
+                String sp = "";
+                switch (id)
+                {
+                    case "camaras": sp = "sp_getChecksumCamarasDispositivo"; break;
+                    case "dispositivosCCTV": sp = "sp_getChecksumDispositivoSucursal"; break;
+                    case "sucursales": sp = "sp_getChecksumSucursales"; break;
+                    default:
+                        break;
+                }
+                try
+                {
+                    int checksum = db.Query<int>(sp, new { id_2 = id_2 }, commandType: CommandType.StoredProcedure).First();
+                    return Ok(checksum);
+                }
+                catch { return Ok(0); }
             }
         }
 

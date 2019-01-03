@@ -52,11 +52,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alerts\Alert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alerts\Alert.Designer.cs">
+      <DependentUpon>Alert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Alerts\MensajeAlerta.cs" />
     <Compile Include="APIHelpers\ChecksumHelper.cs" />
     <Compile Include="APIHelpers\ClientesHelper.cs" />
     <Compile Include="APIHelpers\CCTVHelper.cs" />
+    <Compile Include="APIHelpers\Logger.cs" />
     <Compile Include="APIHelpers\TecnicosHelper.cs" />
     <Compile Include="APIHelpers\SucursalesHelper.cs" />
+    <Compile Include="CustomComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splash.Designer.cs">
+      <DependentUpon>Splash.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\DispositivosCCTV\ABM_Dispositivos.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,6 +156,12 @@
     <Compile Include="UserControls\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Alerts\Alert.resx">
+      <DependentUpon>Alert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Splash.resx">
+      <DependentUpon>Splash.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\DispositivosCCTV\ABM_Dispositivos.resx">
       <DependentUpon>ABM_Dispositivos.cs</DependentUpon>
     </EmbeddedResource>

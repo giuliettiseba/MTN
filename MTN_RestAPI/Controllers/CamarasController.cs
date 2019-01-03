@@ -55,8 +55,11 @@ namespace MTN_RestAPI.Controllers
                     "WHERE DispositivosCCTV.id = " + id;
 
                 List<Camara> respuesta = db.Query<Camara>(sqlquery, transaction: transaction).ToList();
-                int checksum = db.Query<int>("sp_getChecksumCamarasDispositivo", new { id_dispositivo = id }, transaction: transaction, commandType: CommandType.StoredProcedure).First();
-
+                int checksum =0;
+                if (respuesta.Count != 0) 
+                {
+                    checksum = db.Query<int>("sp_getChecksumCamarasDispositivo", new { id_2 = id }, transaction: transaction, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                }
                 transaction.Commit();
                 db.Close();
                 Resultado<Camara> resultado = new Resultado<Camara>(checksum, respuesta);

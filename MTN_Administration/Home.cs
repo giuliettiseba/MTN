@@ -44,6 +44,8 @@ namespace MTN_Administration
             {
                 aPIHelper = new APIHelper(_partialurl);
                 InitializeComponent();
+                this.Top = (Screen.PrimaryScreen.Bounds.Height / 2) - (this.Height / 2);
+                this.Left = (Screen.PrimaryScreen.Bounds.Width / 2) - (this.Width / 2);
                 Bunifu.Framework.Lib.Elipse.Apply(this, 20);
             }
         }
@@ -83,7 +85,6 @@ namespace MTN_Administration
             // ABM_CLIENTES
             // 
             aBM_Clientes = new ABM_Clientes(aPIHelper);
-            aBM_Clientes.BackColor = System.Drawing.Color.Gainsboro;
             aBM_Clientes.Dock = System.Windows.Forms.DockStyle.Fill;
             aBM_Clientes.Location = new System.Drawing.Point(236, 39);
             aBM_Clientes.Name = "aBM_Clientes1";
@@ -102,7 +103,6 @@ namespace MTN_Administration
 
             DisposeAllPanels();
             aBM_Sucursales = new ABM_Sucursales(aPIHelper);
-            aBM_Sucursales.BackColor = System.Drawing.Color.Gainsboro;
             aBM_Sucursales.Dock = System.Windows.Forms.DockStyle.Fill;
             aBM_Sucursales.Location = new System.Drawing.Point(236, 39);
             aBM_Sucursales.Name = "aBM_Sucursales";
@@ -120,7 +120,6 @@ namespace MTN_Administration
         {
             DisposeAllPanels();
             aBM_Dispositivos = new ABM_Dispositivos(aPIHelper);
-            aBM_Dispositivos.BackColor = System.Drawing.Color.Gainsboro;
             aBM_Dispositivos.Dock = System.Windows.Forms.DockStyle.Fill;
             aBM_Dispositivos.Location = new System.Drawing.Point(236, 39);
             aBM_Dispositivos.Name = "aBM_Dispositivos";
@@ -159,7 +158,6 @@ namespace MTN_Administration
 
             DisposeAllPanels();
             aBM_Tecnicos = new ABM_Tecnicos(aPIHelper);
-            aBM_Tecnicos.BackColor = System.Drawing.Color.Gainsboro;
             aBM_Tecnicos.Dock = System.Windows.Forms.DockStyle.Fill;
             aBM_Tecnicos.Location = new System.Drawing.Point(236, 39);
             aBM_Tecnicos.Name = "aBM_Tecnicos";
@@ -188,6 +186,10 @@ namespace MTN_Administration
             aBM_Incidentes.BringToFront();
             TituloHeader.Text = "Administracion de Incidentes";
             ShowHeaderIcon(headerIncidentePicture);
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
         }
     }
 }

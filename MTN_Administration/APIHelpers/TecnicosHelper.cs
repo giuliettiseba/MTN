@@ -1,4 +1,5 @@
-﻿using MTN_RestAPI.Models;
+﻿using MTN_Administration.Alerts;
+using MTN_RestAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,6 @@ namespace MTN_Administration.APIHelpers
 
         private String _partialurl;
         private ChecksumHelper checksumHelper;
-
         List<Tecnico> tecnicos;
 
         public TecnicosHelper(String partialurl, ChecksumHelper checksumHelper)
@@ -64,30 +64,31 @@ namespace MTN_Administration.APIHelpers
 
         }
 
-        internal string PostTecnico(Tecnico tecnico)
+        internal MensajeAlerta AddTecnico(Tecnico newTecnico)
         {
             String url = _partialurl + "tecnicos";
             using (WebClient webClient = new WebClient())
             {
-                webClient.QueryString.Add("nombre", tecnico.Nombre);
-                webClient.QueryString.Add("apellido", tecnico.Apellido);
-                webClient.QueryString.Add("legajo", tecnico.Legajo.ToString());
-                webClient.QueryString.Add("direccion", tecnico.Direccion);
-                webClient.QueryString.Add("id_localidad", tecnico.Id_localidad.ToString());
-                webClient.QueryString.Add("documento", tecnico.Documento.ToString());
-                webClient.QueryString.Add("id_tipo_documento", tecnico.Id_tipo_documento.ToString());
-                webClient.QueryString.Add("id_tipo_empleado", tecnico.Id_tipo_empleado.ToString());
+                webClient.QueryString.Add("nombre", newTecnico.Nombre);
+                webClient.QueryString.Add("apellido", newTecnico.Apellido);
+                webClient.QueryString.Add("legajo", newTecnico.Legajo.ToString());
+                webClient.QueryString.Add("direccion", newTecnico.Direccion);
+                webClient.QueryString.Add("id_localidad", newTecnico.Id_localidad.ToString());
+                webClient.QueryString.Add("documento", newTecnico.Documento.ToString());
+                webClient.QueryString.Add("id_tipo_documento", newTecnico.Id_tipo_documento.ToString());
+                webClient.QueryString.Add("id_tipo_empleado", newTecnico.Id_tipo_empleado.ToString());
                 //   webClient.QueryString.Add("foto", tecnico.foto.ToString());
-                if (tecnico.Id == 0)
+                if (newTecnico.Id == 0)
                 {
                     webClient.UploadValues(url, "POST", webClient.QueryString);
+                    return new MensajeAlerta("Agregado" + Environment.NewLine + newTecnico.Nombre, AlertType.success);
                 }
                 else
                 {
-                    webClient.QueryString.Add("id", tecnico.Id.ToString());
+                    webClient.QueryString.Add("id", newTecnico.Id.ToString());
                     webClient.UploadValues(url, "PUT", webClient.QueryString);
+                    return new MensajeAlerta("Modificado" + Environment.NewLine + newTecnico.Nombre, AlertType.success);
                 }
-                return "Se agrego correctamente el empleado " + tecnico.Legajo;
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using MTN_Administration.APIHelpers;
+﻿using MTN_Administration.Alerts;
+using MTN_Administration.APIHelpers;
 using MTN_RestAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -35,10 +36,22 @@ namespace MTN_Administration
             cCTVHelper = new CCTVHelper(_partialurl, checksumHelper);
             sucursalesHelper = new SucursalesHelper(_partialurl, checksumHelper);
             tecnicosHelper = new TecnicosHelper(_partialurl, checksumHelper);
+
+
+            //// Carga tablas pesadas que no se modifican con el tiempo. Ver de tener una copia en archivo local y solo controlar el checksum al inicio
+            
+            GetLocalidades();
+            GetProvincias();
+            GetTipoEmpleado();
+            GetTipoDocumento();
+            GetEstados();
+            GetTecnologiaCamara();
+            
         }
 
         public ClientesHelper GetClientesHelper()
         {
+
             return clientesHelper;
         }
 

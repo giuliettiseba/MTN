@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MTN_RestAPI.Models;
 using MTN_Administration.Tabs;
+using MTN_Administration.Alerts;
 
 namespace MTN_Administration
 {
@@ -36,13 +37,9 @@ namespace MTN_Administration
             comboBoxProvincia.DisplayMember = "value";
             comboBoxProvincia.ValueMember = "key";
             comboBoxProvincia.DataSource = new BindingSource(aPIHelper.GetProvincias(), null);
-
         }
 
-        private void ButtonCancelarAltaTecnico_Click(object sender, EventArgs e)
-        {
-           this.Dispose();
-        }
+
 
         private void BotonCargarFoto_click(object sender, EventArgs e)
         {
@@ -67,20 +64,16 @@ namespace MTN_Administration
             }
         }
 
+
         private void ComboBoxProvincia_onItemSelected(object sender, EventArgs e)
         {
-            if (comboBoxProvincia.SelectedValue == null) { comboBoxLocalidad.Enabled = false; }
-            else
-            {
                 comboBoxLocalidad.SelectedIndex = -1;
                 int id_provincia = (int)comboBoxProvincia.SelectedValue;
                 Dictionary<int, string> localidades = aPIHelper.GetLocalidades(id_provincia);
-
                 comboBoxLocalidad.DataSource = new BindingSource(localidades, null);
                 comboBoxLocalidad.DisplayMember = "value";
                 comboBoxLocalidad.ValueMember = "key";
                 comboBoxLocalidad.Enabled = true;
-            }
         }
 
         public void Cargar(Cliente cliente)
@@ -93,7 +86,7 @@ namespace MTN_Administration
             textDireccion.Text = cliente.Direccion;
         }
 
-        private void buttonGuardarAltaCliente_Click(object sender, EventArgs e)
+        private void ButtonGuardarAltaCliente_Click(object sender, EventArgs e)
         {
             Cliente newCliente = new Cliente();
             newCliente.Id = id_cliente;
@@ -101,10 +94,18 @@ namespace MTN_Administration
             newCliente.CUIT = textCUIT.Text;
             newCliente.Direccion = textDireccion.Text;
             newCliente.Id_localidad = (int) comboBoxLocalidad.SelectedValue;
-         //   newTecnico.foto = ImageProcess.imageToByteArray(pictureFoto.Image);
-            string result = aPIHelper.GetClientesHelper().AddCliente(newCliente);
-            System.Windows.Forms.MessageBox.Show(result);
+            //   newTecnico.foto = ImageProcess.imageToByteArray(pictureFoto.Image);
+
+            MensajeAlerta resultado = aPIHelper.GetClientesHelper().AddCliente(newCliente);
+            Alert.ShowAlert(resultado);
+
             ((ABM_Clientes)this.Parent).RefreshTable();
+            this.Dispose();
+        }
+
+
+        private void ButtonCancelarAltaTecnico_Click(object sender, EventArgs e)
+        {
             this.Dispose();
         }
     }

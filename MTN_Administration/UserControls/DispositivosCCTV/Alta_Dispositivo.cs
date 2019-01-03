@@ -106,14 +106,14 @@ namespace MTN_Administration
         private int id_sucursal;
         private int id_dispositivo;
 
-        internal void Cargar(DispositivoCCTV grabadorDigital)
+        internal void Cargar(int cliente_id, DispositivoCCTV grabadorDigital)
         {
             id_dispositivo = grabadorDigital.Id;
             id_sucursal = grabadorDigital.Id_sucursal;
 
             DatePicketFechaDeInstalacion.Value = grabadorDigital.Fecha_insta;
 
-            comboBoxCliente.SelectedValue = aPIHelper.GetSucursalesHelper().getClienteDeSucursal(grabadorDigital.Id_sucursal);
+            comboBoxCliente.SelectedValue = cliente_id;
             comboBoxSucursal.SelectedValue = grabadorDigital.Id_sucursal;
 
             textNombre.Text = grabadorDigital.Nombre;
