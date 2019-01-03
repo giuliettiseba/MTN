@@ -5,10 +5,10 @@ using System.Web;
 
 namespace MTN_RestAPI.Models
 {
-    public class Camara
+    public class Camara : Mantenible
     {
 
-        public int Id_camara { get; set; }
+        public int Id { get; set; }
         public int Id_dispositivo { get; set; }
         public int Pos { get; set; }
         public String Nombre { get; set; }

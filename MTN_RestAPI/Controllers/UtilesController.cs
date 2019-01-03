@@ -29,7 +29,7 @@ namespace MTN_RestAPI.Controllers
                         db.Open();
                         IDbTransaction transaction = db.BeginTransaction();
                         List<MarcaCCTV> marcaCCTV = db.Query<MarcaCCTV>("SELECT * FROM MarcaCCTV", transaction: transaction).ToList();
-                        int checksum = db.Query<int>("SELECT checksums FROM checksums WHERE table_name = 'marcaCCTV'", transaction: transaction).First();
+                        int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM MarcaCCTV", transaction: transaction).First();
                         transaction.Commit();
                         db.Close();
                         Resultado<MarcaCCTV> resultado = new Resultado<MarcaCCTV>(checksum, marcaCCTV);
@@ -44,8 +44,8 @@ namespace MTN_RestAPI.Controllers
 
                         db.Open();
                         IDbTransaction transaction = db.BeginTransaction();
-                        List<ModeloCCTV> respuesta = db.Query<ModeloCCTV>("Select * FROM ModeloCCTV", transaction: transaction).ToList();
-                        int checksum = db.Query<int>("SELECT checksums FROM checksums WHERE table_name = 'modelosCCTV'", transaction: transaction).First();
+                        List<ModeloCCTV> respuesta = db.Query<ModeloCCTV>("Select * FROM ModelosCCTV", transaction: transaction).ToList();
+                        int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM ModelosCCTV", transaction: transaction).First();
                         transaction.Commit();
                         db.Close();
                         Resultado<ModeloCCTV> resultado = new Resultado<ModeloCCTV>(checksum, respuesta);
@@ -59,7 +59,7 @@ namespace MTN_RestAPI.Controllers
                         db.Open();
                         IDbTransaction transaction = db.BeginTransaction();
                         List<ModeloCamara> respuesta = db.Query<ModeloCamara>("Select * FROM ModelosCamara", transaction: transaction).ToList();
-                        int checksum = db.Query<int>("SELECT checksums FROM checksums WHERE table_name = 'modelosCamara'", transaction: transaction).First();
+                        int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM ModelosCamara", transaction: transaction).First();
                         transaction.Commit();
                         db.Close();
                         Resultado<ModeloCamara> resultado = new Resultado<ModeloCamara>(checksum, respuesta);

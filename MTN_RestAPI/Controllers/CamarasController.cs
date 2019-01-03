@@ -21,7 +21,7 @@ namespace MTN_RestAPI.Controllers
                 db.Open();
                 IDbTransaction transaction = db.BeginTransaction();
                 List<Camara> respuesta = db.Query<Camara>("SELECT [id],[nombre],[id_modelo],dbo.ipIntToString([ip]) as ip ,dbo.ipIntToString([mask]) as mask,dbo.ipIntToString([gateway]) as gateway,[fechaInsta],[observaciones],[id_estado],[sn] FROM Camaras", transaction: transaction).ToList();
-                int checksum = db.Query<int>("SELECT checksums FROM checksums WHERE table_name = 'camaras'", transaction: transaction).First();
+                int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM Camaras", transaction: transaction).First();
                 transaction.Commit();
                 db.Close();
                 Resultado<Camara> resultado = new Resultado<Camara>(checksum, respuesta);
@@ -38,7 +38,7 @@ namespace MTN_RestAPI.Controllers
                 db.Open();
                 IDbTransaction transaction = db.BeginTransaction();
                 string sqlquery = "SELECT " +
-                    "Dispositivo_tiene_camara.id_camara, " +
+                    "Dispositivo_tiene_camara.id_camara AS id, " +
                     "Dispositivo_tiene_camara.id_dispositivo, " +
                     "Dispositivo_tiene_camara.pos, " +
                     "camaras.[nombre], " +
@@ -55,7 +55,8 @@ namespace MTN_RestAPI.Controllers
                     "WHERE DispositivosCCTV.id = " + id;
 
                 List<Camara> respuesta = db.Query<Camara>(sqlquery, transaction: transaction).ToList();
-                int checksum = db.Query<int>("SELECT checksums FROM checksums WHERE table_name = 'camaras'", transaction: transaction).First();
+                int checksum = db.Query<int>("sp_getChecksumCamarasDispositivo", new { id_dispositivo = id }, transaction: transaction, commandType: CommandType.StoredProcedure).First();
+
                 transaction.Commit();
                 db.Close();
                 Resultado<Camara> resultado = new Resultado<Camara>(checksum, respuesta);
@@ -93,7 +94,7 @@ namespace MTN_RestAPI.Controllers
 
             string sql2 = "SELECT MAX(Id) AS LastID FROM Camaras";
 
-            string sql1 = "INSERT INTO[dbo].[Dispositivo_tiene_camara]([id_dispositivo],[id_camara],[pos]) VALUES (@Id_dispositivo, @Id_camara, @Pos)";
+            string sql1 = "INSERT INTO[dbo].[Dispositivo_tiene_camara]([id_dispositivo],[id_camara],[pos]) VALUES (@Id_dispositivo, @Id, @Pos)";
 
 
             
@@ -119,20 +120,20 @@ namespace MTN_RestAPI.Controllers
 
                 });
 
-                camara.Id_camara = db.Query<int>(sql2).First();
+                camara.Id = db.Query<int>(sql2).First();
                 
 
                 var affectedRows1 = db.Execute(sql1, new
                 {
                     camara.Id_dispositivo,
-                    camara.Id_camara,
+                    camara.Id,
                     camara.Pos
                 });
 
 
                 if (affectedRows == 1)
                     return Ok(affectedRows);
-                else return BadRequest("No se pudo insertar el tecnico con id: " + camara.Id_camara);
+                else return BadRequest("No se pudo insertar el tecnico con id: " + camara.Id);
             }
         }
 
@@ -175,11 +176,11 @@ namespace MTN_RestAPI.Controllers
                 {
                     camara.Pos,
                     camara.Id_dispositivo,
-                    camara.Id_camara
+                    id_camara = camara.Id
                 });
                 if (affectedRows == 1)
                     return Ok(affectedRows);
-                else return BadRequest("No se pudo insertar el tecnico con id: " + camara.Id_camara);
+                else return BadRequest("No se pudo insertar el tecnico con id: " + camara.Id);
             }
         }
 

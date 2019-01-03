@@ -76,7 +76,7 @@ namespace MTN_Administration
             tablaCamaras.Rows[tablaCamaras.Rows.Count - 1].Cells["pos"].Value = camara.Pos;
             tablaCamaras.Rows[tablaCamaras.Rows.Count - 1].Cells["nombre"].Value = camara.Nombre;
             //tablaCamaras.Rows[tablaCamaras.Rows.Count - 1].Cells["estado"].Value = aPIHelper.GetEstado(camara.Id_estado);
-            tablaCamaras.Rows[tablaCamaras.Rows.Count - 1].Cells["id"].Value = camara.Id_camara;
+            tablaCamaras.Rows[tablaCamaras.Rows.Count - 1].Cells["id"].Value = camara.Id;
 
             Image image;
             switch (camara.Id_estado)

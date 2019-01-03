@@ -151,6 +151,7 @@ namespace MTN_Administration
             if (aBM_Clientes != null) aBM_Clientes.Dispose();
             if (aBM_Sucursales != null) aBM_Sucursales.Dispose();
             if (aBM_Dispositivos != null) aBM_Dispositivos.Dispose();
+            if (aBM_Incidentes != null) aBM_Incidentes.Dispose();
         }
 
         private void TecnicosButton_Click_1(object sender, EventArgs e)
@@ -169,6 +170,24 @@ namespace MTN_Administration
             TituloHeader.Text = "Administracion de Tecnicos";
             ShowHeaderIcon(headerTecnicoPicture);
 
+        }
+
+        ABM_Incidentes aBM_Incidentes;
+
+        private void BottonIncidente_Click(object sender, EventArgs e)
+        {
+
+            DisposeAllPanels();
+            aBM_Incidentes = new ABM_Incidentes(aPIHelper);
+            aBM_Incidentes.Dock = System.Windows.Forms.DockStyle.Fill;
+            aBM_Incidentes.Location = new System.Drawing.Point(236, 39);
+            aBM_Incidentes.Name = "aBM_Incidentes";
+            aBM_Incidentes.Size = new System.Drawing.Size(739, 561);
+            aBM_Incidentes.TabIndex = 2;
+            Controls.Add(this.aBM_Incidentes);
+            aBM_Incidentes.BringToFront();
+            TituloHeader.Text = "Administracion de Incidentes";
+            ShowHeaderIcon(headerIncidentePicture);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MTN_RestAPI.Models
 {
-    public abstract class Dispositivo
+    public abstract class Dispositivo : Mantenible
     {
         public int Id { get; set; }
         public String Nombre { get; set; }

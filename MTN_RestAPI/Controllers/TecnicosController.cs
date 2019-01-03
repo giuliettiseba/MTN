@@ -24,7 +24,7 @@ namespace MTN_RestAPI.Controllers
                 db.Open();
                 IDbTransaction transaction = db.BeginTransaction();
                 List<Tecnico> respuesta = db.Query<Tecnico>("SELECT * FROM Tecnicos", transaction: transaction).ToList();
-                int checksum = db.Query<int>("SELECT checksums FROM checksums WHERE table_name = 'tecnicos'", transaction: transaction).First();
+                int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM tecnicos", transaction: transaction).First();
                 transaction.Commit();
                 db.Close();
                 Resultado<Tecnico> resultado = new Resultado<Tecnico>(checksum, respuesta);

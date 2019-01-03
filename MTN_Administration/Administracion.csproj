@@ -63,6 +63,18 @@
     <Compile Include="UserControls\DispositivosCCTV\ABM_Dispositivos.Designer.cs">
       <DependentUpon>ABM_Dispositivos.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Incidentes\Alta_Incidente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Incidentes\Alta_Incidente.Designer.cs">
+      <DependentUpon>Alta_Incidente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Incidentes\ABM_Incidentes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Incidentes\ABM_Incidentes.Designer.cs">
+      <DependentUpon>ABM_Incidentes.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Sucursales\ABM_Sucursales.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -129,6 +141,12 @@
     </Compile>
     <EmbeddedResource Include="UserControls\DispositivosCCTV\ABM_Dispositivos.resx">
       <DependentUpon>ABM_Dispositivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Incidentes\Alta_Incidente.resx">
+      <DependentUpon>Alta_Incidente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Incidentes\ABM_Incidentes.resx">
+      <DependentUpon>ABM_Incidentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Sucursales\ABM_Sucursales.resx">
       <DependentUpon>ABM_Sucursales.cs</DependentUpon>
@@ -224,6 +242,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\027-report.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

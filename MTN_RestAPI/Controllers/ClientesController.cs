@@ -26,7 +26,7 @@ namespace MTN_RestAPI.Controllers
                 db.Open();
                 IDbTransaction transaction = db.BeginTransaction();
                 List<Cliente> clientes = db.Query<Cliente>("SELECT * FROM CLIENTES", transaction: transaction).ToList(); // Consulto la lista 
-                int checksum = db.Query<int>("SELECT checksums FROM checksums WHERE table_name = 'clientes'", transaction: transaction).First(); // consulto el checksum
+                int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM clientes", transaction: transaction).First(); // consulto el checksum
                 transaction.Commit();
                 db.Close();
 

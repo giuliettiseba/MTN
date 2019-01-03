@@ -28,10 +28,22 @@ namespace MTN_Administration.APIHelpers
         /// <returns>verdadero si la tabla no cambio</returns>
         public bool VerificarChecksum(string tabla)
         {
+
+           
             using (WebClient client = new WebClient())
             {
-                String url = _partialurl + "checksum/" + tabla;
+                
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
+                String tablaAux = tabla;
+
+                if (tabla.StartsWith("camaras_"))
+                {
+                    String id_dispositivo = tabla.Remove(0, 8);
+                    tablaAux = tabla.Remove(7);
+                    client.QueryString.Add("id_dispositivo", id_dispositivo);
+                }
+
+                String url = _partialurl + "checksum/" + tablaAux ;
                 String content = client.DownloadString(url);
 
                 return (_checksums[tabla] == serializer.Deserialize<int>(content)) ? true: false;

@@ -70,7 +70,7 @@ namespace MTN_Administration
         int id_camara;
         internal void Cargar(Camara camara)
         {
-            this.id_camara = camara.Id_camara;
+            this.id_camara = camara.Id;
 
             textNombre.Text = camara.Nombre;
             ModeloCamara camaraModelo = aPIHelper.GetCCTVHelper().GetModeloCamara(camara.Id_modelo);
@@ -113,7 +113,7 @@ namespace MTN_Administration
 
             Camara newCamara = new Camara();
 
-            newCamara.Id_camara = this.id_camara;
+            newCamara.Id = this.id_camara;
             newCamara.Nombre = textNombre.Text;
 
             newCamara.Id_modelo = (int)comboBoxModelo.SelectedValue;

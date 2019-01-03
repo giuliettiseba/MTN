@@ -22,7 +22,7 @@ namespace MTN_RestAPI.Controllers
                 db.Open();
                 IDbTransaction transaction = db.BeginTransaction();
                 List<DispositivoCCTV> respuesta = db.Query<DispositivoCCTV>("SELECT [id],[nombre],[id_sucursal],[id_modelo],dbo.ipIntToString([ip]) as ip ,dbo.ipIntToString([mask]) as mask,dbo.ipIntToString([gateway]) as gateway,[fecha_insta],[observaciones],[id_estado],[sn] FROM DISPOSITIVOSCCTV", transaction: transaction).ToList();
-                int checksum = db.Query<int>("SELECT checksums FROM checksums WHERE table_name = 'dispositivosCCTV'", transaction: transaction).First();
+                int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM dispositivosCCTV", transaction: transaction).First();
                 transaction.Commit();
                 db.Close();
                 Resultado<DispositivoCCTV> resultado = new Resultado<DispositivoCCTV>(checksum, respuesta);
@@ -40,7 +40,14 @@ namespace MTN_RestAPI.Controllers
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
-                return Ok(db.Query<DispositivoCCTV>("SELECT * FROM DISPOSITIVOSCCTV and id =" + id).FirstOrDefault<DispositivoCCTV>());
+                db.Open();
+                IDbTransaction transaction = db.BeginTransaction();
+                List<DispositivoCCTV> respuesta = db.Query<DispositivoCCTV>("SELECT * FROM DISPOSITIVOSCCTV WHERE id_sucursal = " + id , transaction: transaction).ToList();
+                int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM dispositivosCCTV WHERE id_sucursal = " + id , transaction: transaction).First();
+                transaction.Commit();
+                db.Close();
+                Resultado<DispositivoCCTV> resultado = new Resultado<DispositivoCCTV>(checksum, respuesta);
+                return Ok(resultado);
             }
         }
 

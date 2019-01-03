@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.sidePanel = new System.Windows.Forms.Panel();
+            this.BottonIncidente = new Bunifu.Framework.UI.BunifuFlatButton();
             this.botonDispositivosCCTV = new Bunifu.Framework.UI.BunifuFlatButton();
             this.TecnicosButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -40,6 +41,7 @@
             this.logoPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.headerPanel = new System.Windows.Forms.Panel();
+            this.headerIncidentePicture = new System.Windows.Forms.PictureBox();
             this.headerDipsitivosPicture = new System.Windows.Forms.PictureBox();
             this.headerSucursalesPicture = new System.Windows.Forms.PictureBox();
             this.headerClientePicture = new System.Windows.Forms.PictureBox();
@@ -53,6 +55,7 @@
             this.logoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.headerPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.headerIncidentePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerDipsitivosPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerSucursalesPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerClientePicture)).BeginInit();
@@ -63,6 +66,7 @@
             // sidePanel
             // 
             this.sidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.sidePanel.Controls.Add(this.BottonIncidente);
             this.sidePanel.Controls.Add(this.botonDispositivosCCTV);
             this.sidePanel.Controls.Add(this.TecnicosButton);
             this.sidePanel.Controls.Add(this.panel1);
@@ -75,6 +79,44 @@
             this.sidePanel.Name = "sidePanel";
             this.sidePanel.Size = new System.Drawing.Size(236, 600);
             this.sidePanel.TabIndex = 0;
+            // 
+            // BottonIncidente
+            // 
+            this.BottonIncidente.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(43)))), ((int)(((byte)(55)))));
+            this.BottonIncidente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.BottonIncidente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BottonIncidente.BorderRadius = 0;
+            this.BottonIncidente.ButtonText = "Incidentes";
+            this.BottonIncidente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BottonIncidente.DisabledColor = System.Drawing.Color.Gray;
+            this.BottonIncidente.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BottonIncidente.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.BottonIncidente.Iconcolor = System.Drawing.Color.Transparent;
+            this.BottonIncidente.Iconimage = null;
+            this.BottonIncidente.Iconimage_right = null;
+            this.BottonIncidente.Iconimage_right_Selected = null;
+            this.BottonIncidente.Iconimage_Selected = null;
+            this.BottonIncidente.IconMarginLeft = 0;
+            this.BottonIncidente.IconMarginRight = 0;
+            this.BottonIncidente.IconRightVisible = true;
+            this.BottonIncidente.IconRightZoom = 0D;
+            this.BottonIncidente.IconVisible = true;
+            this.BottonIncidente.IconZoom = 90D;
+            this.BottonIncidente.IsTab = true;
+            this.BottonIncidente.Location = new System.Drawing.Point(0, 279);
+            this.BottonIncidente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BottonIncidente.Name = "BottonIncidente";
+            this.BottonIncidente.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.BottonIncidente.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(43)))), ((int)(((byte)(55)))));
+            this.BottonIncidente.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(210)))), ((int)(((byte)(4)))));
+            this.BottonIncidente.selected = false;
+            this.BottonIncidente.Size = new System.Drawing.Size(236, 48);
+            this.BottonIncidente.TabIndex = 8;
+            this.BottonIncidente.Text = "Incidentes";
+            this.BottonIncidente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BottonIncidente.Textcolor = System.Drawing.Color.LightGray;
+            this.BottonIncidente.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BottonIncidente.Click += new System.EventHandler(this.BottonIncidente_Click);
             // 
             // botonDispositivosCCTV
             // 
@@ -298,6 +340,7 @@
             // headerPanel
             // 
             this.headerPanel.BackColor = System.Drawing.Color.White;
+            this.headerPanel.Controls.Add(this.headerIncidentePicture);
             this.headerPanel.Controls.Add(this.headerDipsitivosPicture);
             this.headerPanel.Controls.Add(this.headerSucursalesPicture);
             this.headerPanel.Controls.Add(this.headerClientePicture);
@@ -311,6 +354,17 @@
             this.headerPanel.Name = "headerPanel";
             this.headerPanel.Size = new System.Drawing.Size(739, 39);
             this.headerPanel.TabIndex = 1;
+            // 
+            // headerIncidentePicture
+            // 
+            this.headerIncidentePicture.Image = global::MTN_Administration.Properties.Resources._027_report;
+            this.headerIncidentePicture.Location = new System.Drawing.Point(6, 9);
+            this.headerIncidentePicture.Name = "headerIncidentePicture";
+            this.headerIncidentePicture.Size = new System.Drawing.Size(20, 20);
+            this.headerIncidentePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.headerIncidentePicture.TabIndex = 9;
+            this.headerIncidentePicture.TabStop = false;
+            this.headerIncidentePicture.Visible = false;
             // 
             // headerDipsitivosPicture
             // 
@@ -417,7 +471,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gainsboro;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(975, 600);
             this.Controls.Add(this.headerPanel);
             this.Controls.Add(this.sidePanel);
@@ -429,6 +483,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.headerPanel.ResumeLayout(false);
             this.headerPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.headerIncidentePicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerDipsitivosPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerSucursalesPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerClientePicture)).EndInit();
@@ -459,6 +514,8 @@
         private Bunifu.Framework.UI.BunifuFlatButton TecnicosButton;
         private Bunifu.Framework.UI.BunifuFlatButton botonDispositivosCCTV;
         private System.Windows.Forms.PictureBox headerDipsitivosPicture;
+        private Bunifu.Framework.UI.BunifuFlatButton BottonIncidente;
+        private System.Windows.Forms.PictureBox headerIncidentePicture;
     }
 }
 
