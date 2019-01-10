@@ -28,332 +28,687 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Incidentes));
-            this.tablaTecnicos = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.Header = new System.Windows.Forms.Panel();
+            this.headerIncidentePicture = new System.Windows.Forms.PictureBox();
+            this.minimize = new System.Windows.Forms.Label();
+            this.TituloHeader = new System.Windows.Forms.Label();
+            this.close = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.panelTabla = new System.Windows.Forms.Panel();
+            this.tablaIncidentes = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoDispositivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dispositivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Camara = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.severidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.criticidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.asignado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BotonCerrarIncidente = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.BotonEditarInicidente = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.estadoIncidente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.BotonVerIncidente = new Bunifu.Framework.UI.BunifuThinButton2();
             this.BotonAgregarIncidente = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.filtroSeveridadTodas = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.filtroSeveridadBaja = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.filtroCCTV = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.textBuscarTecnico = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.panelSwitches = new System.Windows.Forms.Panel();
+            this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.switchCriticidadMuyBaja = new Bunifu.Framework.UI.BunifuiOSSwitch();
+            this.switchCriticidadMuyAlta = new Bunifu.Framework.UI.BunifuiOSSwitch();
             this.SearchIcon = new System.Windows.Forms.PictureBox();
-            this.filtroSeveridadMedia = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.filtroSeveridadAlta = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.LabelswitchEstadoIncidenteCerrado = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.textBuscarTecnico = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.LabelSwitchEstadoIncidenteProceso = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.switchCriticidadBaja = new Bunifu.Framework.UI.BunifuiOSSwitch();
+            this.switchEstadoIncidenteProceso = new Bunifu.Framework.UI.BunifuiOSSwitch();
+            this.switchAlarmas = new Bunifu.Framework.UI.BunifuiOSSwitch();
+            this.switchCriticidadMedia = new Bunifu.Framework.UI.BunifuiOSSwitch();
+            this.switchEstadoIncidenteCerrado = new Bunifu.Framework.UI.BunifuiOSSwitch();
+            this.switchCCTV = new Bunifu.Framework.UI.BunifuiOSSwitch();
+            this.switchCriticidadAlta = new Bunifu.Framework.UI.BunifuiOSSwitch();
+            this.switchEstadoIncidenteAbierto = new Bunifu.Framework.UI.BunifuiOSSwitch();
+            this.filtroCCTV = new Bunifu.Framework.UI.BunifuFlatButton();
             this.filtroAlarmas = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.sliderFiltroTecnicos = new System.Windows.Forms.PictureBox();
-            this.filtroTodo = new Bunifu.Framework.UI.BunifuFlatButton();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaTecnicos)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.transiciones = new BunifuAnimatorNS.BunifuTransition(this.components);
+            this.Header.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.headerIncidentePicture)).BeginInit();
+            this.panelTabla.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaIncidentes)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panelSwitches.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderFiltroTecnicos)).BeginInit();
             this.SuspendLayout();
             // 
-            // tablaTecnicos
+            // Header
             // 
-            this.tablaTecnicos.AllowUserToAddRows = false;
-            this.tablaTecnicos.AllowUserToDeleteRows = false;
-            this.tablaTecnicos.AllowUserToResizeColumns = false;
-            this.tablaTecnicos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(29)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            this.tablaTecnicos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.tablaTecnicos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.tablaTecnicos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            this.tablaTecnicos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tablaTecnicos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaTecnicos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.tablaTecnicos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaTecnicos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Header.BackColor = System.Drawing.Color.White;
+            this.Header.Controls.Add(this.headerIncidentePicture);
+            this.Header.Controls.Add(this.minimize);
+            this.Header.Controls.Add(this.TituloHeader);
+            this.Header.Controls.Add(this.close);
+            this.transiciones.SetDecoration(this.Header, BunifuAnimatorNS.DecorationType.None);
+            this.Header.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Header.Location = new System.Drawing.Point(0, 0);
+            this.Header.Name = "Header";
+            this.Header.Size = new System.Drawing.Size(1240, 35);
+            this.Header.TabIndex = 15;
+            // 
+            // headerIncidentePicture
+            // 
+            this.transiciones.SetDecoration(this.headerIncidentePicture, BunifuAnimatorNS.DecorationType.None);
+            this.headerIncidentePicture.Image = global::MTN_Administration.Properties.Resources._027_report;
+            this.headerIncidentePicture.Location = new System.Drawing.Point(37, 8);
+            this.headerIncidentePicture.Name = "headerIncidentePicture";
+            this.headerIncidentePicture.Size = new System.Drawing.Size(20, 20);
+            this.headerIncidentePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.headerIncidentePicture.TabIndex = 84;
+            this.headerIncidentePicture.TabStop = false;
+            this.headerIncidentePicture.Visible = false;
+            // 
+            // minimize
+            // 
+            this.minimize.AutoSize = true;
+            this.minimize.BackColor = System.Drawing.SystemColors.Window;
+            this.minimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.minimize, BunifuAnimatorNS.DecorationType.None);
+            this.minimize.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.minimize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.minimize.Location = new System.Drawing.Point(1189, 9);
+            this.minimize.Name = "minimize";
+            this.minimize.Size = new System.Drawing.Size(12, 17);
+            this.minimize.TabIndex = 63;
+            this.minimize.Text = "-";
+            this.minimize.Click += new System.EventHandler(this.minimize_Click);
+            // 
+            // TituloHeader
+            // 
+            this.TituloHeader.AutoSize = true;
+            this.TituloHeader.BackColor = System.Drawing.SystemColors.Window;
+            this.transiciones.SetDecoration(this.TituloHeader, BunifuAnimatorNS.DecorationType.None);
+            this.TituloHeader.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TituloHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.TituloHeader.Location = new System.Drawing.Point(94, 8);
+            this.TituloHeader.Name = "TituloHeader";
+            this.TituloHeader.Size = new System.Drawing.Size(218, 21);
+            this.TituloHeader.TabIndex = 83;
+            this.TituloHeader.Text = "Administracion de Clientes";
+            // 
+            // close
+            // 
+            this.close.AutoSize = true;
+            this.close.BackColor = System.Drawing.SystemColors.Window;
+            this.close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.close, BunifuAnimatorNS.DecorationType.None);
+            this.close.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.close.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.close.Location = new System.Drawing.Point(1212, 9);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(16, 17);
+            this.close.TabIndex = 62;
+            this.close.Text = "X";
+            this.close.Click += new System.EventHandler(this.close_Click);
+            // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this.Header;
+            this.bunifuDragControl1.Vertical = true;
+            // 
+            // panelTabla
+            // 
+            this.panelTabla.Controls.Add(this.tablaIncidentes);
+            this.panelTabla.Controls.Add(this.panel3);
+            this.panelTabla.Controls.Add(this.panel2);
+            this.panelTabla.Controls.Add(this.panelSwitches);
+            this.transiciones.SetDecoration(this.panelTabla, BunifuAnimatorNS.DecorationType.None);
+            this.panelTabla.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTabla.Location = new System.Drawing.Point(0, 35);
+            this.panelTabla.Name = "panelTabla";
+            this.panelTabla.Size = new System.Drawing.Size(1240, 745);
+            this.panelTabla.TabIndex = 61;
+            // 
+            // tablaIncidentes
+            // 
+            this.tablaIncidentes.AllowUserToAddRows = false;
+            this.tablaIncidentes.AllowUserToDeleteRows = false;
+            this.tablaIncidentes.AllowUserToResizeColumns = false;
+            this.tablaIncidentes.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.tablaIncidentes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.tablaIncidentes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.tablaIncidentes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            this.tablaIncidentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tablaIncidentes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaIncidentes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.tablaIncidentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaIncidentes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.cliente,
             this.sucursal,
             this.tipoDispositivo,
             this.Dispositivo,
+            this.Camara,
             this.estado,
-            this.severidad,
-            this.asignado});
-            this.tablaTecnicos.DoubleBuffered = true;
-            this.tablaTecnicos.EnableHeadersVisualStyles = false;
-            this.tablaTecnicos.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.tablaTecnicos.HeaderForeColor = System.Drawing.Color.Silver;
-            this.tablaTecnicos.Location = new System.Drawing.Point(0, 34);
-            this.tablaTecnicos.MultiSelect = false;
-            this.tablaTecnicos.Name = "tablaTecnicos";
-            this.tablaTecnicos.ReadOnly = true;
-            this.tablaTecnicos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.tablaTecnicos.RowHeadersVisible = false;
-            this.tablaTecnicos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaTecnicos.ShowCellErrors = false;
-            this.tablaTecnicos.ShowCellToolTips = false;
-            this.tablaTecnicos.ShowEditingIcon = false;
-            this.tablaTecnicos.ShowRowErrors = false;
-            this.tablaTecnicos.Size = new System.Drawing.Size(724, 491);
-            this.tablaTecnicos.TabIndex = 16;
+            this.criticidad,
+            this.asignado,
+            this.estadoIncidente});
+            this.transiciones.SetDecoration(this.tablaIncidentes, BunifuAnimatorNS.DecorationType.None);
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaIncidentes.DefaultCellStyle = dataGridViewCellStyle6;
+            this.tablaIncidentes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tablaIncidentes.DoubleBuffered = true;
+            this.tablaIncidentes.EnableHeadersVisualStyles = false;
+            this.tablaIncidentes.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.tablaIncidentes.HeaderForeColor = System.Drawing.Color.Silver;
+            this.tablaIncidentes.Location = new System.Drawing.Point(194, 0);
+            this.tablaIncidentes.MultiSelect = false;
+            this.tablaIncidentes.Name = "tablaIncidentes";
+            this.tablaIncidentes.ReadOnly = true;
+            this.tablaIncidentes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.tablaIncidentes.RowHeadersVisible = false;
+            this.tablaIncidentes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaIncidentes.ShowCellErrors = false;
+            this.tablaIncidentes.ShowCellToolTips = false;
+            this.tablaIncidentes.ShowEditingIcon = false;
+            this.tablaIncidentes.ShowRowErrors = false;
+            this.tablaIncidentes.Size = new System.Drawing.Size(1021, 690);
+            this.tablaIncidentes.TabIndex = 70;
             // 
             // id
             // 
+            this.id.FillWeight = 50F;
             this.id.HeaderText = "#";
             this.id.Name = "id";
             this.id.ReadOnly = true;
-            this.id.Width = 40;
             // 
             // cliente
             // 
+            this.cliente.FillWeight = 150F;
             this.cliente.HeaderText = "Cliente";
             this.cliente.Name = "cliente";
             this.cliente.ReadOnly = true;
-            this.cliente.Width = 74;
             // 
             // sucursal
             // 
             this.sucursal.HeaderText = "Sucursal";
             this.sucursal.Name = "sucursal";
             this.sucursal.ReadOnly = true;
-            this.sucursal.Width = 80;
             // 
             // tipoDispositivo
             // 
             this.tipoDispositivo.HeaderText = "Tipo Dispositivo";
             this.tipoDispositivo.Name = "tipoDispositivo";
             this.tipoDispositivo.ReadOnly = true;
-            this.tipoDispositivo.Width = 123;
             // 
             // Dispositivo
             // 
             this.Dispositivo.HeaderText = "Dispositivo";
             this.Dispositivo.Name = "Dispositivo";
             this.Dispositivo.ReadOnly = true;
-            this.Dispositivo.Width = 96;
+            // 
+            // Camara
+            // 
+            this.Camara.HeaderText = "Camara";
+            this.Camara.Name = "Camara";
+            this.Camara.ReadOnly = true;
             // 
             // estado
             // 
             this.estado.HeaderText = "Estado";
             this.estado.Name = "estado";
             this.estado.ReadOnly = true;
-            this.estado.Width = 71;
             // 
-            // severidad
+            // criticidad
             // 
-            this.severidad.HeaderText = "Severidad";
-            this.severidad.Name = "severidad";
-            this.severidad.ReadOnly = true;
-            this.severidad.Width = 93;
+            this.criticidad.HeaderText = "Criticidad";
+            this.criticidad.Name = "criticidad";
+            this.criticidad.ReadOnly = true;
             // 
             // asignado
             // 
             this.asignado.HeaderText = "Asignado";
             this.asignado.Name = "asignado";
             this.asignado.ReadOnly = true;
-            this.asignado.Width = 87;
             // 
-            // BotonCerrarIncidente
+            // estadoIncidente
             // 
-            this.BotonCerrarIncidente.ActiveBorderThickness = 1;
-            this.BotonCerrarIncidente.ActiveCornerRadius = 20;
-            this.BotonCerrarIncidente.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.BotonCerrarIncidente.ActiveForecolor = System.Drawing.Color.White;
-            this.BotonCerrarIncidente.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.BotonCerrarIncidente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            this.BotonCerrarIncidente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BotonCerrarIncidente.BackgroundImage")));
-            this.BotonCerrarIncidente.ButtonText = "Cerrar Incidente";
-            this.BotonCerrarIncidente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BotonCerrarIncidente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BotonCerrarIncidente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.BotonCerrarIncidente.IdleBorderThickness = 1;
-            this.BotonCerrarIncidente.IdleCornerRadius = 20;
-            this.BotonCerrarIncidente.IdleFillColor = System.Drawing.Color.White;
-            this.BotonCerrarIncidente.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.BotonCerrarIncidente.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.BotonCerrarIncidente.Location = new System.Drawing.Point(286, 532);
-            this.BotonCerrarIncidente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.BotonCerrarIncidente.Name = "BotonCerrarIncidente";
-            this.BotonCerrarIncidente.Size = new System.Drawing.Size(122, 33);
-            this.BotonCerrarIncidente.TabIndex = 19;
-            this.BotonCerrarIncidente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.estadoIncidente.FillWeight = 50F;
+            this.estadoIncidente.HeaderText = "Estado Incidente";
+            this.estadoIncidente.Name = "estadoIncidente";
+            this.estadoIncidente.ReadOnly = true;
             // 
-            // BotonEditarInicidente
+            // panel3
             // 
-            this.BotonEditarInicidente.ActiveBorderThickness = 1;
-            this.BotonEditarInicidente.ActiveCornerRadius = 20;
-            this.BotonEditarInicidente.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.BotonEditarInicidente.ActiveForecolor = System.Drawing.Color.White;
-            this.BotonEditarInicidente.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.BotonEditarInicidente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            this.BotonEditarInicidente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BotonEditarInicidente.BackgroundImage")));
-            this.BotonEditarInicidente.ButtonText = "Editar Incidente";
-            this.BotonEditarInicidente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BotonEditarInicidente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BotonEditarInicidente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.BotonEditarInicidente.IdleBorderThickness = 1;
-            this.BotonEditarInicidente.IdleCornerRadius = 20;
-            this.BotonEditarInicidente.IdleFillColor = System.Drawing.Color.White;
-            this.BotonEditarInicidente.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.BotonEditarInicidente.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.BotonEditarInicidente.Location = new System.Drawing.Point(537, 532);
-            this.BotonEditarInicidente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.BotonEditarInicidente.Name = "BotonEditarInicidente";
-            this.BotonEditarInicidente.Size = new System.Drawing.Size(122, 33);
-            this.BotonEditarInicidente.TabIndex = 18;
-            this.BotonEditarInicidente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.transiciones.SetDecoration(this.panel3, BunifuAnimatorNS.DecorationType.None);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(1215, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(25, 690);
+            this.panel3.TabIndex = 84;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.BotonVerIncidente);
+            this.panel2.Controls.Add(this.BotonAgregarIncidente);
+            this.transiciones.SetDecoration(this.panel2, BunifuAnimatorNS.DecorationType.None);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(194, 690);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1046, 55);
+            this.panel2.TabIndex = 83;
+            // 
+            // BotonVerIncidente
+            // 
+            this.BotonVerIncidente.ActiveBorderThickness = 1;
+            this.BotonVerIncidente.ActiveCornerRadius = 20;
+            this.BotonVerIncidente.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.BotonVerIncidente.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BotonVerIncidente.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.BotonVerIncidente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            this.BotonVerIncidente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BotonVerIncidente.BackgroundImage")));
+            this.BotonVerIncidente.ButtonText = "Ver Incidente";
+            this.BotonVerIncidente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.BotonVerIncidente, BunifuAnimatorNS.DecorationType.None);
+            this.BotonVerIncidente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BotonVerIncidente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.BotonVerIncidente.IdleBorderThickness = 1;
+            this.BotonVerIncidente.IdleCornerRadius = 20;
+            this.BotonVerIncidente.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.BotonVerIncidente.IdleForecolor = System.Drawing.Color.Gainsboro;
+            this.BotonVerIncidente.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.BotonVerIncidente.Location = new System.Drawing.Point(416, 7);
+            this.BotonVerIncidente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BotonVerIncidente.Name = "BotonVerIncidente";
+            this.BotonVerIncidente.Size = new System.Drawing.Size(181, 41);
+            this.BotonVerIncidente.TabIndex = 62;
+            this.BotonVerIncidente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BotonVerIncidente.Click += new System.EventHandler(this.BotonVerIncidente_Click);
             // 
             // BotonAgregarIncidente
             // 
             this.BotonAgregarIncidente.ActiveBorderThickness = 1;
             this.BotonAgregarIncidente.ActiveCornerRadius = 20;
-            this.BotonAgregarIncidente.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.BotonAgregarIncidente.ActiveForecolor = System.Drawing.Color.White;
-            this.BotonAgregarIncidente.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.BotonAgregarIncidente.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.BotonAgregarIncidente.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BotonAgregarIncidente.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
             this.BotonAgregarIncidente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
             this.BotonAgregarIncidente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BotonAgregarIncidente.BackgroundImage")));
             this.BotonAgregarIncidente.ButtonText = "Agregar Incidente";
             this.BotonAgregarIncidente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.BotonAgregarIncidente, BunifuAnimatorNS.DecorationType.None);
             this.BotonAgregarIncidente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotonAgregarIncidente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.BotonAgregarIncidente.IdleBorderThickness = 1;
             this.BotonAgregarIncidente.IdleCornerRadius = 20;
-            this.BotonAgregarIncidente.IdleFillColor = System.Drawing.Color.White;
-            this.BotonAgregarIncidente.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.BotonAgregarIncidente.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.BotonAgregarIncidente.Location = new System.Drawing.Point(25, 532);
+            this.BotonAgregarIncidente.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.BotonAgregarIncidente.IdleForecolor = System.Drawing.Color.Gainsboro;
+            this.BotonAgregarIncidente.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.BotonAgregarIncidente.Location = new System.Drawing.Point(7, 7);
             this.BotonAgregarIncidente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BotonAgregarIncidente.Name = "BotonAgregarIncidente";
-            this.BotonAgregarIncidente.Size = new System.Drawing.Size(132, 33);
-            this.BotonAgregarIncidente.TabIndex = 17;
+            this.BotonAgregarIncidente.Size = new System.Drawing.Size(181, 41);
+            this.BotonAgregarIncidente.TabIndex = 61;
             this.BotonAgregarIncidente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BotonAgregarIncidente.Click += new System.EventHandler(this.BotonAgregarIncidente_Click);
             // 
-            // panel1
+            // panelSwitches
             // 
-            this.panel1.Controls.Add(this.filtroSeveridadTodas);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.filtroSeveridadBaja);
-            this.panel1.Controls.Add(this.filtroCCTV);
-            this.panel1.Controls.Add(this.textBuscarTecnico);
-            this.panel1.Controls.Add(this.SearchIcon);
-            this.panel1.Controls.Add(this.filtroSeveridadMedia);
-            this.panel1.Controls.Add(this.filtroSeveridadAlta);
-            this.panel1.Controls.Add(this.filtroAlarmas);
-            this.panel1.Controls.Add(this.sliderFiltroTecnicos);
-            this.panel1.Controls.Add(this.filtroTodo);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(727, 35);
-            this.panel1.TabIndex = 15;
+            this.panelSwitches.Controls.Add(this.bunifuCustomLabel5);
+            this.panelSwitches.Controls.Add(this.bunifuCustomLabel4);
+            this.panelSwitches.Controls.Add(this.bunifuCustomLabel3);
+            this.panelSwitches.Controls.Add(this.bunifuCustomLabel2);
+            this.panelSwitches.Controls.Add(this.bunifuCustomLabel1);
+            this.panelSwitches.Controls.Add(this.switchCriticidadMuyBaja);
+            this.panelSwitches.Controls.Add(this.switchCriticidadMuyAlta);
+            this.panelSwitches.Controls.Add(this.SearchIcon);
+            this.panelSwitches.Controls.Add(this.LabelswitchEstadoIncidenteCerrado);
+            this.panelSwitches.Controls.Add(this.textBuscarTecnico);
+            this.panelSwitches.Controls.Add(this.LabelSwitchEstadoIncidenteProceso);
+            this.panelSwitches.Controls.Add(this.bunifuCustomLabel6);
+            this.panelSwitches.Controls.Add(this.switchCriticidadBaja);
+            this.panelSwitches.Controls.Add(this.switchEstadoIncidenteProceso);
+            this.panelSwitches.Controls.Add(this.switchAlarmas);
+            this.panelSwitches.Controls.Add(this.switchCriticidadMedia);
+            this.panelSwitches.Controls.Add(this.switchEstadoIncidenteCerrado);
+            this.panelSwitches.Controls.Add(this.switchCCTV);
+            this.panelSwitches.Controls.Add(this.switchCriticidadAlta);
+            this.panelSwitches.Controls.Add(this.switchEstadoIncidenteAbierto);
+            this.panelSwitches.Controls.Add(this.filtroCCTV);
+            this.panelSwitches.Controls.Add(this.filtroAlarmas);
+            this.transiciones.SetDecoration(this.panelSwitches, BunifuAnimatorNS.DecorationType.None);
+            this.panelSwitches.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelSwitches.Location = new System.Drawing.Point(0, 0);
+            this.panelSwitches.Name = "panelSwitches";
+            this.panelSwitches.Size = new System.Drawing.Size(194, 745);
+            this.panelSwitches.TabIndex = 82;
+            this.panelSwitches.Visible = false;
+            this.panelSwitches.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // filtroSeveridadTodas
+            // bunifuCustomLabel5
             // 
-            this.filtroSeveridadTodas.Activecolor = System.Drawing.Color.Gainsboro;
-            this.filtroSeveridadTodas.BackColor = System.Drawing.Color.Transparent;
-            this.filtroSeveridadTodas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.filtroSeveridadTodas.BorderRadius = 0;
-            this.filtroSeveridadTodas.ButtonText = "Todos";
-            this.filtroSeveridadTodas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.filtroSeveridadTodas.DisabledColor = System.Drawing.Color.Gray;
-            this.filtroSeveridadTodas.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filtroSeveridadTodas.Iconcolor = System.Drawing.Color.Transparent;
-            this.filtroSeveridadTodas.Iconimage = null;
-            this.filtroSeveridadTodas.Iconimage_right = null;
-            this.filtroSeveridadTodas.Iconimage_right_Selected = null;
-            this.filtroSeveridadTodas.Iconimage_Selected = null;
-            this.filtroSeveridadTodas.IconMarginLeft = 0;
-            this.filtroSeveridadTodas.IconMarginRight = 0;
-            this.filtroSeveridadTodas.IconRightVisible = true;
-            this.filtroSeveridadTodas.IconRightZoom = 0D;
-            this.filtroSeveridadTodas.IconVisible = true;
-            this.filtroSeveridadTodas.IconZoom = 90D;
-            this.filtroSeveridadTodas.IsTab = false;
-            this.filtroSeveridadTodas.Location = new System.Drawing.Point(238, 9);
-            this.filtroSeveridadTodas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.filtroSeveridadTodas.Name = "filtroSeveridadTodas";
-            this.filtroSeveridadTodas.Normalcolor = System.Drawing.Color.Gainsboro;
-            this.filtroSeveridadTodas.OnHovercolor = System.Drawing.Color.Gainsboro;
-            this.filtroSeveridadTodas.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.filtroSeveridadTodas.selected = false;
-            this.filtroSeveridadTodas.Size = new System.Drawing.Size(50, 16);
-            this.filtroSeveridadTodas.TabIndex = 16;
-            this.filtroSeveridadTodas.Text = "Todos";
-            this.filtroSeveridadTodas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.filtroSeveridadTodas.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(33)))), ((int)(((byte)(45)))));
-            this.filtroSeveridadTodas.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel5.AutoSize = true;
+            this.transiciones.SetDecoration(this.bunifuCustomLabel5, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel5.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.bunifuCustomLabel5.ForeColor = System.Drawing.Color.Silver;
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(82, 279);
+            this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
+            this.bunifuCustomLabel5.Size = new System.Drawing.Size(65, 17);
+            this.bunifuCustomLabel5.TabIndex = 87;
+            this.bunifuCustomLabel5.Text = "Muy Baja";
             // 
-            // pictureBox1
+            // bunifuCustomLabel4
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(43)))), ((int)(((byte)(55)))));
-            this.pictureBox1.Location = new System.Drawing.Point(236, 25);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 3);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            this.bunifuCustomLabel4.AutoSize = true;
+            this.transiciones.SetDecoration(this.bunifuCustomLabel4, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel4.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.bunifuCustomLabel4.ForeColor = System.Drawing.Color.Silver;
+            this.bunifuCustomLabel4.Location = new System.Drawing.Point(82, 251);
+            this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
+            this.bunifuCustomLabel4.Size = new System.Drawing.Size(36, 17);
+            this.bunifuCustomLabel4.TabIndex = 86;
+            this.bunifuCustomLabel4.Text = "Baja";
             // 
-            // filtroSeveridadBaja
+            // bunifuCustomLabel3
             // 
-            this.filtroSeveridadBaja.Activecolor = System.Drawing.Color.Gainsboro;
-            this.filtroSeveridadBaja.BackColor = System.Drawing.Color.Transparent;
-            this.filtroSeveridadBaja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.filtroSeveridadBaja.BorderRadius = 0;
-            this.filtroSeveridadBaja.ButtonText = "Baja";
-            this.filtroSeveridadBaja.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.filtroSeveridadBaja.DisabledColor = System.Drawing.Color.Gray;
-            this.filtroSeveridadBaja.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filtroSeveridadBaja.Iconcolor = System.Drawing.Color.Transparent;
-            this.filtroSeveridadBaja.Iconimage = null;
-            this.filtroSeveridadBaja.Iconimage_right = null;
-            this.filtroSeveridadBaja.Iconimage_right_Selected = null;
-            this.filtroSeveridadBaja.Iconimage_Selected = null;
-            this.filtroSeveridadBaja.IconMarginLeft = 0;
-            this.filtroSeveridadBaja.IconMarginRight = 0;
-            this.filtroSeveridadBaja.IconRightVisible = true;
-            this.filtroSeveridadBaja.IconRightZoom = 0D;
-            this.filtroSeveridadBaja.IconVisible = true;
-            this.filtroSeveridadBaja.IconZoom = 90D;
-            this.filtroSeveridadBaja.IsTab = false;
-            this.filtroSeveridadBaja.Location = new System.Drawing.Point(404, 9);
-            this.filtroSeveridadBaja.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.filtroSeveridadBaja.Name = "filtroSeveridadBaja";
-            this.filtroSeveridadBaja.Normalcolor = System.Drawing.Color.Gainsboro;
-            this.filtroSeveridadBaja.OnHovercolor = System.Drawing.Color.Gainsboro;
-            this.filtroSeveridadBaja.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.filtroSeveridadBaja.selected = false;
-            this.filtroSeveridadBaja.Size = new System.Drawing.Size(63, 16);
-            this.filtroSeveridadBaja.TabIndex = 14;
-            this.filtroSeveridadBaja.Text = "Baja";
-            this.filtroSeveridadBaja.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.filtroSeveridadBaja.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(33)))), ((int)(((byte)(45)))));
-            this.filtroSeveridadBaja.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel3.AutoSize = true;
+            this.transiciones.SetDecoration(this.bunifuCustomLabel3, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel3.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.Silver;
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(82, 223);
+            this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
+            this.bunifuCustomLabel3.Size = new System.Drawing.Size(56, 17);
+            this.bunifuCustomLabel3.TabIndex = 85;
+            this.bunifuCustomLabel3.Text = "Normal";
+            // 
+            // bunifuCustomLabel2
+            // 
+            this.bunifuCustomLabel2.AutoSize = true;
+            this.transiciones.SetDecoration(this.bunifuCustomLabel2, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel2.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.Silver;
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(82, 195);
+            this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
+            this.bunifuCustomLabel2.Size = new System.Drawing.Size(34, 17);
+            this.bunifuCustomLabel2.TabIndex = 84;
+            this.bunifuCustomLabel2.Text = "Alta";
+            // 
+            // bunifuCustomLabel1
+            // 
+            this.bunifuCustomLabel1.AutoSize = true;
+            this.transiciones.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.Silver;
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(82, 167);
+            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(63, 17);
+            this.bunifuCustomLabel1.TabIndex = 83;
+            this.bunifuCustomLabel1.Text = "Muy Alta";
+            // 
+            // switchCriticidadMuyBaja
+            // 
+            this.switchCriticidadMuyBaja.BackColor = System.Drawing.Color.Transparent;
+            this.switchCriticidadMuyBaja.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchCriticidadMuyBaja.BackgroundImage")));
+            this.switchCriticidadMuyBaja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.switchCriticidadMuyBaja.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.switchCriticidadMuyBaja, BunifuAnimatorNS.DecorationType.None);
+            this.switchCriticidadMuyBaja.Location = new System.Drawing.Point(37, 280);
+            this.switchCriticidadMuyBaja.Name = "switchCriticidadMuyBaja";
+            this.switchCriticidadMuyBaja.OffColor = System.Drawing.Color.Gray;
+            this.switchCriticidadMuyBaja.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.switchCriticidadMuyBaja.Size = new System.Drawing.Size(35, 20);
+            this.switchCriticidadMuyBaja.TabIndex = 82;
+            this.switchCriticidadMuyBaja.Value = true;
+            this.switchCriticidadMuyBaja.OnValueChange += new System.EventHandler(this.switchCriticidadMuyBaja_OnValueChange);
+            // 
+            // switchCriticidadMuyAlta
+            // 
+            this.switchCriticidadMuyAlta.BackColor = System.Drawing.Color.Transparent;
+            this.switchCriticidadMuyAlta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchCriticidadMuyAlta.BackgroundImage")));
+            this.switchCriticidadMuyAlta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.switchCriticidadMuyAlta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.switchCriticidadMuyAlta, BunifuAnimatorNS.DecorationType.None);
+            this.switchCriticidadMuyAlta.Location = new System.Drawing.Point(37, 164);
+            this.switchCriticidadMuyAlta.Name = "switchCriticidadMuyAlta";
+            this.switchCriticidadMuyAlta.OffColor = System.Drawing.Color.Gray;
+            this.switchCriticidadMuyAlta.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.switchCriticidadMuyAlta.Size = new System.Drawing.Size(35, 20);
+            this.switchCriticidadMuyAlta.TabIndex = 80;
+            this.switchCriticidadMuyAlta.Value = true;
+            this.switchCriticidadMuyAlta.OnValueChange += new System.EventHandler(this.switchCriticidadMuyAlta_OnValueChange);
+            // 
+            // SearchIcon
+            // 
+            this.transiciones.SetDecoration(this.SearchIcon, BunifuAnimatorNS.DecorationType.None);
+            this.SearchIcon.Image = global::MTN_Administration.Properties.Resources._029_search;
+            this.SearchIcon.Location = new System.Drawing.Point(150, 22);
+            this.SearchIcon.Name = "SearchIcon";
+            this.SearchIcon.Size = new System.Drawing.Size(21, 22);
+            this.SearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.SearchIcon.TabIndex = 76;
+            this.SearchIcon.TabStop = false;
+            // 
+            // LabelswitchEstadoIncidenteCerrado
+            // 
+            this.LabelswitchEstadoIncidenteCerrado.AutoSize = true;
+            this.transiciones.SetDecoration(this.LabelswitchEstadoIncidenteCerrado, BunifuAnimatorNS.DecorationType.None);
+            this.LabelswitchEstadoIncidenteCerrado.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.LabelswitchEstadoIncidenteCerrado.ForeColor = System.Drawing.Color.Silver;
+            this.LabelswitchEstadoIncidenteCerrado.Location = new System.Drawing.Point(82, 362);
+            this.LabelswitchEstadoIncidenteCerrado.Name = "LabelswitchEstadoIncidenteCerrado";
+            this.LabelswitchEstadoIncidenteCerrado.Size = new System.Drawing.Size(67, 17);
+            this.LabelswitchEstadoIncidenteCerrado.TabIndex = 69;
+            this.LabelswitchEstadoIncidenteCerrado.Text = "Cerrados";
+            // 
+            // textBuscarTecnico
+            // 
+            this.textBuscarTecnico.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.textBuscarTecnico.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.textBuscarTecnico.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(43)))), ((int)(((byte)(55)))));
+            this.textBuscarTecnico.BorderThickness = 1;
+            this.textBuscarTecnico.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.transiciones.SetDecoration(this.textBuscarTecnico, BunifuAnimatorNS.DecorationType.None);
+            this.textBuscarTecnico.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBuscarTecnico.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBuscarTecnico.isPassword = false;
+            this.textBuscarTecnico.Location = new System.Drawing.Point(21, 22);
+            this.textBuscarTecnico.Margin = new System.Windows.Forms.Padding(4);
+            this.textBuscarTecnico.Name = "textBuscarTecnico";
+            this.textBuscarTecnico.Size = new System.Drawing.Size(119, 22);
+            this.textBuscarTecnico.TabIndex = 77;
+            this.textBuscarTecnico.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // LabelSwitchEstadoIncidenteProceso
+            // 
+            this.LabelSwitchEstadoIncidenteProceso.AutoSize = true;
+            this.transiciones.SetDecoration(this.LabelSwitchEstadoIncidenteProceso, BunifuAnimatorNS.DecorationType.None);
+            this.LabelSwitchEstadoIncidenteProceso.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.LabelSwitchEstadoIncidenteProceso.ForeColor = System.Drawing.Color.Silver;
+            this.LabelSwitchEstadoIncidenteProceso.Location = new System.Drawing.Point(82, 391);
+            this.LabelSwitchEstadoIncidenteProceso.Name = "LabelSwitchEstadoIncidenteProceso";
+            this.LabelSwitchEstadoIncidenteProceso.Size = new System.Drawing.Size(59, 17);
+            this.LabelSwitchEstadoIncidenteProceso.TabIndex = 68;
+            this.LabelSwitchEstadoIncidenteProceso.Text = "Proceso";
+            // 
+            // bunifuCustomLabel6
+            // 
+            this.bunifuCustomLabel6.AutoSize = true;
+            this.transiciones.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel6.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.bunifuCustomLabel6.ForeColor = System.Drawing.Color.Silver;
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(82, 333);
+            this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
+            this.bunifuCustomLabel6.Size = new System.Drawing.Size(60, 17);
+            this.bunifuCustomLabel6.TabIndex = 67;
+            this.bunifuCustomLabel6.Text = "Abiertos";
+            // 
+            // switchCriticidadBaja
+            // 
+            this.switchCriticidadBaja.BackColor = System.Drawing.Color.Transparent;
+            this.switchCriticidadBaja.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchCriticidadBaja.BackgroundImage")));
+            this.switchCriticidadBaja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.switchCriticidadBaja.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.switchCriticidadBaja, BunifuAnimatorNS.DecorationType.None);
+            this.switchCriticidadBaja.Location = new System.Drawing.Point(37, 251);
+            this.switchCriticidadBaja.Name = "switchCriticidadBaja";
+            this.switchCriticidadBaja.OffColor = System.Drawing.Color.Gray;
+            this.switchCriticidadBaja.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.switchCriticidadBaja.Size = new System.Drawing.Size(35, 20);
+            this.switchCriticidadBaja.TabIndex = 66;
+            this.switchCriticidadBaja.Value = true;
+            this.switchCriticidadBaja.OnValueChange += new System.EventHandler(this.switchCriticidadBaja_OnValueChange);
+            // 
+            // switchEstadoIncidenteProceso
+            // 
+            this.switchEstadoIncidenteProceso.BackColor = System.Drawing.Color.Transparent;
+            this.switchEstadoIncidenteProceso.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchEstadoIncidenteProceso.BackgroundImage")));
+            this.switchEstadoIncidenteProceso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.switchEstadoIncidenteProceso.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.switchEstadoIncidenteProceso, BunifuAnimatorNS.DecorationType.None);
+            this.switchEstadoIncidenteProceso.Location = new System.Drawing.Point(37, 389);
+            this.switchEstadoIncidenteProceso.Name = "switchEstadoIncidenteProceso";
+            this.switchEstadoIncidenteProceso.OffColor = System.Drawing.Color.Gray;
+            this.switchEstadoIncidenteProceso.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.switchEstadoIncidenteProceso.Size = new System.Drawing.Size(35, 20);
+            this.switchEstadoIncidenteProceso.TabIndex = 66;
+            this.switchEstadoIncidenteProceso.Value = false;
+            this.switchEstadoIncidenteProceso.OnValueChange += new System.EventHandler(this.switchEstadoIncidenteProceso_OnValueChange);
+            // 
+            // switchAlarmas
+            // 
+            this.switchAlarmas.BackColor = System.Drawing.Color.Transparent;
+            this.switchAlarmas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchAlarmas.BackgroundImage")));
+            this.switchAlarmas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.switchAlarmas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.switchAlarmas, BunifuAnimatorNS.DecorationType.None);
+            this.switchAlarmas.Enabled = false;
+            this.switchAlarmas.Location = new System.Drawing.Point(37, 118);
+            this.switchAlarmas.Name = "switchAlarmas";
+            this.switchAlarmas.OffColor = System.Drawing.Color.Gray;
+            this.switchAlarmas.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(202)))), ((int)(((byte)(94)))));
+            this.switchAlarmas.Size = new System.Drawing.Size(35, 20);
+            this.switchAlarmas.TabIndex = 65;
+            this.switchAlarmas.Value = false;
+            // 
+            // switchCriticidadMedia
+            // 
+            this.switchCriticidadMedia.BackColor = System.Drawing.Color.Transparent;
+            this.switchCriticidadMedia.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchCriticidadMedia.BackgroundImage")));
+            this.switchCriticidadMedia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.switchCriticidadMedia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.switchCriticidadMedia, BunifuAnimatorNS.DecorationType.None);
+            this.switchCriticidadMedia.Location = new System.Drawing.Point(37, 222);
+            this.switchCriticidadMedia.Name = "switchCriticidadMedia";
+            this.switchCriticidadMedia.OffColor = System.Drawing.Color.Gray;
+            this.switchCriticidadMedia.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.switchCriticidadMedia.Size = new System.Drawing.Size(35, 20);
+            this.switchCriticidadMedia.TabIndex = 65;
+            this.switchCriticidadMedia.Value = true;
+            this.switchCriticidadMedia.OnValueChange += new System.EventHandler(this.switchCriticidadMedia_OnValueChange);
+            // 
+            // switchEstadoIncidenteCerrado
+            // 
+            this.switchEstadoIncidenteCerrado.BackColor = System.Drawing.Color.Transparent;
+            this.switchEstadoIncidenteCerrado.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchEstadoIncidenteCerrado.BackgroundImage")));
+            this.switchEstadoIncidenteCerrado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.switchEstadoIncidenteCerrado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.switchEstadoIncidenteCerrado, BunifuAnimatorNS.DecorationType.None);
+            this.switchEstadoIncidenteCerrado.Location = new System.Drawing.Point(37, 360);
+            this.switchEstadoIncidenteCerrado.Name = "switchEstadoIncidenteCerrado";
+            this.switchEstadoIncidenteCerrado.OffColor = System.Drawing.Color.Gray;
+            this.switchEstadoIncidenteCerrado.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.switchEstadoIncidenteCerrado.Size = new System.Drawing.Size(35, 20);
+            this.switchEstadoIncidenteCerrado.TabIndex = 65;
+            this.switchEstadoIncidenteCerrado.Value = false;
+            // 
+            // switchCCTV
+            // 
+            this.switchCCTV.BackColor = System.Drawing.Color.Transparent;
+            this.switchCCTV.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchCCTV.BackgroundImage")));
+            this.switchCCTV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.switchCCTV.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.switchCCTV, BunifuAnimatorNS.DecorationType.None);
+            this.switchCCTV.Location = new System.Drawing.Point(37, 90);
+            this.switchCCTV.Name = "switchCCTV";
+            this.switchCCTV.OffColor = System.Drawing.Color.Gray;
+            this.switchCCTV.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.switchCCTV.Size = new System.Drawing.Size(35, 20);
+            this.switchCCTV.TabIndex = 64;
+            this.switchCCTV.Value = true;
+            // 
+            // switchCriticidadAlta
+            // 
+            this.switchCriticidadAlta.BackColor = System.Drawing.Color.Transparent;
+            this.switchCriticidadAlta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchCriticidadAlta.BackgroundImage")));
+            this.switchCriticidadAlta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.switchCriticidadAlta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.switchCriticidadAlta, BunifuAnimatorNS.DecorationType.None);
+            this.switchCriticidadAlta.Location = new System.Drawing.Point(37, 193);
+            this.switchCriticidadAlta.Name = "switchCriticidadAlta";
+            this.switchCriticidadAlta.OffColor = System.Drawing.Color.Gray;
+            this.switchCriticidadAlta.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.switchCriticidadAlta.Size = new System.Drawing.Size(35, 20);
+            this.switchCriticidadAlta.TabIndex = 64;
+            this.switchCriticidadAlta.Value = true;
+            this.switchCriticidadAlta.OnValueChange += new System.EventHandler(this.switchCriticidadAlta_OnValueChange);
+            // 
+            // switchEstadoIncidenteAbierto
+            // 
+            this.switchEstadoIncidenteAbierto.BackColor = System.Drawing.Color.Transparent;
+            this.switchEstadoIncidenteAbierto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchEstadoIncidenteAbierto.BackgroundImage")));
+            this.switchEstadoIncidenteAbierto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.switchEstadoIncidenteAbierto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.switchEstadoIncidenteAbierto, BunifuAnimatorNS.DecorationType.None);
+            this.switchEstadoIncidenteAbierto.Location = new System.Drawing.Point(37, 331);
+            this.switchEstadoIncidenteAbierto.Name = "switchEstadoIncidenteAbierto";
+            this.switchEstadoIncidenteAbierto.OffColor = System.Drawing.Color.Gray;
+            this.switchEstadoIncidenteAbierto.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.switchEstadoIncidenteAbierto.Size = new System.Drawing.Size(35, 20);
+            this.switchEstadoIncidenteAbierto.TabIndex = 64;
+            this.switchEstadoIncidenteAbierto.Value = true;
+            this.switchEstadoIncidenteAbierto.OnValueChange += new System.EventHandler(this.switchEstadoIncidenteAbierto_OnValueChange);
             // 
             // filtroCCTV
             // 
-            this.filtroCCTV.Activecolor = System.Drawing.Color.Gainsboro;
+            this.filtroCCTV.Activecolor = System.Drawing.Color.Transparent;
             this.filtroCCTV.BackColor = System.Drawing.Color.Transparent;
             this.filtroCCTV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.filtroCCTV.BorderRadius = 0;
             this.filtroCCTV.ButtonText = "CCTV";
             this.filtroCCTV.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.filtroCCTV, BunifuAnimatorNS.DecorationType.None);
             this.filtroCCTV.DisabledColor = System.Drawing.Color.Gray;
             this.filtroCCTV.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtroCCTV.ForeColor = System.Drawing.Color.Silver;
             this.filtroCCTV.Iconcolor = System.Drawing.Color.Transparent;
             this.filtroCCTV.Iconimage = null;
             this.filtroCCTV.Iconimage_right = null;
@@ -366,129 +721,32 @@
             this.filtroCCTV.IconVisible = true;
             this.filtroCCTV.IconZoom = 90D;
             this.filtroCCTV.IsTab = false;
-            this.filtroCCTV.Location = new System.Drawing.Point(67, 9);
+            this.filtroCCTV.Location = new System.Drawing.Point(82, 93);
             this.filtroCCTV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.filtroCCTV.Name = "filtroCCTV";
-            this.filtroCCTV.Normalcolor = System.Drawing.Color.Gainsboro;
-            this.filtroCCTV.OnHovercolor = System.Drawing.Color.Gainsboro;
-            this.filtroCCTV.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.filtroCCTV.Normalcolor = System.Drawing.Color.Transparent;
+            this.filtroCCTV.OnHovercolor = System.Drawing.Color.Transparent;
+            this.filtroCCTV.OnHoverTextColor = System.Drawing.Color.Coral;
             this.filtroCCTV.selected = false;
             this.filtroCCTV.Size = new System.Drawing.Size(50, 17);
-            this.filtroCCTV.TabIndex = 13;
+            this.filtroCCTV.TabIndex = 78;
             this.filtroCCTV.Text = "CCTV";
             this.filtroCCTV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.filtroCCTV.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(33)))), ((int)(((byte)(45)))));
+            this.filtroCCTV.Textcolor = System.Drawing.Color.Silver;
             this.filtroCCTV.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // textBuscarTecnico
-            // 
-            this.textBuscarTecnico.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.textBuscarTecnico.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.textBuscarTecnico.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(43)))), ((int)(((byte)(55)))));
-            this.textBuscarTecnico.BorderThickness = 1;
-            this.textBuscarTecnico.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBuscarTecnico.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBuscarTecnico.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBuscarTecnico.isPassword = false;
-            this.textBuscarTecnico.Location = new System.Drawing.Point(468, 5);
-            this.textBuscarTecnico.Margin = new System.Windows.Forms.Padding(4);
-            this.textBuscarTecnico.Name = "textBuscarTecnico";
-            this.textBuscarTecnico.Size = new System.Drawing.Size(202, 18);
-            this.textBuscarTecnico.TabIndex = 12;
-            this.textBuscarTecnico.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // SearchIcon
-            // 
-            this.SearchIcon.Image = global::MTN_Administration.Properties.Resources._029_search;
-            this.SearchIcon.Location = new System.Drawing.Point(678, 6);
-            this.SearchIcon.Name = "SearchIcon";
-            this.SearchIcon.Size = new System.Drawing.Size(21, 22);
-            this.SearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.SearchIcon.TabIndex = 11;
-            this.SearchIcon.TabStop = false;
-            // 
-            // filtroSeveridadMedia
-            // 
-            this.filtroSeveridadMedia.Activecolor = System.Drawing.Color.Gainsboro;
-            this.filtroSeveridadMedia.BackColor = System.Drawing.Color.Transparent;
-            this.filtroSeveridadMedia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.filtroSeveridadMedia.BorderRadius = 0;
-            this.filtroSeveridadMedia.ButtonText = "Media";
-            this.filtroSeveridadMedia.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.filtroSeveridadMedia.DisabledColor = System.Drawing.Color.Gray;
-            this.filtroSeveridadMedia.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filtroSeveridadMedia.Iconcolor = System.Drawing.Color.Transparent;
-            this.filtroSeveridadMedia.Iconimage = null;
-            this.filtroSeveridadMedia.Iconimage_right = null;
-            this.filtroSeveridadMedia.Iconimage_right_Selected = null;
-            this.filtroSeveridadMedia.Iconimage_Selected = null;
-            this.filtroSeveridadMedia.IconMarginLeft = 0;
-            this.filtroSeveridadMedia.IconMarginRight = 0;
-            this.filtroSeveridadMedia.IconRightVisible = true;
-            this.filtroSeveridadMedia.IconRightZoom = 0D;
-            this.filtroSeveridadMedia.IconVisible = true;
-            this.filtroSeveridadMedia.IconZoom = 90D;
-            this.filtroSeveridadMedia.IsTab = false;
-            this.filtroSeveridadMedia.Location = new System.Drawing.Point(341, 9);
-            this.filtroSeveridadMedia.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.filtroSeveridadMedia.Name = "filtroSeveridadMedia";
-            this.filtroSeveridadMedia.Normalcolor = System.Drawing.Color.Gainsboro;
-            this.filtroSeveridadMedia.OnHovercolor = System.Drawing.Color.Gainsboro;
-            this.filtroSeveridadMedia.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.filtroSeveridadMedia.selected = false;
-            this.filtroSeveridadMedia.Size = new System.Drawing.Size(63, 16);
-            this.filtroSeveridadMedia.TabIndex = 8;
-            this.filtroSeveridadMedia.Text = "Media";
-            this.filtroSeveridadMedia.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.filtroSeveridadMedia.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(33)))), ((int)(((byte)(45)))));
-            this.filtroSeveridadMedia.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // filtroSeveridadAlta
-            // 
-            this.filtroSeveridadAlta.Activecolor = System.Drawing.Color.Gainsboro;
-            this.filtroSeveridadAlta.BackColor = System.Drawing.Color.Transparent;
-            this.filtroSeveridadAlta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.filtroSeveridadAlta.BorderRadius = 0;
-            this.filtroSeveridadAlta.ButtonText = "Alta";
-            this.filtroSeveridadAlta.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.filtroSeveridadAlta.DisabledColor = System.Drawing.Color.Gray;
-            this.filtroSeveridadAlta.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filtroSeveridadAlta.Iconcolor = System.Drawing.Color.Transparent;
-            this.filtroSeveridadAlta.Iconimage = null;
-            this.filtroSeveridadAlta.Iconimage_right = null;
-            this.filtroSeveridadAlta.Iconimage_right_Selected = null;
-            this.filtroSeveridadAlta.Iconimage_Selected = null;
-            this.filtroSeveridadAlta.IconMarginLeft = 0;
-            this.filtroSeveridadAlta.IconMarginRight = 0;
-            this.filtroSeveridadAlta.IconRightVisible = true;
-            this.filtroSeveridadAlta.IconRightZoom = 0D;
-            this.filtroSeveridadAlta.IconVisible = true;
-            this.filtroSeveridadAlta.IconZoom = 90D;
-            this.filtroSeveridadAlta.IsTab = false;
-            this.filtroSeveridadAlta.Location = new System.Drawing.Point(285, 9);
-            this.filtroSeveridadAlta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.filtroSeveridadAlta.Name = "filtroSeveridadAlta";
-            this.filtroSeveridadAlta.Normalcolor = System.Drawing.Color.Gainsboro;
-            this.filtroSeveridadAlta.OnHovercolor = System.Drawing.Color.Gainsboro;
-            this.filtroSeveridadAlta.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.filtroSeveridadAlta.selected = false;
-            this.filtroSeveridadAlta.Size = new System.Drawing.Size(56, 16);
-            this.filtroSeveridadAlta.TabIndex = 7;
-            this.filtroSeveridadAlta.Text = "Alta";
-            this.filtroSeveridadAlta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.filtroSeveridadAlta.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(33)))), ((int)(((byte)(45)))));
-            this.filtroSeveridadAlta.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // filtroAlarmas
             // 
-            this.filtroAlarmas.Activecolor = System.Drawing.Color.Gainsboro;
+            this.filtroAlarmas.Activecolor = System.Drawing.Color.Transparent;
             this.filtroAlarmas.BackColor = System.Drawing.Color.Transparent;
             this.filtroAlarmas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.filtroAlarmas.BorderRadius = 0;
             this.filtroAlarmas.ButtonText = "Alarmas";
             this.filtroAlarmas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.filtroAlarmas, BunifuAnimatorNS.DecorationType.None);
             this.filtroAlarmas.DisabledColor = System.Drawing.Color.Gray;
             this.filtroAlarmas.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtroAlarmas.ForeColor = System.Drawing.Color.Silver;
             this.filtroAlarmas.Iconcolor = System.Drawing.Color.Transparent;
             this.filtroAlarmas.Iconimage = null;
             this.filtroAlarmas.Iconimage_right = null;
@@ -501,111 +759,120 @@
             this.filtroAlarmas.IconVisible = true;
             this.filtroAlarmas.IconZoom = 90D;
             this.filtroAlarmas.IsTab = false;
-            this.filtroAlarmas.Location = new System.Drawing.Point(124, 9);
+            this.filtroAlarmas.Location = new System.Drawing.Point(82, 118);
             this.filtroAlarmas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.filtroAlarmas.Name = "filtroAlarmas";
-            this.filtroAlarmas.Normalcolor = System.Drawing.Color.Gainsboro;
-            this.filtroAlarmas.OnHovercolor = System.Drawing.Color.Gainsboro;
-            this.filtroAlarmas.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.filtroAlarmas.Normalcolor = System.Drawing.Color.Transparent;
+            this.filtroAlarmas.OnHovercolor = System.Drawing.Color.Transparent;
+            this.filtroAlarmas.OnHoverTextColor = System.Drawing.Color.Coral;
             this.filtroAlarmas.selected = false;
             this.filtroAlarmas.Size = new System.Drawing.Size(72, 17);
-            this.filtroAlarmas.TabIndex = 6;
+            this.filtroAlarmas.TabIndex = 73;
             this.filtroAlarmas.Text = "Alarmas";
             this.filtroAlarmas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.filtroAlarmas.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(33)))), ((int)(((byte)(45)))));
+            this.filtroAlarmas.Textcolor = System.Drawing.Color.Silver;
             this.filtroAlarmas.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
-            // sliderFiltroTecnicos
+            // bunifuElipse1
             // 
-            this.sliderFiltroTecnicos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(43)))), ((int)(((byte)(55)))));
-            this.sliderFiltroTecnicos.Location = new System.Drawing.Point(10, 25);
-            this.sliderFiltroTecnicos.Name = "sliderFiltroTecnicos";
-            this.sliderFiltroTecnicos.Size = new System.Drawing.Size(50, 3);
-            this.sliderFiltroTecnicos.TabIndex = 5;
-            this.sliderFiltroTecnicos.TabStop = false;
+            this.bunifuElipse1.ElipseRadius = 20;
+            this.bunifuElipse1.TargetControl = this;
             // 
-            // filtroTodo
+            // transiciones
             // 
-            this.filtroTodo.Activecolor = System.Drawing.Color.Gainsboro;
-            this.filtroTodo.BackColor = System.Drawing.Color.Transparent;
-            this.filtroTodo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.filtroTodo.BorderRadius = 0;
-            this.filtroTodo.ButtonText = "Todos";
-            this.filtroTodo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.filtroTodo.DisabledColor = System.Drawing.Color.Gray;
-            this.filtroTodo.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filtroTodo.Iconcolor = System.Drawing.Color.Transparent;
-            this.filtroTodo.Iconimage = null;
-            this.filtroTodo.Iconimage_right = null;
-            this.filtroTodo.Iconimage_right_Selected = null;
-            this.filtroTodo.Iconimage_Selected = null;
-            this.filtroTodo.IconMarginLeft = 0;
-            this.filtroTodo.IconMarginRight = 0;
-            this.filtroTodo.IconRightVisible = true;
-            this.filtroTodo.IconRightZoom = 0D;
-            this.filtroTodo.IconVisible = true;
-            this.filtroTodo.IconZoom = 90D;
-            this.filtroTodo.IsTab = false;
-            this.filtroTodo.Location = new System.Drawing.Point(10, 9);
-            this.filtroTodo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.filtroTodo.Name = "filtroTodo";
-            this.filtroTodo.Normalcolor = System.Drawing.Color.Gainsboro;
-            this.filtroTodo.OnHovercolor = System.Drawing.Color.Gainsboro;
-            this.filtroTodo.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.filtroTodo.selected = false;
-            this.filtroTodo.Size = new System.Drawing.Size(50, 16);
-            this.filtroTodo.TabIndex = 0;
-            this.filtroTodo.Text = "Todos";
-            this.filtroTodo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.filtroTodo.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(33)))), ((int)(((byte)(45)))));
-            this.filtroTodo.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transiciones.AnimationType = BunifuAnimatorNS.AnimationType.HorizSlide;
+            this.transiciones.Cursor = null;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(0);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.transiciones.DefaultAnimation = animation2;
             // 
             // ABM_Incidentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            this.Controls.Add(this.tablaTecnicos);
-            this.Controls.Add(this.BotonCerrarIncidente);
-            this.Controls.Add(this.BotonEditarInicidente);
-            this.Controls.Add(this.BotonAgregarIncidente);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1240, 780);
+            this.Controls.Add(this.panelTabla);
+            this.Controls.Add(this.Header);
+            this.transiciones.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ABM_Incidentes";
-            this.Size = new System.Drawing.Size(727, 561);
-            ((System.ComponentModel.ISupportInitialize)(this.tablaTecnicos)).EndInit();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Header.ResumeLayout(false);
+            this.Header.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.headerIncidentePicture)).EndInit();
+            this.panelTabla.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tablaIncidentes)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panelSwitches.ResumeLayout(false);
+            this.panelSwitches.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderFiltroTecnicos)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Bunifu.Framework.UI.BunifuCustomDataGrid tablaTecnicos;
-        private Bunifu.Framework.UI.BunifuThinButton2 BotonCerrarIncidente;
-        private Bunifu.Framework.UI.BunifuThinButton2 BotonEditarInicidente;
+        private System.Windows.Forms.Panel Header;
+        private System.Windows.Forms.DataGridViewTextBoxColumn severidad;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
+        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
+        private System.Windows.Forms.Panel panelTabla;
         private Bunifu.Framework.UI.BunifuThinButton2 BotonAgregarIncidente;
-        private System.Windows.Forms.Panel panel1;
-        private Bunifu.Framework.UI.BunifuFlatButton filtroCCTV;
-        private Bunifu.Framework.UI.BunifuMetroTextbox textBuscarTecnico;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private System.Windows.Forms.Label minimize;
+        private System.Windows.Forms.Label close;
+        private System.Windows.Forms.PictureBox headerIncidentePicture;
+        private System.Windows.Forms.Label TituloHeader;
+        private System.Windows.Forms.Panel panelSwitches;
         private System.Windows.Forms.PictureBox SearchIcon;
-        private Bunifu.Framework.UI.BunifuFlatButton filtroSeveridadMedia;
-        private Bunifu.Framework.UI.BunifuFlatButton filtroSeveridadAlta;
+        private Bunifu.Framework.UI.BunifuCustomLabel LabelswitchEstadoIncidenteCerrado;
+        private Bunifu.Framework.UI.BunifuMetroTextbox textBuscarTecnico;
+        private Bunifu.Framework.UI.BunifuCustomLabel LabelSwitchEstadoIncidenteProceso;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel6;
+        private Bunifu.Framework.UI.BunifuiOSSwitch switchCriticidadBaja;
+        private Bunifu.Framework.UI.BunifuiOSSwitch switchEstadoIncidenteProceso;
+        private Bunifu.Framework.UI.BunifuiOSSwitch switchAlarmas;
+        private Bunifu.Framework.UI.BunifuiOSSwitch switchCriticidadMedia;
+        private Bunifu.Framework.UI.BunifuiOSSwitch switchEstadoIncidenteCerrado;
+        private Bunifu.Framework.UI.BunifuiOSSwitch switchCCTV;
+        private Bunifu.Framework.UI.BunifuiOSSwitch switchCriticidadAlta;
+        private Bunifu.Framework.UI.BunifuiOSSwitch switchEstadoIncidenteAbierto;
+        private Bunifu.Framework.UI.BunifuFlatButton filtroCCTV;
         private Bunifu.Framework.UI.BunifuFlatButton filtroAlarmas;
-        private System.Windows.Forms.PictureBox sliderFiltroTecnicos;
-        private Bunifu.Framework.UI.BunifuFlatButton filtroTodo;
+        private Bunifu.Framework.UI.BunifuiOSSwitch switchCriticidadMuyBaja;
+        private Bunifu.Framework.UI.BunifuiOSSwitch switchCriticidadMuyAlta;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
+        private BunifuAnimatorNS.BunifuTransition transiciones;
+        private Bunifu.Framework.UI.BunifuCustomDataGrid tablaIncidentes;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn sucursal;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoDispositivo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dispositivo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Camara;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn severidad;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private Bunifu.Framework.UI.BunifuFlatButton filtroSeveridadBaja;
-        private Bunifu.Framework.UI.BunifuFlatButton filtroSeveridadTodas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn criticidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn asignado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estadoIncidente;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private Bunifu.Framework.UI.BunifuThinButton2 BotonVerIncidente;
     }
 }

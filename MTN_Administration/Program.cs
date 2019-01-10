@@ -21,7 +21,7 @@ namespace MTN_Administration
             Application.Run(new Home());
 
 
-            //Application.Run(new Alert("Un Mensaje" ,AlertType.error));
+            
 
         }
 

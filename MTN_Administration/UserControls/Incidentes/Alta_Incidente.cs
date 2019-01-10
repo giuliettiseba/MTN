@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -8,17 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MTN_RestAPI.Models;
+using MTN_Administration.Alerts;
 
 namespace MTN_Administration.Tabs
 {
-    public partial class panelFondo : UserControl
+    public partial class Alta_Incidente : UserControl
     {
         APIHelper aPIHelper;
         private readonly Bitmap image_ok;
         private readonly Bitmap image_error;
         private readonly Bitmap image_warning;
 
-        public panelFondo(APIHelper aPIHelper)
+        public Alta_Incidente(APIHelper aPIHelper)
         {
             this.aPIHelper = aPIHelper;
 
@@ -26,44 +27,20 @@ namespace MTN_Administration.Tabs
             image_error = new Bitmap(global::MTN_Administration.Properties.Resources.error, new Size(15, 15));
             image_warning = new Bitmap(global::MTN_Administration.Properties.Resources.warning, new Size(15, 15));
 
-
-
             InitializeComponent();
-
             panel1.Visible = false;
             panel2.Visible = false;
-            panel3.Visible = false;
             panel1.Location = new System.Drawing.Point(0, 0);
             panel2.Location = new System.Drawing.Point(0, 0);
-            panel3.Location = new System.Drawing.Point(0, 0);
 
             bunifuTransition1.ShowSync(panel1);
 
         }
-
-
-
         List<Cliente> listaClientes;
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-
-            //create a for loop thats sets the odd rows color to White and the even rows color to a different color
-            for (int i = 0; i < tablaClientes.Rows.Count; i++)
-            {
-                // odd rows
-                if (i % 2 != 0)
-                {
-                    tablaClientes.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.White;
-                }
-                // even rows
-                else
-                {
-                    tablaClientes.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(246, 247, 252);
-                }
-            }
-
             listaClientes = aPIHelper.GetClientesHelper().GetClientes(); // Obtener Lista de clientes
 
             // Llenar la tabla cliente con todos los clientes
@@ -71,6 +48,21 @@ namespace MTN_Administration.Tabs
             {
                 AddItem(cliente);
             }
+
+
+            comboBoxEstado.DisplayMember = "value";
+            comboBoxEstado.ValueMember = "key";
+            comboBoxEstado.DataSource = new BindingSource(aPIHelper.GetEstados(), null);
+
+
+            comboBoxCriticidad.DisplayMember = "value";
+            comboBoxCriticidad.ValueMember = "key";
+            comboBoxCriticidad.DataSource = new BindingSource(aPIHelper.GetCriticidad(), null);
+
+/*
+            ComboBoxEstadoIncidente.DisplayMember = "value";
+            ComboBoxEstadoIncidente.ValueMember = "key";
+            ComboBoxEstadoIncidente.DataSource = new BindingSource(aPIHelper.GetEstadoIncidente(), null);*/
 
         }
 
@@ -86,12 +78,12 @@ namespace MTN_Administration.Tabs
 
         private void AddItem(DispositivoCCTV dispositivoCCTV)
         {
-            tablaMantenible.Rows.Add(dispositivoCCTV.Id, "[DVR] -> " + dispositivoCCTV.Nombre); // Inserta una linea nueva en la tabla clientes
+            tablaMantenible.Rows.Add(dispositivoCCTV.Id, null, "dispositivoCCTV", "[DVR] -> " + dispositivoCCTV.Nombre); // Inserta una linea nueva en la tabla clientes
         }
 
         private void AddItem(DispositivoCCTV dispositivoCCTV, Camara camara)
         {
-            tablaMantenible.Rows.Add(camara.Id, "[CAMARA]  -> (" + dispositivoCCTV.Nombre + ") : " + camara.Pos + " - " + camara.Nombre); // Inserta una linea nueva en la tabla clientes
+            tablaMantenible.Rows.Add(dispositivoCCTV.Id, camara.Id, "camara", "[CAMARA]  -> (" + dispositivoCCTV.Nombre + ") : " + camara.Pos + " - " + camara.Nombre); // Inserta una linea nueva en la tabla clientes
         }
 
 
@@ -135,25 +127,99 @@ namespace MTN_Administration.Tabs
 
         private void buttonSiguiente_Click(object sender, EventArgs e)
         {
-
             bunifuTransition1.HideSync(panel1);
             bunifuTransition1.ShowSync(panel2);
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
+            ((ABM_Incidentes)Parent).showPanelSwitchs();
             Dispose();
         }
 
-        private void bunifuThinButton24_Click(object sender, EventArgs e)
+        private void ButtonFinalizar_Click(object sender, EventArgs e)
         {
-            bunifuTransition1.HideSync(panel3);
-            bunifuTransition1.ShowSync(panel2);
-        }
+            Mantenible mantenible;
 
-        private void bunifuThinButton23_Click(object sender, EventArgs e)
-        {
+            /// Crear un nuevo incidente
+            Incidente newIncidente = new Incidente();
 
+
+            /// Obtener el cliente seleccionado
+            DataGridViewSelectedRowCollection rowCliente = tablaClientes.SelectedRows;
+            int id_sel_cliente = (int)rowCliente[0].Cells["id_cliente"].Value;
+            newIncidente.Id_cliente = id_sel_cliente;
+
+            /// Obtener la sucursal seleccionada
+            DataGridViewSelectedRowCollection rowSucursal = tablaSucursales.SelectedRows;
+            int id_sel_sucursal = (int)rowSucursal[0].Cells["id_sucursal"].Value;
+            newIncidente.Id_suc = id_sel_sucursal;
+
+            /// obtener el tipo de mantenible
+            DataGridViewSelectedRowCollection rowMantenible = tablaMantenible.SelectedRows;
+            string sel_tipoMantenible = (String)rowMantenible[0].Cells["tipo"].Value;
+
+            /// obtener del combobox el nuevo estado para el dispositivo
+            int id_estado = (int)comboBoxEstado.SelectedValue;
+
+
+            switch (sel_tipoMantenible)
+            {
+                case "dispositivoCCTV":
+                    {
+
+                        /// Obtener el dispositivo
+                        int id_sel_disp = (int)rowMantenible[0].Cells["id_disp"].Value;
+                        DispositivoCCTV dispositivo = aPIHelper.GetCCTVHelper().GetDispositivoCCTV(id_sel_sucursal, id_sel_disp);
+                        mantenible = dispositivo;
+
+                        /// cambiar el estado del dispositivo
+                        dispositivo.Id_estado = id_estado;
+                        aPIHelper.GetCCTVHelper().AddDispositivoCCTV(dispositivo);
+
+                        /// Peparar datos para crear incidente
+                        newIncidente.Id_tipo_mantenible = 1;
+                        newIncidente.Id_1 = id_sel_disp;
+                    }
+                    break;
+
+                case "camara":
+                    {
+                        /// Obtener la camara
+                        int id_sel_disp = (int)rowMantenible[0].Cells["id_disp"].Value;
+                        int id_sel_cam = (int)rowMantenible[0].Cells["id_cam"].Value;
+                        Camara camara = aPIHelper.GetCCTVHelper().GetCamara(id_sel_disp, id_sel_cam);
+
+                        /// Cambiar el estado de la camara
+                        camara.Id_estado = id_estado;
+                        aPIHelper.GetCCTVHelper().AddCamara(camara);
+
+                        /// Peparar datos para crear incidente
+                        newIncidente.Id_tipo_mantenible = 2;
+                        newIncidente.Id_1 = id_sel_disp;
+                        newIncidente.Id_2 = id_sel_cam;
+                        mantenible = camara;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+             /// Obtener criticidad 
+            newIncidente.Id_criticidad = (int)comboBoxCriticidad.SelectedValue;
+
+            /// Obtener Falla
+            newIncidente.Falla = TextFalla.Text;
+
+            /// Solo se puede marcar un incidente como abierto desde esta ventana
+
+            newIncidente.Id_estado_incidente = (int) TypeEstadoIncidente.Abierto;
+
+            /// Agregar Incidente y Mostrar notificacion
+            MensajeAlerta resultado = aPIHelper.GetIncidenteHelper().AddIncidente(newIncidente);
+            Alert.ShowAlert(resultado);
+            ((ABM_Incidentes)Parent).showPanelSwitchs();
+            Dispose();
         }
 
         private void bunifuThinButton22_Click(object sender, EventArgs e)
@@ -163,49 +229,29 @@ namespace MTN_Administration.Tabs
 
         }
 
-        private void bunifuThinButton21_Click(object sender, EventArgs e)
-        {
-            bunifuTransition1.HideSync(panel2);
-            bunifuTransition1.ShowSync(panel3);
-        }
-
         private void tablaSucursales_SelectionChanged(object sender, EventArgs e)
         {
-
-
             tablaMantenible.Rows.Clear();  // Eliminar clientes
 
             try
             {
-
                 int id_sucursal_Seleccionada = Convert.ToInt16(tablaSucursales.SelectedRows[0].Cells["id_sucursal"].Value);
-
-
                 List<DispositivoCCTV> listadispositivoCCTV = aPIHelper.GetCCTVHelper().GetDispositivosCCTVSucursal(id_sucursal_Seleccionada);
-
                 foreach (DispositivoCCTV dispositivoCCTV in listadispositivoCCTV)
                 {
                     if (dispositivoCCTV.Nombre.ToUpper().Contains(TextBuscarMantenible.Text.ToUpper())) AddItem(dispositivoCCTV);
-
                     List<Camara> listaCamaras = aPIHelper.GetCCTVHelper().GetCamarasDispositivo(dispositivoCCTV.Id);
-
                     foreach (Camara camara in listaCamaras)
                     {
                         if (camara.Nombre.ToUpper().Contains(TextBuscarMantenible.Text.ToUpper())) AddItem(dispositivoCCTV, camara);
                     }
                 }
-
             }
-
-
             catch (Exception exp)
             {
                 Console.WriteLine(exp);
-
             }
-
             tablaMantenible.Refresh(); // Refrescar tabla
-
         }
 
 
@@ -214,5 +260,30 @@ namespace MTN_Administration.Tabs
         {
 
         }
+
+
+
+        private void MoverSliderSeveridad(object sender)
+        {
+            sliderFiltroDispositivo.Left = ((Bunifu.Framework.UI.BunifuFlatButton)sender).Left;
+            sliderFiltroDispositivo.Width = ((Bunifu.Framework.UI.BunifuFlatButton)sender).Width;
+        }
+
+
+        private void filtroTodo_Click(object sender, EventArgs e)
+        {
+            MoverSliderSeveridad(sender);
+        }
+
+        private void filtroCCTV_Click(object sender, EventArgs e)
+        {
+            MoverSliderSeveridad(sender);
+        }
+
+        private void filtroAlarmas_Click(object sender, EventArgs e)
+        {
+            MoverSliderSeveridad(sender);
+        }
+
     }
 }

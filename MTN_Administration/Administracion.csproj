@@ -59,13 +59,19 @@
       <DependentUpon>Alert.cs</DependentUpon>
     </Compile>
     <Compile Include="Alerts\MensajeAlerta.cs" />
+    <Compile Include="APIHelpers\MantenimientoHelper.cs" />
+    <Compile Include="customTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="APIHelpers\IncidenteHelper.cs" />
     <Compile Include="APIHelpers\ChecksumHelper.cs" />
     <Compile Include="APIHelpers\ClientesHelper.cs" />
     <Compile Include="APIHelpers\CCTVHelper.cs" />
+    <Compile Include="APIHelpers\FileStorageHelper.cs" />
     <Compile Include="APIHelpers\Logger.cs" />
     <Compile Include="APIHelpers\TecnicosHelper.cs" />
     <Compile Include="APIHelpers\SucursalesHelper.cs" />
-    <Compile Include="CustomComboBox.cs">
+    <Compile Include="UserControls\Sucursales\CustomComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Splash.cs">
@@ -80,6 +86,24 @@
     <Compile Include="UserControls\DispositivosCCTV\ABM_Dispositivos.Designer.cs">
       <DependentUpon>ABM_Dispositivos.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Incidentes\Cerrar_Incidente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Incidentes\Cerrar_Incidente.Designer.cs">
+      <DependentUpon>Cerrar_Incidente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Mantenimientos\AltaMantenimiento.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Mantenimientos\AltaMantenimiento.Designer.cs">
+      <DependentUpon>AltaMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Incidentes\Ver_Incidente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Incidentes\Ver_Incidente.Designer.cs">
+      <DependentUpon>Ver_Incidente.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Incidentes\Alta_Incidente.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -87,10 +111,16 @@
       <DependentUpon>Alta_Incidente.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Incidentes\ABM_Incidentes.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserControls\Incidentes\ABM_Incidentes.Designer.cs">
       <DependentUpon>ABM_Incidentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Mantenimientos\ABM_Mantenimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\Mantenimientos\ABM_Mantenimientos.Designer.cs">
+      <DependentUpon>ABM_Mantenimientos.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Sucursales\ABM_Sucursales.cs">
       <SubType>UserControl</SubType>
@@ -165,11 +195,23 @@
     <EmbeddedResource Include="UserControls\DispositivosCCTV\ABM_Dispositivos.resx">
       <DependentUpon>ABM_Dispositivos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Incidentes\Cerrar_Incidente.resx">
+      <DependentUpon>Cerrar_Incidente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Mantenimientos\AltaMantenimiento.resx">
+      <DependentUpon>AltaMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Incidentes\Ver_Incidente.resx">
+      <DependentUpon>Ver_Incidente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Incidentes\Alta_Incidente.resx">
       <DependentUpon>Alta_Incidente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Incidentes\ABM_Incidentes.resx">
       <DependentUpon>ABM_Incidentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Mantenimientos\ABM_Mantenimientos.resx">
+      <DependentUpon>ABM_Mantenimientos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Sucursales\ABM_Sucursales.resx">
       <DependentUpon>ABM_Sucursales.cs</DependentUpon>
@@ -268,6 +310,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\027-report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings-8.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

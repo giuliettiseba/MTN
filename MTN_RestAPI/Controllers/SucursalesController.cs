@@ -51,6 +51,19 @@ namespace MTN_RestAPI.Controllers
             }
         }
 
+        public IHttpActionResult Get([FromUri] string suc)
+        {
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
+            {
+
+                db.Open();
+                Sucursal respuesta = db.Query<Sucursal>("SELECT * FROM SUCURSALES WHERE id = " + suc).FirstOrDefault();
+                db.Close();
+                return Ok(respuesta);
+            }
+        }
+
+
         // POST api/Sucursales
         public IHttpActionResult Post([FromUri] Sucursal sucursal)
         {

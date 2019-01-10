@@ -135,10 +135,8 @@ namespace MTN_Administration
             RefreshTable(FiltosTecnicos.analistas);
         }
 
-        private void TextBuscarTecnico_KeyDown(object sender, KeyEventArgs e)
+        private void textBuscarTecnico_OnValueChanged(object sender, EventArgs e)
         {
-            sliderFiltroTecnicos.Left = textBuscarTecnico.Left;
-            sliderFiltroTecnicos.Width = textBuscarTecnico.Width;
             RefreshTable(textBuscarTecnico.Text);
         }
 

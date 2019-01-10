@@ -130,5 +130,9 @@ namespace MTN_Administration.Tabs
             return aPIHelper.GetClientesHelper().GetCliente(id_cliente);
         }
 
+        private void tablaClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ButtonEditarCliente_Click(sender, e);
+        }
     }
 }

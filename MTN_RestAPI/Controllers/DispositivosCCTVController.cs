@@ -150,13 +150,15 @@ namespace MTN_RestAPI.Controllers
         // DELETE api/Dispositivos/id
         public IHttpActionResult Delete(int id)
         {
-            string sql = "DELETE FROM DispositivosCCTV WHERE id=" + id;
+            string sql1 = "DELETE FROM Dispositivo_tiene_camara WHERE id_dispositivo =" + id;
+            string sql2 = "DELETE FROM DispositivosCCTV WHERE id=" + id;
 
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
-                var affectedRows = db.Execute(sql);
-                if (affectedRows == 1)
-                    return Ok(affectedRows);
+                var affectedRows1 = db.Execute(sql1);
+                var affectedRows2 = db.Execute(sql2);
+                if (affectedRows2 == 1)
+                    return Ok(affectedRows2);
                 else return BadRequest("No se encontro un DispositivosCCTV con el ID:" + id);
             }
         }

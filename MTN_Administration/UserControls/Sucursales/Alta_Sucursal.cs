@@ -104,7 +104,7 @@ namespace MTN_Administration
             newSucursal.Id_localidad = (int) comboBoxLocalidad.SelectedValue;
             //   newTecnico.foto = ImageProcess.imageToByteArray(pictureFoto.Image);
 
-            MensajeAlerta resultado = aPIHelper.GetSucursalesHelper().AddCliente(newSucursal);
+            MensajeAlerta resultado = aPIHelper.GetSucursalesHelper().AddSucursal(newSucursal);
             Alert.ShowAlert(resultado);
 
 

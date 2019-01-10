@@ -48,6 +48,11 @@ namespace MTN_Administration
                 this.Left = (Screen.PrimaryScreen.Bounds.Width / 2) - (this.Width / 2);
                 Bunifu.Framework.Lib.Elipse.Apply(this, 20);
             }
+
+
+
+
+
         }
 
         internal APIHelper GetAPIHelper()
@@ -175,21 +180,34 @@ namespace MTN_Administration
         private void BottonIncidente_Click(object sender, EventArgs e)
         {
 
-            DisposeAllPanels();
+            //DisposeAllPanels();
             aBM_Incidentes = new ABM_Incidentes(aPIHelper);
+            aBM_Incidentes.Owner = this;
             aBM_Incidentes.Dock = System.Windows.Forms.DockStyle.Fill;
-            aBM_Incidentes.Location = new System.Drawing.Point(236, 39);
             aBM_Incidentes.Name = "aBM_Incidentes";
-            aBM_Incidentes.Size = new System.Drawing.Size(739, 561);
             aBM_Incidentes.TabIndex = 2;
-            Controls.Add(this.aBM_Incidentes);
+            //Controls.Add(this.aBM_Incidentes);
+            aBM_Incidentes.Show();
             aBM_Incidentes.BringToFront();
-            TituloHeader.Text = "Administracion de Incidentes";
-            ShowHeaderIcon(headerIncidentePicture);
+            //TituloHeader.Text = "Administracion de Incidentes";
+            //ShowHeaderIcon(headerIncidentePicture);
         }
 
-        private void Home_Load(object sender, EventArgs e)
+
+
+
+        ABM_Mantenimientos aBM_Mantenimientos;
+
+        private void BunifuFlatButton1_Click_1(object sender, EventArgs e)
         {
+            aBM_Mantenimientos = new ABM_Mantenimientos(aPIHelper);
+            aBM_Mantenimientos.Owner = this;
+            aBM_Mantenimientos.Dock = System.Windows.Forms.DockStyle.Fill;
+            aBM_Mantenimientos.Name = "aBM_Mantenimientos";
+            aBM_Mantenimientos.TabIndex = 2;
+            aBM_Mantenimientos.Show();
+            aBM_Mantenimientos.BringToFront();
+
         }
     }
 }

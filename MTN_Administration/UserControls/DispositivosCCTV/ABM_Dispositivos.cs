@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MTN_RestAPI.Models;
+using MTN_Administration.Alerts;
 
 namespace MTN_Administration.Tabs
 {
     public partial class ABM_Dispositivos : UserControl
     {
+        APIHelper aPIHelper;
         private Alta_Dispositivo alta_Dispositivo;
+        private List<DispositivoCCTV> listaGrabadores;
         private Bitmap image_ok;
         private Bitmap image_error;
         private Bitmap image_warning;
@@ -22,27 +25,17 @@ namespace MTN_Administration.Tabs
         {
             this.aPIHelper = aPIHelper;
             InitializeComponent();
-            image_ok = new Bitmap(global::MTN_Administration.Properties.Resources.success, new Size(15,15));
+            image_ok = new Bitmap(global::MTN_Administration.Properties.Resources.success, new Size(15, 15));
             image_error = new Bitmap(global::MTN_Administration.Properties.Resources.error, new Size(15, 15));
             image_warning = new Bitmap(global::MTN_Administration.Properties.Resources.warning, new Size(15, 15));
-
-            tablaSucursales.Columns[0].Visible = false;
         }
-
-
-
-        APIHelper aPIHelper;
-
-        private List<DispositivoCCTV> listaGrabadores;
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-
             comboCliente.DisplayMember = "Nombre";
             comboCliente.ValueMember = "id";
             comboCliente.DataSource = new BindingSource(aPIHelper.GetClientesHelper().GetClientes(), null);
-
         }
 
         public void RefreshTable()
@@ -53,11 +46,10 @@ namespace MTN_Administration.Tabs
 
             foreach (DispositivoCCTV grabador in listaGrabadores)
             {
-                 AddItem(grabador);
+                AddItem(grabador);
             }
 
         }
-
 
         private void AddItem(DispositivoCCTV grabador)
         {
@@ -71,7 +63,8 @@ namespace MTN_Administration.Tabs
             Image image;
             switch (grabador.Id_estado)
             {
-                case 1: image = image_ok;
+                case 1:
+                    image = image_ok;
                     break;
                 case 2:
                     image = image_error;
@@ -80,23 +73,29 @@ namespace MTN_Administration.Tabs
                     image = image_warning;
                     break;
 
-            default:
+                default:
                     image = null;
                     break;
             }
             tablaGrabadoresDigitales.Rows[tablaGrabadoresDigitales.Rows.Count - 1].Cells["estado"].Value = image;
         }
 
-        
         private void BotonAgregarDispotivo_Click(object sender, EventArgs e)
         {
-            this.alta_Dispositivo = new Alta_Dispositivo(aPIHelper,SucursalSeleccionada());
-            this.alta_Dispositivo.Location = new System.Drawing.Point(0, 0);
-            this.alta_Dispositivo.Name = "alta_Cliente";
-            this.alta_Dispositivo.Size = new System.Drawing.Size(727, 561);
-            this.alta_Dispositivo.TabIndex = 6;
-            this.Controls.Add(this.alta_Dispositivo);
-            this.alta_Dispositivo.BringToFront();
+            if (SucursalSeleccionada() != 0)
+            {
+                this.alta_Dispositivo = new Alta_Dispositivo(aPIHelper, ObtenerClienteSeleccionado().Id, SucursalSeleccionada());
+                this.alta_Dispositivo.Location = new System.Drawing.Point(0, 0);
+                this.alta_Dispositivo.Name = "alta_Cliente";
+                this.alta_Dispositivo.Size = new System.Drawing.Size(727, 561);
+                this.alta_Dispositivo.TabIndex = 6;
+                this.Controls.Add(this.alta_Dispositivo);
+                this.alta_Dispositivo.BringToFront();
+            }
+            else
+            {
+                Alert.ShowAlert("ERROR: Se debe agregar una sucural al cliente.", AlertType.error);
+            }
         }
 
 
@@ -111,20 +110,42 @@ namespace MTN_Administration.Tabs
             // Cargo la interfaz 
             BotonAgregarDispotivo_Click(sender, e);
 
-           // completo los campos
+            // completo los campos
             alta_Dispositivo.Cargar((int)comboCliente.SelectedValue, dispositivoCCTV);
         }
 
-        private void TablaSucursal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void TablaDipositivo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             buttonEditarDispositivo_Click(sender, e);
         }
 
 
-        private void BotonEliminar_Click(object sender, EventArgs e)
+        private Cliente ObtenerClienteSeleccionado()
+        {
+
+            int id_cliente = (int)comboCliente.SelectedValue;
+            return aPIHelper.GetClientesHelper().GetCliente(id_cliente);
+        }
+
+        private Sucursal ObtenerSucuralSeleccionada()
+        {
+            DataGridViewSelectedRowCollection selectedRow = tablaSucursales.SelectedRows;
+            int id_sucursal = (int)selectedRow[0].Cells["idSuc"].Value;
+            return aPIHelper.GetSucursalesHelper().GetSucursal(ObtenerClienteSeleccionado().Id, id_sucursal);
+        }
+
+        private DispositivoCCTV ObtenerDispositivoSeleccionado()
         {
             DataGridViewSelectedRowCollection selectedRow = tablaGrabadoresDigitales.SelectedRows;
-            aPIHelper.GetCCTVHelper().RemoveDispositivoCCTV((int)selectedRow[0].Cells["id"].Value);
+            int id_dispositivo = (int)selectedRow[0].Cells["id"].Value;
+            return aPIHelper.GetCCTVHelper().GetDispositivoCCTV(ObtenerSucuralSeleccionada().Id, id_dispositivo);
+        }
+
+        private void BotonEliminar_Click(object sender, EventArgs e)
+        {
+
+            MensajeAlerta resultado = aPIHelper.GetCCTVHelper().RemoveDispositivoCCTV(ObtenerDispositivoSeleccionado());
+            Alert.ShowAlert(resultado);
             RefreshTable();
         }
 
@@ -161,11 +182,11 @@ namespace MTN_Administration.Tabs
         {
             DataGridViewSelectedRowCollection selectedRow = tablaSucursales.SelectedRows;
 
-            if (selectedRow.Count != 0 && selectedRow[0].Cells["idSuc"].Value != null )
+            if (selectedRow.Count != 0 && selectedRow[0].Cells["idSuc"].Value != null)
                 return (int)selectedRow[0].Cells["idSuc"].Value;
             return 0;
         }
 
-   
+
     }
 }

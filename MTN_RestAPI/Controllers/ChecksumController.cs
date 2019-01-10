@@ -21,6 +21,11 @@ namespace MTN_RestAPI.Controllers
         public IHttpActionResult Get(String id)
         {
             string sqlquery = "SELECT CHECKSUM_AGG(binary_checksum(*)) FROM " + id;
+            if (id == "Mantenimientos") {
+                sqlquery = "select CHECKSUM_AGG(binary_checksum(*)) FROM Mantenimientos JOIN Mantenimiento_tiene_Incidentes ON Mantenimientos.id = Mantenimiento_tiene_Incidentes.id_mantenimiento JOIN Incidentes ON Mantenimiento_tiene_Incidentes.id_incidente = Incidentes.id;";
+            }
+
+            
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
             {
                 return Ok(db.Query<int>(sqlquery).FirstOrDefault());
@@ -45,6 +50,7 @@ namespace MTN_RestAPI.Controllers
                     case "camaras": sp = "sp_getChecksumCamarasDispositivo"; break;
                     case "dispositivosCCTV": sp = "sp_getChecksumDispositivoSucursal"; break;
                     case "sucursales": sp = "sp_getChecksumSucursales"; break;
+
                     default:
                         break;
                 }

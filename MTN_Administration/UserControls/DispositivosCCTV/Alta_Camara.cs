@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MTN_RestAPI.Models;
 using MTN_Administration.Tabs;
+using MTN_Administration.Alerts;
 
 namespace MTN_Administration
 {
@@ -45,9 +46,7 @@ namespace MTN_Administration
             comboBoxEstado.ValueMember = "key";
             comboBoxEstado.DataSource = new BindingSource(aPIHelper.GetEstados(), null);
 
-
             comboBoxPos.DataSource = new BindingSource(aPIHelper.GetCCTVHelper().GetPosicionesDisponibles(id_dispositivo), null);
-
 
         }
 
@@ -57,7 +56,6 @@ namespace MTN_Administration
             comboBoxModelo.DisplayMember = "nombre";
             comboBoxModelo.ValueMember = "id";
             comboBoxModelo.DataSource = new BindingSource(aPIHelper.GetCCTVHelper().GetModelosMarcasCamaras((int)comboBoxMarca.SelectedValue), null);
-
         }
 
 
@@ -129,10 +127,10 @@ namespace MTN_Administration
             newCamara.Mask += Text_Mask_OCT_3.Text + ".";
             newCamara.Mask += Text_Mask_OCT_4.Text;
 
-            newCamara.Gateway = Text_Mask_OCT_1.Text + ".";
-            newCamara.Gateway += Text_Mask_OCT_2.Text + ".";
-            newCamara.Gateway += Text_Mask_OCT_3.Text + ".";
-            newCamara.Gateway += Text_Mask_OCT_4.Text;
+            newCamara.Gateway = Text_Gateway_OCT_1.Text + ".";
+            newCamara.Gateway += Text_Gateway_OCT_2.Text + ".";
+            newCamara.Gateway += Text_Gateway_OCT_3.Text + ".";
+            newCamara.Gateway += Text_Gateway_OCT_4.Text;
 
             newCamara.FechaInsta = DatePickerFechaInstalacion.Value;
 
@@ -142,9 +140,9 @@ namespace MTN_Administration
             newCamara.Id_dispositivo = id_dispositivo;
             newCamara.Pos = (int)comboBoxPos.SelectedValue;
 
-            string result = aPIHelper.GetCCTVHelper().AddCamara(newCamara);
-            System.Windows.Forms.MessageBox.Show(result);
-            
+            MensajeAlerta resultado =aPIHelper.GetCCTVHelper().AddCamara(newCamara);
+            Alert.ShowAlert(resultado);
+
             ((Alta_Dispositivo)this.Parent).RefreshTable();
             this.Dispose();
         }

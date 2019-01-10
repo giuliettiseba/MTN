@@ -50,6 +50,8 @@ namespace MTN_Administration.APIHelpers
 
         internal Tecnico GetTecnico(int id_tecnico)
         {
+            if (tecnicos == null) GetTecnicos();
+
             return tecnicos.Find(x => x.Id == id_tecnico);
         }
 

@@ -70,6 +70,7 @@ namespace MTN_Administration.APIHelpers
         /// <returns>Cliente con el ID pasdo</returns>
         public Cliente GetCliente(int id_cliente)
         {
+            if (_clientes == null) GetClientes();
             return _clientes.Find(x => x.Id == id_cliente);
         }
         

@@ -21,15 +21,15 @@ namespace MTN_RestAPI.Controllers
             switch (id)
             {
 
-                case "MarcaCCTV":
+                case "MarcasCCTV":
 
                     using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
                     {
 
                         db.Open();
                         IDbTransaction transaction = db.BeginTransaction();
-                        List<MarcaCCTV> marcaCCTV = db.Query<MarcaCCTV>("SELECT * FROM MarcaCCTV", transaction: transaction).ToList();
-                        int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM MarcaCCTV", transaction: transaction).First();
+                        List<MarcaCCTV> marcaCCTV = db.Query<MarcaCCTV>("SELECT * FROM MarcasCCTV", transaction: transaction).ToList();
+                        int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM MarcasCCTV", transaction: transaction).First();
                         transaction.Commit();
                         db.Close();
                         Resultado<MarcaCCTV> resultado = new Resultado<MarcaCCTV>(checksum, marcaCCTV);
@@ -63,6 +63,34 @@ namespace MTN_RestAPI.Controllers
                         transaction.Commit();
                         db.Close();
                         Resultado<ModeloCamara> resultado = new Resultado<ModeloCamara>(checksum, respuesta);
+                        return Ok(resultado);
+                    }
+
+                case "Criticidades":
+                    List<Criticidad> criticidades = new List<Criticidad>();
+                    using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
+                    {
+                        db.Open();
+                        IDbTransaction transaction = db.BeginTransaction();
+                        List<Criticidad> respuesta = db.Query<Criticidad>("Select * FROM Criticidades", transaction: transaction).ToList();
+                        int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM Criticidades", transaction: transaction).First();
+                        transaction.Commit();
+                        db.Close();
+                        Resultado<Criticidad> resultado = new Resultado<Criticidad>(checksum, respuesta);
+                        return Ok(resultado);
+                    }
+
+                case "EstadosIncidente":
+                    List<EstadoIncidente> estadosIncidente = new List<EstadoIncidente>();
+                    using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
+                    {
+                        db.Open();
+                        IDbTransaction transaction = db.BeginTransaction();
+                        List<EstadoIncidente> respuesta = db.Query<EstadoIncidente>("Select * FROM EstadosIncidente", transaction: transaction).ToList();
+                        int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM EstadosIncidente", transaction: transaction).First();
+                        transaction.Commit();
+                        db.Close();
+                        Resultado<EstadoIncidente> resultado = new Resultado<EstadoIncidente>(checksum, respuesta);
                         return Ok(resultado);
                     }
 

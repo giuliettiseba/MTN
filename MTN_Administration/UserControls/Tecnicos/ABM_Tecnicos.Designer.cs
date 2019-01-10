@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Tecnicos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SearchIcon = new System.Windows.Forms.PictureBox();
             this.filtroJefes = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -143,7 +143,7 @@
             this.textBuscarTecnico.Size = new System.Drawing.Size(254, 26);
             this.textBuscarTecnico.TabIndex = 12;
             this.textBuscarTecnico.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBuscarTecnico.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBuscarTecnico_KeyDown);
+            this.textBuscarTecnico.OnValueChanged += new System.EventHandler(this.textBuscarTecnico_OnValueChanged);
             // 
             // filtroAnalistas
             // 
@@ -324,7 +324,7 @@
             this.buttonEditarTecnico.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.buttonEditarTecnico.IdleForecolor = System.Drawing.Color.Gainsboro;
             this.buttonEditarTecnico.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.buttonEditarTecnico.Location = new System.Drawing.Point(507, 477);
+            this.buttonEditarTecnico.Location = new System.Drawing.Point(278, 477);
             this.buttonEditarTecnico.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonEditarTecnico.Name = "buttonEditarTecnico";
             this.buttonEditarTecnico.Size = new System.Drawing.Size(181, 41);
@@ -364,24 +364,24 @@
             this.tablaTecnicos.AllowUserToDeleteRows = false;
             this.tablaTecnicos.AllowUserToResizeColumns = false;
             this.tablaTecnicos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.tablaTecnicos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 9F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.tablaTecnicos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.tablaTecnicos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaTecnicos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
             this.tablaTecnicos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tablaTecnicos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaTecnicos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaTecnicos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.tablaTecnicos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaTecnicos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -392,14 +392,14 @@
             this.localidad,
             this.tipo_empleado,
             this.provincia});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaTecnicos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Century Gothic", 9F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaTecnicos.DefaultCellStyle = dataGridViewCellStyle9;
             this.tablaTecnicos.DoubleBuffered = true;
             this.tablaTecnicos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.tablaTecnicos.EnableHeadersVisualStyles = false;
@@ -501,7 +501,7 @@
             this.BotonEliminarTecnico.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.BotonEliminarTecnico.IdleForecolor = System.Drawing.Color.Gainsboro;
             this.BotonEliminarTecnico.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.BotonEliminarTecnico.Location = new System.Drawing.Point(271, 477);
+            this.BotonEliminarTecnico.Location = new System.Drawing.Point(515, 477);
             this.BotonEliminarTecnico.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BotonEliminarTecnico.Name = "BotonEliminarTecnico";
             this.BotonEliminarTecnico.Size = new System.Drawing.Size(181, 41);

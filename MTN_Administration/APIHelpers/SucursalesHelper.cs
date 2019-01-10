@@ -49,7 +49,7 @@ namespace MTN_Administration.APIHelpers
 
         internal Sucursal GetSucursal(int id_cliente, int id_sucursal)
         {
-            if (cacheSucursales[id_cliente] == null) GetSucursales(id_cliente);
+            if (!cacheSucursales.ContainsKey(id_cliente)) GetSucursales(id_cliente);
             return cacheSucursales[id_cliente].Find(x => x.Id == id_sucursal);
 
         }
@@ -64,7 +64,7 @@ namespace MTN_Administration.APIHelpers
             }
         }
 
-        internal MensajeAlerta AddCliente(Sucursal newSucursal)
+        internal MensajeAlerta AddSucursal(Sucursal newSucursal)
         {
             String url = _partialurl + "sucursales";
             try

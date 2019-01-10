@@ -12,7 +12,7 @@ namespace MTN_Administration.APIHelpers
     {
         Dictionary<String, int> _checksums;
         private string _partialurl;
-       
+
         public ChecksumHelper(String partialurl)
         {
             _partialurl = partialurl;
@@ -55,10 +55,12 @@ namespace MTN_Administration.APIHelpers
                 }
 
 
-                String url = _partialurl + "checksum/" + tablaAux ;
+                String url = _partialurl + "checksum/" + tablaAux;
                 String content = client.DownloadString(url);
                 int checksumActual = serializer.Deserialize<int>(content);
-                return (_checksums[tabla] == checksumActual) ? true: false;
+                if (!_checksums.ContainsKey(tabla)) return false;
+                else
+                    return (_checksums[tabla] == checksumActual) ? true : false;
             }
         }
 

@@ -17,5 +17,10 @@ namespace MTN_RestAPI.Models
         public int Id_tipo_documento { get; set; }
         public int Id_tipo_empleado{ get; set; }
         //public string Foto { get; set; }
+
+
+        public String ApellidoYNombre { get => Apellido + ", " + Nombre; }
+
+
     }
 }

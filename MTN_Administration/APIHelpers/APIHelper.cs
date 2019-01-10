@@ -20,6 +20,9 @@ namespace MTN_Administration
         private SucursalesHelper sucursalesHelper;
         private CCTVHelper cCTVHelper;
         private TecnicosHelper tecnicosHelper;
+        private FileStorageHelper fileStorageHelper;
+        private IncidenteHelper incidentesHelper;
+        private MantenimientoHelper mantenimientoHelper;
 
         List<Localidad> localidades;
         private Dictionary<int, string> provincias;
@@ -27,6 +30,11 @@ namespace MTN_Administration
         private Dictionary<int, string> tipoEmpleado;
         private Dictionary<int, string> estados;
         private Dictionary<int, string> tecnologiasCamaras;
+
+        internal MantenimientoHelper GetMantenimientosHelper()
+        {
+            return mantenimientoHelper;
+        }
 
         public APIHelper(string _partialurl)
         {
@@ -36,10 +44,12 @@ namespace MTN_Administration
             cCTVHelper = new CCTVHelper(_partialurl, checksumHelper);
             sucursalesHelper = new SucursalesHelper(_partialurl, checksumHelper);
             tecnicosHelper = new TecnicosHelper(_partialurl, checksumHelper);
-
+            incidentesHelper = new IncidenteHelper(_partialurl, checksumHelper);
+            mantenimientoHelper = new MantenimientoHelper(_partialurl, checksumHelper);
+            fileStorageHelper = new FileStorageHelper();
 
             //// Carga tablas pesadas que no se modifican con el tiempo. Ver de tener una copia en archivo local y solo controlar el checksum al inicio
-            
+
             GetLocalidades();
             GetProvincias();
             GetTipoEmpleado();
@@ -69,6 +79,14 @@ namespace MTN_Administration
         {
             return tecnicosHelper;
         }
+
+        public IncidenteHelper GetIncidenteHelper()
+        {
+            return incidentesHelper;
+        }
+
+        
+
 
         /// <summary>
         /// 
@@ -199,6 +217,62 @@ namespace MTN_Administration
             return tipoEmpleado[i];
         }
 
+
+        //////////////////////////////////////////////////////////////////////Criticidad//////////////////////////////////////////////////////////////////////
+
+        public Dictionary<int, String> GetCriticidad()
+        {
+            if (criticidades != null)
+            {
+                return criticidades;
+            }
+            criticidades = new Dictionary<int, String>();
+            CacheCriticidad();
+            return criticidades;
+        }
+
+        internal String GetCriticidad(int id_criticidad)
+        {
+            if (criticidades == null) GetCriticidad();
+            return criticidades[id_criticidad];
+
+        }
+
+
+        //   private List<Criticidad> criticidades;
+        private Dictionary<int, String> criticidades;
+
+        private void CacheCriticidad()
+        {
+            String tabla = "Criticidades"; // Nombre de la tabla 
+            String file = @"localCache\" + tabla + ".mtn"; // Path donde se almacena 
+            Resultado<Criticidad> resultadoLocal = fileStorageHelper.DeSerializeObject<Resultado<Criticidad>>(file); // Si el archivo existe recupera el objeteo Resultado<ModeloCCTV>
+            if (resultadoLocal != null)
+            {
+
+                criticidades = resultadoLocal.Lista.Cast<Criticidad>().ToDictionary(x => x.Id, x => x.Nombre);
+                checksumHelper.ActualizarChecksum(tabla, resultadoLocal.Checksum); // Si logra recuperar el objeto actualiza el checksum local
+            }
+            if (!checksumHelper.VerificarChecksum(tabla)) // Verifica que el checksum sea el mismo que el de la tabla actual
+            {
+                String url = _partialurl + "Utiles/" + tabla;
+                using (WebClient client = new WebClient())
+                {
+                    JavaScriptSerializer serializer = new JavaScriptSerializer();
+                    String content = client.DownloadString(url); // Consulta a la API por la tabla completa
+                    Resultado<Criticidad> resultado = serializer.Deserialize<Resultado<Criticidad>>(content); // Convierte el resultado de la consulta a un objeto del tipo Resultado
+                    fileStorageHelper.SerializeObject(resultado, file); // Actualiza o crea un archivo local
+                    criticidades = resultado.Lista.Cast<Criticidad>().ToDictionary(x => x.Id, x => x.Nombre); // separa el checksum del objeto
+                }
+            }
+        }
+
+
+     
+
+
+
+
         ////////////////////////////////////////////////LOCALIDADES////////////////////////////////////////////////////////////////////////
 
         private void CacheLocalidades()
@@ -244,6 +318,63 @@ namespace MTN_Administration
             if (localidades == null) GetLocalidades();
             return localidades.Find(x => x.Id == i).Nombre;
         }
+
+
+
+
+
+        
+        //////////////////////////////////////////////////////////////////////Estados Incidentes//////////////////////////////////////////////////////////////////////
+        /*
+        private Dictionary<int, String> estadosIncidente;
+
+        public String GetEstadoIncidente(int id_estadoIncidente)
+        {
+            if (estadosIncidente == null)
+            {
+                GetEstadoIncidente();
+            }
+            return estadosIncidente[id_estadoIncidente];
+        }
+
+            public Dictionary<int, String> GetEstadoIncidente()
+        {
+            if (estadosIncidente != null)
+            {
+                return estadosIncidente;
+            }
+            estadosIncidente = new Dictionary<int, String>();
+            CacheEstadosIncidente();
+            return estadosIncidente;
+        }
+
+
+        private void CacheEstadosIncidente()
+        {
+            String tabla = "EstadosIncidente"; // Nombre de la tabla 
+            String file = @"localCache\" + tabla + ".mtn"; // Path donde se almacena 
+            Resultado<EstadoIncidente> resultadoLocal = fileStorageHelper.DeSerializeObject<Resultado<EstadoIncidente>>(file); // Si el archivo existe recupera el objeteo Resultado<ModeloCCTV>
+            if (resultadoLocal != null)
+            {
+                estadosIncidente = resultadoLocal.Lista.Cast<EstadoIncidente>().ToDictionary(x => x.Id, x => x.Nombre);
+                checksumHelper.ActualizarChecksum(tabla, resultadoLocal.Checksum); // Si logra recuperar el objeto actualiza el checksum local
+            }
+            if (!checksumHelper.VerificarChecksum(tabla)) // Verifica que el checksum sea el mismo que el de la tabla actual
+            {
+                String url = _partialurl + "Utiles/" + tabla;
+                using (WebClient client = new WebClient())
+                {
+                    JavaScriptSerializer serializer = new JavaScriptSerializer();
+                    String content = client.DownloadString(url); // Consulta a la API por la tabla completa
+                    Resultado<EstadoIncidente> resultado = serializer.Deserialize<Resultado<EstadoIncidente>>(content); // Convierte el resultado de la consulta a un objeto del tipo Resultado
+                    fileStorageHelper.SerializeObject(resultado, file); // Actualiza o crea un archivo local
+                    estadosIncidente = resultado.Lista.Cast<EstadoIncidente>().ToDictionary(x => x.Id, x => x.Nombre); // separa el checksum del objeto
+                }
+            }
+        }
+
+    */
+
 
     }
 }

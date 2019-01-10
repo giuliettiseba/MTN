@@ -139,6 +139,8 @@
     <Compile Include="Controllers\ChecksumController.cs" />
     <Compile Include="Controllers\CamarasController.cs" />
     <Compile Include="Controllers\DispositivosCCTVController.cs" />
+    <Compile Include="Controllers\MantenimientosController.cs" />
+    <Compile Include="Controllers\IncidentesController.cs" />
     <Compile Include="Controllers\SucursalesController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\Helper.cs" />
@@ -148,7 +150,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Camara.cs" />
+    <Compile Include="Models\EstadoIncidente.cs" />
+    <Compile Include="Models\Incidente.cs" />
     <Compile Include="Models\Mantenible.cs" />
+    <Compile Include="Models\Mantenimiento.cs" />
     <Compile Include="Models\TecnologiaCamara.cs" />
     <Compile Include="Models\ModeloCamara.cs" />
     <Compile Include="Models\Resultado.cs" />
@@ -162,10 +167,15 @@
     <Compile Include="Models\Provedores.cs" />
     <Compile Include="Models\Sucursal.cs" />
     <Compile Include="Models\Tipo_Documento.cs" />
+    <Compile Include="Models\Criticidad.cs" />
     <Compile Include="Models\Tipo_Empleado.cs" />
     <Compile Include="Models\Localidad.cs" />
     <Compile Include="Models\Provincia.cs" />
     <Compile Include="Models\Tecnico.cs" />
+    <Compile Include="Models\TypeTipoMantenible.cs" />
+    <Compile Include="Models\TypeTipoMantenimiento.cs" />
+    <Compile Include="Models\TypeEstadoMantenimiento.cs" />
+    <Compile Include="Models\TypeEstadoIncidente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

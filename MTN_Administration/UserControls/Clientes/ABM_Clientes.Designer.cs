@@ -63,7 +63,7 @@
             this.panel1.Size = new System.Drawing.Size(727, 35);
             this.panel1.TabIndex = 5;
             // 
-            // textBuscarTecnico
+            // textBuscarCliente
             // 
             this.textBuscarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.textBuscarCliente.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
@@ -76,7 +76,7 @@
             this.textBuscarCliente.isPassword = false;
             this.textBuscarCliente.Location = new System.Drawing.Point(371, 5);
             this.textBuscarCliente.Margin = new System.Windows.Forms.Padding(4);
-            this.textBuscarCliente.Name = "textBuscarTecnico";
+            this.textBuscarCliente.Name = "textBuscarCliente";
             this.textBuscarCliente.Size = new System.Drawing.Size(299, 26);
             this.textBuscarCliente.TabIndex = 12;
             this.textBuscarCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -121,7 +121,7 @@
             this.BotonEliminarCliente.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.BotonEliminarCliente.IdleForecolor = System.Drawing.Color.Gainsboro;
             this.BotonEliminarCliente.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.BotonEliminarCliente.Location = new System.Drawing.Point(271, 477);
+            this.BotonEliminarCliente.Location = new System.Drawing.Point(500, 477);
             this.BotonEliminarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BotonEliminarCliente.Name = "BotonEliminarCliente";
             this.BotonEliminarCliente.Size = new System.Drawing.Size(181, 41);
@@ -147,7 +147,7 @@
             this.buttonEditarCliente.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.buttonEditarCliente.IdleForecolor = System.Drawing.Color.Gainsboro;
             this.buttonEditarCliente.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.buttonEditarCliente.Location = new System.Drawing.Point(507, 477);
+            this.buttonEditarCliente.Location = new System.Drawing.Point(270, 477);
             this.buttonEditarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonEditarCliente.Name = "buttonEditarCliente";
             this.buttonEditarCliente.Size = new System.Drawing.Size(181, 41);
@@ -249,7 +249,7 @@
             this.tablaClientes.ShowRowErrors = false;
             this.tablaClientes.Size = new System.Drawing.Size(695, 463);
             this.tablaClientes.TabIndex = 5;
-            this.tablaClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ButtonEditarCliente_Click);
+            this.tablaClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaClientes_CellDoubleClick);
             // 
             // id
             // 

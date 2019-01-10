@@ -62,7 +62,7 @@
             this.buttonCancelarAlta.IdleBorderThickness = 1;
             this.buttonCancelarAlta.IdleCornerRadius = 20;
             this.buttonCancelarAlta.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.buttonCancelarAlta.IdleForecolor = System.Drawing.Color.Gainsboro;
+            this.buttonCancelarAlta.IdleForecolor = System.Drawing.Color.GhostWhite;
             this.buttonCancelarAlta.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
             this.buttonCancelarAlta.Location = new System.Drawing.Point(435, 484);
             this.buttonCancelarAlta.Margin = new System.Windows.Forms.Padding(5);

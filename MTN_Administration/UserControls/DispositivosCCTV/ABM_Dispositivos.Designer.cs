@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Dispositivos));
             this.panel1 = new System.Windows.Forms.Panel();
             this.clienteLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -46,14 +46,14 @@
             this.numeroSuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreSuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tablaGrabadoresDigitales = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.BotonEliminarSucursal = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.buttonEditarSucursal = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.BotonAgregarDispositivoCCTV = new Bunifu.Framework.UI.BunifuThinButton2();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estado = new System.Windows.Forms.DataGridViewImageColumn();
-            this.BotonEliminarSucursal = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.buttonEditarSucursal = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.BotonAgregarDispositivoCCTV = new Bunifu.Framework.UI.BunifuThinButton2();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaSucursales)).BeginInit();
@@ -105,9 +105,10 @@
             this.panel2.Controls.Add(this.BotonEliminarSucursal);
             this.panel2.Controls.Add(this.buttonEditarSucursal);
             this.panel2.Controls.Add(this.BotonAgregarDispositivoCCTV);
-            this.panel2.Location = new System.Drawing.Point(0, 34);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 35);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(726, 527);
+            this.panel2.Size = new System.Drawing.Size(727, 526);
             this.panel2.TabIndex = 8;
             // 
             // tablaSucursales
@@ -116,36 +117,37 @@
             this.tablaSucursales.AllowUserToDeleteRows = false;
             this.tablaSucursales.AllowUserToResizeColumns = false;
             this.tablaSucursales.AllowUserToResizeRows = false;
-            dataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.tablaSucursales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.tablaSucursales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.tablaSucursales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaSucursales.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
             this.tablaSucursales.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tablaSucursales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle34.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaSucursales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaSucursales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaSucursales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaSucursales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idSuc,
             this.numeroSuc,
             this.nombreSuc});
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle35.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaSucursales.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaSucursales.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaSucursales.DoubleBuffered = true;
             this.tablaSucursales.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.tablaSucursales.EnableHeadersVisualStyles = false;
@@ -157,14 +159,14 @@
             this.tablaSucursales.Name = "tablaSucursales";
             this.tablaSucursales.ReadOnly = true;
             this.tablaSucursales.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle36.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaSucursales.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaSucursales.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.tablaSucursales.RowHeadersVisible = false;
             this.tablaSucursales.RowHeadersWidth = 90;
             this.tablaSucursales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -201,23 +203,24 @@
             this.tablaGrabadoresDigitales.AllowUserToDeleteRows = false;
             this.tablaGrabadoresDigitales.AllowUserToResizeColumns = false;
             this.tablaGrabadoresDigitales.AllowUserToResizeRows = false;
-            dataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle37.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.tablaGrabadoresDigitales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.tablaGrabadoresDigitales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.tablaGrabadoresDigitales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaGrabadoresDigitales.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
             this.tablaGrabadoresDigitales.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tablaGrabadoresDigitales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle38.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaGrabadoresDigitales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaGrabadoresDigitales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.tablaGrabadoresDigitales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaGrabadoresDigitales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -225,14 +228,14 @@
             this.modelo,
             this.marca,
             this.estado});
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle39.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaGrabadoresDigitales.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 9F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaGrabadoresDigitales.DefaultCellStyle = dataGridViewCellStyle7;
             this.tablaGrabadoresDigitales.DoubleBuffered = true;
             this.tablaGrabadoresDigitales.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.tablaGrabadoresDigitales.EnableHeadersVisualStyles = false;
@@ -244,14 +247,14 @@
             this.tablaGrabadoresDigitales.Name = "tablaGrabadoresDigitales";
             this.tablaGrabadoresDigitales.ReadOnly = true;
             this.tablaGrabadoresDigitales.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle40.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaGrabadoresDigitales.RowHeadersDefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaGrabadoresDigitales.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.tablaGrabadoresDigitales.RowHeadersVisible = false;
             this.tablaGrabadoresDigitales.RowHeadersWidth = 90;
             this.tablaGrabadoresDigitales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -261,37 +264,7 @@
             this.tablaGrabadoresDigitales.ShowRowErrors = false;
             this.tablaGrabadoresDigitales.Size = new System.Drawing.Size(454, 463);
             this.tablaGrabadoresDigitales.TabIndex = 5;
-            this.tablaGrabadoresDigitales.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaSucursal_CellDoubleClick);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "#";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            // 
-            // modelo
-            // 
-            this.modelo.HeaderText = "Modelo";
-            this.modelo.Name = "modelo";
-            this.modelo.ReadOnly = true;
-            // 
-            // marca
-            // 
-            this.marca.HeaderText = "Marca";
-            this.marca.Name = "marca";
-            this.marca.ReadOnly = true;
-            // 
-            // estado
-            // 
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            this.estado.ReadOnly = true;
+            this.tablaGrabadoresDigitales.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaDipositivo_CellDoubleClick);
             // 
             // BotonEliminarSucursal
             // 
@@ -311,7 +284,7 @@
             this.BotonEliminarSucursal.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.BotonEliminarSucursal.IdleForecolor = System.Drawing.Color.Gainsboro;
             this.BotonEliminarSucursal.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.BotonEliminarSucursal.Location = new System.Drawing.Point(507, 477);
+            this.BotonEliminarSucursal.Location = new System.Drawing.Point(508, 477);
             this.BotonEliminarSucursal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BotonEliminarSucursal.Name = "BotonEliminarSucursal";
             this.BotonEliminarSucursal.Size = new System.Drawing.Size(181, 41);
@@ -371,6 +344,37 @@
             this.BotonAgregarDispositivoCCTV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BotonAgregarDispositivoCCTV.Click += new System.EventHandler(this.BotonAgregarDispotivo_Click);
             // 
+            // id
+            // 
+            this.id.HeaderText = "#";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // modelo
+            // 
+            this.modelo.HeaderText = "Modelo";
+            this.modelo.Name = "modelo";
+            this.modelo.ReadOnly = true;
+            // 
+            // marca
+            // 
+            this.marca.HeaderText = "Marca";
+            this.marca.Name = "marca";
+            this.marca.ReadOnly = true;
+            // 
+            // estado
+            // 
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
+            this.estado.ReadOnly = true;
+            // 
             // ABM_Dispositivos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,14 +403,14 @@
         private Bunifu.Framework.UI.BunifuThinButton2 BotonAgregarDispositivoCCTV;
         private CustomComboBox comboCliente;
         private Bunifu.Framework.UI.BunifuCustomLabel clienteLabel;
+        private Bunifu.Framework.UI.BunifuCustomDataGrid tablaSucursales;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idSuc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numeroSuc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreSuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn modelo;
         private System.Windows.Forms.DataGridViewTextBoxColumn marca;
         private System.Windows.Forms.DataGridViewImageColumn estado;
-        private Bunifu.Framework.UI.BunifuCustomDataGrid tablaSucursales;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idSuc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numeroSuc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreSuc;
     }
 }
