@@ -16,6 +16,6 @@ namespace MTN_RestAPI.Models
         public int Id_criticidad { get; set; }
         public string Falla { get; set; }
         public int Id_estado_incidente { get; set; }
-        public bool Asignado { get; set; }
+      //  public bool Asignado { get; set; }
     }
 }

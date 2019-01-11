@@ -139,7 +139,7 @@
     <Compile Include="Controllers\ChecksumController.cs" />
     <Compile Include="Controllers\CamarasController.cs" />
     <Compile Include="Controllers\DispositivosCCTVController.cs" />
-    <Compile Include="Controllers\MantenimientosController.cs" />
+    <Compile Include="Controllers\MantenimientoController.cs" />
     <Compile Include="Controllers\IncidentesController.cs" />
     <Compile Include="Controllers\SucursalesController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />

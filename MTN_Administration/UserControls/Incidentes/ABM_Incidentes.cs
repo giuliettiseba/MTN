@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace MTN_Administration.Tabs
 {
-    public partial class ABM_Incidentes : Form
+    public partial class ABM_Incidentes : Form, Animated
     {
         APIHelper aPIHelper;
         private Alta_Incidente alta_Incidentes;
@@ -22,7 +22,7 @@ namespace MTN_Administration.Tabs
         {
             this.aPIHelper = aPIHelper;
             InitializeComponent();
-            panelSwitches.Visible = true;
+           // panelSwitches.Visible = true;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -32,7 +32,7 @@ namespace MTN_Administration.Tabs
 
         }
 
-        private void RefreshTablaIncidentes()
+        public void RefreshTablaIncidentes()
         {
 
             tablaIncidentes.Rows.Clear();
@@ -80,7 +80,9 @@ namespace MTN_Administration.Tabs
                 }
                 else
                     tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["estado"].Value = aPIHelper.GetEstado(dispositivoCCTV.Id_estado);
-                tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["asignado"].Value = incidente.Asignado;
+
+                tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["asignado"].Value = aPIHelper.GetMantenimientosHelper().TieneMantenimientoAsignado(incidente.Id);
+
                 tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["criticidad"].Value = aPIHelper.GetCriticidad(incidente.Id_criticidad);
                 tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["estadoIncidente"].Value = (TypeEstadoIncidente)incidente.Id_estado_incidente;
             }
@@ -112,7 +114,6 @@ namespace MTN_Administration.Tabs
         private void BotonAgregarIncidente_Click(object sender, EventArgs e)
         {
 
-            //transiciones.HideSync(panelSwitches);
             transiciones.HideSync(panelTabla);
             alta_Incidentes = new Alta_Incidente(aPIHelper);
             alta_Incidentes.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -127,58 +128,16 @@ namespace MTN_Administration.Tabs
         public void showPanelSwitchs()
         {
             //transiciones.ShowSync(panelSwitches);
-            transiciones.ShowSync(panelTabla);
+            transiciones.Show(panelTabla);
         }
 
-        private void switchCriticidadMuyAlta_OnValueChange(object sender, EventArgs e)
-        {
-            RefreshTablaIncidentes();
-        }
-
-        private void switchCriticidadAlta_OnValueChange(object sender, EventArgs e)
-        {
-            RefreshTablaIncidentes();
-        }
-
-        private void switchCriticidadMedia_OnValueChange(object sender, EventArgs e)
-        {
-            RefreshTablaIncidentes();
-        }
-
-        private void switchCriticidadBaja_OnValueChange(object sender, EventArgs e)
-        {
-            RefreshTablaIncidentes();
-        }
-
-        private void switchCriticidadMuyBaja_OnValueChange(object sender, EventArgs e)
-        {
-            RefreshTablaIncidentes();
-        }
-
-        private void switchEstadoIncidenteAbierto_OnValueChange(object sender, EventArgs e)
-        {
-            RefreshTablaIncidentes();
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-            RefreshTablaIncidentes();
-
-        }
-
-        private void switchEstadoIncidenteProceso_OnValueChange(object sender, EventArgs e)
-        {
-            RefreshTablaIncidentes();
-        }
-
+ 
 
         Ver_Incidente ver_Incidente;
         private void BotonVerIncidente_Click(object sender, EventArgs e)
         {
 
             int id_incidente_seleccionado = Convert.ToInt16(tablaIncidentes.SelectedRows[0].Cells["id"].Value);
-            //transiciones.HideSync(panelSwitches);
             transiciones.HideSync(panelTabla);
             Incidente incidente = aPIHelper.GetIncidenteHelper().GetIncidente(id_incidente_seleccionado);
             ver_Incidente = new Ver_Incidente(aPIHelper, incidente);
@@ -189,8 +148,52 @@ namespace MTN_Administration.Tabs
             ver_Incidente.TabIndex = 2;
             Controls.Add(this.ver_Incidente);
             ver_Incidente.BringToFront();
+            
         }
 
+        private void tablaIncidentes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            BotonVerIncidente_Click(null, null);
+        }
 
+        private void switchCriticidadMuyAlta_OnValueChange(object sender, EventArgs e)
+        {
+
+        }
+
+        private void switchCriticidadAlta_OnValueChange(object sender, EventArgs e)
+        {
+
+        }
+
+        private void switchCriticidadMedia_OnValueChange(object sender, EventArgs e)
+        {
+
+        }
+
+        private void switchCriticidadBaja_OnValueChange(object sender, EventArgs e)
+        {
+
+        }
+
+        private void switchCriticidadMuyBaja_OnValueChange(object sender, EventArgs e)
+        {
+
+        }
+
+        private void switchEstadoIncidenteAbierto_OnValueChange(object sender, EventArgs e)
+        {
+
+        }
+
+        private void switchEstadoIncidenteCerrado_OnValueChange(object sender, EventArgs e)
+        {
+
+        }
+
+        private void switchEstadoIncidenteProceso_OnValueChange(object sender, EventArgs e)
+        {
+
+        }
     }
 }

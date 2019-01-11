@@ -29,18 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            BunifuAnimatorNS.Animation animation9 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Incidentes));
             this.Header = new System.Windows.Forms.Panel();
             this.headerIncidentePicture = new System.Windows.Forms.PictureBox();
             this.minimize = new System.Windows.Forms.Label();
             this.TituloHeader = new System.Windows.Forms.Label();
             this.close = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.panelTabla = new System.Windows.Forms.Panel();
             this.tablaIncidentes = new Bunifu.Framework.UI.BunifuCustomDataGrid();
@@ -54,6 +52,7 @@
             this.criticidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.asignado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estadoIncidente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.BotonVerIncidente = new Bunifu.Framework.UI.BunifuThinButton2();
@@ -171,6 +170,7 @@
             // panelTabla
             // 
             this.panelTabla.Controls.Add(this.tablaIncidentes);
+            this.panelTabla.Controls.Add(this.panel1);
             this.panelTabla.Controls.Add(this.panel3);
             this.panelTabla.Controls.Add(this.panel2);
             this.panelTabla.Controls.Add(this.panelSwitches);
@@ -187,23 +187,23 @@
             this.tablaIncidentes.AllowUserToDeleteRows = false;
             this.tablaIncidentes.AllowUserToResizeColumns = false;
             this.tablaIncidentes.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.tablaIncidentes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.tablaIncidentes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
             this.tablaIncidentes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaIncidentes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
             this.tablaIncidentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tablaIncidentes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaIncidentes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.tablaIncidentes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaIncidentes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.tablaIncidentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaIncidentes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -217,20 +217,21 @@
             this.asignado,
             this.estadoIncidente});
             this.transiciones.SetDecoration(this.tablaIncidentes, BunifuAnimatorNS.DecorationType.None);
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaIncidentes.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaIncidentes.DefaultCellStyle = dataGridViewCellStyle27;
             this.tablaIncidentes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaIncidentes.DoubleBuffered = true;
             this.tablaIncidentes.EnableHeadersVisualStyles = false;
-            this.tablaIncidentes.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.tablaIncidentes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.tablaIncidentes.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.tablaIncidentes.HeaderForeColor = System.Drawing.Color.Silver;
-            this.tablaIncidentes.Location = new System.Drawing.Point(194, 0);
+            this.tablaIncidentes.Location = new System.Drawing.Point(194, 20);
             this.tablaIncidentes.MultiSelect = false;
             this.tablaIncidentes.Name = "tablaIncidentes";
             this.tablaIncidentes.ReadOnly = true;
@@ -241,8 +242,9 @@
             this.tablaIncidentes.ShowCellToolTips = false;
             this.tablaIncidentes.ShowEditingIcon = false;
             this.tablaIncidentes.ShowRowErrors = false;
-            this.tablaIncidentes.Size = new System.Drawing.Size(1021, 690);
+            this.tablaIncidentes.Size = new System.Drawing.Size(1021, 670);
             this.tablaIncidentes.TabIndex = 70;
+            this.tablaIncidentes.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.tablaIncidentes_CellMouseDoubleClick);
             // 
             // id
             // 
@@ -296,16 +298,25 @@
             // 
             // asignado
             // 
-            this.asignado.HeaderText = "Asignado";
+            this.asignado.HeaderText = "Programado";
             this.asignado.Name = "asignado";
             this.asignado.ReadOnly = true;
             // 
             // estadoIncidente
             // 
             this.estadoIncidente.FillWeight = 50F;
-            this.estadoIncidente.HeaderText = "Estado Incidente";
+            this.estadoIncidente.HeaderText = "Estado";
             this.estadoIncidente.Name = "estadoIncidente";
             this.estadoIncidente.ReadOnly = true;
+            // 
+            // panel1
+            // 
+            this.transiciones.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(194, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1021, 20);
+            this.panel1.TabIndex = 85;
             // 
             // panel3
             // 
@@ -411,8 +422,6 @@
             this.panelSwitches.Name = "panelSwitches";
             this.panelSwitches.Size = new System.Drawing.Size(194, 745);
             this.panelSwitches.TabIndex = 82;
-            this.panelSwitches.Visible = false;
-            this.panelSwitches.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // bunifuCustomLabel5
             // 
@@ -649,6 +658,7 @@
             this.switchEstadoIncidenteCerrado.Size = new System.Drawing.Size(35, 20);
             this.switchEstadoIncidenteCerrado.TabIndex = 65;
             this.switchEstadoIncidenteCerrado.Value = false;
+            this.switchEstadoIncidenteCerrado.OnValueChange += new System.EventHandler(this.switchEstadoIncidenteCerrado_OnValueChange);
             // 
             // switchCCTV
             // 
@@ -782,22 +792,22 @@
             // 
             this.transiciones.AnimationType = BunifuAnimatorNS.AnimationType.HorizSlide;
             this.transiciones.Cursor = null;
-            animation2.AnimateOnlyDifferences = true;
-            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
-            animation2.LeafCoeff = 0F;
-            animation2.MaxTime = 1F;
-            animation2.MinTime = 0F;
-            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
-            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
-            animation2.MosaicSize = 0;
-            animation2.Padding = new System.Windows.Forms.Padding(0);
-            animation2.RotateCoeff = 0F;
-            animation2.RotateLimit = 0F;
-            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
-            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
-            animation2.TimeCoeff = 0F;
-            animation2.TransparencyCoeff = 0F;
-            this.transiciones.DefaultAnimation = animation2;
+            animation9.AnimateOnlyDifferences = true;
+            animation9.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.BlindCoeff")));
+            animation9.LeafCoeff = 0F;
+            animation9.MaxTime = 1F;
+            animation9.MinTime = 0F;
+            animation9.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.MosaicCoeff")));
+            animation9.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation9.MosaicShift")));
+            animation9.MosaicSize = 0;
+            animation9.Padding = new System.Windows.Forms.Padding(0);
+            animation9.RotateCoeff = 0F;
+            animation9.RotateLimit = 0F;
+            animation9.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.ScaleCoeff")));
+            animation9.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.SlideCoeff")));
+            animation9.TimeCoeff = 0F;
+            animation9.TransparencyCoeff = 0F;
+            this.transiciones.DefaultAnimation = animation9;
             // 
             // ABM_Incidentes
             // 
@@ -826,8 +836,6 @@
         #endregion
         private System.Windows.Forms.Panel Header;
         private System.Windows.Forms.DataGridViewTextBoxColumn severidad;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.Panel panelTabla;
         private Bunifu.Framework.UI.BunifuThinButton2 BotonAgregarIncidente;
@@ -861,6 +869,9 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         private BunifuAnimatorNS.BunifuTransition transiciones;
         private Bunifu.Framework.UI.BunifuCustomDataGrid tablaIncidentes;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private Bunifu.Framework.UI.BunifuThinButton2 BotonVerIncidente;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn sucursal;
@@ -871,8 +882,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn criticidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn asignado;
         private System.Windows.Forms.DataGridViewTextBoxColumn estadoIncidente;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private Bunifu.Framework.UI.BunifuThinButton2 BotonVerIncidente;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -7,6 +7,7 @@ using System.Web.Http;
 using Dapper;
 using System.Data;
 
+
 namespace MTN_RestAPI.Controllers
 {
     public class CamarasController : ApiController
@@ -93,17 +94,9 @@ namespace MTN_RestAPI.Controllers
                 "@observaciones" +
                 ")";
 
-
-
             string sql2 = "SELECT MAX(Id) AS LastID FROM Camaras";
 
             string sql1 = "INSERT INTO[dbo].[Dispositivo_tiene_camara]([id_dispositivo],[id_camara],[pos]) VALUES (@Id_dispositivo, @Id, @Pos)";
-
-
-            
-
-
-
 
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {

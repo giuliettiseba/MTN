@@ -22,13 +22,14 @@ namespace MTN_RestAPI.Controllers
         {
             string sqlquery = "SELECT CHECKSUM_AGG(binary_checksum(*)) FROM " + id;
             if (id == "Mantenimientos") {
-                sqlquery = "select CHECKSUM_AGG(binary_checksum(*)) FROM Mantenimientos JOIN Mantenimiento_tiene_Incidentes ON Mantenimientos.id = Mantenimiento_tiene_Incidentes.id_mantenimiento JOIN Incidentes ON Mantenimiento_tiene_Incidentes.id_incidente = Incidentes.id;";
+                sqlquery = "select ISNULL(CHECKSUM_AGG(binary_checksum(*)),0) FROM Mantenimientos JOIN Mantenimiento_tiene_Incidentes ON Mantenimientos.id = Mantenimiento_tiene_Incidentes.id_mantenimiento JOIN Incidentes ON Mantenimiento_tiene_Incidentes.id_incidente = Incidentes.id;";
             }
 
             
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
             {
-                return Ok(db.Query<int>(sqlquery).FirstOrDefault());
+                int a = db.Query<int>(sqlquery).FirstOrDefault();
+                return Ok(a);
             }
         }
 

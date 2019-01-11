@@ -71,9 +71,8 @@
             this.asignado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelCliente = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.buttonCancelar = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.buttonAtras = new Bunifu.Framework.UI.BunifuThinButton2();
             this.buttonGuardar = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.comboBoxTipoMantenimiento = new MTN_Administration.CustomComboBox();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.datePicker = new Bunifu.Framework.UI.BunifuDatepicker();
             this.textHoraInicio = new Bunifu.Framework.UI.BunifuMetroTextbox();
@@ -84,10 +83,17 @@
             this.textMinutosFin = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.textHoraFin = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.TextFalla = new MTN_Administration.CustomTextBox();
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.checkboxTecnico2 = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.checkBoxTecnico1 = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.bunifuCustomLabel9 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.comboBoxTecnico2 = new MTN_Administration.CustomComboBox();
+            this.comboBoxTecnico1 = new MTN_Administration.CustomComboBox();
+            this.TextDetalles = new MTN_Administration.CustomTextBox();
+            this.comboBoxTipoMantenimiento = new MTN_Administration.CustomComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.SearchIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablaClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -156,6 +162,7 @@
             this.bunifuThinButton21.Size = new System.Drawing.Size(181, 41);
             this.bunifuThinButton21.TabIndex = 54;
             this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bunifuThinButton21.Click += new System.EventHandler(this.bunifuThinButton21_Click);
             // 
             // buttonSiguiente
             // 
@@ -574,31 +581,32 @@
             this.labelCliente.TabIndex = 41;
             this.labelCliente.Text = "Tipo Mantenimiento";
             // 
-            // buttonCancelar
+            // buttonAtras
             // 
-            this.buttonCancelar.ActiveBorderThickness = 1;
-            this.buttonCancelar.ActiveCornerRadius = 20;
-            this.buttonCancelar.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.buttonCancelar.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonCancelar.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.buttonCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            this.buttonCancelar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.BackgroundImage")));
-            this.buttonCancelar.ButtonText = "Cancelar";
-            this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.buttonCancelar, BunifuAnimatorNS.DecorationType.None);
-            this.buttonCancelar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.buttonCancelar.IdleBorderThickness = 1;
-            this.buttonCancelar.IdleCornerRadius = 20;
-            this.buttonCancelar.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.buttonCancelar.IdleForecolor = System.Drawing.Color.GhostWhite;
-            this.buttonCancelar.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.buttonCancelar.Location = new System.Drawing.Point(32, 687);
-            this.buttonCancelar.Margin = new System.Windows.Forms.Padding(5);
-            this.buttonCancelar.Name = "buttonCancelar";
-            this.buttonCancelar.Size = new System.Drawing.Size(181, 41);
-            this.buttonCancelar.TabIndex = 54;
-            this.buttonCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.buttonAtras.ActiveBorderThickness = 1;
+            this.buttonAtras.ActiveCornerRadius = 20;
+            this.buttonAtras.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.buttonAtras.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonAtras.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.buttonAtras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            this.buttonAtras.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAtras.BackgroundImage")));
+            this.buttonAtras.ButtonText = "Atras";
+            this.buttonAtras.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transiciones.SetDecoration(this.buttonAtras, BunifuAnimatorNS.DecorationType.None);
+            this.buttonAtras.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAtras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.buttonAtras.IdleBorderThickness = 1;
+            this.buttonAtras.IdleCornerRadius = 20;
+            this.buttonAtras.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.buttonAtras.IdleForecolor = System.Drawing.Color.GhostWhite;
+            this.buttonAtras.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.buttonAtras.Location = new System.Drawing.Point(32, 687);
+            this.buttonAtras.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonAtras.Name = "buttonAtras";
+            this.buttonAtras.Size = new System.Drawing.Size(181, 41);
+            this.buttonAtras.TabIndex = 54;
+            this.buttonAtras.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.buttonAtras.Click += new System.EventHandler(this.buttonAtras_Click);
             // 
             // buttonGuardar
             // 
@@ -627,21 +635,6 @@
             this.buttonGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
-            // comboBoxTipoMantenimiento
-            // 
-            this.comboBoxTipoMantenimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            this.comboBoxTipoMantenimiento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.comboBoxTipoMantenimiento.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
-            this.transiciones.SetDecoration(this.comboBoxTipoMantenimiento, BunifuAnimatorNS.DecorationType.None);
-            this.comboBoxTipoMantenimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxTipoMantenimiento.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.comboBoxTipoMantenimiento.ForeColor = System.Drawing.Color.Coral;
-            this.comboBoxTipoMantenimiento.FormattingEnabled = true;
-            this.comboBoxTipoMantenimiento.Location = new System.Drawing.Point(323, 31);
-            this.comboBoxTipoMantenimiento.Name = "comboBoxTipoMantenimiento";
-            this.comboBoxTipoMantenimiento.Size = new System.Drawing.Size(275, 29);
-            this.comboBoxTipoMantenimiento.TabIndex = 63;
-            // 
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
@@ -662,7 +655,7 @@
             this.datePicker.ForeColor = System.Drawing.Color.White;
             this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.datePicker.FormatCustom = null;
-            this.datePicker.Location = new System.Drawing.Point(878, 31);
+            this.datePicker.Location = new System.Drawing.Point(878, 30);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(303, 36);
             this.datePicker.TabIndex = 65;
@@ -796,20 +789,6 @@
             this.bunifuCustomLabel4.TabIndex = 95;
             this.bunifuCustomLabel4.Text = "Observaciones";
             // 
-            // TextFalla
-            // 
-            this.TextFalla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            this.TextFalla.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.TextFalla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.transiciones.SetDecoration(this.TextFalla, BunifuAnimatorNS.DecorationType.None);
-            this.TextFalla.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.TextFalla.ForeColor = System.Drawing.Color.Coral;
-            this.TextFalla.Location = new System.Drawing.Point(32, 339);
-            this.TextFalla.Multiline = true;
-            this.TextFalla.Name = "TextFalla";
-            this.TextFalla.Size = new System.Drawing.Size(1171, 324);
-            this.TextFalla.TabIndex = 96;
-            // 
             // bunifuCustomLabel5
             // 
             this.bunifuCustomLabel5.AutoSize = true;
@@ -836,9 +815,15 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.checkboxTecnico2);
+            this.panel2.Controls.Add(this.checkBoxTecnico1);
+            this.panel2.Controls.Add(this.comboBoxTecnico2);
+            this.panel2.Controls.Add(this.bunifuCustomLabel9);
+            this.panel2.Controls.Add(this.comboBoxTecnico1);
+            this.panel2.Controls.Add(this.bunifuCustomLabel8);
             this.panel2.Controls.Add(this.bunifuCustomLabel6);
             this.panel2.Controls.Add(this.bunifuCustomLabel5);
-            this.panel2.Controls.Add(this.TextFalla);
+            this.panel2.Controls.Add(this.TextDetalles);
             this.panel2.Controls.Add(this.bunifuCustomLabel4);
             this.panel2.Controls.Add(this.textHoraFin);
             this.panel2.Controls.Add(this.textMinutosFin);
@@ -851,13 +836,124 @@
             this.panel2.Controls.Add(this.bunifuCustomLabel1);
             this.panel2.Controls.Add(this.comboBoxTipoMantenimiento);
             this.panel2.Controls.Add(this.buttonGuardar);
-            this.panel2.Controls.Add(this.buttonCancelar);
+            this.panel2.Controls.Add(this.buttonAtras);
             this.panel2.Controls.Add(this.labelCliente);
             this.transiciones.SetDecoration(this.panel2, BunifuAnimatorNS.DecorationType.None);
             this.panel2.Location = new System.Drawing.Point(1240, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1240, 745);
             this.panel2.TabIndex = 40;
+            // 
+            // checkboxTecnico2
+            // 
+            this.checkboxTecnico2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
+            this.checkboxTecnico2.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.checkboxTecnico2.Checked = false;
+            this.checkboxTecnico2.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
+            this.transiciones.SetDecoration(this.checkboxTecnico2, BunifuAnimatorNS.DecorationType.None);
+            this.checkboxTecnico2.ForeColor = System.Drawing.Color.White;
+            this.checkboxTecnico2.Location = new System.Drawing.Point(944, 542);
+            this.checkboxTecnico2.Name = "checkboxTecnico2";
+            this.checkboxTecnico2.Size = new System.Drawing.Size(20, 20);
+            this.checkboxTecnico2.TabIndex = 103;
+            this.checkboxTecnico2.OnChange += new System.EventHandler(this.CheckBoxTecnico2_OnChange);
+            // 
+            // checkBoxTecnico1
+            // 
+            this.checkBoxTecnico1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
+            this.checkBoxTecnico1.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.checkBoxTecnico1.Checked = false;
+            this.checkBoxTecnico1.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
+            this.transiciones.SetDecoration(this.checkBoxTecnico1, BunifuAnimatorNS.DecorationType.None);
+            this.checkBoxTecnico1.ForeColor = System.Drawing.Color.White;
+            this.checkBoxTecnico1.Location = new System.Drawing.Point(317, 542);
+            this.checkBoxTecnico1.Name = "checkBoxTecnico1";
+            this.checkBoxTecnico1.Size = new System.Drawing.Size(20, 20);
+            this.checkBoxTecnico1.TabIndex = 103;
+            this.checkBoxTecnico1.OnChange += new System.EventHandler(this.CheckBoxTecnico1_OnChange);
+            // 
+            // bunifuCustomLabel9
+            // 
+            this.bunifuCustomLabel9.AutoSize = true;
+            this.transiciones.SetDecoration(this.bunifuCustomLabel9, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel9.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel9.ForeColor = System.Drawing.Color.Silver;
+            this.bunifuCustomLabel9.Location = new System.Drawing.Point(788, 562);
+            this.bunifuCustomLabel9.Name = "bunifuCustomLabel9";
+            this.bunifuCustomLabel9.Size = new System.Drawing.Size(129, 30);
+            this.bunifuCustomLabel9.TabIndex = 101;
+            this.bunifuCustomLabel9.Text = "Tecnico 2";
+            // 
+            // bunifuCustomLabel8
+            // 
+            this.bunifuCustomLabel8.AutoSize = true;
+            this.transiciones.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel8.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel8.ForeColor = System.Drawing.Color.Silver;
+            this.bunifuCustomLabel8.Location = new System.Drawing.Point(151, 562);
+            this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
+            this.bunifuCustomLabel8.Size = new System.Drawing.Size(129, 30);
+            this.bunifuCustomLabel8.TabIndex = 99;
+            this.bunifuCustomLabel8.Text = "Tecnico 1";
+            // 
+            // comboBoxTecnico2
+            // 
+            this.comboBoxTecnico2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            this.comboBoxTecnico2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.comboBoxTecnico2.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.transiciones.SetDecoration(this.comboBoxTecnico2, BunifuAnimatorNS.DecorationType.None);
+            this.comboBoxTecnico2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxTecnico2.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.comboBoxTecnico2.ForeColor = System.Drawing.Color.Coral;
+            this.comboBoxTecnico2.FormattingEnabled = true;
+            this.comboBoxTecnico2.Location = new System.Drawing.Point(939, 583);
+            this.comboBoxTecnico2.Name = "comboBoxTecnico2";
+            this.comboBoxTecnico2.Size = new System.Drawing.Size(275, 29);
+            this.comboBoxTecnico2.TabIndex = 102;
+            // 
+            // comboBoxTecnico1
+            // 
+            this.comboBoxTecnico1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            this.comboBoxTecnico1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.comboBoxTecnico1.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.transiciones.SetDecoration(this.comboBoxTecnico1, BunifuAnimatorNS.DecorationType.None);
+            this.comboBoxTecnico1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxTecnico1.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.comboBoxTecnico1.ForeColor = System.Drawing.Color.Coral;
+            this.comboBoxTecnico1.FormattingEnabled = true;
+            this.comboBoxTecnico1.Location = new System.Drawing.Point(317, 583);
+            this.comboBoxTecnico1.Name = "comboBoxTecnico1";
+            this.comboBoxTecnico1.Size = new System.Drawing.Size(275, 29);
+            this.comboBoxTecnico1.TabIndex = 100;
+            // 
+            // TextDetalles
+            // 
+            this.TextDetalles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            this.TextDetalles.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.TextDetalles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.transiciones.SetDecoration(this.TextDetalles, BunifuAnimatorNS.DecorationType.None);
+            this.TextDetalles.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.TextDetalles.ForeColor = System.Drawing.Color.Coral;
+            this.TextDetalles.Location = new System.Drawing.Point(32, 339);
+            this.TextDetalles.Multiline = true;
+            this.TextDetalles.Name = "TextDetalles";
+            this.TextDetalles.Size = new System.Drawing.Size(1171, 161);
+            this.TextDetalles.TabIndex = 96;
+            // 
+            // comboBoxTipoMantenimiento
+            // 
+            this.comboBoxTipoMantenimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            this.comboBoxTipoMantenimiento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.comboBoxTipoMantenimiento.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.transiciones.SetDecoration(this.comboBoxTipoMantenimiento, BunifuAnimatorNS.DecorationType.None);
+            this.comboBoxTipoMantenimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxTipoMantenimiento.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.comboBoxTipoMantenimiento.ForeColor = System.Drawing.Color.Coral;
+            this.comboBoxTipoMantenimiento.FormattingEnabled = true;
+            this.comboBoxTipoMantenimiento.Location = new System.Drawing.Point(323, 31);
+            this.comboBoxTipoMantenimiento.Name = "comboBoxTipoMantenimiento";
+            this.comboBoxTipoMantenimiento.Size = new System.Drawing.Size(275, 29);
+            this.comboBoxTipoMantenimiento.TabIndex = 63;
             // 
             // Alta_Manteniminto
             // 
@@ -917,7 +1013,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn criticidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private Bunifu.Framework.UI.BunifuCustomLabel labelCliente;
-        private Bunifu.Framework.UI.BunifuThinButton2 buttonCancelar;
+        private Bunifu.Framework.UI.BunifuThinButton2 buttonAtras;
         private Bunifu.Framework.UI.BunifuThinButton2 buttonGuardar;
         private CustomComboBox comboBoxTipoMantenimiento;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
@@ -930,9 +1026,15 @@
         private Bunifu.Framework.UI.BunifuMetroTextbox textMinutosFin;
         private Bunifu.Framework.UI.BunifuMetroTextbox textHoraFin;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
-        private CustomTextBox TextFalla;
+        private CustomTextBox TextDetalles;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel6;
         private System.Windows.Forms.Panel panel2;
+        private CustomComboBox comboBoxTecnico2;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel9;
+        private CustomComboBox comboBoxTecnico1;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel8;
+        private Bunifu.Framework.UI.BunifuCheckbox checkBoxTecnico1;
+        private Bunifu.Framework.UI.BunifuCheckbox checkboxTecnico2;
     }
 }

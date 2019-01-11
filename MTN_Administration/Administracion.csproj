@@ -71,7 +71,14 @@
     <Compile Include="APIHelpers\Logger.cs" />
     <Compile Include="APIHelpers\TecnicosHelper.cs" />
     <Compile Include="APIHelpers\SucursalesHelper.cs" />
-    <Compile Include="UserControls\Sucursales\CustomComboBox.cs">
+    <Compile Include="UserControls\Incidentes\Animated.cs" />
+    <Compile Include="UserControls\Mantenimientos\Ver_Mantenimiento.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Mantenimientos\Ver_Mantenimiento.Designer.cs">
+      <DependentUpon>Ver_Mantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Splash.cs">
@@ -92,11 +99,11 @@
     <Compile Include="UserControls\Incidentes\Cerrar_Incidente.Designer.cs">
       <DependentUpon>Cerrar_Incidente.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Mantenimientos\AltaMantenimiento.cs">
+    <Compile Include="UserControls\Mantenimientos\Alta_Mantenimiento.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\Mantenimientos\AltaMantenimiento.Designer.cs">
-      <DependentUpon>AltaMantenimiento.cs</DependentUpon>
+    <Compile Include="UserControls\Mantenimientos\Alta_Mantenimiento.Designer.cs">
+      <DependentUpon>Alta_Mantenimiento.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Incidentes\Ver_Incidente.cs">
       <SubType>UserControl</SubType>
@@ -198,8 +205,11 @@
     <EmbeddedResource Include="UserControls\Incidentes\Cerrar_Incidente.resx">
       <DependentUpon>Cerrar_Incidente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Mantenimientos\AltaMantenimiento.resx">
-      <DependentUpon>AltaMantenimiento.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\Mantenimientos\Ver_Mantenimiento.resx">
+      <DependentUpon>Ver_Mantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Mantenimientos\Alta_Mantenimiento.resx">
+      <DependentUpon>Alta_Mantenimiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Incidentes\Ver_Incidente.resx">
       <DependentUpon>Ver_Incidente.cs</DependentUpon>

@@ -52,7 +52,10 @@ namespace MTN_Administration.Tabs
 
             comboBoxEstado.DisplayMember = "value";
             comboBoxEstado.ValueMember = "key";
-            comboBoxEstado.DataSource = new BindingSource(aPIHelper.GetEstados(), null);
+            Dictionary<int, string> estadosSinOK = new Dictionary<int, string>(aPIHelper.GetEstados());
+            estadosSinOK.Remove(1);
+            comboBoxEstado.DataSource = new BindingSource(estadosSinOK, null);
+
 
 
             comboBoxCriticidad.DisplayMember = "value";
@@ -218,7 +221,8 @@ namespace MTN_Administration.Tabs
             /// Agregar Incidente y Mostrar notificacion
             MensajeAlerta resultado = aPIHelper.GetIncidenteHelper().AddIncidente(newIncidente);
             Alert.ShowAlert(resultado);
-            ((ABM_Incidentes)Parent).showPanelSwitchs();
+            ((ABM_Incidentes)Parent).RefreshTablaIncidentes();
+            ((Animated)Parent).showPanelSwitchs();
             Dispose();
         }
 

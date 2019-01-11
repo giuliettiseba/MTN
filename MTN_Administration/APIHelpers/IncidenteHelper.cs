@@ -25,6 +25,7 @@ namespace MTN_Administration.APIHelpers
         }
 
         internal Incidente GetIncidente(int id_incidente) {
+            if (_incidentes == null) GetIncidentes();
             return _incidentes.Find(x => x.Id == id_incidente);
         }
 
@@ -46,7 +47,7 @@ namespace MTN_Administration.APIHelpers
                     webClient.QueryString.Add("Id_criticidad", newIncidente.Id_criticidad.ToString());
                     webClient.QueryString.Add("Id_estado_incidente", newIncidente.Id_estado_incidente.ToString());
 
-                    webClient.QueryString.Add("asigado", newIncidente.Asignado.ToString());
+                    //webClient.QueryString.Add("asigado", newIncidente.Asignado.ToString());
 
                     if (newIncidente.Id == 0)
                     {

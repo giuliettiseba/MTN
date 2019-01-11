@@ -75,12 +75,12 @@
             this.bunifuTransition1 = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuThinButton22 = new Bunifu.Framework.UI.BunifuThinButton2();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.TextFalla = new MTN_Administration.CustomTextBox();
             this.ButtonFinalizar = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.comboBoxCriticidad = new MTN_Administration.CustomComboBox();
             this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.TextFalla = new MTN_Administration.CustomTextBox();
+            this.comboBoxCriticidad = new MTN_Administration.CustomComboBox();
             this.comboBoxEstado = new MTN_Administration.CustomComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaMantenible)).BeginInit();
@@ -769,20 +769,6 @@
             this.panel2.Size = new System.Drawing.Size(1240, 745);
             this.panel2.TabIndex = 56;
             // 
-            // TextFalla
-            // 
-            this.TextFalla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            this.TextFalla.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.TextFalla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.bunifuTransition1.SetDecoration(this.TextFalla, BunifuAnimatorNS.DecorationType.None);
-            this.TextFalla.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.TextFalla.ForeColor = System.Drawing.Color.Coral;
-            this.TextFalla.Location = new System.Drawing.Point(77, 245);
-            this.TextFalla.Multiline = true;
-            this.TextFalla.Name = "TextFalla";
-            this.TextFalla.Size = new System.Drawing.Size(1127, 397);
-            this.TextFalla.TabIndex = 72;
-            // 
             // ButtonFinalizar
             // 
             this.ButtonFinalizar.ActiveBorderThickness = 1;
@@ -834,6 +820,32 @@
             this.bunifuCustomLabel7.TabIndex = 65;
             this.bunifuCustomLabel7.Text = "Criticidad";
             // 
+            // bunifuCustomLabel8
+            // 
+            this.bunifuCustomLabel8.AutoSize = true;
+            this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel8.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.bunifuCustomLabel8.ForeColor = System.Drawing.Color.Silver;
+            this.bunifuCustomLabel8.Location = new System.Drawing.Point(74, 70);
+            this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
+            this.bunifuCustomLabel8.Size = new System.Drawing.Size(90, 17);
+            this.bunifuCustomLabel8.TabIndex = 63;
+            this.bunifuCustomLabel8.Text = "Tipo De Falla";
+            // 
+            // TextFalla
+            // 
+            this.TextFalla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            this.TextFalla.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.TextFalla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.bunifuTransition1.SetDecoration(this.TextFalla, BunifuAnimatorNS.DecorationType.None);
+            this.TextFalla.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.TextFalla.ForeColor = System.Drawing.Color.Coral;
+            this.TextFalla.Location = new System.Drawing.Point(77, 245);
+            this.TextFalla.Multiline = true;
+            this.TextFalla.Name = "TextFalla";
+            this.TextFalla.Size = new System.Drawing.Size(1127, 397);
+            this.TextFalla.TabIndex = 72;
+            // 
             // comboBoxCriticidad
             // 
             this.comboBoxCriticidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
@@ -848,18 +860,6 @@
             this.comboBoxCriticidad.Name = "comboBoxCriticidad";
             this.comboBoxCriticidad.Size = new System.Drawing.Size(275, 29);
             this.comboBoxCriticidad.TabIndex = 64;
-            // 
-            // bunifuCustomLabel8
-            // 
-            this.bunifuCustomLabel8.AutoSize = true;
-            this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel8.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.bunifuCustomLabel8.ForeColor = System.Drawing.Color.Silver;
-            this.bunifuCustomLabel8.Location = new System.Drawing.Point(74, 70);
-            this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
-            this.bunifuCustomLabel8.Size = new System.Drawing.Size(90, 17);
-            this.bunifuCustomLabel8.TabIndex = 63;
-            this.bunifuCustomLabel8.Text = "Tipo De Falla";
             // 
             // comboBoxEstado
             // 
@@ -881,8 +881,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.bunifuTransition1.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.Name = "Alta_Incidente";
             this.Size = new System.Drawing.Size(2480, 745);

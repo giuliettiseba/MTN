@@ -36,7 +36,7 @@ namespace MTN_Administration.Tabs
             panel1.Location = new System.Drawing.Point(0, 0);
             panel2.Location = new System.Drawing.Point(0, 0);
 
-           // transiciones.ShowSync(panel1);
+            // transiciones.ShowSync(panel1);
 
             bunifuRange1_RangeChanged(null, null);
         }
@@ -53,6 +53,26 @@ namespace MTN_Administration.Tabs
             {
                 AddItem(cliente);
             }
+
+            List<Tecnico> listaTecnicos = aPIHelper.GetTecnicosHelper().GetTecnicos();
+            comboBoxTecnico1.DataSource = new BindingSource(listaTecnicos, null);
+            comboBoxTecnico1.DisplayMember = "ApellidoYNombre";
+            comboBoxTecnico1.ValueMember = "id";
+            comboBoxTecnico1.Enabled = false;
+            comboBoxTecnico1.SelectedIndex = -1;
+
+
+            comboBoxTecnico2.DataSource = new BindingSource(listaTecnicos, null);
+            comboBoxTecnico2.DisplayMember = "ApellidoYNombre";
+            comboBoxTecnico2.ValueMember = "id";
+            comboBoxTecnico2.SelectedIndex = -1;
+            comboBoxTecnico2.Enabled = false;
+
+
+            comboBoxTipoMantenimiento.DataSource = Enum.GetValues(typeof(TypeTipoMantenimiento));
+            datePicker.Value = DateTime.Now;
+
+
 
 
         }
@@ -76,16 +96,11 @@ namespace MTN_Administration.Tabs
             tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["tipo"].Value = (TypeTipoMantenible)incidente.Id_tipo_mantenible;
             tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["dipositivo"].Value = aPIHelper.GetCCTVHelper().GetDispositivoCCTV(incidente.Id_suc, incidente.Id_1).Nombre;
             if (incidente.Id_tipo_mantenible == 2)
-            tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["camara"].Value = aPIHelper.GetCCTVHelper().GetCamara(incidente.Id_suc, incidente.Id_2).Nombre;
+                tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["camara"].Value = aPIHelper.GetCCTVHelper().GetCamara(incidente.Id_1, incidente.Id_2).Nombre;
             tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["criticidad"].Value = aPIHelper.GetCriticidad(incidente.Id_criticidad);
             tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["estado"].Value = (TypeEstadoIncidente)incidente.Id_estado_incidente;
-            tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["asignado"].Value = incidente.Asignado;
+            tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["asignado"].Value = aPIHelper.GetMantenimientosHelper().TieneMantenimientoAsignado(incidente.Id);
         }
-
-
-
-
-
 
         private void bunifuRange1_RangeChanged(object sender, EventArgs e)
         {
@@ -99,14 +114,53 @@ namespace MTN_Administration.Tabs
             textMinutosFin.Text = minFin.ToString();
         }
 
-
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-
+            Mantenimiento newMantenimiento = new Mantenimiento();
+            newMantenimiento.id_tipo_mantenimiento = (TypeTipoMantenimiento)comboBoxTipoMantenimiento.SelectedValue;
+            newMantenimiento.Fecha = datePicker.Value;
+            newMantenimiento.HoraInicio = new TimeSpan(Convert.ToInt16(textHoraInicio.Text), Convert.ToInt16(textMinutosInicio.Text), 0);
+            newMantenimiento.HoraFin = new TimeSpan(Convert.ToInt16(textHoraFin.Text), Convert.ToInt16(textMinutosFin.Text), 0);
+            newMantenimiento.Detalles = TextDetalles.Text;
             
+            newMantenimiento.Id_Cliente = Convert.ToInt16(tablaClientes.SelectedRows[0].Cells["id_cliente"].Value);
+            newMantenimiento.Id_Sucursal = Convert.ToInt16(tablaSucursales.SelectedRows[0].Cells["id_sucursal"].Value);
+            if (checkBoxTecnico1.Checked)
+            {
+                newMantenimiento.Tecnico1 = Convert.ToInt16(comboBoxTecnico1.SelectedValue);
+                newMantenimiento.Estado = TypeEstadoMantenimiento.Asignado;
+                if (checkboxTecnico2.Checked)
+                    newMantenimiento.Tecnico2 = Convert.ToInt16(comboBoxTecnico2.SelectedValue);
+            }
+            else
+                newMantenimiento.Estado = TypeEstadoMantenimiento.Abierto;
+
+            newMantenimiento.Incidentes = new List<Incidente>();
+            foreach (DataGridViewRow selectedRow in tablaIncidentes.SelectedRows)
+            {
+                short id_incidente = Convert.ToInt16(selectedRow.Cells["id"].Value);
+                Incidente incidente = aPIHelper.GetIncidenteHelper().GetIncidente(id_incidente);
+                newMantenimiento.Incidentes.Add(incidente);
+
+            }
+
+
+            MensajeAlerta resultado = aPIHelper.GetMantenimientosHelper().AddManteniento(newMantenimiento);
+            Alert.ShowAlert(resultado);
+            ((ABM_Mantenimientos)Parent).RefreshTablaMantenientos();
+            ((ABM_Mantenimientos)Parent).showPanelSwitchs();
+            Dispose();
         }
 
+        private int SucursalSeleccionada()
+        {
+            throw new NotImplementedException();
+        }
 
+        private int ClienteSeleccionado()
+        {
+            throw new NotImplementedException();
+        }
 
         private void buttonSiguiente_Click_1(object sender, EventArgs e)
         {
@@ -139,8 +193,6 @@ namespace MTN_Administration.Tabs
         private void tablaSucursales_SelectionChanged(object sender, EventArgs e)
         {
 
-
-
             tablaIncidentes.Rows.Clear();  // Eliminar clientes
             tablaIncidentes.Refresh(); // Refrescar tabla
             try
@@ -163,5 +215,49 @@ namespace MTN_Administration.Tabs
 
         }
 
+        private void bunifuThinButton21_Click(object sender, EventArgs e)
+        {
+            
+            ((ABM_Mantenimientos)Parent).showPanelSwitchs();
+
+            Dispose();
+        }
+
+        private void CheckBoxTecnico2_OnChange(object sender, EventArgs e)
+        {
+            if (!checkboxTecnico2.Checked)
+            {
+                comboBoxTecnico2.Enabled = false;
+            }
+            else comboBoxTecnico2.Enabled = true;
+
+        }
+
+        private void CheckBoxTecnico1_OnChange(object sender, EventArgs e)
+        {
+            if (checkBoxTecnico1.Checked)
+            {
+                comboBoxTecnico1.Enabled = true;
+                checkboxTecnico2.Enabled = true;
+            }
+            else
+            {
+                comboBoxTecnico1.Enabled = false;
+                checkboxTecnico2.Enabled = false;
+                comboBoxTecnico2.Enabled = false;
+
+                checkboxTecnico2.Checked = false;
+                comboBoxTecnico1.SelectedItem = -1;
+                comboBoxTecnico2.SelectedItem = -1;
+
+                //comboBoxTecnico1.Enabled = fa
+            }
+        }
+
+        private void buttonAtras_Click(object sender, EventArgs e)
+        {
+            transiciones.HideSync(panel2);
+            transiciones.ShowSync(panel1);
+        }
     }
 }

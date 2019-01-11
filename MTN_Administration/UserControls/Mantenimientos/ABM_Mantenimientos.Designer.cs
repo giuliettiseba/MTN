@@ -67,6 +67,7 @@
             this.switchEstadoIncidenteProceso = new Bunifu.Framework.UI.BunifuiOSSwitch();
             this.switchEstadoIncidenteCerrado = new Bunifu.Framework.UI.BunifuiOSSwitch();
             this.switchEstadoIncidenteAbierto = new Bunifu.Framework.UI.BunifuiOSSwitch();
+            this.espaciadorTop = new System.Windows.Forms.Panel();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.transiciones = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.Header.SuspendLayout();
@@ -160,6 +161,7 @@
             this.panelTabla.Controls.Add(this.panel3);
             this.panelTabla.Controls.Add(this.panel2);
             this.panelTabla.Controls.Add(this.panelSwitches);
+            this.panelTabla.Controls.Add(this.espaciadorTop);
             this.transiciones.SetDecoration(this.panelTabla, BunifuAnimatorNS.DecorationType.None);
             this.panelTabla.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTabla.Location = new System.Drawing.Point(0, 35);
@@ -181,9 +183,9 @@
             this.tablaMantenimientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaMantenimientos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
             this.tablaMantenimientos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tablaMantenimientos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.tablaMantenimientos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
@@ -210,9 +212,10 @@
             this.tablaMantenimientos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaMantenimientos.DoubleBuffered = true;
             this.tablaMantenimientos.EnableHeadersVisualStyles = false;
-            this.tablaMantenimientos.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.tablaMantenimientos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.tablaMantenimientos.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.tablaMantenimientos.HeaderForeColor = System.Drawing.Color.Silver;
-            this.tablaMantenimientos.Location = new System.Drawing.Point(194, 0);
+            this.tablaMantenimientos.Location = new System.Drawing.Point(194, 24);
             this.tablaMantenimientos.MultiSelect = false;
             this.tablaMantenimientos.Name = "tablaMantenimientos";
             this.tablaMantenimientos.ReadOnly = true;
@@ -223,8 +226,9 @@
             this.tablaMantenimientos.ShowCellToolTips = false;
             this.tablaMantenimientos.ShowEditingIcon = false;
             this.tablaMantenimientos.ShowRowErrors = false;
-            this.tablaMantenimientos.Size = new System.Drawing.Size(1021, 690);
+            this.tablaMantenimientos.Size = new System.Drawing.Size(1021, 666);
             this.tablaMantenimientos.TabIndex = 70;
+            this.tablaMantenimientos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaMantenimientos_CellDoubleClick);
             // 
             // id
             // 
@@ -261,7 +265,7 @@
             // estadoMantenimiento
             // 
             this.estadoMantenimiento.FillWeight = 50F;
-            this.estadoMantenimiento.HeaderText = "Estado Mantenimiento";
+            this.estadoMantenimiento.HeaderText = "Estado";
             this.estadoMantenimiento.Name = "estadoMantenimiento";
             this.estadoMantenimiento.ReadOnly = true;
             // 
@@ -269,9 +273,9 @@
             // 
             this.transiciones.SetDecoration(this.panel3, BunifuAnimatorNS.DecorationType.None);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(1215, 0);
+            this.panel3.Location = new System.Drawing.Point(1215, 24);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(25, 690);
+            this.panel3.Size = new System.Drawing.Size(25, 666);
             this.panel3.TabIndex = 84;
             // 
             // panel2
@@ -304,12 +308,13 @@
             this.BotonVerMantenimiento.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.BotonVerMantenimiento.IdleForecolor = System.Drawing.Color.Gainsboro;
             this.BotonVerMantenimiento.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.BotonVerMantenimiento.Location = new System.Drawing.Point(416, 7);
+            this.BotonVerMantenimiento.Location = new System.Drawing.Point(291, 7);
             this.BotonVerMantenimiento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BotonVerMantenimiento.Name = "BotonVerMantenimiento";
             this.BotonVerMantenimiento.Size = new System.Drawing.Size(181, 41);
             this.BotonVerMantenimiento.TabIndex = 62;
             this.BotonVerMantenimiento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BotonVerMantenimiento.Click += new System.EventHandler(this.BotonVerMantenimiento_Click);
             // 
             // BotonAgregarMantenimiento
             // 
@@ -354,9 +359,9 @@
             this.panelSwitches.Controls.Add(this.switchEstadoIncidenteAbierto);
             this.transiciones.SetDecoration(this.panelSwitches, BunifuAnimatorNS.DecorationType.None);
             this.panelSwitches.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSwitches.Location = new System.Drawing.Point(0, 0);
+            this.panelSwitches.Location = new System.Drawing.Point(0, 24);
             this.panelSwitches.Name = "panelSwitches";
-            this.panelSwitches.Size = new System.Drawing.Size(194, 745);
+            this.panelSwitches.Size = new System.Drawing.Size(194, 721);
             this.panelSwitches.TabIndex = 82;
             this.panelSwitches.Visible = false;
             // 
@@ -524,6 +529,15 @@
             this.switchEstadoIncidenteAbierto.TabIndex = 64;
             this.switchEstadoIncidenteAbierto.Value = true;
             // 
+            // espaciadorTop
+            // 
+            this.transiciones.SetDecoration(this.espaciadorTop, BunifuAnimatorNS.DecorationType.None);
+            this.espaciadorTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.espaciadorTop.Location = new System.Drawing.Point(0, 0);
+            this.espaciadorTop.Name = "espaciadorTop";
+            this.espaciadorTop.Size = new System.Drawing.Size(1240, 24);
+            this.espaciadorTop.TabIndex = 82;
+            // 
             // bunifuElipse1
             // 
             this.bunifuElipse1.ElipseRadius = 20;
@@ -611,5 +625,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoMantenimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn tecnico;
         private System.Windows.Forms.DataGridViewTextBoxColumn estadoMantenimiento;
+        private System.Windows.Forms.Panel espaciadorTop;
     }
 }

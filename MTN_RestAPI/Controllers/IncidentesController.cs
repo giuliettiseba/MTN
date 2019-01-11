@@ -65,7 +65,7 @@ namespace MTN_RestAPI.Controllers
         // POST api/Sucursales
         public IHttpActionResult Post([FromUri] Incidente incidente)
         {
-            string sql = "INSERT INTO IncidenteS (id_cliente, id_suc,id_tipo_mantenible,id_1,id_2,falla,id_criticidad,Id_estado_incidente, asignado) VALUES (@id_cliente, @Id_suc,@Id_tipo_mantenible,@Id_1,@Id_2,@Falla,@Id_criticidad,@Id_estado_incidente,@asignado)";
+            string sql = "INSERT INTO IncidenteS (id_cliente, id_suc,id_tipo_mantenible,id_1,id_2,falla,id_criticidad,Id_estado_incidente) VALUES (@id_cliente, @Id_suc,@Id_tipo_mantenible,@Id_1,@Id_2,@Falla,@Id_criticidad,@Id_estado_incidente)";
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
                 var affectedRows = db.Execute(sql, new
@@ -78,7 +78,7 @@ namespace MTN_RestAPI.Controllers
                     incidente.Falla,
                     incidente.Id_criticidad,
                     incidente.Id_estado_incidente,
-                    incidente.Asignado
+                    
                 });
                 if (affectedRows == 1)
                     return Ok(affectedRows);
@@ -89,7 +89,7 @@ namespace MTN_RestAPI.Controllers
         // PUT api/Sucursales/id
         public IHttpActionResult Put(int id, [FromUri] Incidente incidente)
         {
-            string sql = "UPDATE IncidenteS SET id = @id,id_cliente = @id_cliente,id_suc = @id_suc,id_tipo_mantenible = @id_tipo_mantenible,id_1 = @id_1,id_2 =@id_2,falla = @falla,id_criticidad =@id_criticidad,Id_estado_incidente = @Id_estado_incidente, asignado = @asignado WHERE ID =" + id;
+            string sql = "UPDATE IncidenteS SET id = @id,id_cliente = @id_cliente,id_suc = @id_suc,id_tipo_mantenible = @id_tipo_mantenible,id_1 = @id_1,id_2 =@id_2,falla = @falla,id_criticidad =@id_criticidad,Id_estado_incidente = @Id_estado_incidente WHERE ID =" + id;
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
                 var affectedRows = db.Execute(sql, new
@@ -103,7 +103,7 @@ namespace MTN_RestAPI.Controllers
                     incidente.Falla,
                     incidente.Id_criticidad,
                     incidente.Id_estado_incidente,
-                    incidente.Asignado
+
 
                 });
                 if (affectedRows == 1)

@@ -9,12 +9,12 @@ using System.Collections.Generic;
 
 namespace MTN_RestAPI.Controllers
 {
-    public class MantenimientosController : ApiController
+    public class MantenimientoController : ApiController
     {
         static readonly string connectionStringSettings = "MTNdb";
 
         public IHttpActionResult GetAll()
-        { 
+        {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
                 db.Open();
@@ -31,9 +31,9 @@ namespace MTN_RestAPI.Controllers
 
                 if (mantenimientos.Count != 0)
                 {
-                    checksum = db.Query<int>("select CHECKSUM_AGG(binary_checksum(*)) FROM Mantenimientos JOIN Mantenimiento_tiene_Incidentes ON Mantenimientos.id = Mantenimiento_tiene_Incidentes.id_mantenimiento JOIN Incidentes ON Mantenimiento_tiene_Incidentes.id_incidente = Incidentes.id;", transaction: transaction).First();
+                    checksum = db.Query<int>("select ISNULL(CHECKSUM_AGG(binary_checksum(*)),0) FROM Mantenimientos JOIN Mantenimiento_tiene_Incidentes ON Mantenimientos.id = Mantenimiento_tiene_Incidentes.id_mantenimiento JOIN Incidentes ON Mantenimiento_tiene_Incidentes.id_incidente = Incidentes.id;", transaction: transaction).First();
                 }
-                
+
 
                 transaction.Commit();
                 db.Close();
@@ -71,71 +71,90 @@ namespace MTN_RestAPI.Controllers
                 return Ok(resultado);
             }
         }
-        /*
+
         // POST api/Sucursales
-        public IHttpActionResult Post([FromUri] Incidente incidente)
+        public IHttpActionResult Post([FromUri] Mantenimiento mantenimiento)
         {
-            string sql = "INSERT INTO IncidenteS (id_cliente, id_suc,id_tipo_mantenible,id_1,id_2,falla,id_criticidad,Id_estado_incidente, asignado) VALUES (@id_cliente, @Id_suc,@Id_tipo_mantenible,@Id_1,@Id_2,@Falla,@Id_criticidad,@Id_estado_incidente,@asignado)";
+
+            string sql = "INSERT INTO Mantenimientos (id_tipo_mantenimiento,Fecha,Ot,HoraInicio,HoraFin,Detalles,Estado,Id_Sucursal,Id_Cliente,Tecnico1,Tecnico2) VALUES (@id_tipo_mantenimiento,@Fecha,@Ot,@HoraInicio,@HoraFin,@Detalles,@Estado,@Id_Sucursal,@Id_Cliente,@Tecnico1,@Tecnico2)";
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
+                db.Open();
+                IDbTransaction transaction = db.BeginTransaction();
+
                 var affectedRows = db.Execute(sql, new
                 {
-                    incidente.Id_cliente,
-                    incidente.Id_suc,
-                    incidente.Id_tipo_mantenible,
-                    incidente.Id_1,
-                    incidente.Id_2,
-                    incidente.Falla,
-                    incidente.Id_criticidad,
-                    incidente.Id_estado_incidente,
-                    incidente.Asignado
+                    mantenimiento.id_tipo_mantenimiento,
+                    mantenimiento.Fecha,
+                    mantenimiento.Ot,
+                    mantenimiento.HoraInicio,
+                    mantenimiento.HoraFin,
+                    mantenimiento.Detalles,
+                    mantenimiento.Estado,
+                    mantenimiento.Id_Sucursal,
+                    mantenimiento.Id_Cliente,
+                    mantenimiento.Tecnico1,
+                    mantenimiento.Tecnico2,
+                }, transaction: transaction);
+                string sql2 = "SELECT MAX(Id) AS LastID FROM Mantenimientos";
+                int id = db.Query<int>(sql2, transaction: transaction).First();
+                transaction.Commit();
+                db.Close();
+                return Ok(id);
+
+            }
+
+        }
+
+
+        public IHttpActionResult Post([FromUri] int id_mantenimiento, int id_incidente)
+        {
+
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
+            {
+                string sql2 = "INSERT INTO Mantenimiento_tiene_Incidentes (id_mantenimiento,id_incidente) VALUES (@id_mantenimiento, @id_incidente)";
+                int affectedRows = db.Execute(sql2, new
+                {
+                    id_mantenimiento,
+                    id_incidente
                 });
                 if (affectedRows == 1)
                     return Ok(affectedRows);
-                else return BadRequest("No se pudo insertar el incidente con id: " + incidente.Id);
+                else return BadRequest("No se pudo insertar el mantenimiento con id: " + id_mantenimiento);
             }
         }
+
 
         // PUT api/Sucursales/id
-        public IHttpActionResult Put(int id, [FromUri] Incidente incidente)
+        public IHttpActionResult Put(int id, [FromUri] Mantenimiento mantenimiento)
         {
-            string sql = "UPDATE IncidenteS SET id = @id,id_cliente = @id_cliente,id_suc = @id_suc,id_tipo_mantenible = @id_tipo_mantenible,id_1 = @id_1,id_2 =@id_2,falla = @falla,id_criticidad =@id_criticidad,Id_estado_incidente = @Id_estado_incidente, asignado = @asignado WHERE ID =" + id;
+            string sql = "UPDATE Mantenimientos SET id_tipo_mantenimiento = @id_tipo_mantenimiento ,Fecha = @Fecha,Ot =@Ot,HoraInicio =@HoraInicio,HoraFin =@HoraFin,Detalles= @Detalles,Estado =@Estado,Id_Sucursal =@Id_Sucursal,Id_Cliente =@Id_Cliente,Tecnico1 =@Tecnico1,Tecnico2 =@Tecnico2 WHERE ID =" + id;
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))
             {
                 var affectedRows = db.Execute(sql, new
                 {
-                    incidente.Id,
-                    incidente.Id_cliente,
-                    incidente.Id_suc,
-                    incidente.Id_tipo_mantenible,
-                    incidente.Id_1,
-                    incidente.Id_2,
-                    incidente.Falla,
-                    incidente.Id_criticidad,
-                    incidente.Id_estado_incidente,
-                    incidente.Asignado
+
+                    mantenimiento.Id,
+                    mantenimiento.id_tipo_mantenimiento,
+                    mantenimiento.Fecha,
+                    mantenimiento.Ot,
+                    mantenimiento.HoraInicio,
+                    mantenimiento.HoraFin,
+                    mantenimiento.Detalles,
+                    mantenimiento.Estado,
+                    mantenimiento.Id_Sucursal,
+                    mantenimiento.Id_Cliente,
+                    mantenimiento.Tecnico1,
+                    mantenimiento.Tecnico2,
 
                 });
                 if (affectedRows == 1)
                     return Ok(affectedRows);
-                else return BadRequest("No se pudo insertar el incidente con id: " + id);
+                else return BadRequest("No se pudo insertar el mantenimiento con id: " + id);
             }
         }
 
-        // DELETE api/Tecnicos/id
-        public IHttpActionResult Delete(int id)
-        {
-            string sql = "DELETE FROM Incidente WHERE id=" + id;
 
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
-            {
-                var affectedRows = db.Execute(sql);
-                if (affectedRows == 1)
-                    return Ok(affectedRows);
-                else return BadRequest("No se pudo eliminar el incidente con id: " + id);
-            }
-        }
-         * */
-        
+
     }
 }

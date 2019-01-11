@@ -8,10 +8,11 @@ namespace MTN_RestAPI.Models
     public enum TypeEstadoMantenimiento
     {
         Abierto = 1,
-        Progreso = 2,
-        Cerrado = 3,
-        Demorado = 4,
-        Cancelado = 5
+        Asignado = 2,
+        Progreso = 3,
+        Cerrado = 4,
+        Demorado = 5,
+        Cancelado = 6
 
     }
 }

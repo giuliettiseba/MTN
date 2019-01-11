@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace MTN_RestAPI.Models
 {
-    public class Resultado<T> 
+    public class Resultado<T>
     {
         public Resultado() { }
 
@@ -16,7 +12,7 @@ namespace MTN_RestAPI.Models
             this.Lista = lista;
         }
 
-        public int Checksum { get ; set; }
+        public int Checksum { get; set; }
         public List<T> Lista { get; set; }
 
     }

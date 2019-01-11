@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace MTN_Administration.Tabs
 {
-    public partial class ABM_Mantenimientos : Form
+    public partial class ABM_Mantenimientos : Form, Animated
     {
         APIHelper aPIHelper;
         private Alta_Incidente alta_Incidentes;
@@ -29,10 +29,12 @@ namespace MTN_Administration.Tabs
         {
             base.OnLoad(e);
             RefreshTablaMantenientos();
+   //         WindowState = FormWindowState.Maximized;
+
 
         }
 
-        private void RefreshTablaMantenientos()
+        internal void RefreshTablaMantenientos()
         {
 
             tablaMantenimientos.Rows.Clear();
@@ -58,7 +60,9 @@ namespace MTN_Administration.Tabs
                 tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["cliente"].Value = aPIHelper.GetClientesHelper().GetCliente(mantenimiento.Id_Cliente).Nombre;
                 tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["sucursal"].Value = aPIHelper.GetSucursalesHelper().GetSucursal(mantenimiento.Id_Cliente, mantenimiento.Id_Sucursal).Nombre;
                 tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["tipoMantenimiento"].Value = (TypeTipoMantenimiento)mantenimiento.id_tipo_mantenimiento;
-                tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["tecnico"].Value = aPIHelper.GetTecnicosHelper().GetTecnico(mantenimiento.Tecnico1).Nombre;
+                Tecnico tecnico1 = aPIHelper.GetTecnicosHelper().GetTecnico(mantenimiento.Tecnico1);
+                if (tecnico1 != null)
+                tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["tecnico"].Value = tecnico1.Nombre;
                 tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["estadoMantenimiento"].Value = (TypeEstadoMantenimiento)mantenimiento.Estado;
 
             }
@@ -91,8 +95,9 @@ namespace MTN_Administration.Tabs
 
         public void showPanelSwitchs()
         {
-            //transiciones.ShowSync(panelSwitches);
-            transiciones.ShowSync(panelTabla);
+            transiciones.Show(panelTabla);
+
+
         }
 
         Alta_Manteniminto crear_Manteniminto;
@@ -111,6 +116,33 @@ namespace MTN_Administration.Tabs
             Controls.Add(this.crear_Manteniminto);
             crear_Manteniminto.BringToFront();
 
+        }
+
+
+
+        Ver_Mantenimiento ver_Mantenimiento;
+
+        private void BotonVerMantenimiento_Click(object sender, EventArgs e)
+        {
+            transiciones.HideSync(panelTabla);
+
+            int id_mantenimiento = Convert.ToInt16(tablaMantenimientos.SelectedRows[0].Cells["id"].Value);
+            Mantenimiento mantenimiento = aPIHelper.GetMantenimientosHelper().GetMantenimiento(id_mantenimiento);
+            ver_Mantenimiento = new Ver_Mantenimiento(aPIHelper, mantenimiento);
+            ver_Mantenimiento.Dock = System.Windows.Forms.DockStyle.Fill;
+            ver_Mantenimiento.Location = new System.Drawing.Point(236, 39);
+            ver_Mantenimiento.Name = "ver_Manteniminto";
+            ver_Mantenimiento.Size = new System.Drawing.Size(739, 561);
+            ver_Mantenimiento.TabIndex = 2;
+            Controls.Add(this.ver_Mantenimiento);
+            ver_Mantenimiento.BringToFront();
+
+
+        }
+
+        private void tablaMantenimientos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            BotonVerMantenimiento_Click(null, null);
         }
     }
     

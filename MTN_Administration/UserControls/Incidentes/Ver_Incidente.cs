@@ -29,9 +29,6 @@ namespace MTN_Administration.Tabs
 
             InitializeComponent();
 
-
-
-
             textCliente.Text = aPIHelper.GetClientesHelper().GetCliente(incidente.Id_cliente).Nombre;
             Sucursal sucursal = aPIHelper.GetSucursalesHelper().GetSucursal(incidente.Id_cliente, incidente.Id_suc);
             textSucursal.Text = sucursal.Nombre;
@@ -61,7 +58,9 @@ namespace MTN_Administration.Tabs
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
-            ((ABM_Incidentes)Parent).showPanelSwitchs();
+
+
+            ((Animated)Parent).showPanelSwitchs();
             Dispose();
         }
     }
