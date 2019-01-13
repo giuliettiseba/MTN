@@ -154,7 +154,20 @@ namespace MTN_RestAPI.Controllers
             }
         }
 
+        // DELETE api/Tecnicos/id
+        public IHttpActionResult Delete(int id)
+        {
+            string sql = "DELETE FROM Mantenimiento_tiene_Incidentes WHERE id_mantenimiento=" + id;
 
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
+            {
+                var affectedRows = db.Execute(sql);
+                    return Ok(affectedRows);
+             
+            }
+
+        }
+        
 
     }
 }

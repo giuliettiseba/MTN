@@ -24,7 +24,8 @@ namespace MTN_Administration.APIHelpers
             this._checksumHelper = checksumHelper;
         }
 
-        internal Incidente GetIncidente(int id_incidente) {
+        internal Incidente GetIncidente(int id_incidente)
+        {
             if (_incidentes == null) GetIncidentes();
             return _incidentes.Find(x => x.Id == id_incidente);
         }
@@ -53,7 +54,7 @@ namespace MTN_Administration.APIHelpers
                     {
                         webClient.UploadValues(url, "POST", webClient.QueryString);
                         return new MensajeAlerta("Agregado" + Environment.NewLine + newIncidente.Id, AlertType.success);
-                        
+
                     }
                     else
                     {
@@ -69,7 +70,7 @@ namespace MTN_Administration.APIHelpers
 
                 return new MensajeAlerta("Error" + Environment.NewLine + newIncidente.Id, AlertType.error);
             }
-        } 
+        }
 
         public List<Incidente> GetIncidentes()
         {
@@ -94,6 +95,16 @@ namespace MTN_Administration.APIHelpers
             }
         }
 
-
+        internal List<Incidente> GetIncidentes(int id_Cliente, int id_Sucursal)
+        {
+            GetIncidentes();
+            List<Incidente> incidentesSucursal = new List<Incidente>();
+            foreach (Incidente incidente in _incidentes)
+            {
+                if (incidente.Id_cliente == id_Cliente && incidente.Id_suc == id_Sucursal)
+                    incidentesSucursal.Add(incidente);
+            }
+            return incidentesSucursal;
+        }
     }
 }

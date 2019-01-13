@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MTN_RestAPI.Models
 {
-    public class Tecnico
+    public class Tecnico 
     {
         public int Id { get; set; }
         public String Nombre { get; set; }

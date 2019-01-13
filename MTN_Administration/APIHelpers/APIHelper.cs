@@ -218,61 +218,6 @@ namespace MTN_Administration
         }
 
 
-        //////////////////////////////////////////////////////////////////////Criticidad//////////////////////////////////////////////////////////////////////
-
-        public Dictionary<int, String> GetCriticidad()
-        {
-            if (criticidades != null)
-            {
-                return criticidades;
-            }
-            criticidades = new Dictionary<int, String>();
-            CacheCriticidad();
-            return criticidades;
-        }
-
-        internal String GetCriticidad(int id_criticidad)
-        {
-            if (criticidades == null) GetCriticidad();
-            return criticidades[id_criticidad];
-
-        }
-
-
-        //   private List<Criticidad> criticidades;
-        private Dictionary<int, String> criticidades;
-
-        private void CacheCriticidad()
-        {
-            String tabla = "Criticidades"; // Nombre de la tabla 
-            String file = @"localCache\" + tabla + ".mtn"; // Path donde se almacena 
-            Resultado<Criticidad> resultadoLocal = fileStorageHelper.DeSerializeObject<Resultado<Criticidad>>(file); // Si el archivo existe recupera el objeteo Resultado<ModeloCCTV>
-            if (resultadoLocal != null)
-            {
-
-                criticidades = resultadoLocal.Lista.Cast<Criticidad>().ToDictionary(x => x.Id, x => x.Nombre);
-                checksumHelper.ActualizarChecksum(tabla, resultadoLocal.Checksum); // Si logra recuperar el objeto actualiza el checksum local
-            }
-            if (!checksumHelper.VerificarChecksum(tabla)) // Verifica que el checksum sea el mismo que el de la tabla actual
-            {
-                String url = _partialurl + "Utiles/" + tabla;
-                using (WebClient client = new WebClient())
-                {
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    String content = client.DownloadString(url); // Consulta a la API por la tabla completa
-                    Resultado<Criticidad> resultado = serializer.Deserialize<Resultado<Criticidad>>(content); // Convierte el resultado de la consulta a un objeto del tipo Resultado
-                    fileStorageHelper.SerializeObject(resultado, file); // Actualiza o crea un archivo local
-                    criticidades = resultado.Lista.Cast<Criticidad>().ToDictionary(x => x.Id, x => x.Nombre); // separa el checksum del objeto
-                }
-            }
-        }
-
-
-     
-
-
-
-
         ////////////////////////////////////////////////LOCALIDADES////////////////////////////////////////////////////////////////////////
 
         private void CacheLocalidades()

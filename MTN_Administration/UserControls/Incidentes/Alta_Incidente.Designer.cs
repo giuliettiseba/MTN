@@ -658,7 +658,7 @@
             this.buttonSiguiente.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.buttonSiguiente.IdleForecolor = System.Drawing.Color.GhostWhite;
             this.buttonSiguiente.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.buttonSiguiente.Location = new System.Drawing.Point(1022, 687);
+            this.buttonSiguiente.Location = new System.Drawing.Point(1022, 659);
             this.buttonSiguiente.Margin = new System.Windows.Forms.Padding(5);
             this.buttonSiguiente.Name = "buttonSiguiente";
             this.buttonSiguiente.Size = new System.Drawing.Size(181, 41);
@@ -685,7 +685,7 @@
             this.buttonCancelar.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.buttonCancelar.IdleForecolor = System.Drawing.Color.GhostWhite;
             this.buttonCancelar.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.buttonCancelar.Location = new System.Drawing.Point(32, 687);
+            this.buttonCancelar.Location = new System.Drawing.Point(32, 659);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(5);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(181, 41);
@@ -745,7 +745,7 @@
             this.bunifuThinButton22.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.bunifuThinButton22.IdleForecolor = System.Drawing.Color.GhostWhite;
             this.bunifuThinButton22.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.bunifuThinButton22.Location = new System.Drawing.Point(39, 687);
+            this.bunifuThinButton22.Location = new System.Drawing.Point(39, 659);
             this.bunifuThinButton22.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuThinButton22.Name = "bunifuThinButton22";
             this.bunifuThinButton22.Size = new System.Drawing.Size(181, 41);
@@ -788,7 +788,7 @@
             this.ButtonFinalizar.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.ButtonFinalizar.IdleForecolor = System.Drawing.Color.GhostWhite;
             this.ButtonFinalizar.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.ButtonFinalizar.Location = new System.Drawing.Point(920, 687);
+            this.ButtonFinalizar.Location = new System.Drawing.Point(920, 660);
             this.ButtonFinalizar.Margin = new System.Windows.Forms.Padding(5);
             this.ButtonFinalizar.Name = "ButtonFinalizar";
             this.ButtonFinalizar.Size = new System.Drawing.Size(181, 41);
@@ -885,7 +885,7 @@
             this.Controls.Add(this.panel1);
             this.bunifuTransition1.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.Name = "Alta_Incidente";
-            this.Size = new System.Drawing.Size(2480, 745);
+            this.Size = new System.Drawing.Size(2480, 705);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaMantenible)).EndInit();

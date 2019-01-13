@@ -69,11 +69,11 @@
             this.textSucursalProvincia = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.textSucursal = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.labelSucursal = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.textEstado = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.textCliente = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.buttonVerIncidente = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.textEstado = new Bunifu.Framework.UI.BunifuMetroTextbox();
             ((System.ComponentModel.ISupportInitialize)(this.tablaIncidentes)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -118,7 +118,7 @@
             this.bunifuThinButton21.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.bunifuThinButton21.IdleForecolor = System.Drawing.Color.GhostWhite;
             this.bunifuThinButton21.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.bunifuThinButton21.Location = new System.Drawing.Point(480, 687);
+            this.bunifuThinButton21.Location = new System.Drawing.Point(480, 659);
             this.bunifuThinButton21.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuThinButton21.Name = "bunifuThinButton21";
             this.bunifuThinButton21.Size = new System.Drawing.Size(181, 41);
@@ -132,7 +132,7 @@
             this.transiciones.SetDecoration(this.Incidente, BunifuAnimatorNS.DecorationType.None);
             this.Incidente.Font = new System.Drawing.Font("Century Gothic", 18F);
             this.Incidente.ForeColor = System.Drawing.Color.Silver;
-            this.Incidente.Location = new System.Drawing.Point(20, 498);
+            this.Incidente.Location = new System.Drawing.Point(23, 468);
             this.Incidente.Name = "Incidente";
             this.Incidente.Size = new System.Drawing.Size(137, 30);
             this.Incidente.TabIndex = 75;
@@ -182,7 +182,7 @@
             this.tablaIncidentes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
             this.tablaIncidentes.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.tablaIncidentes.HeaderForeColor = System.Drawing.Color.Silver;
-            this.tablaIncidentes.Location = new System.Drawing.Point(20, 542);
+            this.tablaIncidentes.Location = new System.Drawing.Point(20, 514);
             this.tablaIncidentes.Name = "tablaIncidentes";
             this.tablaIncidentes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -274,7 +274,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1240, 745);
+            this.panel1.Size = new System.Drawing.Size(1240, 705);
             this.panel1.TabIndex = 97;
             // 
             // textTecnico2_Rango
@@ -524,7 +524,7 @@
             this.TextObservaciones.Multiline = true;
             this.TextObservaciones.Name = "TextObservaciones";
             this.TextObservaciones.ReadOnly = true;
-            this.TextObservaciones.Size = new System.Drawing.Size(1169, 77);
+            this.TextObservaciones.Size = new System.Drawing.Size(1169, 49);
             this.TextObservaciones.TabIndex = 107;
             // 
             // bunifuCustomLabel11
@@ -632,37 +632,6 @@
             this.labelSucursal.TabIndex = 86;
             this.labelSucursal.Text = "Sucursal";
             // 
-            // textEstado
-            // 
-            this.textEstado.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.textEstado.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.textEstado.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.textEstado.BorderThickness = 1;
-            this.textEstado.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.transiciones.SetDecoration(this.textEstado, BunifuAnimatorNS.DecorationType.None);
-            this.textEstado.Enabled = false;
-            this.textEstado.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEstado.ForeColor = System.Drawing.Color.Coral;
-            this.textEstado.isPassword = false;
-            this.textEstado.Location = new System.Drawing.Point(876, 24);
-            this.textEstado.Margin = new System.Windows.Forms.Padding(4);
-            this.textEstado.Name = "textEstado";
-            this.textEstado.Size = new System.Drawing.Size(313, 88);
-            this.textEstado.TabIndex = 85;
-            this.textEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // bunifuCustomLabel3
-            // 
-            this.bunifuCustomLabel3.AutoSize = true;
-            this.transiciones.SetDecoration(this.bunifuCustomLabel3, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel3.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.Silver;
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(755, 54);
-            this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
-            this.bunifuCustomLabel3.Size = new System.Drawing.Size(92, 30);
-            this.bunifuCustomLabel3.TabIndex = 84;
-            this.bunifuCustomLabel3.Text = "Estado";
-            // 
             // textCliente
             // 
             this.textCliente.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
@@ -703,7 +672,7 @@
             this.buttonVerIncidente.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
             this.buttonVerIncidente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
             this.buttonVerIncidente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonVerIncidente.BackgroundImage")));
-            this.buttonVerIncidente.ButtonText = "Cerrar";
+            this.buttonVerIncidente.ButtonText = "Ver Incidente";
             this.buttonVerIncidente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transiciones.SetDecoration(this.buttonVerIncidente, BunifuAnimatorNS.DecorationType.None);
             this.buttonVerIncidente.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -713,13 +682,44 @@
             this.buttonVerIncidente.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.buttonVerIncidente.IdleForecolor = System.Drawing.Color.GhostWhite;
             this.buttonVerIncidente.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.buttonVerIncidente.Location = new System.Drawing.Point(721, 687);
+            this.buttonVerIncidente.Location = new System.Drawing.Point(721, 659);
             this.buttonVerIncidente.Margin = new System.Windows.Forms.Padding(5);
             this.buttonVerIncidente.Name = "buttonVerIncidente";
             this.buttonVerIncidente.Size = new System.Drawing.Size(181, 41);
             this.buttonVerIncidente.TabIndex = 54;
             this.buttonVerIncidente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.buttonVerIncidente.Click += new System.EventHandler(this.buttonVerIncidente_Click);
+            // 
+            // bunifuCustomLabel3
+            // 
+            this.bunifuCustomLabel3.AutoSize = true;
+            this.transiciones.SetDecoration(this.bunifuCustomLabel3, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel3.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.Silver;
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(755, 54);
+            this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
+            this.bunifuCustomLabel3.Size = new System.Drawing.Size(92, 30);
+            this.bunifuCustomLabel3.TabIndex = 84;
+            this.bunifuCustomLabel3.Text = "Estado";
+            // 
+            // textEstado
+            // 
+            this.textEstado.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.textEstado.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.textEstado.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.textEstado.BorderThickness = 1;
+            this.textEstado.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.transiciones.SetDecoration(this.textEstado, BunifuAnimatorNS.DecorationType.None);
+            this.textEstado.Enabled = false;
+            this.textEstado.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textEstado.ForeColor = System.Drawing.Color.Coral;
+            this.textEstado.isPassword = false;
+            this.textEstado.Location = new System.Drawing.Point(876, 24);
+            this.textEstado.Margin = new System.Windows.Forms.Padding(4);
+            this.textEstado.Name = "textEstado";
+            this.textEstado.Size = new System.Drawing.Size(313, 88);
+            this.textEstado.TabIndex = 85;
+            this.textEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // Ver_Mantenimiento
             // 
@@ -729,7 +729,7 @@
             this.Controls.Add(this.panel1);
             this.transiciones.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.Name = "Ver_Mantenimiento";
-            this.Size = new System.Drawing.Size(1240, 745);
+            this.Size = new System.Drawing.Size(1240, 705);
             ((System.ComponentModel.ISupportInitialize)(this.tablaIncidentes)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -779,8 +779,8 @@
         private Bunifu.Framework.UI.BunifuMetroTextbox textTecnico1_Apellido;
         private Bunifu.Framework.UI.BunifuMetroTextbox textTecnico1_nombre;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
+        private Bunifu.Framework.UI.BunifuThinButton2 buttonVerIncidente;
         private Bunifu.Framework.UI.BunifuMetroTextbox textEstado;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
-        private Bunifu.Framework.UI.BunifuThinButton2 buttonVerIncidente;
     }
 }

@@ -86,6 +86,14 @@ namespace MTN_Administration.APIHelpers
                     {
                         webClient.QueryString.Add("id", newMantenimiento.Id.ToString());
                         webClient.UploadValues(url, "PUT", webClient.QueryString);
+                        removeRelationesMantenimiento(newMantenimiento.Id);
+                        foreach (Incidente incidente in newMantenimiento.Incidentes)
+                        {
+                            addRelationMantenimientoIncidente(newMantenimiento.Id, incidente.Id);
+
+                        }
+                
+
                         return new MensajeAlerta("Modificado" + Environment.NewLine + newMantenimiento.Id, AlertType.success);
 
                     }
@@ -99,6 +107,16 @@ namespace MTN_Administration.APIHelpers
             }
         }
 
+        private void removeRelationesMantenimiento(int id)
+        {
+            String url = _partialurl + "Mantenimiento/"+id;
+            using (WebClient webClient = new WebClient())
+            {
+                //webClient.QueryString.Add("id_mantenimiento", id.ToString());
+                webClient.UploadValues(url, "DELETE", webClient.QueryString);
+            }
+        }
+        
         internal bool TieneMantenimientoAsignado(int id)
         {
             Incidente a;

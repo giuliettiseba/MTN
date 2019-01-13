@@ -37,7 +37,7 @@ namespace MTN_Administration.Tabs
             textSucursalProvincia.Text = aPIHelper.GetNombreProvincia(aPIHelper.GetProvincia(sucursal.Id_localidad));
             
             TextFalla.Text = incidente.Falla;
-            textCriticidad.Text = aPIHelper.GetCriticidad(incidente.Id_criticidad);
+            textCriticidad.Text = ((TypeCriticidad)incidente.Id_criticidad).ToString();
 
             DispositivoCCTV dispositivoCCTV = aPIHelper.GetCCTVHelper().GetDispositivoCCTV(incidente.Id_suc, incidente.Id_1);
             textDispositivo.Text = dispositivoCCTV.Nombre;
@@ -54,6 +54,8 @@ namespace MTN_Administration.Tabs
                 textCamaraModelo.Text = aPIHelper.GetCCTVHelper().GetModeloCamara(dispositivoCCTV.Id_Modelo).Nombre;
             }
 
+            textEstado.Text = ((TypeEstadoIncidente)incidente.Id_estado_incidente).ToString();
+
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
@@ -63,5 +65,6 @@ namespace MTN_Administration.Tabs
             ((Animated)Parent).showPanelSwitchs();
             Dispose();
         }
+
     }
 }

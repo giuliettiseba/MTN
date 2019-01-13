@@ -29,14 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.fader = new System.Windows.Forms.Timer(this.components);
+            this.labelMTN = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // fader
+            // labelMTN
             // 
-            this.fader.Enabled = true;
-            this.fader.Interval = 1;
-            this.fader.Tick += new System.EventHandler(this.fader_Tick);
+            this.labelMTN.AutoSize = true;
+            this.labelMTN.BackColor = System.Drawing.Color.Transparent;
+            this.labelMTN.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMTN.Location = new System.Drawing.Point(135, 74);
+            this.labelMTN.Name = "labelMTN";
+            this.labelMTN.Size = new System.Drawing.Size(92, 33);
+            this.labelMTN.TabIndex = 0;
+            this.labelMTN.Text = "M.T.N.";
+            // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // Splash
             // 
@@ -44,15 +55,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(158)))), ((int)(((byte)(71)))));
             this.ClientSize = new System.Drawing.Size(387, 253);
+            this.Controls.Add(this.labelMTN);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Splash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "splash";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Timer fader;
+        private System.Windows.Forms.Label labelMTN;
+        private System.Windows.Forms.Timer timer;
     }
 }

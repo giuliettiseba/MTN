@@ -44,13 +44,15 @@ namespace MTN_Administration
         int curcol = 0;
         int loop = 0;
 
-        private void fader_Tick(object sender, EventArgs e)
+     
+
+        private void timer_Tick(object sender, EventArgs e)
         {
-            fader.Enabled = true;
             if (curcol < colors.Count - 1)
             {
                 this.BackColor = Bunifu.Framework.UI.BunifuColorTransition.getColorScale(loop, colors[curcol], colors[curcol + 1]);
-                if (loop < 100)
+                Console.WriteLine(curcol);
+                if (loop < 10)
                 {
                     loop++;
                 }
@@ -59,12 +61,10 @@ namespace MTN_Administration
                     loop = 0;
                     curcol++;
                 }
-                fader.Enabled = true;
+
             }
         }
-
-
-   }
+    }
 
 }
 

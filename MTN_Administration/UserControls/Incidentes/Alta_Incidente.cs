@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -60,12 +60,8 @@ namespace MTN_Administration.Tabs
 
             comboBoxCriticidad.DisplayMember = "value";
             comboBoxCriticidad.ValueMember = "key";
-            comboBoxCriticidad.DataSource = new BindingSource(aPIHelper.GetCriticidad(), null);
+            comboBoxCriticidad.DataSource = Enum.GetValues(typeof(TypeCriticidad));
 
-/*
-            ComboBoxEstadoIncidente.DisplayMember = "value";
-            ComboBoxEstadoIncidente.ValueMember = "key";
-            ComboBoxEstadoIncidente.DataSource = new BindingSource(aPIHelper.GetEstadoIncidente(), null);*/
 
         }
 
@@ -208,7 +204,7 @@ namespace MTN_Administration.Tabs
                     break;
             }
 
-             /// Obtener criticidad 
+            /// Obtener criticidad 
             newIncidente.Id_criticidad = (int)comboBoxCriticidad.SelectedValue;
 
             /// Obtener Falla
@@ -216,7 +212,7 @@ namespace MTN_Administration.Tabs
 
             /// Solo se puede marcar un incidente como abierto desde esta ventana
 
-            newIncidente.Id_estado_incidente = (int) TypeEstadoIncidente.Abierto;
+            newIncidente.Id_estado_incidente = (int)TypeEstadoIncidente.Abierto;
 
             /// Agregar Incidente y Mostrar notificacion
             MensajeAlerta resultado = aPIHelper.GetIncidenteHelper().AddIncidente(newIncidente);

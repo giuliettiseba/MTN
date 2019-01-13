@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -40,6 +41,9 @@ namespace MTN_Administration
 
         public Home()
         {
+            Thread t = new Thread(new ThreadStart(SplashScreen));
+            t.Start();
+
             if (!this.DesignMode)
             {
                 aPIHelper = new APIHelper(_partialurl);
@@ -47,11 +51,19 @@ namespace MTN_Administration
                 this.Top = (Screen.PrimaryScreen.Bounds.Height / 2) - (this.Height / 2);
                 this.Left = (Screen.PrimaryScreen.Bounds.Width / 2) - (this.Width / 2);
                 Bunifu.Framework.Lib.Elipse.Apply(this, 20);
+                BringToFront();
             }
 
+             t.Abort();
 
 
 
+
+        }
+
+        private void SplashScreen()
+        {
+            Application.Run(new Splash());
 
         }
 
@@ -183,7 +195,7 @@ namespace MTN_Administration
             //DisposeAllPanels();
             aBM_Incidentes = new ABM_Incidentes(aPIHelper);
             aBM_Incidentes.Owner = this;
-            aBM_Incidentes.Dock = System.Windows.Forms.DockStyle.Fill;
+          //  aBM_Incidentes.Dock = System.Windows.Forms.DockStyle.Fill;
             aBM_Incidentes.Name = "aBM_Incidentes";
             aBM_Incidentes.TabIndex = 2;
             //Controls.Add(this.aBM_Incidentes);

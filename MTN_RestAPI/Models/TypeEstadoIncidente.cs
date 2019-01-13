@@ -7,6 +7,10 @@ namespace MTN_RestAPI.Models
 {
     public enum TypeEstadoIncidente
     {
-         Abierto = 1, Progreso = 2, Cerrado = 3
+         Abierto = 1,
+        Progreso = 2,
+        Resuelto = 3,
+        Cancelado = 4,
+            Reabierto = 5
     }
 }

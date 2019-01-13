@@ -143,7 +143,6 @@
     <Compile Include="Controllers\IncidentesController.cs" />
     <Compile Include="Controllers\SucursalesController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
-    <Compile Include="Controllers\Helper.cs" />
     <Compile Include="Controllers\UtilesController.cs" />
     <Compile Include="Controllers\TecnicosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -173,6 +172,7 @@
     <Compile Include="Models\Provincia.cs" />
     <Compile Include="Models\Tecnico.cs" />
     <Compile Include="Models\TypeTipoMantenible.cs" />
+    <Compile Include="Models\TypeCriticidad.cs" />
     <Compile Include="Models\TypeTipoMantenimiento.cs" />
     <Compile Include="Models\TypeEstadoMantenimiento.cs" />
     <Compile Include="Models\TypeEstadoIncidente.cs" />

@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>..\..\Bunifu_UI_v1.5.3.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
@@ -60,7 +60,7 @@
     </Compile>
     <Compile Include="Alerts\MensajeAlerta.cs" />
     <Compile Include="APIHelpers\MantenimientoHelper.cs" />
-    <Compile Include="customTextBox.cs">
+    <Compile Include="CustomUI\customTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="APIHelpers\IncidenteHelper.cs" />
@@ -71,14 +71,26 @@
     <Compile Include="APIHelpers\Logger.cs" />
     <Compile Include="APIHelpers\TecnicosHelper.cs" />
     <Compile Include="APIHelpers\SucursalesHelper.cs" />
-    <Compile Include="UserControls\Incidentes\Animated.cs" />
+    <Compile Include="Animated.cs" />
+    <Compile Include="UserControls\Mantenimientos\Reprogramar_Mantenimiento.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Mantenimientos\Reprogramar_Mantenimiento.Designer.cs">
+      <DependentUpon>Reprogramar_Mantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Mantenimientos\Cerrar_Mantenimiento.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Mantenimientos\Cerrar_Mantenimiento.Designer.cs">
+      <DependentUpon>Cerrar_Mantenimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Mantenimientos\Ver_Mantenimiento.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\Mantenimientos\Ver_Mantenimiento.Designer.cs">
       <DependentUpon>Ver_Mantenimiento.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomComboBox.cs">
+    <Compile Include="CustomUI\CustomComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Splash.cs">
@@ -92,12 +104,6 @@
     </Compile>
     <Compile Include="UserControls\DispositivosCCTV\ABM_Dispositivos.Designer.cs">
       <DependentUpon>ABM_Dispositivos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\Incidentes\Cerrar_Incidente.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\Incidentes\Cerrar_Incidente.Designer.cs">
-      <DependentUpon>Cerrar_Incidente.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Mantenimientos\Alta_Mantenimiento.cs">
       <SubType>UserControl</SubType>
@@ -202,8 +208,11 @@
     <EmbeddedResource Include="UserControls\DispositivosCCTV\ABM_Dispositivos.resx">
       <DependentUpon>ABM_Dispositivos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Incidentes\Cerrar_Incidente.resx">
-      <DependentUpon>Cerrar_Incidente.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\Mantenimientos\Reprogramar_Mantenimiento.resx">
+      <DependentUpon>Reprogramar_Mantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Mantenimientos\Cerrar_Mantenimiento.resx">
+      <DependentUpon>Cerrar_Mantenimiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Mantenimientos\Ver_Mantenimiento.resx">
       <DependentUpon>Ver_Mantenimiento.cs</DependentUpon>
@@ -323,6 +332,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\settings-8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\005-exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Bunifu_UI_v1.5.3.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
