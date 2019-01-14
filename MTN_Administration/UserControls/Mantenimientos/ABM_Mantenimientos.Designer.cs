@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            BunifuAnimatorNS.Animation animation4 = new BunifuAnimatorNS.Animation();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Mantenimientos));
             this.Header = new System.Windows.Forms.Panel();
             this.headerIncidentePicture = new System.Windows.Forms.PictureBox();
@@ -40,7 +40,6 @@
             this.TituloHeader = new System.Windows.Forms.Label();
             this.close = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.panelTabla = new System.Windows.Forms.Panel();
             this.tablaMantenimientos = new Bunifu.Framework.UI.BunifuCustomDataGrid();
@@ -74,6 +73,7 @@
             this.espaciadorTop = new System.Windows.Forms.Panel();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.transiciones = new BunifuAnimatorNS.BunifuTransition(this.components);
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.headerIncidentePicture)).BeginInit();
             this.panelTabla.SuspendLayout();
@@ -81,6 +81,7 @@
             this.panel2.SuspendLayout();
             this.panelSwitches.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchIcon)).BeginInit();
+            this.espaciadorTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // Header
@@ -152,6 +153,11 @@
             this.close.Text = "X";
             this.close.Click += new System.EventHandler(this.close_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // bunifuDragControl1
             // 
             this.bunifuDragControl1.Fixed = true;
@@ -179,23 +185,23 @@
             this.tablaMantenimientos.AllowUserToDeleteRows = false;
             this.tablaMantenimientos.AllowUserToResizeColumns = false;
             this.tablaMantenimientos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.tablaMantenimientos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.tablaMantenimientos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.tablaMantenimientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaMantenimientos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
             this.tablaMantenimientos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tablaMantenimientos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaMantenimientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaMantenimientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaMantenimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaMantenimientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -205,14 +211,14 @@
             this.tecnico,
             this.estadoMantenimiento});
             this.transiciones.SetDecoration(this.tablaMantenimientos, BunifuAnimatorNS.DecorationType.None);
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaMantenimientos.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaMantenimientos.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaMantenimientos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaMantenimientos.DoubleBuffered = true;
             this.tablaMantenimientos.EnableHeadersVisualStyles = false;
@@ -433,7 +439,7 @@
             this.transiciones.SetDecoration(this.bunifuCustomLabel2, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel2.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.Silver;
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(85, 180);
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(85, 234);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(62, 17);
             this.bunifuCustomLabel2.TabIndex = 81;
@@ -446,7 +452,7 @@
             this.switchEstadoMantenimeintoCerrado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchEstadoMantenimeintoCerrado.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transiciones.SetDecoration(this.switchEstadoMantenimeintoCerrado, BunifuAnimatorNS.DecorationType.None);
-            this.switchEstadoMantenimeintoCerrado.Location = new System.Drawing.Point(40, 178);
+            this.switchEstadoMantenimeintoCerrado.Location = new System.Drawing.Point(40, 232);
             this.switchEstadoMantenimeintoCerrado.Name = "switchEstadoMantenimeintoCerrado";
             this.switchEstadoMantenimeintoCerrado.OffColor = System.Drawing.Color.Gray;
             this.switchEstadoMantenimeintoCerrado.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
@@ -461,7 +467,7 @@
             this.transiciones.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.Silver;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(85, 146);
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(85, 203);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(82, 17);
             this.bunifuCustomLabel1.TabIndex = 79;
@@ -474,7 +480,7 @@
             this.switchEstadoMantenimeintoCancelado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchEstadoMantenimeintoCancelado.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transiciones.SetDecoration(this.switchEstadoMantenimeintoCancelado, BunifuAnimatorNS.DecorationType.None);
-            this.switchEstadoMantenimeintoCancelado.Location = new System.Drawing.Point(40, 144);
+            this.switchEstadoMantenimeintoCancelado.Location = new System.Drawing.Point(40, 201);
             this.switchEstadoMantenimeintoCancelado.Name = "switchEstadoMantenimeintoCancelado";
             this.switchEstadoMantenimeintoCancelado.OffColor = System.Drawing.Color.Gray;
             this.switchEstadoMantenimeintoCancelado.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
@@ -500,7 +506,7 @@
             this.transiciones.SetDecoration(this.bunifuCustomLabel3, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel3.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.Silver;
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(85, 243);
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(85, 172);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
             this.bunifuCustomLabel3.Size = new System.Drawing.Size(64, 17);
             this.bunifuCustomLabel3.TabIndex = 69;
@@ -512,7 +518,7 @@
             this.transiciones.SetDecoration(this.LabelswitchEstadoIncidenteCerrado, BunifuAnimatorNS.DecorationType.None);
             this.LabelswitchEstadoIncidenteCerrado.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.LabelswitchEstadoIncidenteCerrado.ForeColor = System.Drawing.Color.Silver;
-            this.LabelswitchEstadoIncidenteCerrado.Location = new System.Drawing.Point(85, 213);
+            this.LabelswitchEstadoIncidenteCerrado.Location = new System.Drawing.Point(85, 141);
             this.LabelswitchEstadoIncidenteCerrado.Name = "LabelswitchEstadoIncidenteCerrado";
             this.LabelswitchEstadoIncidenteCerrado.Size = new System.Drawing.Size(79, 17);
             this.LabelswitchEstadoIncidenteCerrado.TabIndex = 69;
@@ -542,7 +548,7 @@
             this.transiciones.SetDecoration(this.LabelSwitchEstadoIncidenteProceso, BunifuAnimatorNS.DecorationType.None);
             this.LabelSwitchEstadoIncidenteProceso.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.LabelSwitchEstadoIncidenteProceso.ForeColor = System.Drawing.Color.Silver;
-            this.LabelSwitchEstadoIncidenteProceso.Location = new System.Drawing.Point(85, 112);
+            this.LabelSwitchEstadoIncidenteProceso.Location = new System.Drawing.Point(85, 110);
             this.LabelSwitchEstadoIncidenteProceso.Name = "LabelSwitchEstadoIncidenteProceso";
             this.LabelSwitchEstadoIncidenteProceso.Size = new System.Drawing.Size(69, 17);
             this.LabelSwitchEstadoIncidenteProceso.TabIndex = 68;
@@ -567,13 +573,13 @@
             this.switchEstadoMantenimeintoProgreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchEstadoMantenimeintoProgreso.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transiciones.SetDecoration(this.switchEstadoMantenimeintoProgreso, BunifuAnimatorNS.DecorationType.None);
-            this.switchEstadoMantenimeintoProgreso.Location = new System.Drawing.Point(40, 241);
+            this.switchEstadoMantenimeintoProgreso.Location = new System.Drawing.Point(40, 170);
             this.switchEstadoMantenimeintoProgreso.Name = "switchEstadoMantenimeintoProgreso";
             this.switchEstadoMantenimeintoProgreso.OffColor = System.Drawing.Color.Gray;
             this.switchEstadoMantenimeintoProgreso.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
             this.switchEstadoMantenimeintoProgreso.Size = new System.Drawing.Size(35, 20);
             this.switchEstadoMantenimeintoProgreso.TabIndex = 65;
-            this.switchEstadoMantenimeintoProgreso.Value = false;
+            this.switchEstadoMantenimeintoProgreso.Value = true;
             this.switchEstadoMantenimeintoProgreso.OnValueChange += new System.EventHandler(this.RefreshTabla);
             // 
             // switchEstadoMantenimeintoAsignado
@@ -583,13 +589,13 @@
             this.switchEstadoMantenimeintoAsignado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchEstadoMantenimeintoAsignado.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transiciones.SetDecoration(this.switchEstadoMantenimeintoAsignado, BunifuAnimatorNS.DecorationType.None);
-            this.switchEstadoMantenimeintoAsignado.Location = new System.Drawing.Point(40, 110);
+            this.switchEstadoMantenimeintoAsignado.Location = new System.Drawing.Point(40, 108);
             this.switchEstadoMantenimeintoAsignado.Name = "switchEstadoMantenimeintoAsignado";
             this.switchEstadoMantenimeintoAsignado.OffColor = System.Drawing.Color.Gray;
             this.switchEstadoMantenimeintoAsignado.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
             this.switchEstadoMantenimeintoAsignado.Size = new System.Drawing.Size(35, 20);
             this.switchEstadoMantenimeintoAsignado.TabIndex = 66;
-            this.switchEstadoMantenimeintoAsignado.Value = false;
+            this.switchEstadoMantenimeintoAsignado.Value = true;
             this.switchEstadoMantenimeintoAsignado.OnValueChange += new System.EventHandler(this.RefreshTabla);
             // 
             // switchEstadoMantenimeintoDemorado
@@ -599,13 +605,13 @@
             this.switchEstadoMantenimeintoDemorado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchEstadoMantenimeintoDemorado.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transiciones.SetDecoration(this.switchEstadoMantenimeintoDemorado, BunifuAnimatorNS.DecorationType.None);
-            this.switchEstadoMantenimeintoDemorado.Location = new System.Drawing.Point(40, 211);
+            this.switchEstadoMantenimeintoDemorado.Location = new System.Drawing.Point(40, 139);
             this.switchEstadoMantenimeintoDemorado.Name = "switchEstadoMantenimeintoDemorado";
             this.switchEstadoMantenimeintoDemorado.OffColor = System.Drawing.Color.Gray;
             this.switchEstadoMantenimeintoDemorado.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
             this.switchEstadoMantenimeintoDemorado.Size = new System.Drawing.Size(35, 20);
             this.switchEstadoMantenimeintoDemorado.TabIndex = 65;
-            this.switchEstadoMantenimeintoDemorado.Value = false;
+            this.switchEstadoMantenimeintoDemorado.Value = true;
             this.switchEstadoMantenimeintoDemorado.OnValueChange += new System.EventHandler(this.RefreshTabla);
             // 
             // switchEstadoMantenimeintoAbierto
@@ -626,6 +632,7 @@
             // 
             // espaciadorTop
             // 
+            this.espaciadorTop.Controls.Add(this.progressBar);
             this.transiciones.SetDecoration(this.espaciadorTop, BunifuAnimatorNS.DecorationType.None);
             this.espaciadorTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.espaciadorTop.Location = new System.Drawing.Point(0, 0);
@@ -642,22 +649,30 @@
             // 
             this.transiciones.AnimationType = BunifuAnimatorNS.AnimationType.HorizSlide;
             this.transiciones.Cursor = null;
-            animation4.AnimateOnlyDifferences = true;
-            animation4.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.BlindCoeff")));
-            animation4.LeafCoeff = 0F;
-            animation4.MaxTime = 1F;
-            animation4.MinTime = 0F;
-            animation4.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicCoeff")));
-            animation4.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicShift")));
-            animation4.MosaicSize = 0;
-            animation4.Padding = new System.Windows.Forms.Padding(0);
-            animation4.RotateCoeff = 0F;
-            animation4.RotateLimit = 0F;
-            animation4.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.ScaleCoeff")));
-            animation4.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.SlideCoeff")));
-            animation4.TimeCoeff = 0F;
-            animation4.TransparencyCoeff = 0F;
-            this.transiciones.DefaultAnimation = animation4;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.transiciones.DefaultAnimation = animation1;
+            // 
+            // progressBar
+            // 
+            this.transiciones.SetDecoration(this.progressBar, BunifuAnimatorNS.DecorationType.None);
+            this.progressBar.Location = new System.Drawing.Point(3, 6);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(1237, 12);
+            this.progressBar.TabIndex = 0;
             // 
             // ABM_Mantenimientos
             // 
@@ -680,6 +695,7 @@
             this.panelSwitches.ResumeLayout(false);
             this.panelSwitches.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchIcon)).EndInit();
+            this.espaciadorTop.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -688,7 +704,6 @@
         private System.Windows.Forms.Panel Header;
         private System.Windows.Forms.DataGridViewTextBoxColumn severidad;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.Panel panelTabla;
         private Bunifu.Framework.UI.BunifuThinButton2 BotonAgregarMantenimiento;
@@ -726,5 +741,6 @@
         private Bunifu.Framework.UI.BunifuThinButton2 buttonCerrarMantenimiento;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
         private Bunifu.Framework.UI.BunifuiOSSwitch switchEstadoMantenimeintoProgreso;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }

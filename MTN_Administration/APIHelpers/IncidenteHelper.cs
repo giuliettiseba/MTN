@@ -106,5 +106,10 @@ namespace MTN_Administration.APIHelpers
             }
             return incidentesSucursal;
         }
+
+        internal bool TieneCambios()
+        {
+            return (!_checksumHelper.VerificarChecksum("Incidentes"));
+        }
     }
 }

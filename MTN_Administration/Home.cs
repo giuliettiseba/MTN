@@ -17,9 +17,12 @@ namespace MTN_Administration
     {
 
         APIHelper aPIHelper;
-        private static readonly string _host = "http://localhost";
-        //    private  static readonly string port = "2510";
-        private static readonly string _port = "50411";
+        //      private static readonly string _host = "http://mtnapi-ee7fc8b4.eastus.cloudapp.azure.com"; // azure
+            private static readonly string _host = "http://localhost";
+        /// private  static readonly string _port = "80"; /// Azure PORT
+
+        //    private  static readonly string _port = "2510"; /// LOCAL PORT
+           private static readonly string _port = "50411"; /// TEST PORT
         private static readonly string _apiRoute = "api";
         private static readonly string _partialurl = _host + ":" + _port + "/" + _apiRoute + "/";
 

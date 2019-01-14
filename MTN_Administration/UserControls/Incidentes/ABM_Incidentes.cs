@@ -24,8 +24,9 @@ namespace MTN_Administration.Tabs
         {
             this.aPIHelper = aPIHelper;
             InitializeComponent();
-            close.Location = new Point(Width - 5, 8);
-            minimize.Location = new Point(Width - 20, 8);
+            close.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - 20, 8);
+            minimize.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - 35 , 8);
+            progressBar.Width = Screen.PrimaryScreen.WorkingArea.Width;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -179,17 +180,33 @@ namespace MTN_Administration.Tabs
             RefreshTablaIncidentes();
 
         }
-
-        private void buttonCancelarIncidente_Click(object sender, EventArgs e)
+        int tick = 0;
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            cambiarEstadoIncidente(TypeEstadoIncidente.Cancelado);
-
+            if (tick == 100)
+            {
+                if (aPIHelper.GetIncidenteHelper().TieneCambios()) {
+                    RefreshTablaIncidentes();
+                } 
+                tick = 0;
+            }
+            else
+            {
+                tick += 1;
+                progressBar.Value = tick;
+            }
         }
 
-        private void buttonReabrir_Click_1(object sender, EventArgs e)
+        private void buttonCancelarIncidente_Click_1(object sender, EventArgs e)
+        {
+            cambiarEstadoIncidente(TypeEstadoIncidente.Cancelado);
+            RefreshTablaIncidentes();
+        }
+
+        private void buttonReabrir_Click(object sender, EventArgs e)
         {
             cambiarEstadoIncidente(TypeEstadoIncidente.Reabierto);
-
+            RefreshTablaIncidentes();
         }
     }
 }

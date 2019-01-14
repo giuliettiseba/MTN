@@ -38,10 +38,7 @@ namespace MTN_Administration.Tabs
             panel.Location = new System.Drawing.Point(0, 0);
             panel1.Location = new System.Drawing.Point(0, 0);
             // transiciones.ShowSync(panel1);
-
         }
-
-
 
         protected override void OnLoad(EventArgs e)
         {
@@ -68,6 +65,16 @@ namespace MTN_Administration.Tabs
 
 
 
+            if (mantenimiento.Tecnico1 != 0)
+            {
+                checkBoxTecnico1.Checked = true;
+                comboBoxTecnico1.SelectedValue = mantenimiento.Tecnico1;
+                if (mantenimiento.Tecnico2 != 0)
+                {
+                    checkBoxTecnico2.Checked = true;
+                    comboBoxTecnico2.SelectedValue = mantenimiento.Tecnico2;
+                }
+            }
         }
 
         private void bunifuRange1_RangeChanged(object sender, EventArgs e)
@@ -95,28 +102,26 @@ namespace MTN_Administration.Tabs
             {
                 mantenimiento.Tecnico1 = Convert.ToInt16(comboBoxTecnico1.SelectedValue);
                 mantenimiento.Estado = TypeEstadoMantenimiento.Asignado;
-                if (checkboxTecnico2.Checked)
+                if (checkBoxTecnico2.Checked)
+                {
                     mantenimiento.Tecnico2 = Convert.ToInt16(comboBoxTecnico2.SelectedValue);
+                }
+                else
+                {
+                    mantenimiento.Tecnico2 = 0;
+                }
             }
             else
+            {
+                mantenimiento.Tecnico1 = 0;
                 mantenimiento.Estado = TypeEstadoMantenimiento.Abierto;
-
+            }
 
             MensajeAlerta resultado = aPIHelper.GetMantenimientosHelper().AddManteniento(mantenimiento);
             Alert.ShowAlert(resultado);
             ((ABM_Mantenimientos)Parent).RefreshTabla();
             ((ABM_Mantenimientos)Parent).showPanelSwitchs();
             Dispose();
-        }
-
-        private int SucursalSeleccionada()
-        {
-            throw new NotImplementedException();
-        }
-
-        private int ClienteSeleccionado()
-        {
-            throw new NotImplementedException();
         }
 
 
@@ -133,7 +138,7 @@ namespace MTN_Administration.Tabs
 
         private void CheckBoxTecnico2_OnChange(object sender, EventArgs e)
         {
-            if (!checkboxTecnico2.Checked)
+            if (!checkBoxTecnico2.Checked)
             {
                 comboBoxTecnico2.Enabled = false;
             }
@@ -146,15 +151,15 @@ namespace MTN_Administration.Tabs
             if (checkBoxTecnico1.Checked)
             {
                 comboBoxTecnico1.Enabled = true;
-                checkboxTecnico2.Enabled = true;
+                checkBoxTecnico2.Enabled = true;
             }
             else
             {
                 comboBoxTecnico1.Enabled = false;
-                checkboxTecnico2.Enabled = false;
+                checkBoxTecnico2.Enabled = false;
                 comboBoxTecnico2.Enabled = false;
 
-                checkboxTecnico2.Checked = false;
+                checkBoxTecnico2.Checked = false;
                 comboBoxTecnico1.SelectedItem = -1;
                 comboBoxTecnico2.SelectedItem = -1;
 
@@ -178,10 +183,11 @@ namespace MTN_Administration.Tabs
         private void buttonEditarListaIncidentes_Click(object sender, EventArgs e)
         {
             transiciones.HideSync(panel);
-            listaIncidentesSucursal = aPIHelper.GetIncidenteHelper().GetIncidentes(mantenimiento.Id_Cliente,mantenimiento.Id_Sucursal);
+            listaIncidentesSucursal = aPIHelper.GetIncidenteHelper().GetIncidentes(mantenimiento.Id_Cliente, mantenimiento.Id_Sucursal);
             listaIncidentesAsignados = new List<Incidente>(mantenimiento.Incidentes);
             listaIncidentesNoAsignados = new List<Incidente>();
-            foreach (Incidente incidente in listaIncidentesSucursal) {
+            foreach (Incidente incidente in listaIncidentesSucursal)
+            {
                 if (listaIncidentesAsignados.FirstOrDefault(x => x.Id == incidente.Id) == null)
                     listaIncidentesNoAsignados.Add(incidente);
             }
@@ -204,7 +210,12 @@ namespace MTN_Administration.Tabs
             tablaIncidentesNoAsignados.Rows.Clear();
             foreach (Incidente incidente in listaIncidentesNoAsignados)
             {
-                AddRow(tablaIncidentesNoAsignados, incidente);
+                if (incidente.Id_estado_incidente != (int)TypeEstadoIncidente.Cancelado
+    && incidente.Id_estado_incidente != (int)TypeEstadoIncidente.Progreso
+    && incidente.Id_estado_incidente != (int)TypeEstadoIncidente.Resuelto
+)
+
+                    AddRow(tablaIncidentesNoAsignados, incidente);
             }
             tablaIncidentesNoAsignados.Refresh();
         }
@@ -259,6 +270,12 @@ namespace MTN_Administration.Tabs
         {
             panel.Visible = true;
             transiciones.Hide(panel1);
+        }
+
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            ((ABM_Mantenimientos)Parent).showPanelSwitchs();
+            Dispose();
         }
     }
 }

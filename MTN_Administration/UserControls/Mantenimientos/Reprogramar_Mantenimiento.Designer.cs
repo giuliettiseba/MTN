@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation3 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reprogramar_Mantenimiento));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.transiciones = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.labelCliente = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -54,7 +54,7 @@
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel = new System.Windows.Forms.Panel();
-            this.checkboxTecnico2 = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.checkBoxTecnico2 = new Bunifu.Framework.UI.BunifuCheckbox();
             this.checkBoxTecnico1 = new Bunifu.Framework.UI.BunifuCheckbox();
             this.comboBoxTecnico2 = new MTN_Administration.CustomComboBox();
             this.bunifuCustomLabel9 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -103,22 +103,22 @@
             // 
             this.transiciones.AnimationType = BunifuAnimatorNS.AnimationType.HorizSlide;
             this.transiciones.Cursor = null;
-            animation3.AnimateOnlyDifferences = true;
-            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
-            animation3.LeafCoeff = 0F;
-            animation3.MaxTime = 1F;
-            animation3.MinTime = 0F;
-            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
-            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
-            animation3.MosaicSize = 0;
-            animation3.Padding = new System.Windows.Forms.Padding(0);
-            animation3.RotateCoeff = 0F;
-            animation3.RotateLimit = 0F;
-            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
-            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
-            animation3.TimeCoeff = 0F;
-            animation3.TransparencyCoeff = 0F;
-            this.transiciones.DefaultAnimation = animation3;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.transiciones.DefaultAnimation = animation1;
             // 
             // labelCliente
             // 
@@ -312,7 +312,7 @@
             // 
             // panel
             // 
-            this.panel.Controls.Add(this.checkboxTecnico2);
+            this.panel.Controls.Add(this.checkBoxTecnico2);
             this.panel.Controls.Add(this.checkBoxTecnico1);
             this.panel.Controls.Add(this.comboBoxTecnico2);
             this.panel.Controls.Add(this.bunifuCustomLabel9);
@@ -342,19 +342,19 @@
             this.panel.Size = new System.Drawing.Size(1240, 745);
             this.panel.TabIndex = 40;
             // 
-            // checkboxTecnico2
+            // checkBoxTecnico2
             // 
-            this.checkboxTecnico2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.checkboxTecnico2.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.checkboxTecnico2.Checked = false;
-            this.checkboxTecnico2.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
-            this.transiciones.SetDecoration(this.checkboxTecnico2, BunifuAnimatorNS.DecorationType.None);
-            this.checkboxTecnico2.ForeColor = System.Drawing.Color.White;
-            this.checkboxTecnico2.Location = new System.Drawing.Point(944, 542);
-            this.checkboxTecnico2.Name = "checkboxTecnico2";
-            this.checkboxTecnico2.Size = new System.Drawing.Size(20, 20);
-            this.checkboxTecnico2.TabIndex = 103;
-            this.checkboxTecnico2.OnChange += new System.EventHandler(this.CheckBoxTecnico2_OnChange);
+            this.checkBoxTecnico2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.checkBoxTecnico2.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.checkBoxTecnico2.Checked = false;
+            this.checkBoxTecnico2.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
+            this.transiciones.SetDecoration(this.checkBoxTecnico2, BunifuAnimatorNS.DecorationType.None);
+            this.checkBoxTecnico2.ForeColor = System.Drawing.Color.White;
+            this.checkBoxTecnico2.Location = new System.Drawing.Point(944, 542);
+            this.checkBoxTecnico2.Name = "checkBoxTecnico2";
+            this.checkBoxTecnico2.Size = new System.Drawing.Size(20, 20);
+            this.checkBoxTecnico2.TabIndex = 103;
+            this.checkBoxTecnico2.OnChange += new System.EventHandler(this.CheckBoxTecnico2_OnChange);
             // 
             // checkBoxTecnico1
             // 
@@ -505,6 +505,7 @@
             this.buttonCancelar.Size = new System.Drawing.Size(181, 41);
             this.buttonCancelar.TabIndex = 54;
             this.buttonCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
             // 
             // buttonEditarListaIncidentes
             // 
@@ -598,20 +599,20 @@
             this.tablaIncidentesAsignados.AllowUserToDeleteRows = false;
             this.tablaIncidentesAsignados.AllowUserToResizeColumns = false;
             this.tablaIncidentesAsignados.AllowUserToResizeRows = false;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.tablaIncidentesAsignados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.tablaIncidentesAsignados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.tablaIncidentesAsignados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaIncidentesAsignados.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
             this.tablaIncidentesAsignados.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tablaIncidentesAsignados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaIncidentesAsignados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaIncidentesAsignados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaIncidentesAsignados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaIncidentesAsignados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_asignado,
@@ -622,14 +623,14 @@
             this.estado_asignado,
             this.asignado_asignado});
             this.transiciones.SetDecoration(this.tablaIncidentesAsignados, BunifuAnimatorNS.DecorationType.None);
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaIncidentesAsignados.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaIncidentesAsignados.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaIncidentesAsignados.DoubleBuffered = true;
             this.tablaIncidentesAsignados.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.tablaIncidentesAsignados.EnableHeadersVisualStyles = false;
@@ -639,14 +640,14 @@
             this.tablaIncidentesAsignados.Location = new System.Drawing.Point(645, 72);
             this.tablaIncidentesAsignados.Name = "tablaIncidentesAsignados";
             this.tablaIncidentesAsignados.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaIncidentesAsignados.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaIncidentesAsignados.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.tablaIncidentesAsignados.RowHeadersVisible = false;
             this.tablaIncidentesAsignados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaIncidentesAsignados.ShowCellErrors = false;
@@ -699,20 +700,20 @@
             this.tablaIncidentesNoAsignados.AllowUserToDeleteRows = false;
             this.tablaIncidentesNoAsignados.AllowUserToResizeColumns = false;
             this.tablaIncidentesNoAsignados.AllowUserToResizeRows = false;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.tablaIncidentesNoAsignados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.tablaIncidentesNoAsignados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.tablaIncidentesNoAsignados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaIncidentesNoAsignados.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
             this.tablaIncidentesNoAsignados.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tablaIncidentesNoAsignados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaIncidentesNoAsignados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaIncidentesNoAsignados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.tablaIncidentesNoAsignados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaIncidentesNoAsignados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -723,14 +724,14 @@
             this.estado,
             this.asignado});
             this.transiciones.SetDecoration(this.tablaIncidentesNoAsignados, BunifuAnimatorNS.DecorationType.None);
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaIncidentesNoAsignados.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaIncidentesNoAsignados.DefaultCellStyle = dataGridViewCellStyle7;
             this.tablaIncidentesNoAsignados.DoubleBuffered = true;
             this.tablaIncidentesNoAsignados.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.tablaIncidentesNoAsignados.EnableHeadersVisualStyles = false;
@@ -740,14 +741,14 @@
             this.tablaIncidentesNoAsignados.Location = new System.Drawing.Point(18, 72);
             this.tablaIncidentesNoAsignados.Name = "tablaIncidentesNoAsignados";
             this.tablaIncidentesNoAsignados.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaIncidentesNoAsignados.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaIncidentesNoAsignados.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.tablaIncidentesNoAsignados.RowHeadersVisible = false;
             this.tablaIncidentesNoAsignados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaIncidentesNoAsignados.ShowCellErrors = false;
@@ -946,7 +947,7 @@
         private CustomComboBox comboBoxTecnico1;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel8;
         private Bunifu.Framework.UI.BunifuCheckbox checkBoxTecnico1;
-        private Bunifu.Framework.UI.BunifuCheckbox checkboxTecnico2;
+        private Bunifu.Framework.UI.BunifuCheckbox checkBoxTecnico2;
         private Bunifu.Framework.UI.BunifuThinButton2 buttonCancelar;
         private Bunifu.Framework.UI.BunifuThinButton2 buttonEditarListaIncidentes;
         private System.Windows.Forms.Panel panel1;

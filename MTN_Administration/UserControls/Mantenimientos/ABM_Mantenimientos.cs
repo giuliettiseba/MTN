@@ -29,7 +29,12 @@ namespace MTN_Administration.Tabs
         {
             base.OnLoad(e);
             RefreshTabla();
-   //         WindowState = FormWindowState.Maximized;
+            //         WindowState = FormWindowState.Maximized;
+
+
+            close.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - 20, 8);
+            minimize.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - 35, 8);
+            progressBar.Width = Screen.PrimaryScreen.WorkingArea.Width;
 
 
         }
@@ -149,7 +154,7 @@ namespace MTN_Administration.Tabs
 
         private void tablaMantenimientos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            BotonVerMantenimiento_Click(null, null);
+            buttonReprogramarMantenimiento_Click(null, null);
         }
 
 
@@ -192,6 +197,24 @@ namespace MTN_Administration.Tabs
         private void RefreshTabla(object sender, EventArgs e)
         {
             RefreshTabla();
+        }
+
+        int tick = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (tick == 100)
+            {
+                if (aPIHelper.GetMantenimientosHelper().TieneCambios())
+                {
+                    RefreshTabla();
+                }
+                tick = 0;
+            }
+            else
+            {
+                tick += 1;
+                progressBar.Value = tick;
+            }
         }
     }
     

@@ -199,12 +199,17 @@ namespace MTN_Administration.Tabs
             tablaIncidentes.Refresh(); // Refrescar tabla
             try
             {
+                int id_cliente_Seleccionado = Convert.ToInt16(tablaClientes.SelectedRows[0].Cells["id_cliente"].Value);
                 int id_sucursal_Seleccionada = Convert.ToInt16(tablaSucursales.SelectedRows[0].Cells["id_sucursal"].Value);
-                List<Incidente> listaIncidente = aPIHelper.GetIncidenteHelper().GetIncidentes();
+             
+                List<Incidente> listaIncidente = aPIHelper.GetIncidenteHelper().GetIncidentes(id_cliente_Seleccionado, id_sucursal_Seleccionada);
 
                 foreach (Incidente incidente in listaIncidente)
                 {
-                    if (incidente.Id_suc == id_sucursal_Seleccionada) AddItem(incidente); // Inserta una fila en la tabla clientes si el nombre del cliente contiene la palabra ingresada en el cuadro de busqueda. 
+                    if (incidente.Id_estado_incidente != (int) TypeEstadoIncidente.Cancelado
+                        && incidente.Id_estado_incidente != (int)TypeEstadoIncidente.Progreso
+                        && incidente.Id_estado_incidente != (int)TypeEstadoIncidente.Resuelto
+                        ) AddItem(incidente); // Inserta una fila en la tabla clientes si el nombre del cliente contiene la palabra ingresada en el cuadro de busqueda. 
                 }
 
             }

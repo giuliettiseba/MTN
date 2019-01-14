@@ -45,7 +45,7 @@ namespace MTN_Administration.APIHelpers
                 String content = client.DownloadString(url);
                 Resultado<Mantenimiento> resultado = serializer.Deserialize<Resultado<Mantenimiento>>(content);
                 _mantenimientos = resultado.Lista.Cast<Mantenimiento>().ToList();
-                _checksumHelper.ActualizarChecksum("Mantenimiento", resultado.Checksum);
+                _checksumHelper.ActualizarChecksum("Mantenimientos", resultado.Checksum);
             }
         }
 
@@ -149,6 +149,11 @@ namespace MTN_Administration.APIHelpers
 
                 webClient.UploadValues(url, "POST", webClient.QueryString);
             }
+        }
+
+        internal bool TieneCambios()
+        {
+            return !_checksumHelper.VerificarChecksum("Mantenimientos");
         }
     }
 }
