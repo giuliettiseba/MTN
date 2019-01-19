@@ -6,18 +6,31 @@ using MTN_Administration.Alerts;
 
 namespace MTN_Administration.Tabs
 {
+    /// <summary>
+    /// Interfaz de ABM Clientes
+    /// Permite Acceder a la interfaz alta de un nuevo cliente y eliminar un cliente existente
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class ABM_Clientes : UserControl
     {
         private APIHelper aPIHelper;
         private List<Cliente> listaClientes;
         private Alta_Cliente alta_Cliente;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ABM_Clientes"/> class.
+        /// </summary>
+        /// <param name="aPIHelper">a pi helper.</param>
         public ABM_Clientes(APIHelper aPIHelper)
         {
             this.aPIHelper = aPIHelper;
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.UserControl.Load" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -107,16 +120,18 @@ namespace MTN_Administration.Tabs
 
         /// <summary>
         /// Elimina el cliente seleccionado
-        /// 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BotonEliminarCliente_Click(object sender, EventArgs e)
         {
-            
-            MensajeAlerta resultado = aPIHelper.GetClientesHelper().RemoveCliente(ObtenerClienteSeleccionado());
-            Alert.ShowAlert(resultado);
-            RefreshTable();
+            DialogResult dialogResult = MessageBox.Show("Esta seguro que quiere eliminar el cliente", "Confirmación", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                MensajeAlerta resultado = aPIHelper.GetClientesHelper().RemoveCliente(ObtenerClienteSeleccionado());
+                Alert.ShowAlert(resultado);
+                RefreshTable();
+            }
         }
 
         /// <summary>
@@ -130,6 +145,12 @@ namespace MTN_Administration.Tabs
             return aPIHelper.GetClientesHelper().GetCliente(id_cliente);
         }
 
+
+        /// <summary>
+        /// Handles the CellDoubleClick event of the tablaClientes control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void tablaClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             ButtonEditarCliente_Click(sender, e);

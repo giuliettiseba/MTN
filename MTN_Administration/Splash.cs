@@ -44,15 +44,13 @@ namespace MTN_Administration
         int curcol = 0;
         int loop = 0;
 
-     
-
         private void timer_Tick(object sender, EventArgs e)
         {
+            timer.Enabled = false;
             if (curcol < colors.Count - 1)
             {
                 this.BackColor = Bunifu.Framework.UI.BunifuColorTransition.getColorScale(loop, colors[curcol], colors[curcol + 1]);
-                Console.WriteLine(curcol);
-                if (loop < 10)
+                if (loop < 100)
                 {
                     loop++;
                 }
@@ -61,8 +59,9 @@ namespace MTN_Administration
                     loop = 0;
                     curcol++;
                 }
-
+                timer.Enabled = true;
             }
+            else curcol = 0;
         }
     }
 

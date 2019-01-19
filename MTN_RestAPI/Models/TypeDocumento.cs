@@ -5,10 +5,10 @@ using System.Web;
 
 namespace MTN_RestAPI.Models
 {
-    public class Tipo_Empleado
+    public enum TypeDocumento
     {
-
-        public int Id { get; set; }
-        public String Nombre { get; set; }
+        DNI = 1,
+        Pasaporte = 2,
+     
     }
 }

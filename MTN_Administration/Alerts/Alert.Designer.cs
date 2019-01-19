@@ -127,10 +127,12 @@
             this.Controls.Add(this.iconImage);
             this.Controls.Add(this.LabelMensaje);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Alert";
             this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Exito";
+            this.Text = "MTN Notificacion";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.iconImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -173,6 +173,16 @@ namespace MTN_Administration.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Logo_MTN {
+            get {
+                object obj = ResourceManager.GetObject("Logo MTN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap settings_8 {
             get {
                 object obj = ResourceManager.GetObject("settings-8", resourceCulture);

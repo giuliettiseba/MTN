@@ -13,23 +13,19 @@ using Bunifu.Framework.UI;
 
 namespace MTN_Administration.Tabs
 {
+    /// <summary>
+    /// Interfaz Reprogramar Mantenimiento
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class Reprogramar_Mantenimiento : UserControl
     {
-        APIHelper aPIHelper;
-        private readonly Bitmap image_ok;
-        private readonly Bitmap image_error;
-        private readonly Bitmap image_warning;
-
-        Mantenimiento mantenimiento;
+        private APIHelper aPIHelper;
+        private Mantenimiento mantenimiento;
 
         public Reprogramar_Mantenimiento(APIHelper aPIHelper, Mantenimiento mantenimiento)
         {
             this.mantenimiento = mantenimiento;
             this.aPIHelper = aPIHelper;
-
-            image_ok = new Bitmap(global::MTN_Administration.Properties.Resources.success, new Size(15, 15));
-            image_error = new Bitmap(global::MTN_Administration.Properties.Resources.error, new Size(15, 15));
-            image_warning = new Bitmap(global::MTN_Administration.Properties.Resources.warning, new Size(15, 15));
 
             InitializeComponent();
 
@@ -37,13 +33,20 @@ namespace MTN_Administration.Tabs
             panel.Visible = true;
             panel.Location = new System.Drawing.Point(0, 0);
             panel1.Location = new System.Drawing.Point(0, 0);
-            // transiciones.ShowSync(panel1);
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.UserControl.Load" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
 
+            this.rangeHora.RangeMax = 36;
+            this.rangeHora.RangeMin = 18;
+
+            // Populate combobox de tecnicos
             List<Tecnico> listaTecnicos = aPIHelper.GetTecnicosHelper().GetTecnicos();
             comboBoxTecnico1.DataSource = new BindingSource(listaTecnicos, null);
             comboBoxTecnico1.DisplayMember = "ApellidoYNombre";
@@ -51,32 +54,38 @@ namespace MTN_Administration.Tabs
             comboBoxTecnico1.Enabled = false;
             comboBoxTecnico1.SelectedIndex = -1;
 
-
             comboBoxTecnico2.DataSource = new BindingSource(listaTecnicos, null);
             comboBoxTecnico2.DisplayMember = "ApellidoYNombre";
             comboBoxTecnico2.ValueMember = "id";
             comboBoxTecnico2.SelectedIndex = -1;
             comboBoxTecnico2.Enabled = false;
 
-
             comboBoxTipoMantenimiento.DataSource = Enum.GetValues(typeof(TypeTipoMantenimiento));
 
             bunifuRange1_RangeChanged(null, null); // revisar
 
-
+            TextDetalles.Text = mantenimiento.Detalles;
 
             if (mantenimiento.Tecnico1 != 0)
             {
                 checkBoxTecnico1.Checked = true;
                 comboBoxTecnico1.SelectedValue = mantenimiento.Tecnico1;
+                comboBoxTecnico1.Enabled = true;
                 if (mantenimiento.Tecnico2 != 0)
                 {
                     checkBoxTecnico2.Checked = true;
                     comboBoxTecnico2.SelectedValue = mantenimiento.Tecnico2;
+                    comboBoxTecnico1.Enabled = true;
                 }
             }
         }
 
+        /// <summary>
+        /// Handles the RangeChanged event of the bunifuRange1 control.
+        /// Convierte el tiempo seleccionado en horas y minutos
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void bunifuRange1_RangeChanged(object sender, EventArgs e)
         {
             textHoraInicio.Text = (rangeHora.RangeMin / 2).ToString();
@@ -89,15 +98,21 @@ namespace MTN_Administration.Tabs
             textMinutosFin.Text = minFin.ToString();
         }
 
+        /// <summary>
+        /// Handles the Click event of the buttonGuardar control.
+        /// Guarda los cambios de la reprogramacion de un mantenimiento
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-
             mantenimiento.id_tipo_mantenimiento = (TypeTipoMantenimiento)comboBoxTipoMantenimiento.SelectedValue;
             mantenimiento.Fecha = datePicker.Value;
             mantenimiento.HoraInicio = new TimeSpan(Convert.ToInt16(textHoraInicio.Text), Convert.ToInt16(textMinutosInicio.Text), 0);
             mantenimiento.HoraFin = new TimeSpan(Convert.ToInt16(textHoraFin.Text), Convert.ToInt16(textMinutosFin.Text), 0);
             mantenimiento.Detalles = TextDetalles.Text;
 
+            // si el checkbox del tecnico 1 el mantenimietno pasa a un estado de asignado
             if (checkBoxTecnico1.Checked)
             {
                 mantenimiento.Tecnico1 = Convert.ToInt16(comboBoxTecnico1.SelectedValue);
@@ -106,12 +121,12 @@ namespace MTN_Administration.Tabs
                 {
                     mantenimiento.Tecnico2 = Convert.ToInt16(comboBoxTecnico2.SelectedValue);
                 }
-                else
+                else // si el checkbox del tecnico 2 no esta marcado elimina el tecnico del mantenimiento
                 {
                     mantenimiento.Tecnico2 = 0;
                 }
             }
-            else
+            else// si el checkbox del tecnico 1 no esta marcado elimina el tecnico del mantenimiento y el mantenimiento pasa a estar abierto
             {
                 mantenimiento.Tecnico1 = 0;
                 mantenimiento.Estado = TypeEstadoMantenimiento.Abierto;
@@ -124,18 +139,24 @@ namespace MTN_Administration.Tabs
             Dispose();
         }
 
-
-
-
-
-        private void bunifuThinButton21_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Handles the Click event of the BotonCancelar control.
+        /// Cancela la reprogramacion de un mantenimiento
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void BotonCancelar_Click(object sender, EventArgs e)
         {
-
             ((ABM_Mantenimientos)Parent).showPanelSwitchs();
-
             Dispose();
         }
 
+        /// <summary>
+        /// Handles the OnChange event of the CheckBoxTecnico2 control.
+        /// Habilita y deshabilita el combobox del tecnico 2
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void CheckBoxTecnico2_OnChange(object sender, EventArgs e)
         {
             if (!checkBoxTecnico2.Checked)
@@ -145,7 +166,13 @@ namespace MTN_Administration.Tabs
             else comboBoxTecnico2.Enabled = true;
 
         }
-
+        /// <summary>
+        /// Handles the OnChange event of the CheckBoxTecnico1 control.
+        /// Habilita y deshabilita el combobox del tecnico 1.
+        /// El tecnico 2 no puede estar habilitado si el tecnico 1 no esta asignado
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void CheckBoxTecnico1_OnChange(object sender, EventArgs e)
         {
             if (checkBoxTecnico1.Checked)
@@ -162,30 +189,31 @@ namespace MTN_Administration.Tabs
                 checkBoxTecnico2.Checked = false;
                 comboBoxTecnico1.SelectedItem = -1;
                 comboBoxTecnico2.SelectedItem = -1;
-
-                //comboBoxTecnico1.Enabled = fa
             }
         }
 
         ///// MODIFICAR LISTA DE INCIDENTES DE MANTENIMIENTO
 
-
-        List<Incidente> listaIncidentesAsignados;
-        List<Incidente> listaIncidentesSucursal;
-        List<Incidente> listaIncidentesNoAsignados;
+        private List<Incidente> listaIncidentesAsignados;
+        private List<Incidente> listaIncidentesSucursal;
+        private List<Incidente> listaIncidentesNoAsignados;
 
 
         /// <summary>
-        /// 
+        /// Muestra el panel para editar la lista de incidentes asignados a un mantenimiento
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void buttonEditarListaIncidentes_Click(object sender, EventArgs e)
         {
-            transiciones.HideSync(panel);
+            transiciones.HideSync(panel); // animacion
+
+            // inicializa las listas temporales
             listaIncidentesSucursal = aPIHelper.GetIncidenteHelper().GetIncidentes(mantenimiento.Id_Cliente, mantenimiento.Id_Sucursal);
             listaIncidentesAsignados = new List<Incidente>(mantenimiento.Incidentes);
             listaIncidentesNoAsignados = new List<Incidente>();
+
+            // Para cada incidente que esta en la lista de incidentes de la sucursal, pero no esta en la lista de incidentes asignados lo agrega a la lista de incidentes no asignados
             foreach (Incidente incidente in listaIncidentesSucursal)
             {
                 if (listaIncidentesAsignados.FirstOrDefault(x => x.Id == incidente.Id) == null)
@@ -197,7 +225,9 @@ namespace MTN_Administration.Tabs
 
         }
 
-
+        /// <summary>
+        /// Refresca las tablas de incidentes asignados y no asignados
+        /// </summary>
         private void RefreshTables()
         {
             tablaIncidentesAsignados.Rows.Clear();
@@ -210,18 +240,21 @@ namespace MTN_Administration.Tabs
             tablaIncidentesNoAsignados.Rows.Clear();
             foreach (Incidente incidente in listaIncidentesNoAsignados)
             {
+                // no muestra incidentes resueltos, cancelados o en progreso
                 if (incidente.Id_estado_incidente != (int)TypeEstadoIncidente.Cancelado
     && incidente.Id_estado_incidente != (int)TypeEstadoIncidente.Progreso
     && incidente.Id_estado_incidente != (int)TypeEstadoIncidente.Resuelto
 )
-
                     AddRow(tablaIncidentesNoAsignados, incidente);
             }
             tablaIncidentesNoAsignados.Refresh();
         }
 
-
-
+        /// <summary>
+        /// Agrega una un incidente a una tablaa una tabla .
+        /// </summary>
+        /// <param name="tabla">The tabla.</param>
+        /// <param name="incidente">The incidente.</param>
         private void AddRow(BunifuCustomDataGrid tabla, Incidente incidente)
         {
 
@@ -238,7 +271,15 @@ namespace MTN_Administration.Tabs
             tabla.Rows[tabla.Rows.Count - 1].Cells[5].Value = (TypeEstadoIncidente)incidente.Id_estado_incidente;
         }
 
-        private void tablaIncidentesNoAsignados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+
+        /// <summary>
+        /// Handles the CellDoubleClick event of the tablaIncidentesNoAsignados control.
+        /// Cuando se hace doble click en un incidente no asignado se elimina de la lista de no asignados 
+        /// y se agrega a la lista de asignados
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
+         private void tablaIncidentesNoAsignados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int id_incidente_seleccionado = Convert.ToInt16(tablaIncidentesNoAsignados.SelectedRows[0].Cells[0].Value);
             Incidente item = listaIncidentesNoAsignados.Find(x => x.Id == id_incidente_seleccionado);
@@ -248,6 +289,13 @@ namespace MTN_Administration.Tabs
             RefreshTables();
         }
 
+        /// <summary>
+        /// Handles the CellDoubleClick event of the tablaIncidentesAsignados control.
+        /// Cuando se hace doble click en un insidente asignado se elimina de la lista de asignados 
+        /// y se agrega a la lista de no asignados
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void tablaIncidentesAsignados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int id_incidente_seleccionado = Convert.ToInt16(tablaIncidentesAsignados.SelectedRows[0].Cells[0].Value);
@@ -258,6 +306,12 @@ namespace MTN_Administration.Tabs
             RefreshTables();
         }
 
+        /// <summary>
+        /// Handles the Click event of the buttonGuardarCambiosIncidentes control.
+        /// Modifica los incidentes asignados al mantenimiento que se esta reprogramando
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void buttonGuardarCambiosIncidentes_Click(object sender, EventArgs e)
         {
             panel.Visible = true;
@@ -266,12 +320,26 @@ namespace MTN_Administration.Tabs
 
         }
 
+
+        /// <summary>
+        /// Handles the Click event of the buttonCancelarModificarIncidentes control.
+        /// Cancela la reasignacion de los incidentes
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void buttonCancelarModificarIncidentes_Click(object sender, EventArgs e)
         {
             panel.Visible = true;
             transiciones.Hide(panel1);
         }
 
+        /// <summary>
+        /// Handles the Click event of the buttonCancelar control.
+        /// Cancela la reprogramacion del mantenimeinto
+        /// 
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             ((ABM_Mantenimientos)Parent).showPanelSwitchs();

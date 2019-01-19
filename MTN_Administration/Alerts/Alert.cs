@@ -10,19 +10,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MTN_Administration.Alerts
-{
+{   /// <summary>
+    /// Clase alerta, Muestra una notificacion cuando se modifica la base de datos. 
+    /// Existen 4 tipos de notificaciones
+    /// 1) Success. Cuando la accion se llevo a cabo correctamente
+    /// 2) Info. cuando se quiere notificar algun evento 
+    /// 3) Warning. Un evento que requiere especial atencion del usuario
+    /// 4) Error. Cuando no existe algun error en la accion solicitada
+    /// </summary>
     public partial class Alert : Form
     {
 
-
+        /// <summary>
+        /// Constructor de la notificacion
+        /// </summary>
+        /// <param name="mensaje">Mensaje que se mostrara en la notificacion</param>
+        /// <param name="type">Tipo de notificacion</param>
         public Alert(String mensaje, AlertType type)
         {
             InitializeComponent();
-
             LabelMensaje.Text = mensaje;
             this.Top = -this.Height;
             this.Left = Screen.PrimaryScreen.Bounds.Width - this.Width - 60;
 
+
+            /// determina el tipo de notificacion para seleccionar la imagen y el color de la ventana foltante
             switch (type)
             {
                 case AlertType.success:
@@ -50,23 +62,42 @@ namespace MTN_Administration.Alerts
 
         }
 
+
+        /// <summary>
+        /// Metodo estatico para mostrar la alerta. 
+        /// </summary>
+        /// <param name="mensaje">Menaje</param>
+        /// <param name="type">Tipo de notificacion</param>
         public static void ShowAlert(String mensaje, AlertType type)
         {
             new Alert(mensaje, type).Show();
         }
 
-
+        /// <summary>
+        /// Metodo estatico para mostrar la aleta
+        /// </summary>
+        /// <param name="resultado">respuesta que etregan las Helpers con los metodos de AMB</param>
         internal static void ShowAlert(MensajeAlerta resultado)
         {
             new Alert(resultado.Mensaje, resultado.Type).Show();
         }
 
-
+        /// <summary>
+        /// Cierra la ventana flotante
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void close_Click(object sender, EventArgs e)
         {
             cerrar.Start();
         }
 
+
+        /// <summary>
+        /// Cierra la ventana flotante despues de un tiempo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.Close();
@@ -75,6 +106,11 @@ namespace MTN_Administration.Alerts
 
 
         private int interval = 0;
+        /// <summary>
+        /// Efecto de animacion para mostrar la ventana flotante. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Show_Tick(object sender, EventArgs e)
         {
             if (this.Top < 60)
@@ -88,6 +124,12 @@ namespace MTN_Administration.Alerts
             }
         }
 
+
+        /// <summary>
+        /// Efecto de para desaparecer la notificacion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cerrar_Tick(object sender, EventArgs e)
         {
             if (this.Opacity > 0)

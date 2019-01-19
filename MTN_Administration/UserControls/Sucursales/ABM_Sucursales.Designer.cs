@@ -265,7 +265,7 @@
             this.tablaSucursales.ShowRowErrors = false;
             this.tablaSucursales.Size = new System.Drawing.Size(695, 463);
             this.tablaSucursales.TabIndex = 5;
-            this.tablaSucursales.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaSucursales_CellDoubleClick);
+            this.tablaSucursales.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaSucursal_CellDoubleClick);
             // 
             // id
             // 
@@ -317,7 +317,7 @@
             this.comboCliente.Name = "comboCliente";
             this.comboCliente.Size = new System.Drawing.Size(275, 25);
             this.comboCliente.TabIndex = 13;
-            this.comboCliente.SelectedIndexChanged += new System.EventHandler(this.comboCliente_SelectedIndexChanged_1);
+            this.comboCliente.SelectedIndexChanged += new System.EventHandler(this.comboCliente_SelectedIndexChanged);
             // 
             // ABM_Sucursales
             // 

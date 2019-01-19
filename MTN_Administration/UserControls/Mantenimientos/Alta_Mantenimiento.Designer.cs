@@ -162,7 +162,7 @@
             this.bunifuThinButton21.Size = new System.Drawing.Size(181, 41);
             this.bunifuThinButton21.TabIndex = 54;
             this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuThinButton21.Click += new System.EventHandler(this.bunifuThinButton21_Click);
+            this.bunifuThinButton21.Click += new System.EventHandler(this.BotonCancelar_Click);
             // 
             // buttonSiguiente
             // 
@@ -709,8 +709,8 @@
             this.rangeHora.Location = new System.Drawing.Point(131, 108);
             this.rangeHora.MaximumRange = 48;
             this.rangeHora.Name = "rangeHora";
-            this.rangeHora.RangeMax = 36;
-            this.rangeHora.RangeMin = 18;
+            this.rangeHora.RangeMax = 23;
+            this.rangeHora.RangeMin = 0;
             this.rangeHora.Size = new System.Drawing.Size(1021, 30);
             this.rangeHora.TabIndex = 92;
             this.rangeHora.RangeChanged += new System.EventHandler(this.bunifuRange1_RangeChanged);

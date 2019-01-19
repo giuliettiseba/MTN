@@ -13,12 +13,21 @@ using MTN_Administration.Alerts;
 
 namespace MTN_Administration
 {
+    /// <summary>
+    /// Interfaz de Alta y Modificacion de Camaras
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class Alta_Camara : UserControl
     {
 
         private APIHelper aPIHelper;
         private int id_dispositivo;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Alta_Camara"/> class.
+        /// </summary>
+        /// <param name="id_dispositivo">The identifier dispositivo.</param>
+        /// <param name="aPIHelper">a pi helper.</param>
         public Alta_Camara(int id_dispositivo, APIHelper aPIHelper)
         {
             this.id_dispositivo = id_dispositivo;
@@ -30,27 +39,41 @@ namespace MTN_Administration
             }
         }
 
+
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.UserControl.Load" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
 
+
+            // Populate Combobox Marca
             comboBoxMarca.DisplayMember = "nombre";
             comboBoxMarca.ValueMember = "id";
             comboBoxMarca.DataSource = new BindingSource(aPIHelper.GetCCTVHelper().GetMarcaCCTV(), null);
 
+            // Populate Combobox Tecnologia
             comboBoxTecnologia.DisplayMember = "value";
             comboBoxTecnologia.ValueMember = "key";
             comboBoxTecnologia.DataSource = new BindingSource(aPIHelper.GetTecnologiaCamara(), null);
 
+            // Populate Combobox Estado
             comboBoxEstado.DisplayMember = "value";
             comboBoxEstado.ValueMember = "key";
             comboBoxEstado.DataSource = new BindingSource(aPIHelper.GetEstados(), null);
 
+            // Populate Combobox Posiciones diponibles
             comboBoxPos.DataSource = new BindingSource(aPIHelper.GetCCTVHelper().GetPosicionesDisponibles(id_dispositivo), null);
-
         }
 
-
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the comboBoxMarca control.
+        /// Cuando la marca es seleccionada, muestra los modelos de camaras disponibles
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void comboBoxMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxModelo.DisplayMember = "nombre";
@@ -59,13 +82,22 @@ namespace MTN_Administration
         }
 
 
-
+        /// <summary>
+        /// Handles the Click event of the ButtonCancelarAlta control.
+        /// Cancela el alta de una camara y retorna a la interfaz de AMB dispositivos
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ButtonCancelarAlta_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
         int id_camara;
+        /// <summary>
+        /// Carga los datos de la camara para modificar sus parametros
+        /// </summary>
+        /// <param name="camara">The camara.</param>
         internal void Cargar(Camara camara)
         {
             this.id_camara = camara.Id;
@@ -76,7 +108,7 @@ namespace MTN_Administration
             comboBoxTecnologia.SelectedValue = camaraModelo.Id_Tecnologia;
             comboBoxModelo.SelectedValue = camara.Id_modelo;
 
-            DatePickerFechaInstalacion.Value = camara.FechaInsta;
+            DatePickerFechaInstalacion.Value = camara.Fecha_insta;
 
             string[] valuesIP = camara.Ip.Split('.'); ;
             TextIP_OCT_1.Text = valuesIP[0];
@@ -103,9 +135,15 @@ namespace MTN_Administration
             comboBoxEstado.SelectedValue = camara.Id_estado;
 
             comboBoxPos.SelectedItem = camara.Pos;
-
         }
 
+        /// <summary>
+        /// Handles the Click event of the buttonGuardarAltaCamara control.
+        /// Si la camara no tiene id agrega la camara al dispositivo
+        /// Si la camara existe modifica sus parametros
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void buttonGuardarAltaCamara_Click(object sender, EventArgs e)
         {
 
@@ -132,7 +170,7 @@ namespace MTN_Administration
             newCamara.Gateway += Text_Gateway_OCT_3.Text + ".";
             newCamara.Gateway += Text_Gateway_OCT_4.Text;
 
-            newCamara.FechaInsta = DatePickerFechaInstalacion.Value;
+            newCamara.Fecha_insta = DatePickerFechaInstalacion.Value;
 
             newCamara.Sn = Text_NumeroSerie.Text;
             newCamara.Observaciones = Text_Observaciones.Text;
@@ -143,7 +181,7 @@ namespace MTN_Administration
             MensajeAlerta resultado =aPIHelper.GetCCTVHelper().AddCamara(newCamara);
             Alert.ShowAlert(resultado);
 
-            ((Alta_Dispositivo)this.Parent).RefreshTable();
+            ((Alta_Dispositivo)this.Parent).RefreshTableCamaras();
             this.Dispose();
         }
     }

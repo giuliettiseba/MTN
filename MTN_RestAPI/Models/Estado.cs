@@ -1,11 +1,9 @@
-﻿namespace MTN_RestAPI.Models
+﻿namespace MTN_RestAPI.Controllers
 {
     public class Estado
     {
 
         public int Id { get; set; }
         public string Nombre { get; set; }
-
-
     }
 }

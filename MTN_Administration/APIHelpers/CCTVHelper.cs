@@ -11,6 +11,9 @@ using System.Web.Script.Serialization;
 
 namespace MTN_Administration.APIHelpers
 {
+    /// <summary>
+    /// Helper de Dispositivos de CCTV
+    /// </summary>
     public class CCTVHelper
     {
         private readonly String _partialurl;
@@ -43,6 +46,11 @@ namespace MTN_Administration.APIHelpers
 
         Dictionary<int, List<DispositivoCCTV>> cacheDispositivosSucursal = new Dictionary<int, List<DispositivoCCTV>>();
 
+        /// <summary>
+        /// Obtiene los dispositivos de grabacion de una sucursal dada
+        /// </summary>
+        /// <param name="id_sucursal">The identifier sucursal.</param>
+        /// <returns></returns>
         public List<DispositivoCCTV> GetDispositivosCCTVSucursal(int id_sucursal)
         {
             if (!cacheDispositivosSucursal.ContainsKey(id_sucursal) || !_checksumHelper.VerificarChecksum("dispositivosCCTV_" + id_sucursal))
@@ -53,6 +61,10 @@ namespace MTN_Administration.APIHelpers
             return cacheDispositivosSucursal[id_sucursal];
         }
 
+        /// <summary>
+        /// Almacena en una lista los dispositivos de grabacion de un a sucursal
+        /// </summary>
+        /// <param name="id_sucursal">The identifier sucursal.</param>
         public void CacheDispositivosCCTVSucursal(int id_sucursal)
         {
             String url = _partialurl + "DispositivosCCTV/" + id_sucursal;
@@ -66,13 +78,24 @@ namespace MTN_Administration.APIHelpers
             }
         }
 
-
+        /// <summary>
+        /// Obtiene un dispositivo de grabacion de una sucursal
+        /// </summary>
+        /// <param name="id_sucursal">The identifier sucursal.</param>
+        /// <param name="id_dispositivoCCTV">The identifier dispositivo CCTV.</param>
+        /// <returns></returns>
         public DispositivoCCTV GetDispositivoCCTV(int id_sucursal, int id_dispositivoCCTV)
         {
             if (!cacheDispositivosSucursal.ContainsKey(id_sucursal)) GetDispositivosCCTVSucursal(id_sucursal);
             return cacheDispositivosSucursal[id_sucursal].Find(x => x.Id == id_dispositivoCCTV);
         }
 
+
+        /// <summary>
+        /// Agregega o modifica un dispositivo de grabacion
+        /// </summary>
+        /// <param name="newDispositivoCCTV">The new dispositivo CCTV.</param>
+        /// <returns></returns>
         internal MensajeAlerta AddDispositivoCCTV(DispositivoCCTV newDispositivoCCTV)
         {
             String url = _partialurl + "DispositivosCCTV/";
@@ -93,25 +116,32 @@ namespace MTN_Administration.APIHelpers
                     //   webClient.QueryString.Add("foto", tecnico.foto.ToString());
                     if (newDispositivoCCTV.Id == 0)
                     {
+                        /// Si el dispositivo de grabacion no tiene ID agrega uno nuevo
                         webClient.UploadValues(url, "POST", webClient.QueryString);
                         return new MensajeAlerta("Agregado" + Environment.NewLine + newDispositivoCCTV.Nombre, AlertType.success);
                     }
                     else
                     {
+                        /// Modifica un dispositivo ya cargado
                         webClient.QueryString.Add("id", newDispositivoCCTV.Id.ToString());
                         webClient.UploadValues(url, "PUT", webClient.QueryString);
                         return new MensajeAlerta("Modificado" + Environment.NewLine + newDispositivoCCTV.Nombre, AlertType.success);
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                return new MensajeAlerta("Error" + Environment.NewLine + newDispositivoCCTV.Nombre, AlertType.error);
+                return new MensajeAlerta("Error: " + e.ToString() + Environment.NewLine + newDispositivoCCTV.Nombre, AlertType.error);
             }
 
         }
 
+        /// <summary>
+        /// Elimina un dispositivo de grabacion
+        /// </summary>
+        /// <param name="removeDispositivo">El dispositico a eliminar.</param>
+        /// <returns></returns>
         public MensajeAlerta RemoveDispositivoCCTV(DispositivoCCTV removeDispositivo)
         {
             String url = _partialurl + "DispositivosCCTV/" + removeDispositivo.Id;
@@ -126,6 +156,11 @@ namespace MTN_Administration.APIHelpers
 
         Dictionary<int, List<Camara>> cacheCamarasDispositivo = new Dictionary<int, List<Camara>>();
 
+        /// <summary>
+        /// Obtiene las camaras de un grabador.
+        /// </summary>
+        /// <param name="id_dispositivo">The identifier dispositivo.</param>
+        /// <returns></returns>
         public List<Camara> GetCamarasDispositivo(int id_dispositivo)
         {
             if (!cacheCamarasDispositivo.ContainsKey(id_dispositivo) || !_checksumHelper.VerificarChecksum("camaras_" + id_dispositivo))
@@ -137,6 +172,10 @@ namespace MTN_Administration.APIHelpers
             return cacheCamarasDispositivo[id_dispositivo];
         }
 
+        /// <summary>
+        /// Almacena en memoria la lista de camaras de un dispositivo
+        /// </summary>
+        /// <param name="id_dispositivo">The identifier dispositivo.</param>
         private void CacheCamarasDispositivo(int id_dispositivo)
         {
             String url = _partialurl + "Camaras/" + id_dispositivo;
@@ -151,35 +190,24 @@ namespace MTN_Administration.APIHelpers
             }
         }
 
+        /// <summary>
+        /// Obtiene una camara de un dipositivo 
+        /// </summary>
+        /// <param name="id_dispositivo">The identifier dispositivo.</param>
+        /// <param name="id_camara">The identifier camara.</param>
+        /// <returns></returns>
         public Camara GetCamara(int id_dispositivo, int id_camara)
         {
             if (!cacheCamarasDispositivo.ContainsKey(id_dispositivo)) GetCamarasDispositivo(id_dispositivo);
             return cacheCamarasDispositivo[id_dispositivo].Find(x => x.Id == id_camara);
         }
 
-        public List<ModeloCamara> GetModelosCamaras()
-        {
-            if (modelosCamara == null || !_checksumHelper.VerificarChecksum("modelosCamara"))
-            {
-                modelosCamara = new List<ModeloCamara>();
-                CacheModelosCamaras();
-            }
-            return modelosCamara;
-        }
-        private void CacheModelosCamaras()
-        {
-            String url = _partialurl + "Utiles/ModelosCamara";
-            using (WebClient client = new WebClient())
-            {
 
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-                String content = client.DownloadString(url);
-                Resultado<ModeloCamara> resultado = serializer.Deserialize<Resultado<ModeloCamara>>(content);
-                modelosCamara = resultado.Lista.Cast<ModeloCamara>().ToList();
-                _checksumHelper.ActualizarChecksum("modelosCamara", resultado.Checksum);
-            }
-        }
-
+        /// <summary>
+        /// Agrega una nueva camara a un dispositivo 
+        /// </summary>
+        /// <param name="newCamara">The new camara.</param>
+        /// <returns></returns>
         internal MensajeAlerta AddCamara(Camara newCamara)
         {
             String url = _partialurl + "Camaras";
@@ -190,7 +218,7 @@ namespace MTN_Administration.APIHelpers
                     webClient.QueryString.Add("Nombre", newCamara.Nombre);
                     webClient.QueryString.Add("Id_modelo", newCamara.Id_modelo.ToString());
                     webClient.QueryString.Add("Id_estado", newCamara.Id_estado.ToString());
-                    webClient.QueryString.Add("FechaInsta", newCamara.FechaInsta.ToString());
+                    webClient.QueryString.Add("Fecha_insta", newCamara.Fecha_insta.ToString());
                     webClient.QueryString.Add("Ip", newCamara.Ip);
                     webClient.QueryString.Add("Mask", newCamara.Mask);
                     webClient.QueryString.Add("Gateway", newCamara.Gateway);
@@ -212,16 +240,19 @@ namespace MTN_Administration.APIHelpers
                         webClient.UploadValues(url, "PUT", webClient.QueryString);
                         return new MensajeAlerta("Modificado" + Environment.NewLine + newCamara.Nombre, AlertType.success);
                     }
-                 
                 }
             }
             catch (Exception)
             {
-
                 return new MensajeAlerta("Error" + Environment.NewLine + newCamara.Nombre, AlertType.error);
             }
         }
 
+        /// <summary>
+        /// Elimina una camara.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public string RemoveCamara(int id)
         {
             String url = _partialurl + "Camaras/" + id;
@@ -234,6 +265,10 @@ namespace MTN_Administration.APIHelpers
 
         ////////////////////////////////////////////////MARCAS CCTV////////////////////////////////////////////////
 
+        /// <summary>
+        /// Obtiene las marcas de los dispositivos de CCTV.
+        /// </summary>
+        /// <returns></returns>
         public List<MarcaCCTV> GetMarcaCCTV()
         {
             if (marcasCCTV == null)
@@ -244,6 +279,10 @@ namespace MTN_Administration.APIHelpers
             return marcasCCTV;
         }
 
+        /// <summary>
+        /// Almacena en memoria el listado de las marcas de CCTV.
+        /// Antes de traer el listado de la base de datos busca si existe el archivo local actualizado con la informacion
+        /// </summary>
         private void CacheMarcaCCTV()
         {
             String tabla = "MarcasCCTV"; // Nombre de la tabla 
@@ -272,11 +311,46 @@ namespace MTN_Administration.APIHelpers
         {
             return marcasCCTV.Find(x => x.Id == id_marca);
         }
+        ////////////////////////////////////////////MODELOS DE CAMARAS////////////////////////////////////////////////////
+
+        /// <summary>
+        /// Obtiene los modelos de camaras
+        /// </summary>
+        /// <returns></returns>
+        public List<ModeloCamara> GetModelosCamaras()
+        {
+            if (modelosCamara == null || !_checksumHelper.VerificarChecksum("modelosCamara"))
+            {
+                modelosCamara = new List<ModeloCamara>();
+                CacheModelosCamaras();
+            }
+            return modelosCamara;
+        }
+
+        /// <summary>
+        /// Caches the modelos camaras.
+        /// </summary>
+        private void CacheModelosCamaras()
+        {
+            String url = _partialurl + "Utiles/ModelosCamara";
+            using (WebClient client = new WebClient())
+            {
+
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                String content = client.DownloadString(url);
+                Resultado<ModeloCamara> resultado = serializer.Deserialize<Resultado<ModeloCamara>>(content);
+                modelosCamara = resultado.Lista.Cast<ModeloCamara>().ToList();
+                _checksumHelper.ActualizarChecksum("modelosCamara", resultado.Checksum);
+            }
+        }
 
 
         ////////////////////////////////////////////////MODELOS CCTV////////////////////////////////////////////////
 
-
+        /// <summary>
+        /// Obtiene los modelos de CCTV 
+        /// </summary>
+        /// <returns></returns>
         public List<ModeloCCTV> GetModelosCCTV()
         {
             if (modelosCCTV != null)
@@ -288,6 +362,11 @@ namespace MTN_Administration.APIHelpers
             return modelosCCTV;
 
         }
+
+        /// <summary>
+        /// Guarda en memoria los modelos de CCTV
+        /// Antes de traer el listado de la base de datos busca si existe el archivo local actualizado con la informacion
+        /// </summary>
         private void CacheModelosCCTV()
         {
 
@@ -313,12 +392,22 @@ namespace MTN_Administration.APIHelpers
             }
         }
 
+        /// <summary>
+        /// Obtiene el modelo de CCTV del id dado
+        /// </summary>
+        /// <param name="id_modelo">The identifier modelo.</param>
+        /// <returns></returns>
         internal ModeloCCTV GetModeloCCTV(int id_modelo)
         {
             if (modelosCCTV == null) GetModelosCCTV();
             return modelosCCTV.Find(x => x.Id == id_modelo);
         }
 
+        /// <summary>
+        /// Obtiene los modelos de Grabadores dada una marca
+        /// </summary>
+        /// <param name="id_marca">The identifier marca.</param>
+        /// <returns></returns>
         internal List<ModeloCCTV> GetModelosMarcasCCTV(int id_marca)
         {
             if (modelosCCTV == null) GetModelosCCTV();
@@ -330,6 +419,11 @@ namespace MTN_Administration.APIHelpers
             return modelosMarcasCCTV;
         }
 
+        /// <summary>
+        /// Obtiene las modelos de Camaras dada una marca
+        /// </summary>
+        /// <param name="id_marca">The identifier marca.</param>
+        /// <returns></returns>
         internal List<ModeloCamara> GetModelosMarcasCamaras(int id_marca)
         {
             if (modelosCamara == null) GetModelosCamaras();
@@ -341,11 +435,15 @@ namespace MTN_Administration.APIHelpers
             return modelosMarcasCamara;
         }
 
+        /// <summary>
+        /// Obtiene el modelo de una camara dado el id
+        /// </summary>
+        /// <param name="id_modelo">The identifier modelo.</param>
+        /// <returns></returns>
         internal ModeloCamara GetModeloCamara(int id_modelo)
         {
             if (modelosCamara == null) GetModelosCamaras();
             return modelosCamara.Find(x => x.Id == id_modelo);
-
         }
     }
 }

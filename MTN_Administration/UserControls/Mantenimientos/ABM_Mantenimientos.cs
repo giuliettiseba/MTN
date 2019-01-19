@@ -12,12 +12,20 @@ using System.Threading;
 
 namespace MTN_Administration.Tabs
 {
+    /// <summary>
+    /// Interfaz de administracion de mantenimientos
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
+    /// <seealso cref="MTN_Administration.Tabs.Animated" />
     public partial class ABM_Mantenimientos : Form, Animated
     {
         APIHelper aPIHelper;
-        private Alta_Incidente alta_Incidentes;
         private List<Mantenimiento> listaMantenimientos;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ABM_Mantenimientos"/> class.
+        /// </summary>
+        /// <param name="aPIHelper">a pi helper.</param>
         public ABM_Mantenimientos(APIHelper aPIHelper)
         {
             this.aPIHelper = aPIHelper;
@@ -25,27 +33,32 @@ namespace MTN_Administration.Tabs
             panelSwitches.Visible = true;
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.Form.Load" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             RefreshTabla();
-            //         WindowState = FormWindowState.Maximized;
 
-
+            // Reubica los componentes de la interfaz de acuerdo al tamaño de la pantalla
             close.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - 20, 8);
             minimize.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - 35, 8);
             progressBar.Width = Screen.PrimaryScreen.WorkingArea.Width;
-
-
         }
 
+
+        /// <summary>
+        /// Refresca la tabla de mantenimientos
+        /// </summary>
         internal void RefreshTabla()
         {
 
             tablaMantenimientos.Rows.Clear();
             listaMantenimientos = aPIHelper.GetMantenimientosHelper().GetMantenimientos();
 
-            // Llenar la tabla cliente con todos los clientes
+            // Llenar la tabla de mantenimientos
             foreach (Mantenimiento mantenimiento in listaMantenimientos)
             {
                 AddItem(mantenimiento);
@@ -53,12 +66,13 @@ namespace MTN_Administration.Tabs
             tablaMantenimientos.Refresh();
         }
 
-    
-
-
+        /// <summary>
+        /// Agrega una nueva fila a la tabla de mantenientos.
+        /// </summary>
+        /// <param name="mantenimiento">The mantenimiento.</param>
         private void AddItem(Mantenimiento mantenimiento)
         {
-
+            // filtra los mantenimiento de acuerdo con el estado de los switches
             if (
             mantenimiento.Estado == TypeEstadoMantenimiento.Abierto && switchEstadoMantenimeintoAbierto.Value ||
             mantenimiento.Estado == TypeEstadoMantenimiento.Asignado && switchEstadoMantenimeintoAsignado.Value ||
@@ -73,67 +87,72 @@ namespace MTN_Administration.Tabs
                 tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["cliente"].Value = aPIHelper.GetClientesHelper().GetCliente(mantenimiento.Id_Cliente).Nombre;
                 tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["sucursal"].Value = aPIHelper.GetSucursalesHelper().GetSucursal(mantenimiento.Id_Cliente, mantenimiento.Id_Sucursal).Nombre;
                 tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["tipoMantenimiento"].Value = (TypeTipoMantenimiento)mantenimiento.id_tipo_mantenimiento;
+
                 Tecnico tecnico1 = aPIHelper.GetTecnicosHelper().GetTecnico(mantenimiento.Tecnico1);
                 if (tecnico1 != null)
-                tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["tecnico"].Value = tecnico1.Nombre;
+                    tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["tecnico"].Value = tecnico1.Nombre;
+
                 tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["estadoMantenimiento"].Value = (TypeEstadoMantenimiento)mantenimiento.Estado;
             }
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            alta_Incidentes = new Alta_Incidente(aPIHelper);
-            alta_Incidentes.Location = new System.Drawing.Point(0, 0);
-            alta_Incidentes.Name = "alta_Incidentes";
-            alta_Incidentes.Size = new System.Drawing.Size(739, 561);
-            alta_Incidentes.TabIndex = 2;
-            Controls.Add(this.alta_Incidentes);
-            alta_Incidentes.BringToFront();
-
-        }
+        /// <summary>
+        /// Handles the Click event of the close control.
+        /// Cierra la Interfaz de mantenimientos
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void close_Click(object sender, EventArgs e)
         {
             Dispose();
         }
 
+        /// <summary>
+        /// Minimiza la Interfaz de mantenimientos
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
-
-
-
+        /// <summary>
+        /// Animacion de ventana
+        /// </summary>
         public void showPanelSwitchs()
         {
             transiciones.Show(panelTabla);
-
-
         }
 
-        Alta_Manteniminto crear_Manteniminto;
- 
-
+        private Alta_Manteniminto Alta_Manteniminto;
+        /// <summary>
+        /// Handles the Click event of the BotonAgregarMantenimiento control.
+        /// Muestra la interfaz de Alta Mantenimiento
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BotonAgregarMantenimiento_Click(object sender, EventArgs e)
-
         {
             transiciones.HideSync(panelTabla);
-            crear_Manteniminto = new Alta_Manteniminto(aPIHelper);
-            crear_Manteniminto.Dock = System.Windows.Forms.DockStyle.Fill;
-            crear_Manteniminto.Location = new System.Drawing.Point(236, 39);
-            crear_Manteniminto.Name = "crear_Manteniminto";
-            crear_Manteniminto.Size = new System.Drawing.Size(739, 561);
-            crear_Manteniminto.TabIndex = 2;
-            Controls.Add(this.crear_Manteniminto);
-            crear_Manteniminto.BringToFront();
-
+            Alta_Manteniminto = new Alta_Manteniminto(aPIHelper);
+            Alta_Manteniminto.Dock = System.Windows.Forms.DockStyle.Fill;
+            Alta_Manteniminto.Location = new System.Drawing.Point(236, 39);
+            Alta_Manteniminto.Name = "crear_Manteniminto";
+            Alta_Manteniminto.Size = new System.Drawing.Size(739, 561);
+            Alta_Manteniminto.TabIndex = 2;
+            Controls.Add(this.Alta_Manteniminto);
+            Alta_Manteniminto.BringToFront();
         }
 
-
-
-        Ver_Mantenimiento ver_Mantenimiento;
-
+        private Ver_Mantenimiento ver_Mantenimiento;
+        /// <summary>
+        /// Handles the Click event of the BotonVerMantenimiento control.
+        /// Muestra el mantenimiento seleccionado en una interfaz 
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BotonVerMantenimiento_Click(object sender, EventArgs e)
         {
             transiciones.HideSync(panelTabla);
@@ -148,18 +167,27 @@ namespace MTN_Administration.Tabs
             ver_Mantenimiento.TabIndex = 2;
             Controls.Add(this.ver_Mantenimiento);
             ver_Mantenimiento.BringToFront();
-
-
         }
 
+        /// <summary>
+        /// Handles the CellDoubleClick event of the tablaMantenimientos control.
+        /// Muestra la interfaz para reprogramar un mantenimiento
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void tablaMantenimientos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             buttonReprogramarMantenimiento_Click(null, null);
         }
 
 
-        Reprogramar_Mantenimiento reprogramar_Mantenimiento;
-
+        private Reprogramar_Mantenimiento reprogramar_Mantenimiento;
+        /// <summary>
+        /// Handles the Click event of the buttonReprogramarMantenimiento control.
+        /// Muestra la interfaz para reprogramar un mantenimiento
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void buttonReprogramarMantenimiento_Click(object sender, EventArgs e)
         {
             transiciones.HideSync(panelTabla);
@@ -174,9 +202,15 @@ namespace MTN_Administration.Tabs
             reprogramar_Mantenimiento.TabIndex = 2;
             Controls.Add(this.reprogramar_Mantenimiento);
             reprogramar_Mantenimiento.BringToFront();
-
         }
-        Cerrar_Mantenimiento cerrar_Mantenimiento;
+
+        private Cerrar_Mantenimiento cerrar_Mantenimiento;
+        /// <summary>
+        /// Handles the Click event of the buttonCerrarMantenimiento control.
+        /// Muestra la interfaz para cerrar un mantenimiento
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void buttonCerrarMantenimiento_Click(object sender, EventArgs e)
         {
             transiciones.HideSync(panelTabla);
@@ -191,15 +225,27 @@ namespace MTN_Administration.Tabs
             cerrar_Mantenimiento.TabIndex = 2;
             Controls.Add(this.cerrar_Mantenimiento);
             cerrar_Mantenimiento.BringToFront();
-
         }
 
+
+        /// <summary>
+        /// Refresca la tabla de mantenimiento cada vez que un switch cambia de estado
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void RefreshTabla(object sender, EventArgs e)
         {
             RefreshTabla();
         }
 
         int tick = 0;
+        /// <summary>
+        /// Handles the Tick event of the timer1 control.
+        /// Cuando el contador de ticks alcanza el 100 se verifica si la tabla de mantenimientos sufrio cambios
+        /// Si hay cambios se refresca la tabla de mantenimientos. 
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (tick == 100)
@@ -217,5 +263,4 @@ namespace MTN_Administration.Tabs
             }
         }
     }
-    
 }

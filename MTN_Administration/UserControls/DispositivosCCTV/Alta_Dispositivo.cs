@@ -14,9 +14,13 @@ using MTN_Administration.Alerts;
 
 namespace MTN_Administration
 {
+    /// <summary>
+    /// Interfaz Alta de dispositivos. Se utiliza tanto para alta como para modificaciones
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class Alta_Dispositivo : UserControl
     {
-        
+
         private APIHelper aPIHelper;
         private Bitmap image_ok;
         private Bitmap image_error;
@@ -25,23 +29,29 @@ namespace MTN_Administration
         private int id_dispositivo;
         private int id_cliente;
 
-        public Alta_Dispositivo(APIHelper aPIHelper,int id_cliente, int id_sucursal)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Alta_Dispositivo"/> class.
+        /// </summary>
+        /// <param name="aPIHelper">a pi helper.</param>
+        /// <param name="id_cliente">The identifier cliente.</param>
+        /// <param name="id_sucursal">The identifier sucursal.</param>
+        public Alta_Dispositivo(APIHelper aPIHelper, int id_cliente, int id_sucursal)
         {
             this.aPIHelper = aPIHelper;
             this.id_cliente = id_cliente;
-
             this.id_sucursal = id_sucursal;
 
-            if (!this.DesignMode)
-            {
-                InitializeComponent();
+            InitializeComponent();
 
-                image_ok = new Bitmap(global::MTN_Administration.Properties.Resources.success, new Size(15, 15));
-                image_error = new Bitmap(global::MTN_Administration.Properties.Resources.error, new Size(15, 15));
-                image_warning = new Bitmap(global::MTN_Administration.Properties.Resources.warning, new Size(15, 15));
-            }
+            image_ok = new Bitmap(global::MTN_Administration.Properties.Resources.success, new Size(15, 15));
+            image_error = new Bitmap(global::MTN_Administration.Properties.Resources.error, new Size(15, 15));
+            image_warning = new Bitmap(global::MTN_Administration.Properties.Resources.warning, new Size(15, 15));
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.UserControl.Load" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -67,23 +77,31 @@ namespace MTN_Administration
             tablaCamaras.Columns[3].Visible = false;
         }
 
-        public void RefreshTable()
+        /// <summary>
+        /// Refreshes the table.
+        /// </summary>
+        public void RefreshTableCamaras()
         {
             tablaCamaras.Rows.Clear();
-            tablaCamaras.Refresh();
             foreach (Camara camara in aPIHelper.GetCCTVHelper().GetCamarasDispositivo(id_dispositivo))
             {
                 AddItem(camara);
             }
+            tablaCamaras.Refresh();
         }
 
+
+        /// <summary>
+        /// Agrega una nueva fila a la tabla
+        /// </summary>
+        /// <param name="camara">The camara.</param>
         private void AddItem(Camara camara)
         {
             tablaCamaras.Rows.Add();
             tablaCamaras.Rows[tablaCamaras.Rows.Count - 1].Cells["pos"].Value = camara.Pos;
             tablaCamaras.Rows[tablaCamaras.Rows.Count - 1].Cells["nombre"].Value = camara.Nombre;
-            //tablaCamaras.Rows[tablaCamaras.Rows.Count - 1].Cells["estado"].Value = aPIHelper.GetEstado(camara.Id_estado);
             tablaCamaras.Rows[tablaCamaras.Rows.Count - 1].Cells["id"].Value = camara.Id;
+
 
             Image image;
             switch (camara.Id_estado)
@@ -99,18 +117,27 @@ namespace MTN_Administration
                     break;
 
                 default:
-                    image = null;
+                    image = image_warning;
                     break;
             }
             tablaCamaras.Rows[tablaCamaras.Rows.Count - 1].Cells["estado"].Value = image;
         }
 
+        /// <summary>
+        /// Handles the Click event of the ButtonCancelarAlta control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ButtonCancelarAlta_Click(object sender, EventArgs e)
         {
-           this.Dispose();
+            this.Dispose();
         }
 
-
+        /// <summary>
+        /// Carga la informacion de un dispositivo para modificar sus parametros
+        /// </summary>
+        /// <param name="cliente_id">The cliente identifier.</param>
+        /// <param name="grabadorDigital">The grabador digital.</param>
         internal void Cargar(int cliente_id, DispositivoCCTV grabadorDigital)
         {
             id_dispositivo = grabadorDigital.Id;
@@ -150,13 +177,17 @@ namespace MTN_Administration
 
             comboBoxEstado.SelectedValue = grabadorDigital.Id_estado;
 
-            RefreshTable();
-
+            RefreshTableCamaras();
         }
 
+        /// <summary>
+        /// Handles the Click event of the buttonGuardarAltaDispositivo control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void buttonGuardarAltaDispositivo_Click(object sender, EventArgs e)
         {
-            try
+            try /// Mejorar la validacion de datos
             {
                 DispositivoCCTV newDispositivoCCTV = new DispositivoCCTV();
 
@@ -192,16 +223,23 @@ namespace MTN_Administration
                 MensajeAlerta resultado = aPIHelper.GetCCTVHelper().AddDispositivoCCTV(newDispositivoCCTV);
                 Alert.ShowAlert(resultado);
 
-                ((ABM_Dispositivos)this.Parent).RefreshTable();
+                ((ABM_Dispositivos)this.Parent).RefreshTableDispositivos();
                 this.Dispose();
             }
-            catch (Exception exe)
+            catch (Exception ex)
             {
 
-                Alert.ShowAlert("Error al agregar dispositivo.",AlertType.error);
+                Alert.ShowAlert("Error al agregar dispositivo. " + ex.ToString(), AlertType.error);
             }
         }
 
+
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the comboBoxMarca control.
+        /// Cuando cambia el elemento seleccionado del BomboboxMarca Muesta la lista de grabadores de esa marca
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void comboBoxMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxModelo.DisplayMember = "nombre";
@@ -210,6 +248,12 @@ namespace MTN_Administration
         }
 
         private Alta_Camara alta_Camara;
+        /// <summary>
+        /// Handles the Click event of the botonAgregarCamara control.
+        /// Muestra la interfaz para dar de alta una nueva camara en el grabador
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void botonAgregarCamara_Click(object sender, EventArgs e)
         {
             this.alta_Camara = new Alta_Camara(id_dispositivo, aPIHelper);
@@ -221,14 +265,26 @@ namespace MTN_Administration
             this.alta_Camara.BringToFront();
         }
 
+        /// <summary>
+        /// Handles the Click event of the botonModificarCamara control.
+        /// Muestra la interfaz con para modificar los parametros de una camara
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void botonModificarCamara_Click(object sender, EventArgs e)
         {
-            int id_camara = (int) tablaCamaras.SelectedRows[0].Cells["id"].Value;
+            int id_camara = (int)tablaCamaras.SelectedRows[0].Cells["id"].Value;
             Camara camara = aPIHelper.GetCCTVHelper().GetCamara(id_dispositivo, id_camara);
             botonAgregarCamara_Click(sender, e);
-            this.alta_Camara.Cargar(camara); 
+            this.alta_Camara.Cargar(camara);
         }
 
+        /// <summary>
+        /// Handles the SelectedValueChanged event of the comboBoxCliente control.
+        /// Cuando cambia la seleccion del cliente muestra la sucursales del cliente seleccionado
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void comboBoxCliente_SelectedValueChanged(object sender, EventArgs e)
         {
             /// Polulate Combobox Sucursales
@@ -239,13 +295,30 @@ namespace MTN_Administration
 
         }
 
+        /// <summary>
+        /// Handles the Click event of the botonEliminarCamara control.
+        /// Elimina la camara seleccionada
+        /// 
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void botonEliminarCamara_Click(object sender, EventArgs e)
         {
-            DataGridViewSelectedRowCollection selectedRow = tablaCamaras.SelectedRows;
-            aPIHelper.GetCCTVHelper().RemoveCamara((int)selectedRow[0].Cells["id"].Value);
-            RefreshTable();
+            DialogResult dialogResult = MessageBox.Show("Esta seguro que quiere eliminar la camara", "Confirmación", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                DataGridViewSelectedRowCollection selectedRow = tablaCamaras.SelectedRows;
+                aPIHelper.GetCCTVHelper().RemoveCamara((int)selectedRow[0].Cells["id"].Value);
+                RefreshTableCamaras();
+            }
         }
 
+        /// <summary>
+        /// Handles the CellDoubleClick event of the tablaCamaras control. 
+        /// Abre la interfar Modificar camara
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void tablaCamaras_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             botonModificarCamara_Click(sender, e);

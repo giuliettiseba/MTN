@@ -12,21 +12,23 @@ using MTN_Administration.Alerts;
 
 namespace MTN_Administration.Tabs
 {
+    /// <summary>
+    /// Interfaz para ver un incidente
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class Ver_Incidente : UserControl
     {
         APIHelper aPIHelper;
-        private readonly Bitmap image_ok;
-        private readonly Bitmap image_error;
-        private readonly Bitmap image_warning;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Ver_Incidente"/> class.
+        /// </summary>
+        /// <param name="aPIHelper">a pi helper.</param>
+        /// <param name="incidente">The incidente.</param>
         public Ver_Incidente(APIHelper aPIHelper, Incidente incidente)
         {
             this.aPIHelper = aPIHelper;
-
-            image_ok = new Bitmap(global::MTN_Administration.Properties.Resources.success, new Size(15, 15));
-            image_error = new Bitmap(global::MTN_Administration.Properties.Resources.error, new Size(15, 15));
-            image_warning = new Bitmap(global::MTN_Administration.Properties.Resources.warning, new Size(15, 15));
-
+    
             InitializeComponent();
 
             textCliente.Text = aPIHelper.GetClientesHelper().GetCliente(incidente.Id_cliente).Nombre;
@@ -58,10 +60,14 @@ namespace MTN_Administration.Tabs
 
         }
 
-        private void buttonCancelar_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Handles the Click event of the buttonCerrar control.
+        /// Cierra la ventana Ver Incidente
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void buttonCerrar_Click(object sender, EventArgs e)
         {
-
-
             ((Animated)Parent).showPanelSwitchs();
             Dispose();
         }

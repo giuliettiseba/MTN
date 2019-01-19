@@ -11,8 +11,11 @@ namespace MTN_Administration.APIHelpers
 {
     class FileStorageHelper
     {
-
-        public FileStorageHelper() {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FileStorageHelper"/> class.
+        /// </summary>
+        public FileStorageHelper()
+        {
 
             string path = @"localCache";
 
@@ -39,7 +42,12 @@ namespace MTN_Administration.APIHelpers
 
 
 
-
+        /// <summary>
+        /// Serializes the object.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="serializableObject">The serializable object.</param>
+        /// <param name="fileName">Name of the file.</param>
         public void SerializeObject<T>(T serializableObject, string fileName)
         {
             if (serializableObject == null) { return; }
@@ -94,7 +102,7 @@ namespace MTN_Administration.APIHelpers
             }
             catch (Exception ex)
             {
-                //Log exception here
+                Logger.AgregarEntrada(ex.ToString(), Logger.Severity.error);
             }
 
             return objectOut;

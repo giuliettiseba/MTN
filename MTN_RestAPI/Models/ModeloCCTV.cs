@@ -2,6 +2,10 @@
 
 namespace MTN_RestAPI.Models
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class ModeloCCTV
     {
 

@@ -66,47 +66,24 @@ namespace MTN_RestAPI.Controllers
                         return Ok(resultado);
                     }
 
-                case "Criticidades":
-                    List<Criticidad> criticidades = new List<Criticidad>();
-                    using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
-                    {
-                        db.Open();
-                        IDbTransaction transaction = db.BeginTransaction();
-                        List<Criticidad> respuesta = db.Query<Criticidad>("Select * FROM Criticidades", transaction: transaction).ToList();
-                        int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM Criticidades", transaction: transaction).First();
-                        transaction.Commit();
-                        db.Close();
-                        Resultado<Criticidad> resultado = new Resultado<Criticidad>(checksum, respuesta);
-                        return Ok(resultado);
-                    }
-
-                case "EstadosIncidente":
-                    List<EstadoIncidente> estadosIncidente = new List<EstadoIncidente>();
-                    using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
-                    {
-                        db.Open();
-                        IDbTransaction transaction = db.BeginTransaction();
-                        List<EstadoIncidente> respuesta = db.Query<EstadoIncidente>("Select * FROM EstadosIncidente", transaction: transaction).ToList();
-                        int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM EstadosIncidente", transaction: transaction).First();
-                        transaction.Commit();
-                        db.Close();
-                        Resultado<EstadoIncidente> resultado = new Resultado<EstadoIncidente>(checksum, respuesta);
-                        return Ok(resultado);
-                    }
-
-
-
-
-
-                //// NO SE CONTROLA CHECKSUM POR EL MOMENTO, VER COMO GUARDAR EN EL CLIENTE EN ARCHIVO Y SOLO CONTROLAR CHECKSUM AL INICIO. 
 
                 case "Localidades":
                     List<Localidad> localidadesTodasList = new List<Localidad>();
                     using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
                     {
-                        localidadesTodasList = db.Query<Localidad>("Select * FROM Localidades").ToList();
+                        db.Open();
+                        IDbTransaction transaction = db.BeginTransaction();
+                        List<Localidad> respuesta = db.Query<Localidad>("Select * FROM Localidades", transaction: transaction).ToList();
+                        int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM Localidades", transaction: transaction).First();
+                        transaction.Commit();
+                        db.Close();
+                        Resultado<Localidad> resultado = new Resultado<Localidad>(checksum, respuesta);
+                        return Ok(resultado);
+
                     }
-                    return Ok(localidadesTodasList);
+
+                    
+
 
                 case "Provincias":
                     List<Provincia> provinciaList = new List<Provincia>();
@@ -116,21 +93,7 @@ namespace MTN_RestAPI.Controllers
                     }
                     return Ok(provinciaList);
 
-                case "TipoEmpleado":
-                    List<Tipo_Empleado> tipoEmpleadoList = new List<Tipo_Empleado>();
-                    using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
-                    {
-                        tipoEmpleadoList = db.Query<Tipo_Empleado>("Select * FROM Tipo_Empleado").ToList();
-                    }
-                    return Ok(tipoEmpleadoList);
-
-                case "TipoDocumento":
-                    List<Tipo_Documento> tipo_Documentos = new List<Tipo_Documento>();
-                    using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString)) 
-                    {
-                        tipo_Documentos = db.Query<Tipo_Documento>("Select * FROM Tipo_Documento").ToList();
-                    }
-                    return Ok(tipo_Documentos);
+         
 
                 case "Estados":
                     List<Estado> estados = new List<Estado>();

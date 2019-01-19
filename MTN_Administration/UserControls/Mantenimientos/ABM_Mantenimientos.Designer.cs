@@ -71,9 +71,9 @@
             this.switchEstadoMantenimeintoDemorado = new Bunifu.Framework.UI.BunifuiOSSwitch();
             this.switchEstadoMantenimeintoAbierto = new Bunifu.Framework.UI.BunifuiOSSwitch();
             this.espaciadorTop = new System.Windows.Forms.Panel();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.transiciones = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.headerIncidentePicture)).BeginInit();
             this.panelTabla.SuspendLayout();
@@ -640,6 +640,14 @@
             this.espaciadorTop.Size = new System.Drawing.Size(1240, 24);
             this.espaciadorTop.TabIndex = 82;
             // 
+            // progressBar
+            // 
+            this.transiciones.SetDecoration(this.progressBar, BunifuAnimatorNS.DecorationType.None);
+            this.progressBar.Location = new System.Drawing.Point(3, 6);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(1237, 12);
+            this.progressBar.TabIndex = 0;
+            // 
             // bunifuElipse1
             // 
             this.bunifuElipse1.ElipseRadius = 20;
@@ -666,14 +674,6 @@
             animation1.TransparencyCoeff = 0F;
             this.transiciones.DefaultAnimation = animation1;
             // 
-            // progressBar
-            // 
-            this.transiciones.SetDecoration(this.progressBar, BunifuAnimatorNS.DecorationType.None);
-            this.progressBar.Location = new System.Drawing.Point(3, 6);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(1237, 12);
-            this.progressBar.TabIndex = 0;
-            // 
             // ABM_Mantenimientos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -684,6 +684,7 @@
             this.Controls.Add(this.Header);
             this.transiciones.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ABM_Mantenimientos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Header.ResumeLayout(false);

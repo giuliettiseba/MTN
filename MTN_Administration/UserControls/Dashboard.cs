@@ -12,7 +12,7 @@ namespace MTN_Administration.Tabs
 {
     public partial class Dashboard : UserControl
     {
-        public Dashboard()
+        public Dashboard(APIHelper aPIHelper)
         {
             InitializeComponent();
         }

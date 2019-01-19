@@ -1,20 +1,20 @@
-﻿using MTN_Administration.Alerts;
-using MTN_Administration.APIHelpers;
+﻿using MTN_Administration.APIHelpers;
 using MTN_RestAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
 namespace MTN_Administration
 {
+    /// <summary>
+    /// Helper principal, se instancia al iniciar la aplicacion y es el responsable de mantener la las referencias de todos los Helpers. 
+    /// Mantiene en memoria diccionarios y listas de las entidades comunes.
+    /// </summary>
     public class APIHelper
     {
-
-        private String _partialurl;
+        private string partialurl;
         private ChecksumHelper checksumHelper;
         private ClientesHelper clientesHelper;
         private SucursalesHelper sucursalesHelper;
@@ -31,68 +31,91 @@ namespace MTN_Administration
         private Dictionary<int, string> estados;
         private Dictionary<int, string> tecnologiasCamaras;
 
-        internal MantenimientoHelper GetMantenimientosHelper()
+        /// <summary>
+        /// Constructor de Helper principal. 
+        /// </summary>
+        /// <param name="partialurl">Ruta parcial de la URI donde esta alojada el MTN_API</param>
+        public APIHelper(string partialurl)
         {
-            return mantenimientoHelper;
-        }
+            this.partialurl = partialurl;
 
-        public APIHelper(string _partialurl)
-        {
-            this._partialurl = _partialurl;
-            checksumHelper = new ChecksumHelper(_partialurl);
-            clientesHelper = new ClientesHelper(_partialurl, checksumHelper);
-            cCTVHelper = new CCTVHelper(_partialurl, checksumHelper);
-            sucursalesHelper = new SucursalesHelper(_partialurl, checksumHelper);
-            tecnicosHelper = new TecnicosHelper(_partialurl, checksumHelper);
-            incidentesHelper = new IncidenteHelper(_partialurl, checksumHelper);
-            mantenimientoHelper = new MantenimientoHelper(_partialurl, checksumHelper);
+            /// instancia cada uno de los helpers
+            checksumHelper = new ChecksumHelper(partialurl);
+            clientesHelper = new ClientesHelper(partialurl, checksumHelper);
+            cCTVHelper = new CCTVHelper(partialurl, checksumHelper);
+            sucursalesHelper = new SucursalesHelper(partialurl, checksumHelper);
+            tecnicosHelper = new TecnicosHelper(partialurl, checksumHelper);
+            incidentesHelper = new IncidenteHelper(partialurl, checksumHelper);
+            mantenimientoHelper = new MantenimientoHelper(partialurl, checksumHelper);
             fileStorageHelper = new FileStorageHelper();
 
-            //// Carga tablas pesadas que no se modifican con el tiempo. Ver de tener una copia en archivo local y solo controlar el checksum al inicio
-
-            GetLocalidades();
+            GetLocalidades(); // Lista almacenada en archivo, solo se consulta el checksum, si este cambia con respecto al almacenado se pullea la tabla
             GetProvincias();
-            GetTipoEmpleado();
-            GetTipoDocumento();
             GetEstados();
             GetTecnologiaCamara();
-            
         }
 
+        /// <summary>
+        /// Devuelve el helper para la entidad Cliente 
+        /// </summary>
+        /// <returns>Helper de clientes</returns>
         public ClientesHelper GetClientesHelper()
         {
-
             return clientesHelper;
         }
 
+        /// <summary>
+        /// Devuelve el helper para la entidad Dispositivos de CCTV
+        /// </summary>
+        /// <returns>Helper de Dispositivos de CCTV</returns>
         public CCTVHelper GetCCTVHelper()
         {
             return cCTVHelper;
         }
 
+        /// <summary>
+        /// Devuelve el Helper de la entidad Sucursales
+        /// </summary>
+        /// <returns>Helper de Sucursalaes</returns>
         public SucursalesHelper GetSucursalesHelper()
         {
             return sucursalesHelper;
         }
 
+        /// <summary>
+        /// Devuelve el Helper de la entidad Tecnicos
+        /// </summary>
+        /// <returns>Helper de tecnicos</returns>
         public TecnicosHelper GetTecnicosHelper()
         {
             return tecnicosHelper;
         }
 
+
+        /// <summary>
+        /// Devuelve el Helper de la entidad Incidentes
+        /// </summary>
+        /// <returns>Helper de Incidentes</returns>
         public IncidenteHelper GetIncidenteHelper()
         {
             return incidentesHelper;
         }
 
-        
+        /// <summary>
+        /// Devuelve el Helper de la entidad Mantenimientos
+        /// </summary>
+        /// <returns>Helper de Mantenimientos</returns>
+        public MantenimientoHelper GetMantenimientosHelper()
+        {
+            return mantenimientoHelper;
+        }
 
 
         /// <summary>
-        /// 
+        /// Metodo para acceder a los diccionarios de las entidades Provincias, Cuidades, Documentos, Tipo Empleado, Estados, Tecnologia Camara, 
         /// </summary>
-        /// <param name="tipo"></param>
-        /// <returns></returns>
+        /// <param name="tipo">Nombre del diccionario</param>
+        /// <returns>Diccionario</returns>
         public void Get(String tipo)
         {
             Dictionary<int, string> diccionario = null;
@@ -101,23 +124,23 @@ namespace MTN_Administration
             switch (tipo)
             {
                 case "Provincia":
-                    url = _partialurl + "Utiles/Provincias";
+                    url = partialurl + "Utiles/Provincias";
                     diccionario = provincias;
                     break;
                 case "TipoDocuementos":
-                    url = _partialurl + "Utiles/TipoDocumento";
+                    url = partialurl + "Utiles/TipoDocumento";
                     diccionario = tipoDocumento;
                     break;
                 case "TipoEmpleado":
-                    url = _partialurl + "Utiles/TipoEmpleado";
+                    url = partialurl + "Utiles/TipoEmpleado";
                     diccionario = tipoEmpleado;
                     break;
                 case "Estados":
-                    url = _partialurl + "Utiles/Estados";
+                    url = partialurl + "Utiles/Estados";
                     diccionario = estados;
                     break;
                 case "TecnologiaCamara":
-                    url = _partialurl + "Utiles/TecnologiaCamara";
+                    url = partialurl + "Utiles/TecnologiaCamara";
                     diccionario = tecnologiasCamaras;
                     break;
                 default:
@@ -137,9 +160,12 @@ namespace MTN_Administration
             }
         }
 
-
         ////////////////////////////////////////////////TECNOLOGIA CAMARAS//////////////////////////////////////////////////////////////
 
+        /// <summary>
+        /// Si el diccionario esta vacio, obtiene de la base de datos la tabla tecnologia de camaras, sino retorna el diccionario almacenado en memoria
+        /// </summary>
+        /// <returns>Diccionario de tecnologia de camaras</returns>
         internal Dictionary<int, String> GetTecnologiaCamara()
         {
             if (tecnologiasCamaras == null)
@@ -150,27 +176,13 @@ namespace MTN_Administration
             return tecnologiasCamaras;
         }
 
-        ////////////////////////////////////////////////PROVINCIA////////////////////////////////////////////////////////////////////////
-
-        public Dictionary<int, string> GetProvincias()
-        {
-            if (provincias == null)
-            {
-                provincias = new Dictionary<int, string>();
-                Get("Provincia");
-            }
-            return provincias;
-        }
-
-        public string GetNombreProvincia(int i)
-        {
-            if (provincias == null) GetProvincias();
-            return provincias[i];
-        }
-
         //////////////////////////////////////////////ESTADOS//////////////////////////////////////////////////////////////////////////////
 
-        public Dictionary<int, string> GetEstados()
+        /// <summary>
+        /// Si el diccionario esta vacio, obtiene de la base de datos la tabla Estados, sino retorna el diccionario almacenado en memoria
+        /// </summary>
+        /// <returns>Diccionario de estados</returns>
+        internal Dictionary<int, string> GetEstados()
         {
             if (estados == null)
             {
@@ -180,58 +192,24 @@ namespace MTN_Administration
             return estados;
         }
 
-        public string GetEstado(int id)
+        /// <summary>
+        /// Obtiene el desde un id el string de un estado
+        /// </summary>
+        /// <param name="id">id del estado</param>
+        /// <returns>String del estado</returns>
+        internal string GetEstado(int id)
         {
             if (estados == null) GetEstados();
             return estados[id];
         }
 
-        ////////////////////////////////////////////////TIPO DOCUMENTO///////////////////////////////////////////////////////////////////
-
-        public Dictionary<int, string> GetTipoDocumento()
-        {
-            if (tipoDocumento == null)
-            {
-                tipoDocumento = new Dictionary<int, string>();
-                Get("TipoDocuementos");
-            }
-            return tipoDocumento;
-        }
-
-        ////////////////////////////////////////////////TIPO EMPLEADO///////////////////////////////////////////////////////////////////////
-
-        public Dictionary<int, string> GetTipoEmpleado()
-        {
-            if (tipoEmpleado == null)
-            {
-                tipoEmpleado = new Dictionary<int, string>();
-                Get("TipoEmpleado");
-            }
-            return tipoEmpleado;
-        }
-
-
-        public string GetTipoEmpleado(int i)
-        {
-            if (tipoEmpleado == null) GetTipoEmpleado();
-            return tipoEmpleado[i];
-        }
-
-
         ////////////////////////////////////////////////LOCALIDADES////////////////////////////////////////////////////////////////////////
 
-        private void CacheLocalidades()
-        {
-            String url = _partialurl + "Utiles/Localidades";
-            using (WebClient client = new WebClient())
-            {
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-                String content = client.DownloadString(url);
-                localidades = serializer.Deserialize<List<Localidad>>(content);
-            }
-        }
-
-        public List<Localidad> GetLocalidades()
+        /// <summary>
+        /// Si la lista esta vacia, obtiene listado de localidades. 
+        /// </summary>
+        /// <returns>Lista de localidades de la republica argentina</returns>
+        internal List<Localidad> GetLocalidades()
         {
             if (localidades == null)
             {
@@ -241,7 +219,44 @@ namespace MTN_Administration
             return localidades;
         }
 
-        public Dictionary<int, string> GetLocalidades(int id_provincia)
+
+        /// <summary>
+        /// Almacena en memoria una lista completa de las localidades de la Republica Argentina
+        /// Primero busca la informacion en un archivo local en formato XML
+        /// Si el archivo no existe obtiene de la base de datos el listado de localidades
+        /// Si el archivo almacenado tiene un checksum distinto al de la base de datos, obtiene una copia actualizada de la tabla localidades
+        /// </summary>
+        private void CacheLocalidades()
+        {
+            String tabla = "Localidades"; // Nombre de la tabla 
+            String file = @"localCache\" + tabla + ".mtn"; // Path donde se almacena 
+            Resultado<Localidad> resultadoLocal = fileStorageHelper.DeSerializeObject<Resultado<Localidad>>(file); // Si el archivo existe recupera el objeteo Resultado<MarcaCCTV>
+            if (resultadoLocal != null)
+            {
+                localidades = resultadoLocal.Lista.Cast<Localidad>().ToList();
+                checksumHelper.ActualizarChecksum(tabla, resultadoLocal.Checksum); // Si logra recuperar el objeto actualiza el checksum local
+            }
+            if (!checksumHelper.VerificarChecksum(tabla)) // Verifica que el checksum sea el mismo que el de la tabla actual
+            {
+                String url = partialurl + "Utiles/Localidades";
+                using (WebClient client = new WebClient())
+                {
+                    JavaScriptSerializer serializer = new JavaScriptSerializer();
+                    String content = client.DownloadString(url); // Consulta a la API por la tabla completa
+                    Resultado<Localidad> resultado = serializer.Deserialize<Resultado<Localidad>>(content); // Convierte el resultado de la consulta a un objeto del tipo Resultado
+                    fileStorageHelper.SerializeObject(resultado, file); // Actualiza o crea un archivo local
+                    localidades = resultado.Lista.Cast<Localidad>().ToList(); // separa el checksum del objeto
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Obtiene un diccionario con localidades de una provincia
+        /// </summary>
+        /// <param name="id_provincia">Provincia de la cual se quiere obtener las localidades</param>
+        /// <returns>Diccionario con las localidades de una provincia</returns>
+        internal Dictionary<int, string> GetLocalidades(int id_provincia)
         {
             Dictionary<int, string> dicLocalidades = new Dictionary<int, string>();
             foreach (Localidad l in GetLocalidades())
@@ -251,75 +266,55 @@ namespace MTN_Administration
             return dicLocalidades;
         }
 
-
-        public int GetProvincia(int id_localidad)
-        {
-            if (localidades == null) GetLocalidades();
-            return localidades.Find(x => x.Id == id_localidad).Id_provincia;
-        }
-
-        public string GetNombreLocalidad(int i)
+        /// <summary>
+        /// Obtiene el nombre del id de una Localidad
+        /// </summary>
+        /// <param name="i">Id de la localidad</param>
+        /// <returns>Nombre de la localidad</returns>
+        internal string GetNombreLocalidad(int i)
         {
             if (localidades == null) GetLocalidades();
             return localidades.Find(x => x.Id == i).Nombre;
         }
 
+        ////////////////////////////////////////////////PROVINCIA////////////////////////////////////////////////////////////////////////
 
-
-
-
-        
-        //////////////////////////////////////////////////////////////////////Estados Incidentes//////////////////////////////////////////////////////////////////////
-        /*
-        private Dictionary<int, String> estadosIncidente;
-
-        public String GetEstadoIncidente(int id_estadoIncidente)
+        /// <summary>
+        /// Si el diccionario esta vacio, obtiene de la base de datos la tabla Provincias, sino retorna el diccionario almacenado en memoria
+        /// </summary>
+        /// <returns>Diccionario de Provincias</returns>
+        internal Dictionary<int, string> GetProvincias()
         {
-            if (estadosIncidente == null)
+            if (provincias == null)
             {
-                GetEstadoIncidente();
+                provincias = new Dictionary<int, string>();
+                Get("Provincia");
             }
-            return estadosIncidente[id_estadoIncidente];
+            return provincias;
         }
 
-            public Dictionary<int, String> GetEstadoIncidente()
+        /// <summary>
+        /// Obtiene el nombre del id de una Provincia
+        /// </summary>
+        /// <param name="i">id de la provincia</param>
+        /// <returns>Nombre de la provincia</returns>
+        internal string GetNombreProvincia(int i)
         {
-            if (estadosIncidente != null)
-            {
-                return estadosIncidente;
-            }
-            estadosIncidente = new Dictionary<int, String>();
-            CacheEstadosIncidente();
-            return estadosIncidente;
+            if (provincias == null) GetProvincias();
+            return provincias[i];
         }
 
 
-        private void CacheEstadosIncidente()
+        /// <summary>
+        ///  Dada el id de una localidad obtiene el id de la provincia a la que pertenece
+        /// </summary>
+        /// <param name="id_localidad">id de la localidad</param>
+        /// <returns>id de la provincia a la que pertenece</returns>
+        internal int GetProvincia(int id_localidad)
         {
-            String tabla = "EstadosIncidente"; // Nombre de la tabla 
-            String file = @"localCache\" + tabla + ".mtn"; // Path donde se almacena 
-            Resultado<EstadoIncidente> resultadoLocal = fileStorageHelper.DeSerializeObject<Resultado<EstadoIncidente>>(file); // Si el archivo existe recupera el objeteo Resultado<ModeloCCTV>
-            if (resultadoLocal != null)
-            {
-                estadosIncidente = resultadoLocal.Lista.Cast<EstadoIncidente>().ToDictionary(x => x.Id, x => x.Nombre);
-                checksumHelper.ActualizarChecksum(tabla, resultadoLocal.Checksum); // Si logra recuperar el objeto actualiza el checksum local
-            }
-            if (!checksumHelper.VerificarChecksum(tabla)) // Verifica que el checksum sea el mismo que el de la tabla actual
-            {
-                String url = _partialurl + "Utiles/" + tabla;
-                using (WebClient client = new WebClient())
-                {
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    String content = client.DownloadString(url); // Consulta a la API por la tabla completa
-                    Resultado<EstadoIncidente> resultado = serializer.Deserialize<Resultado<EstadoIncidente>>(content); // Convierte el resultado de la consulta a un objeto del tipo Resultado
-                    fileStorageHelper.SerializeObject(resultado, file); // Actualiza o crea un archivo local
-                    estadosIncidente = resultado.Lista.Cast<EstadoIncidente>().ToDictionary(x => x.Id, x => x.Nombre); // separa el checksum del objeto
-                }
-            }
+            if (localidades == null) GetLocalidades();
+            return localidades.Find(x => x.Id == id_localidad).Id_provincia;
         }
-
-    */
-
 
     }
 }

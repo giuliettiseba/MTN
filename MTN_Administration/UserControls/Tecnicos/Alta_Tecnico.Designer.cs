@@ -104,7 +104,7 @@
             this.buttonGuardarAltaTecnico.Size = new System.Drawing.Size(181, 41);
             this.buttonGuardarAltaTecnico.TabIndex = 10;
             this.buttonGuardarAltaTecnico.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonGuardarAltaTecnico.Click += new System.EventHandler(this.buttonGuardarAltaTecnico_Click);
+            this.buttonGuardarAltaTecnico.Click += new System.EventHandler(this.ButtonGuardarAltaTecnico_Click);
             // 
             // bunifuCustomLabel5
             // 

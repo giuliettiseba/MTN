@@ -15,14 +15,12 @@ namespace MTN_Administration
 {
     public partial class Home : Form
     {
-
         APIHelper aPIHelper;
-        //      private static readonly string _host = "http://mtnapi-ee7fc8b4.eastus.cloudapp.azure.com"; // azure
-            private static readonly string _host = "http://localhost";
-        /// private  static readonly string _port = "80"; /// Azure PORT
-
+        // private static readonly string _host = "http://mtnapi-ee7fc8b4.eastus.cloudapp.azure.com"; // azure
+        private static readonly string _host = "http://localhost";
+        // private static readonly string _port = "80"; /// Azure PORT
         //    private  static readonly string _port = "2510"; /// LOCAL PORT
-           private static readonly string _port = "50411"; /// TEST PORT
+        private static readonly string _port = "50411"; /// TEST PORT
         private static readonly string _apiRoute = "api";
         private static readonly string _partialurl = _host + ":" + _port + "/" + _apiRoute + "/";
 
@@ -30,7 +28,8 @@ namespace MTN_Administration
         private ABM_Clientes aBM_Clientes;
         private ABM_Sucursales aBM_Sucursales;
         private ABM_Dispositivos aBM_Dispositivos;
-
+private ABM_Mantenimientos aBM_Mantenimientos;
+        private Dashboard dashboard;
 
         protected override CreateParams CreateParams
         {
@@ -54,14 +53,8 @@ namespace MTN_Administration
                 this.Top = (Screen.PrimaryScreen.Bounds.Height / 2) - (this.Height / 2);
                 this.Left = (Screen.PrimaryScreen.Bounds.Width / 2) - (this.Width / 2);
                 Bunifu.Framework.Lib.Elipse.Apply(this, 20);
-                BringToFront();
             }
-
-             t.Abort();
-
-
-
-
+            t.Abort();
         }
 
         private void SplashScreen()
@@ -88,15 +81,26 @@ namespace MTN_Administration
         private void DashBoardButton_Click(object sender, EventArgs e)
         {
 
+         
+            DisposeAllPanels();
+            // 
+            // DASHBOARD
+            // 
+            dashboard = new Dashboard(aPIHelper);
+            dashboard.Dock = System.Windows.Forms.DockStyle.Fill;
+            dashboard.Location = new System.Drawing.Point(236, 39);
+            dashboard.Name = "dashboard1";
+            dashboard.Size = new System.Drawing.Size(739, 561);
+            dashboard.TabIndex = 2;
+            Controls.Add(this.dashboard);
+
+            dashboard.BringToFront();
             TituloHeader.Text = "Dashboard";
-            headerDashboardPicture.Show();
-            headerTecnicoPicture.Hide();
-            headerClientePicture.Hide();
-            headerSucursalesPicture.Hide();
+            ShowHeaderIcon(headerClientePicture);
         }
 
 
-     
+
 
         private void ClientesButton_Click(object sender, EventArgs e)
         {
@@ -111,7 +115,7 @@ namespace MTN_Administration
             aBM_Clientes.Size = new System.Drawing.Size(739, 561);
             aBM_Clientes.TabIndex = 2;
             Controls.Add(this.aBM_Clientes);
-            
+
             aBM_Clientes.BringToFront();
             TituloHeader.Text = "Administracion de Clientes";
             ShowHeaderIcon(headerClientePicture);
@@ -164,7 +168,8 @@ namespace MTN_Administration
 
 
 
-        private void DisposeAllPanels() {
+        private void DisposeAllPanels()
+        {
 
             if (aBM_Tecnicos != null) aBM_Tecnicos.Dispose();
             if (aBM_Clientes != null) aBM_Clientes.Dispose();
@@ -198,7 +203,7 @@ namespace MTN_Administration
             //DisposeAllPanels();
             aBM_Incidentes = new ABM_Incidentes(aPIHelper);
             aBM_Incidentes.Owner = this;
-          //  aBM_Incidentes.Dock = System.Windows.Forms.DockStyle.Fill;
+            //  aBM_Incidentes.Dock = System.Windows.Forms.DockStyle.Fill;
             aBM_Incidentes.Name = "aBM_Incidentes";
             aBM_Incidentes.TabIndex = 2;
             //Controls.Add(this.aBM_Incidentes);
@@ -211,7 +216,6 @@ namespace MTN_Administration
 
 
 
-        ABM_Mantenimientos aBM_Mantenimientos;
 
         private void BunifuFlatButton1_Click_1(object sender, EventArgs e)
         {
@@ -224,5 +228,7 @@ namespace MTN_Administration
             aBM_Mantenimientos.BringToFront();
 
         }
+
+
     }
 }

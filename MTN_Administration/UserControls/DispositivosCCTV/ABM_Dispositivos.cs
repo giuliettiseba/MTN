@@ -12,6 +12,11 @@ using MTN_Administration.Alerts;
 
 namespace MTN_Administration.Tabs
 {
+
+    /// <summary>
+    /// Interfaz de Administracion de dispositivos de CCTV
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class ABM_Dispositivos : UserControl
     {
         APIHelper aPIHelper;
@@ -21,6 +26,10 @@ namespace MTN_Administration.Tabs
         private Bitmap image_error;
         private Bitmap image_warning;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ABM_Dispositivos"/> class.
+        /// </summary>
+        /// <param name="aPIHelper">a pi helper.</param>
         public ABM_Dispositivos(APIHelper aPIHelper)
         {
             this.aPIHelper = aPIHelper;
@@ -30,6 +39,11 @@ namespace MTN_Administration.Tabs
             image_warning = new Bitmap(global::MTN_Administration.Properties.Resources.warning, new Size(15, 15));
         }
 
+
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.UserControl.Load" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -38,19 +52,26 @@ namespace MTN_Administration.Tabs
             comboCliente.DataSource = new BindingSource(aPIHelper.GetClientesHelper().GetClientes(), null);
         }
 
-        public void RefreshTable()
+        /// <summary>
+        /// Refresca el contenido de la tabla de grabadores.
+        /// </summary>
+        public void RefreshTableDispositivos()
         {
-            tablaGrabadoresDigitales.Rows.Clear();
+            
             tablaGrabadoresDigitales.Refresh();
-            listaGrabadores = aPIHelper.GetCCTVHelper().GetDispositivosCCTVSucursal(SucursalSeleccionada());
-
+            listaGrabadores = aPIHelper.GetCCTVHelper().GetDispositivosCCTVSucursal(GetSucursalSeleccionada());
             foreach (DispositivoCCTV grabador in listaGrabadores)
             {
                 AddItem(grabador);
             }
-
+            tablaGrabadoresDigitales.Rows.Clear();
         }
 
+
+        /// <summary>
+        /// Agrega una fila en la tabla de grabadores.
+        /// </summary>
+        /// <param name="grabador">The grabador.</param>
         private void AddItem(DispositivoCCTV grabador)
         {
             tablaGrabadoresDigitales.Rows.Add();
@@ -74,17 +95,23 @@ namespace MTN_Administration.Tabs
                     break;
 
                 default:
-                    image = null;
+                    image = image_warning;
                     break;
             }
             tablaGrabadoresDigitales.Rows[tablaGrabadoresDigitales.Rows.Count - 1].Cells["estado"].Value = image;
         }
 
+        /// <summary>
+        /// Handles the Click event of the BotonAgregarDispotivo control.
+        /// Muestra la interfaz de Alta de dispositivo de CCTV
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BotonAgregarDispotivo_Click(object sender, EventArgs e)
         {
-            if (SucursalSeleccionada() != 0)
+            if (GetSucursalSeleccionada() != 0)
             {
-                this.alta_Dispositivo = new Alta_Dispositivo(aPIHelper, ObtenerClienteSeleccionado().Id, SucursalSeleccionada());
+                this.alta_Dispositivo = new Alta_Dispositivo(aPIHelper, ObtenerClienteSeleccionado().Id, GetSucursalSeleccionada());
                 this.alta_Dispositivo.Location = new System.Drawing.Point(0, 0);
                 this.alta_Dispositivo.Name = "alta_Cliente";
                 this.alta_Dispositivo.Size = new System.Drawing.Size(727, 561);
@@ -99,13 +126,19 @@ namespace MTN_Administration.Tabs
         }
 
 
+        /// <summary>
+        /// Handles the Click event of the buttonEditarDispositivo control.
+        /// Muestra la venta de Alta de dispositivo con los datos del dispositivo seleccionado 
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void buttonEditarDispositivo_Click(object sender, EventArgs e)
         {
             // obtengo el id del dispositivo seleccionado en la tabla
             int id_dispositivoCCTV = (int)tablaGrabadoresDigitales.SelectedRows[0].Cells["id"].Value;
 
-            // obtengo el dispositivo con el APIhelper
-            DispositivoCCTV dispositivoCCTV = aPIHelper.GetCCTVHelper().GetDispositivoCCTV(SucursalSeleccionada(), id_dispositivoCCTV);
+            // obtengo el dispositivo con el CCTVHelper
+            DispositivoCCTV dispositivoCCTV = ObtenerDispositivoSeleccionado();
 
             // Cargo la interfaz 
             BotonAgregarDispotivo_Click(sender, e);
@@ -114,12 +147,23 @@ namespace MTN_Administration.Tabs
             alta_Dispositivo.Cargar((int)comboCliente.SelectedValue, dispositivoCCTV);
         }
 
+
+        /// <summary>
+        /// Handles the CellDoubleClick event of the TablaDipositivo control.
+        /// Muestra la venta de Alta de dispositivo con los datos del dispositivo seleccionado 
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void TablaDipositivo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             buttonEditarDispositivo_Click(sender, e);
         }
 
 
+        /// <summary>
+        /// Obtiene el cliente seleccionado en la tabla clientes.
+        /// </summary>
+        /// <returns></returns>
         private Cliente ObtenerClienteSeleccionado()
         {
 
@@ -127,6 +171,10 @@ namespace MTN_Administration.Tabs
             return aPIHelper.GetClientesHelper().GetCliente(id_cliente);
         }
 
+        /// <summary>
+        /// Obtiene la sucursal seleccionada en la tabla de sucursales.
+        /// </summary>
+        /// <returns></returns>
         private Sucursal ObtenerSucuralSeleccionada()
         {
             DataGridViewSelectedRowCollection selectedRow = tablaSucursales.SelectedRows;
@@ -134,6 +182,11 @@ namespace MTN_Administration.Tabs
             return aPIHelper.GetSucursalesHelper().GetSucursal(ObtenerClienteSeleccionado().Id, id_sucursal);
         }
 
+
+        /// <summary>
+        /// Obtiene el Dispositivo seleccionado de la tabla de dispositivos.
+        /// </summary>
+        /// <returns></returns>
         private DispositivoCCTV ObtenerDispositivoSeleccionado()
         {
             DataGridViewSelectedRowCollection selectedRow = tablaGrabadoresDigitales.SelectedRows;
@@ -141,24 +194,45 @@ namespace MTN_Administration.Tabs
             return aPIHelper.GetCCTVHelper().GetDispositivoCCTV(ObtenerSucuralSeleccionada().Id, id_dispositivo);
         }
 
+        /// <summary>
+        /// Handles the Click event of the BotonEliminar control.
+        /// Elimina el dispositivo seleccionado de la base de datos
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BotonEliminar_Click(object sender, EventArgs e)
         {
-
-            MensajeAlerta resultado = aPIHelper.GetCCTVHelper().RemoveDispositivoCCTV(ObtenerDispositivoSeleccionado());
-            Alert.ShowAlert(resultado);
-            RefreshTable();
+            DialogResult dialogResult = MessageBox.Show("Esta seguro que quiere eliminar el grabador", "Confirmación", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                MensajeAlerta resultado = aPIHelper.GetCCTVHelper().RemoveDispositivoCCTV(ObtenerDispositivoSeleccionado());
+                Alert.ShowAlert(resultado);
+                RefreshTableDispositivos();
+            }
         }
 
-        private void comboCliente_SelectedIndexChanged(object sender, EventArgs e)
+
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the comboCliente control.
+        /// Cuando cambia el cliente seleccionado muestra la lista de sucursales del cliente en la tabla sucursales
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+         private void comboCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshComboSucursales((int)comboCliente.SelectedValue);
         }
 
-        private void RefreshComboSucursales(int selectedValue)
+
+        /// <summary>
+        /// Refresca la tabla sucursales de acuerdo al cliente seleccionado
+        /// </summary>
+        /// <param name="id_cliente_seleccionado">The selected cliente.</param>
+        private void RefreshComboSucursales(int id_cliente_seleccionado)
         {
             tablaSucursales.Rows.Clear();
             tablaSucursales.Refresh();
-            List<Sucursal> listaSucursales = aPIHelper.GetSucursalesHelper().GetSucursales(selectedValue);
+            List<Sucursal> listaSucursales = aPIHelper.GetSucursalesHelper().GetSucursales(id_cliente_seleccionado);
             foreach (Sucursal sucursal in listaSucursales)
             {
                 if (sucursal.Id_cliente == (int)comboCliente.SelectedValue)
@@ -168,17 +242,34 @@ namespace MTN_Administration.Tabs
             }
         }
 
+
+        /// <summary>
+        /// Agrega un nuevo item a la tabla de sucursales
+        /// </summary>
+        /// <param name="sucursal">The sucursal.</param>
         private void AddItem(Sucursal sucursal)
         {
             tablaSucursales.Rows.Add(sucursal.Id, sucursal.Numero, sucursal.Nombre);
         }
 
+
+        /// <summary>
+        /// Handles the SelectionChanged event of the tablaSucursales control.
+        /// Cuando cambia la fila seleccionada en la tabla de sucursales muestra la lista de dispositivos en la tabla dispositivos
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void tablaSucursales_SelectionChanged(object sender, EventArgs e)
         {
-            RefreshTable();
+            RefreshTableDispositivos();
         }
 
-        private int SucursalSeleccionada()
+
+        /// <summary>
+        /// Obtiene el ID de la sucursal seleccionada en la tabla sucursales.
+        /// </summary>
+        /// <returns></returns>
+        private int GetSucursalSeleccionada()
         {
             DataGridViewSelectedRowCollection selectedRow = tablaSucursales.SelectedRows;
 
@@ -186,7 +277,5 @@ namespace MTN_Administration.Tabs
                 return (int)selectedRow[0].Cells["idSuc"].Value;
             return 0;
         }
-
-
     }
 }

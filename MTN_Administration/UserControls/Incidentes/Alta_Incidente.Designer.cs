@@ -69,18 +69,18 @@
             this.nombreCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBuscarCliente = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.SearchIcon = new System.Windows.Forms.PictureBox();
-            this.buttonSiguiente = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.BotonSiguiente = new Bunifu.Framework.UI.BunifuThinButton2();
             this.buttonCancelar = new Bunifu.Framework.UI.BunifuThinButton2();
             this.labelCliente = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuTransition1 = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.bunifuThinButton22 = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.BotonAtras = new Bunifu.Framework.UI.BunifuThinButton2();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.TextFalla = new MTN_Administration.CustomTextBox();
             this.ButtonFinalizar = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.TextFalla = new MTN_Administration.CustomTextBox();
             this.comboBoxCriticidad = new MTN_Administration.CustomComboBox();
+            this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.comboBoxEstado = new MTN_Administration.CustomComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaMantenible)).BeginInit();
@@ -112,7 +112,7 @@
             this.panel1.Controls.Add(this.tablaClientes);
             this.panel1.Controls.Add(this.textBuscarCliente);
             this.panel1.Controls.Add(this.SearchIcon);
-            this.panel1.Controls.Add(this.buttonSiguiente);
+            this.panel1.Controls.Add(this.BotonSiguiente);
             this.panel1.Controls.Add(this.buttonCancelar);
             this.panel1.Controls.Add(this.labelCliente);
             this.bunifuTransition1.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
@@ -639,32 +639,32 @@
             this.SearchIcon.TabIndex = 58;
             this.SearchIcon.TabStop = false;
             // 
-            // buttonSiguiente
+            // BotonSiguiente
             // 
-            this.buttonSiguiente.ActiveBorderThickness = 1;
-            this.buttonSiguiente.ActiveCornerRadius = 20;
-            this.buttonSiguiente.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.buttonSiguiente.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonSiguiente.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.buttonSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            this.buttonSiguiente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSiguiente.BackgroundImage")));
-            this.buttonSiguiente.ButtonText = "Siguiente";
-            this.buttonSiguiente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.buttonSiguiente, BunifuAnimatorNS.DecorationType.None);
-            this.buttonSiguiente.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.buttonSiguiente.IdleBorderThickness = 1;
-            this.buttonSiguiente.IdleCornerRadius = 20;
-            this.buttonSiguiente.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.buttonSiguiente.IdleForecolor = System.Drawing.Color.GhostWhite;
-            this.buttonSiguiente.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.buttonSiguiente.Location = new System.Drawing.Point(1022, 659);
-            this.buttonSiguiente.Margin = new System.Windows.Forms.Padding(5);
-            this.buttonSiguiente.Name = "buttonSiguiente";
-            this.buttonSiguiente.Size = new System.Drawing.Size(181, 41);
-            this.buttonSiguiente.TabIndex = 55;
-            this.buttonSiguiente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonSiguiente.Click += new System.EventHandler(this.buttonSiguiente_Click);
+            this.BotonSiguiente.ActiveBorderThickness = 1;
+            this.BotonSiguiente.ActiveCornerRadius = 20;
+            this.BotonSiguiente.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.BotonSiguiente.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BotonSiguiente.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.BotonSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            this.BotonSiguiente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BotonSiguiente.BackgroundImage")));
+            this.BotonSiguiente.ButtonText = "Siguiente";
+            this.BotonSiguiente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuTransition1.SetDecoration(this.BotonSiguiente, BunifuAnimatorNS.DecorationType.None);
+            this.BotonSiguiente.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BotonSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.BotonSiguiente.IdleBorderThickness = 1;
+            this.BotonSiguiente.IdleCornerRadius = 20;
+            this.BotonSiguiente.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.BotonSiguiente.IdleForecolor = System.Drawing.Color.GhostWhite;
+            this.BotonSiguiente.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.BotonSiguiente.Location = new System.Drawing.Point(1022, 659);
+            this.BotonSiguiente.Margin = new System.Windows.Forms.Padding(5);
+            this.BotonSiguiente.Name = "BotonSiguiente";
+            this.BotonSiguiente.Size = new System.Drawing.Size(181, 41);
+            this.BotonSiguiente.TabIndex = 55;
+            this.BotonSiguiente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BotonSiguiente.Click += new System.EventHandler(this.buttonSiguiente_Click);
             // 
             // buttonCancelar
             // 
@@ -726,32 +726,32 @@
             animation1.TransparencyCoeff = 0F;
             this.bunifuTransition1.DefaultAnimation = animation1;
             // 
-            // bunifuThinButton22
+            // BotonAtras
             // 
-            this.bunifuThinButton22.ActiveBorderThickness = 1;
-            this.bunifuThinButton22.ActiveCornerRadius = 20;
-            this.bunifuThinButton22.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.bunifuThinButton22.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.bunifuThinButton22.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.bunifuThinButton22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            this.bunifuThinButton22.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuThinButton22.BackgroundImage")));
-            this.bunifuThinButton22.ButtonText = "Atras";
-            this.bunifuThinButton22.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.bunifuThinButton22, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuThinButton22.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuThinButton22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.bunifuThinButton22.IdleBorderThickness = 1;
-            this.bunifuThinButton22.IdleCornerRadius = 20;
-            this.bunifuThinButton22.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.bunifuThinButton22.IdleForecolor = System.Drawing.Color.GhostWhite;
-            this.bunifuThinButton22.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.bunifuThinButton22.Location = new System.Drawing.Point(39, 659);
-            this.bunifuThinButton22.Margin = new System.Windows.Forms.Padding(5);
-            this.bunifuThinButton22.Name = "bunifuThinButton22";
-            this.bunifuThinButton22.Size = new System.Drawing.Size(181, 41);
-            this.bunifuThinButton22.TabIndex = 54;
-            this.bunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuThinButton22.Click += new System.EventHandler(this.bunifuThinButton22_Click);
+            this.BotonAtras.ActiveBorderThickness = 1;
+            this.BotonAtras.ActiveCornerRadius = 20;
+            this.BotonAtras.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.BotonAtras.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BotonAtras.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.BotonAtras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            this.BotonAtras.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BotonAtras.BackgroundImage")));
+            this.BotonAtras.ButtonText = "Atras";
+            this.BotonAtras.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuTransition1.SetDecoration(this.BotonAtras, BunifuAnimatorNS.DecorationType.None);
+            this.BotonAtras.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BotonAtras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.BotonAtras.IdleBorderThickness = 1;
+            this.BotonAtras.IdleCornerRadius = 20;
+            this.BotonAtras.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.BotonAtras.IdleForecolor = System.Drawing.Color.GhostWhite;
+            this.BotonAtras.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.BotonAtras.Location = new System.Drawing.Point(39, 659);
+            this.BotonAtras.Margin = new System.Windows.Forms.Padding(5);
+            this.BotonAtras.Name = "BotonAtras";
+            this.BotonAtras.Size = new System.Drawing.Size(181, 41);
+            this.BotonAtras.TabIndex = 54;
+            this.BotonAtras.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BotonAtras.Click += new System.EventHandler(this.Boton_Atras_Click);
             // 
             // panel2
             // 
@@ -762,12 +762,26 @@
             this.panel2.Controls.Add(this.comboBoxCriticidad);
             this.panel2.Controls.Add(this.bunifuCustomLabel8);
             this.panel2.Controls.Add(this.comboBoxEstado);
-            this.panel2.Controls.Add(this.bunifuThinButton22);
+            this.panel2.Controls.Add(this.BotonAtras);
             this.bunifuTransition1.SetDecoration(this.panel2, BunifuAnimatorNS.DecorationType.None);
             this.panel2.Location = new System.Drawing.Point(1241, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1240, 745);
             this.panel2.TabIndex = 56;
+            // 
+            // TextFalla
+            // 
+            this.TextFalla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            this.TextFalla.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.TextFalla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.bunifuTransition1.SetDecoration(this.TextFalla, BunifuAnimatorNS.DecorationType.None);
+            this.TextFalla.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.TextFalla.ForeColor = System.Drawing.Color.Coral;
+            this.TextFalla.Location = new System.Drawing.Point(77, 245);
+            this.TextFalla.Multiline = true;
+            this.TextFalla.Name = "TextFalla";
+            this.TextFalla.Size = new System.Drawing.Size(1127, 397);
+            this.TextFalla.TabIndex = 72;
             // 
             // ButtonFinalizar
             // 
@@ -820,32 +834,6 @@
             this.bunifuCustomLabel7.TabIndex = 65;
             this.bunifuCustomLabel7.Text = "Criticidad";
             // 
-            // bunifuCustomLabel8
-            // 
-            this.bunifuCustomLabel8.AutoSize = true;
-            this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel8.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.bunifuCustomLabel8.ForeColor = System.Drawing.Color.Silver;
-            this.bunifuCustomLabel8.Location = new System.Drawing.Point(74, 70);
-            this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
-            this.bunifuCustomLabel8.Size = new System.Drawing.Size(90, 17);
-            this.bunifuCustomLabel8.TabIndex = 63;
-            this.bunifuCustomLabel8.Text = "Tipo De Falla";
-            // 
-            // TextFalla
-            // 
-            this.TextFalla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
-            this.TextFalla.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            this.TextFalla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.bunifuTransition1.SetDecoration(this.TextFalla, BunifuAnimatorNS.DecorationType.None);
-            this.TextFalla.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.TextFalla.ForeColor = System.Drawing.Color.Coral;
-            this.TextFalla.Location = new System.Drawing.Point(77, 245);
-            this.TextFalla.Multiline = true;
-            this.TextFalla.Name = "TextFalla";
-            this.TextFalla.Size = new System.Drawing.Size(1127, 397);
-            this.TextFalla.TabIndex = 72;
-            // 
             // comboBoxCriticidad
             // 
             this.comboBoxCriticidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
@@ -860,6 +848,18 @@
             this.comboBoxCriticidad.Name = "comboBoxCriticidad";
             this.comboBoxCriticidad.Size = new System.Drawing.Size(275, 29);
             this.comboBoxCriticidad.TabIndex = 64;
+            // 
+            // bunifuCustomLabel8
+            // 
+            this.bunifuCustomLabel8.AutoSize = true;
+            this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel8.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.bunifuCustomLabel8.ForeColor = System.Drawing.Color.Silver;
+            this.bunifuCustomLabel8.Location = new System.Drawing.Point(74, 70);
+            this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
+            this.bunifuCustomLabel8.Size = new System.Drawing.Size(90, 17);
+            this.bunifuCustomLabel8.TabIndex = 63;
+            this.bunifuCustomLabel8.Text = "Tipo De Falla";
             // 
             // comboBoxEstado
             // 
@@ -903,7 +903,7 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private Bunifu.Framework.UI.BunifuThinButton2 buttonSiguiente;
+        private Bunifu.Framework.UI.BunifuThinButton2 BotonSiguiente;
         private Bunifu.Framework.UI.BunifuThinButton2 buttonCancelar;
         private Bunifu.Framework.UI.BunifuCustomLabel labelCliente;
         private Bunifu.Framework.UI.BunifuMetroTextbox textBuscarCliente;
@@ -918,7 +918,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn id_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreCliente;
         private BunifuAnimatorNS.BunifuTransition bunifuTransition1;
-        private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton22;
+        private Bunifu.Framework.UI.BunifuThinButton2 BotonAtras;
         private System.Windows.Forms.Panel panel2;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
         private Bunifu.Framework.UI.BunifuCustomDataGrid tablaMantenible;

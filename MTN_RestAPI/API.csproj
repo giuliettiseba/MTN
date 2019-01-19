@@ -139,6 +139,7 @@
     <Compile Include="Controllers\ChecksumController.cs" />
     <Compile Include="Controllers\CamarasController.cs" />
     <Compile Include="Controllers\DispositivosCCTVController.cs" />
+    <Compile Include="Models\Estado.cs" />
     <Compile Include="Controllers\MantenimientoController.cs" />
     <Compile Include="Controllers\IncidentesController.cs" />
     <Compile Include="Controllers\SucursalesController.cs" />
@@ -149,7 +150,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Camara.cs" />
-    <Compile Include="Models\EstadoIncidente.cs" />
     <Compile Include="Models\Incidente.cs" />
     <Compile Include="Models\Mantenible.cs" />
     <Compile Include="Models\Mantenimiento.cs" />
@@ -157,20 +157,16 @@
     <Compile Include="Models\ModeloCamara.cs" />
     <Compile Include="Models\Resultado.cs" />
     <Compile Include="Models\Dispositivo.cs" />
-    <Compile Include="Models\Estado.cs" />
     <Compile Include="Models\DispositivoCCTV.cs" />
     <Compile Include="Models\ModeloCCTV.cs" />
     <Compile Include="Models\MarcaCCTV.cs" />
-    <Compile Include="Models\ModeloGrabadorDigital.cs" />
     <Compile Include="Models\Cliente.cs" />
-    <Compile Include="Models\Provedores.cs" />
     <Compile Include="Models\Sucursal.cs" />
-    <Compile Include="Models\Tipo_Documento.cs" />
-    <Compile Include="Models\Criticidad.cs" />
-    <Compile Include="Models\Tipo_Empleado.cs" />
     <Compile Include="Models\Localidad.cs" />
     <Compile Include="Models\Provincia.cs" />
     <Compile Include="Models\Tecnico.cs" />
+    <Compile Include="Models\TypeEmpleado.cs" />
+    <Compile Include="Models\TypeDocumento.cs" />
     <Compile Include="Models\TypeTipoMantenible.cs" />
     <Compile Include="Models\TypeCriticidad.cs" />
     <Compile Include="Models\TypeTipoMantenimiento.cs" />

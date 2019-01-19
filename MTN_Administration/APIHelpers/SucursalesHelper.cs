@@ -9,6 +9,9 @@ using System.Web.Script.Serialization;
 
 namespace MTN_Administration.APIHelpers
 {
+    /// <summary>
+    /// Helper Sucursales
+    /// </summary>
     public class SucursalesHelper
     {
 
@@ -16,12 +19,22 @@ namespace MTN_Administration.APIHelpers
         private ChecksumHelper _checksumHelper;
         Dictionary<int, List<Sucursal>> cacheSucursales = new Dictionary<int, List<Sucursal>>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SucursalesHelper"/> class.
+        /// </summary>
+        /// <param name="partialurl">The partialurl.</param>
+        /// <param name="checksumHelper">The checksum helper.</param>
         public SucursalesHelper(String partialurl, ChecksumHelper checksumHelper)
         {
             _partialurl = partialurl;
             _checksumHelper = checksumHelper;
         }
 
+        /// <summary>
+        /// Obtiene la lista de sucursales de un cliente
+        /// </summary>
+        /// <param name="id_cliente">The identifier cliente.</param>
+        /// <returns></returns>
         public List<Sucursal> GetSucursales(int id_cliente)
         {
             if (!cacheSucursales.ContainsKey(id_cliente) || !_checksumHelper.VerificarChecksum("sucursales_" + id_cliente))
@@ -33,6 +46,11 @@ namespace MTN_Administration.APIHelpers
             return cacheSucursales[id_cliente];
         }
 
+
+        /// <summary>
+        /// Almacena en memoria una lista de las sucursales de un cliente.
+        /// </summary>
+        /// <param name="id_cliente">The identifier cliente.</param>
         public void CacheSucursales(int id_cliente)
         {
             String url = _partialurl + "Sucursales/" + id_cliente;
@@ -44,9 +62,14 @@ namespace MTN_Administration.APIHelpers
                 cacheSucursales[id_cliente] = resultado.Lista.Cast<Sucursal>().ToList();
                 _checksumHelper.ActualizarChecksum("sucursales_" + id_cliente, resultado.Checksum);
             }
-
         }
 
+        /// <summary>
+        /// Obtiene la sucursal de un cliente dado un id de sucursal
+        /// </summary>
+        /// <param name="id_cliente">The identifier cliente.</param>
+        /// <param name="id_sucursal">The identifier sucursal.</param>
+        /// <returns></returns>
         internal Sucursal GetSucursal(int id_cliente, int id_sucursal)
         {
             if (!cacheSucursales.ContainsKey(id_cliente)) GetSucursales(id_cliente);
@@ -54,6 +77,11 @@ namespace MTN_Administration.APIHelpers
 
         }
 
+        /// <summary>
+        /// Elimina una sucursal 
+        /// </summary>
+        /// <param name="removeSucursal">The remove sucursal.</param>
+        /// <returns></returns>
         internal MensajeAlerta RemoveSucursal(Sucursal removeSucursal)
         {
             String url = _partialurl + "sucursales/" + removeSucursal.Id;
@@ -64,6 +92,11 @@ namespace MTN_Administration.APIHelpers
             }
         }
 
+        /// <summary>
+        /// Agrega o modifica una sucursal.
+        /// </summary>
+        /// <param name="newSucursal">The new sucursal.</param>
+        /// <returns></returns>
         internal MensajeAlerta AddSucursal(Sucursal newSucursal)
         {
             String url = _partialurl + "sucursales";
@@ -93,8 +126,7 @@ namespace MTN_Administration.APIHelpers
             }
             catch (Exception e)
             {
-
-                return new MensajeAlerta("Error" + Environment.NewLine + newSucursal.Nombre, AlertType.error);
+                return new MensajeAlerta("Error: " + e.ToString() + Environment.NewLine + newSucursal.Nombre, AlertType.error);
             }
         }
     }

@@ -435,7 +435,7 @@
             this.buttonCancelar.Size = new System.Drawing.Size(181, 41);
             this.buttonCancelar.TabIndex = 54;
             this.buttonCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCerrar_Click);
             // 
             // labelCliente
             // 

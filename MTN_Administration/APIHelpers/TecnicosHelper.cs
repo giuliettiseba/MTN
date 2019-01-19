@@ -9,6 +9,9 @@ using System.Web.Script.Serialization;
 
 namespace MTN_Administration.APIHelpers
 {
+    /// <summary>
+    /// Helper de tecnicos
+    /// </summary>
     public class TecnicosHelper
     {
 
@@ -16,12 +19,21 @@ namespace MTN_Administration.APIHelpers
         private ChecksumHelper checksumHelper;
         List<Tecnico> tecnicos;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TecnicosHelper"/> class.
+        /// </summary>
+        /// <param name="partialurl">The partialurl.</param>
+        /// <param name="checksumHelper">The checksum helper.</param>
         public TecnicosHelper(String partialurl, ChecksumHelper checksumHelper)
         {
             _partialurl = partialurl;
             this.checksumHelper = checksumHelper;
         }
 
+        /// <summary>
+        /// Obtiene la lista de tecnicos.
+        /// </summary>
+        /// <returns></returns>
         public List<Tecnico> GetTecnicos()
         {
             if (tecnicos == null || !checksumHelper.VerificarChecksum("tecnicos"))
@@ -33,7 +45,7 @@ namespace MTN_Administration.APIHelpers
         }
 
         /// <summary>
-        /// Consulta la API para traer la lista de los tecnicos completa.
+        /// Almacena en memoria la lista de tecnicos,
         /// </summary>
         public void CacheTecnicos()
         {
@@ -43,11 +55,16 @@ namespace MTN_Administration.APIHelpers
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 String content = client.DownloadString(url);
                 Resultado<Tecnico> resultado = serializer.Deserialize<Resultado<Tecnico>>(content);
-                tecnicos = resultado.Lista.Cast<Tecnico>().ToList(); 
+                tecnicos = resultado.Lista.Cast<Tecnico>().ToList();
                 checksumHelper.ActualizarChecksum("tecnicos", resultado.Checksum);
             }
         }
 
+        /// <summary>
+        /// Obtiene un tecnico dado un ID
+        /// </summary>
+        /// <param name="id_tecnico">The identifier tecnico.</param>
+        /// <returns></returns>
         internal Tecnico GetTecnico(int id_tecnico)
         {
             if (tecnicos == null) GetTecnicos();
@@ -55,17 +72,27 @@ namespace MTN_Administration.APIHelpers
             return tecnicos.Find(x => x.Id == id_tecnico);
         }
 
-        internal string RemoveTecnico(int id_tecnico)
+        /// <summary>
+        /// Elimina un tecnico
+        /// </summary>
+        /// <param name="id_tecnico">The identifier tecnico.</param>
+        /// <returns></returns>
+        internal MensajeAlerta RemoveTecnico(Tecnico tecnico)
         {
-            String url = _partialurl + "tecnicos/" + id_tecnico;
+            String url = _partialurl + "tecnicos/" + tecnico.Id;
             using (WebClient webClient = new WebClient())
             {
                 var responseArray = webClient.UploadValues(url, "DELETE", webClient.QueryString);
-                return Encoding.ASCII.GetString(responseArray);
+                return new MensajeAlerta("ELIMINADO" + Environment.NewLine + tecnico.Apellido + ", " + tecnico.Nombre, AlertType.warning);
             }
 
         }
 
+        /// <summary>
+        /// Agrega o modifica un tecnico.
+        /// </summary>
+        /// <param name="newTecnico">The new tecnico.</param>
+        /// <returns></returns>
         internal MensajeAlerta AddTecnico(Tecnico newTecnico)
         {
             String url = _partialurl + "tecnicos";

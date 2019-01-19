@@ -29,25 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.labelMTN = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // labelMTN
-            // 
-            this.labelMTN.AutoSize = true;
-            this.labelMTN.BackColor = System.Drawing.Color.Transparent;
-            this.labelMTN.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMTN.Location = new System.Drawing.Point(135, 74);
-            this.labelMTN.Name = "labelMTN";
-            this.labelMTN.Size = new System.Drawing.Size(92, 33);
-            this.labelMTN.TabIndex = 0;
-            this.labelMTN.Text = "M.T.N.";
             // 
             // timer
             // 
             this.timer.Enabled = true;
+            this.timer.Interval = 1;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MTN_Administration.Properties.Resources.Logo_MTN;
+            this.pictureBox1.Location = new System.Drawing.Point(58, 39);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(273, 155);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // Splash
             // 
@@ -55,18 +56,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(158)))), ((int)(((byte)(71)))));
             this.ClientSize = new System.Drawing.Size(387, 253);
-            this.Controls.Add(this.labelMTN);
+            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Splash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "splash";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label labelMTN;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

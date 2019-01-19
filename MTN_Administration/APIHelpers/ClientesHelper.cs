@@ -9,6 +9,10 @@ using System.Web.Script.Serialization;
 
 namespace MTN_Administration.APIHelpers
 {
+
+    /// <summary>
+    /// Helper de clientes
+    /// </summary>
     public class ClientesHelper
     {
         private readonly String _partialurl;
@@ -16,8 +20,7 @@ namespace MTN_Administration.APIHelpers
         private List<Cliente> _clientes;
 
         /// <summary>
-        /// 
-        /// Constructor, Se pasa como parametros la URL parcial del WEB API y el ayudante de checksums
+        /// Constructor de la clase ClienteHelper, Se pasa como parametros la URL parcial del WEB API y el ayudante de checksums
         /// </summary>
         /// <param name="partialurl"></param>
         /// <param name="checksumHelper"></param>
@@ -25,7 +28,6 @@ namespace MTN_Administration.APIHelpers
         {
             _partialurl = partialurl;
             _checksumHelper = checksumHelper;
-           // GetClientes();
         }
 
         /// <summary>
@@ -73,7 +75,25 @@ namespace MTN_Administration.APIHelpers
             if (_clientes == null) GetClientes();
             return _clientes.Find(x => x.Id == id_cliente);
         }
-        
+
+
+        /// <summary>
+        /// Verifica si el cuit esta cargado en el sistema, si es una modificacion no controla el cliente a modificar
+        /// </summary>
+        /// <param name="cuit">EL CUIT.</param>
+        /// <param name="id">El id del cliente, 0 si es un alta.</param>
+        /// <returns>Verdadero si el CUIT esta duplicado.</returns>
+        private bool CuitExiste(String cuit, int id)
+        {
+            List<Cliente> clientesTemp;
+            if (_clientes == null) GetClientes();
+            clientesTemp = new List<Cliente>(_clientes);
+            if (id != 0)
+                clientesTemp.Remove(clientesTemp.Find(x => x.Id == id));
+
+            return clientesTemp.Find(x => x.CUIT == cuit) != null;
+        }
+
         /// <summary>
         /// Remueve de la base de datos un cliente 
         /// </summary>
@@ -99,12 +119,13 @@ namespace MTN_Administration.APIHelpers
             try
             {
                 Convert.ToInt64(newCliente.CUIT);
+                if (CuitExiste(newCliente.CUIT, newCliente.Id)) return new MensajeAlerta("ERROR" + Environment.NewLine + "El numero de CUIT ya esta cargado en el sistema", AlertType.error);
             }
             catch (Exception)
             {
                 return new MensajeAlerta("ERROR" + Environment.NewLine + "El numero de CUIT deben ser solo numeros", AlertType.error);
             }
-            
+
 
             String url = _partialurl + "clientes/";
             try
@@ -135,5 +156,6 @@ namespace MTN_Administration.APIHelpers
                 return new MensajeAlerta("Error" + Environment.NewLine + newCliente.Nombre, AlertType.error);
             }
         }
+
     }
 }

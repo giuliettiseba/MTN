@@ -10,6 +10,9 @@ using System.Web.Script.Serialization;
 
 namespace MTN_Administration.APIHelpers
 {
+    /// <summary>
+    /// Helper de Incidentes.
+    /// </summary>
     public class IncidenteHelper
     {
 
@@ -17,13 +20,22 @@ namespace MTN_Administration.APIHelpers
         private ChecksumHelper _checksumHelper;
         private List<Incidente> _incidentes;
 
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IncidenteHelper"/> class.
+        /// </summary>
+        /// <param name="partialurl">The partialurl.</param>
+        /// <param name="checksumHelper">The checksum helper.</param>
         public IncidenteHelper(string partialurl, ChecksumHelper checksumHelper)
         {
             _partialurl = partialurl;
             this._checksumHelper = checksumHelper;
         }
 
+        /// <summary>
+        /// Obtiene un incidente dado un ID de incidente
+        /// </summary>
+        /// <param name="id_incidente">The identifier incidente.</param>
+        /// <returns></returns>
         internal Incidente GetIncidente(int id_incidente)
         {
             if (_incidentes == null) GetIncidentes();
@@ -31,7 +43,11 @@ namespace MTN_Administration.APIHelpers
         }
 
 
-
+        /// <summary>
+        /// Agrega un nuevo incidente o modifica uno existente
+        /// </summary>
+        /// <param name="newIncidente">The new incidente.</param>
+        /// <returns></returns>
         internal MensajeAlerta AddIncidente(Incidente newIncidente)
         {
             String url = _partialurl + "incidentes";
@@ -72,6 +88,10 @@ namespace MTN_Administration.APIHelpers
             }
         }
 
+        /// <summary>
+        /// Obtiene una lista de incidentes
+        /// </summary>
+        /// <returns></returns>
         public List<Incidente> GetIncidentes()
         {
             if ((_incidentes == null) || !(_checksumHelper.VerificarChecksum("Incidentes")))
@@ -82,6 +102,9 @@ namespace MTN_Administration.APIHelpers
             return _incidentes;
         }
 
+        /// <summary>
+        /// Guarda una lista de incidentes en memoria
+        /// </summary>
         private void CacheIncidentes()
         {
             String url = _partialurl + "Incidentes";
@@ -95,6 +118,12 @@ namespace MTN_Administration.APIHelpers
             }
         }
 
+        /// <summary>
+        /// Obtiene los incidentes de una sucursal
+        /// </summary>
+        /// <param name="id_Cliente">The identifier cliente.</param>
+        /// <param name="id_Sucursal">The identifier sucursal.</param>
+        /// <returns></returns>
         internal List<Incidente> GetIncidentes(int id_Cliente, int id_Sucursal)
         {
             GetIncidentes();
@@ -107,6 +136,10 @@ namespace MTN_Administration.APIHelpers
             return incidentesSucursal;
         }
 
+        /// <summary>
+        /// Verifica si hay cambios en la tabla de incidentes.
+        /// </summary>
+        /// <returns></returns>
         internal bool TieneCambios()
         {
             return (!_checksumHelper.VerificarChecksum("Incidentes"));

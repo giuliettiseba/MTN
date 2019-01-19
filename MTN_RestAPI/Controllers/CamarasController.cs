@@ -7,7 +7,6 @@ using System.Web.Http;
 using Dapper;
 using System.Data;
 
-
 namespace MTN_RestAPI.Controllers
 {
     public class CamarasController : ApiController
@@ -21,7 +20,7 @@ namespace MTN_RestAPI.Controllers
             {
                 db.Open();
                 IDbTransaction transaction = db.BeginTransaction();
-                List<Camara> respuesta = db.Query<Camara>("SELECT [id],[nombre],[id_modelo],dbo.ipIntToString([ip]) as ip ,dbo.ipIntToString([mask]) as mask,dbo.ipIntToString([gateway]) as gateway,[fechaInsta],[observaciones],[id_estado],[sn] FROM Camaras", transaction: transaction).ToList();
+                List<Camara> respuesta = db.Query<Camara>("SELECT [id],[nombre],[id_modelo],dbo.ipIntToString([ip]) as ip ,dbo.ipIntToString([mask]) as mask,dbo.ipIntToString([gateway]) as gateway,[Fecha_insta],[observaciones],[id_estado],[sn] FROM Camaras", transaction: transaction).ToList();
                 int checksum = db.Query<int>("SELECT CHECKSUM_AGG(binary_checksum(*)) FROM Camaras", transaction: transaction).First();
                 transaction.Commit();
                 db.Close();
@@ -44,7 +43,7 @@ namespace MTN_RestAPI.Controllers
                     "Dispositivo_tiene_camara.pos, " +
                     "camaras.[nombre], " +
                     "camaras.[id_estado], " +
-                    "camaras.[fechaInsta], " +
+                    "camaras.[Fecha_insta], " +
                     "camaras.[id_modelo], " +
                     "dbo.ipIntToString(camaras.[ip]) as ip ," +
                     "dbo.ipIntToString(camaras.[mask]) as mask," +
@@ -75,7 +74,7 @@ namespace MTN_RestAPI.Controllers
             string sql = "INSERT INTO [dbo].[Camaras]" +
                 "([nombre]," +
                 "[id_estado]," +
-                "[FechaInsta]," +
+                "[Fecha_insta]," +
                 "[id_modelo]," +
                 "[ip]," +
                 "[mask]," +
@@ -85,7 +84,7 @@ namespace MTN_RestAPI.Controllers
                     ") VALUES" +
                 "(@nombre," +
                 "@id_estado," +
-                "@FechaInsta," +
+                "@Fecha_insta," +
                 "@id_modelo," +
                 "[dbo].[ipStringToInt](@ip)," +
                 "[dbo].[ipStringToInt](@mask)," +
@@ -106,7 +105,7 @@ namespace MTN_RestAPI.Controllers
                 {
                     camara.Nombre,
                     camara.Id_estado,
-                    camara.FechaInsta,
+                    camara.Fecha_insta,
                     camara.Id_modelo,
                     camara.Ip,
                     camara.Mask,
@@ -142,7 +141,7 @@ namespace MTN_RestAPI.Controllers
             string sql = "UPDATE Camaras SET" +
              "[nombre] = @nombre," +
              "[id_estado] = @id_estado," +
-             "[fechaInsta] = @fechaInsta," +
+             "[Fecha_insta] = @Fecha_insta," +
              "[id_modelo] = @id_modelo," +
              "[ip] = [dbo].[ipStringToInt](@ip)," +
              "[mask] = [dbo].[ipStringToInt](@mask)," +
@@ -159,7 +158,7 @@ namespace MTN_RestAPI.Controllers
                 {
                     camara.Nombre,
                     camara.Id_estado,
-                    camara.FechaInsta,
+                    camara.Fecha_insta,
                     camara.Id_modelo,
                     camara.Ip,
                     camara.Mask,
@@ -196,24 +195,5 @@ namespace MTN_RestAPI.Controllers
                 else return BadRequest("No se encontro una Camara con el ID:" + id);
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

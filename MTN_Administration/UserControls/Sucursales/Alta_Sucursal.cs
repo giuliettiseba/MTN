@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MTN_RestAPI.Models;
 using MTN_Administration.Tabs;
@@ -13,12 +8,20 @@ using MTN_Administration.Alerts;
 
 namespace MTN_Administration
 {
+    /// <summary>
+    /// Intefaz Alta de Sucursales
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class Alta_Sucursales : UserControl
     {
-        
         private APIHelper aPIHelper;
         private int id_cliente;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Alta_Sucursales"/> class.
+        /// </summary>
+        /// <param name="id_cliente">The identifier cliente.</param>
+        /// <param name="aPIHelper">a pi helper.</param>
         public Alta_Sucursales(int id_cliente, APIHelper aPIHelper)
         {
             this.aPIHelper = aPIHelper;
@@ -29,19 +32,43 @@ namespace MTN_Administration
             }
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.UserControl.Load" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
+            /// Populate combox Provincia
             comboBoxProvincia.DisplayMember = "value";
             comboBoxProvincia.ValueMember = "key";
             comboBoxProvincia.DataSource = new BindingSource(aPIHelper.GetProvincias(), null);
         }
 
+        /// <summary>
+        /// Handles the Click event of the ButtonCancelarAlta control.
+        /// Cuando el usuario hace click sobre el boton cancelar alta, cierra la interfaz Alta sucursales y 
+        /// Muestra la interfaz AMB sucursales
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ButtonCancelarAlta_Click(object sender, EventArgs e)
         {
            this.Dispose();
         }
 
+
+        /// <summary>
+        /// Handles the click event of the BotonCargarFoto control.
+        /// Cuando el usuario hace click sobre el boton Cargar Foto muestra la ventana de seleccion de archivos 
+        /// con los filtros para los tipos de archivos de imagenes mas utilizados.
+        /// 
+        /// FALTA IMPLEMENTAR EL MANEJO DE IMAGENES
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <exception cref="System.Exception">No se pede cargar archivo</exception>
         private void BotonCargarFoto_click(object sender, EventArgs e)
         {
             // Se crea el OpenFileDialog
@@ -65,7 +92,13 @@ namespace MTN_Administration
             }
         }
 
-
+        /// <summary>
+        /// Handles the onItemSelected event of the ComboBoxProvincia control.
+        /// Cuando se selecciona una provincia habilita el combobox de localidad mostrando las 
+        /// localidades de la provincia seleccionada.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ComboBoxProvincia_onItemSelected(object sender, EventArgs e)
         {
             if (comboBoxProvincia.SelectedValue == null) { comboBoxLocalidad.Enabled = false; }
@@ -82,7 +115,10 @@ namespace MTN_Administration
         }
 
         private int id_sucursal;
-
+        /// <summary>
+        /// Carga los datos de una sucursal para modificar sus parametros
+        /// </summary>
+        /// <param name="sucursal">The sucursal.</param>
         internal void Cargar(Sucursal sucursal)
         {
             id_sucursal = sucursal.Id;
@@ -93,6 +129,12 @@ namespace MTN_Administration
             textDireccion.Text = sucursal.Direccion;
         }
 
+        /// <summary>
+        /// Handles the Click event of the buttonGuardarAltaSucursal control.
+        /// Cuando el usuario preciona el boton Guardar Sucural. Guarda o modifica la sucursal.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void buttonGuardarAltaSucursal_Click(object sender, EventArgs e)
         {
             Sucursal newSucursal = new Sucursal();
@@ -102,15 +144,13 @@ namespace MTN_Administration
             newSucursal.Id_cliente = id_cliente;
             newSucursal.Direccion = textDireccion.Text;
             newSucursal.Id_localidad = (int) comboBoxLocalidad.SelectedValue;
-            //   newTecnico.foto = ImageProcess.imageToByteArray(pictureFoto.Image);
+            //   newTecnico.foto = ImageProcess.imageToByteArray(pictureFoto.Image); 
 
             MensajeAlerta resultado = aPIHelper.GetSucursalesHelper().AddSucursal(newSucursal);
             Alert.ShowAlert(resultado);
 
-
             ((ABM_Sucursales)this.Parent).RefreshTable();
             this.Dispose();
         }
-
     }
 }

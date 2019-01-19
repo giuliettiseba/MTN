@@ -1,0 +1,1090 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="MTN_Administration.APIHelper">
+    <Position X="8.5" Y="3.25" Width="3.5" />
+    <AssociationLine Name="checksumHelper" Type="MTN_Administration.APIHelpers.ChecksumHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="7.875" />
+        <Point X="6.625" Y="7.875" />
+        <Point X="6.625" Y="10.75" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="clientesHelper" Type="MTN_Administration.APIHelpers.ClientesHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12" Y="6.5" />
+        <Point X="18.156" Y="6.5" />
+        <Point X="18.156" Y="10.75" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="cCTVHelper" Type="MTN_Administration.APIHelpers.CCTVHelper" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="7.188" />
+        <Point X="2.687" Y="7.188" />
+        <Point X="2.687" Y="10.75" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="tecnicosHelper" Type="MTN_Administration.APIHelpers.TecnicosHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12" Y="5.313" />
+        <Point X="20.375" Y="5.313" />
+        <Point X="20.375" Y="10.75" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="incidentesHelper" Type="MTN_Administration.APIHelpers.IncidenteHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12" Y="7.563" />
+        <Point X="13.844" Y="7.563" />
+        <Point X="13.844" Y="10.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>DEEABgAwIYKAAABQABAQMCAFAAAIBGAQAAQAAJAAQAA=</HashCode>
+      <FileName>APIHelpers\APIHelper.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="checksumHelper" />
+      <Field Name="clientesHelper" />
+      <Field Name="sucursalesHelper" />
+      <Field Name="cCTVHelper" />
+      <Field Name="tecnicosHelper" />
+      <Field Name="fileStorageHelper" />
+      <Field Name="incidentesHelper" />
+      <Field Name="mantenimientoHelper" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MTN_Administration.APIHelpers.CCTVHelper">
+    <Position X="0.5" Y="10.75" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>YAGCAAGAKAAAIIAEgUIAFAIBEAAgAAAQAAAAAAMJABA=</HashCode>
+      <FileName>APIHelpers\CCTVHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_Administration.APIHelpers.ChecksumHelper">
+    <Position X="5.25" Y="10.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAEAAAAIAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIHelpers\ChecksumHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_Administration.APIHelpers.ClientesHelper">
+    <Position X="15.75" Y="10.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAEAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAIEIBA=</HashCode>
+      <FileName>APIHelpers\ClientesHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_Administration.APIHelpers.FileStorageHelper">
+    <Position X="5.25" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIHelpers\FileStorageHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_Administration.APIHelpers.IncidenteHelper">
+    <Position X="12.25" Y="10.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAYAAAAACAAAAAAAAAAEAAAAAAAAIFA=</HashCode>
+      <FileName>APIHelpers\IncidenteHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_Administration.APIHelpers.MantenimientoHelper">
+    <Position X="22" Y="10.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>BAAABAEAAAAQAAQAAAAAAAAAAAAACAAAAAAAQSACABA=</HashCode>
+      <FileName>APIHelpers\MantenimientoHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_Administration.APIHelpers.SucursalesHelper">
+    <Position X="8.5" Y="10.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAECABAAAgAAAAAAAAAAAAAAAAEAAAAAAAAAKBA=</HashCode>
+      <FileName>APIHelpers\SucursalesHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_Administration.APIHelpers.TecnicosHelper">
+    <Position X="19" Y="10.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAIAAAAAAIAEAAAECAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>APIHelpers\TecnicosHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_Administration.Tabs.ABM_Clientes">
+    <Position X="36.5" Y="10.25" Width="3.25" />
+    <Members>
+      <Field Name="BotonAgregarCliente" Hidden="true" />
+      <Field Name="BotonEliminarCliente" Hidden="true" />
+      <Field Name="buttonEditarCliente" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="cuit" Hidden="true" />
+      <Field Name="direccion" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="id" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="localidad" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="panel2" Hidden="true" />
+      <Field Name="provincia" Hidden="true" />
+      <Field Name="razonSocial" Hidden="true" />
+      <Field Name="SearchIcon" Hidden="true" />
+      <Field Name="tablaClientes" Hidden="true" />
+      <Field Name="textBuscarCliente" Hidden="true" />
+    </Members>
+    <AssociationLine Name="listaClientes" Type="MTN_RestAPI.Models.Cliente">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.608" Y="0.309" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>hAACEACAACgQIBAAQQCIICQCkAQIAAAAAgAAAQAAAkA=</HashCode>
+      <FileName>UserControls\Clientes\ABM_Clientes.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="alta_Cliente" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="listaClientes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MTN_Administration.Alta_Cliente">
+    <Position X="41.25" Y="10.25" Width="3.25" />
+    <Members>
+      <Field Name="botonCargarFoto" Hidden="true" />
+      <Field Name="buttonCancelarAlta" Hidden="true" />
+      <Field Name="buttonGuardarAlta" Hidden="true" />
+      <Field Name="comboBoxLocalidad" Hidden="true" />
+      <Field Name="comboBoxProvincia" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="labelCuit" Hidden="true" />
+      <Field Name="labelDireccion" Hidden="true" />
+      <Field Name="labelLocalidad" Hidden="true" />
+      <Field Name="labelProvincia" Hidden="true" />
+      <Field Name="labelRazonSocial" Hidden="true" />
+      <Field Name="pictureFoto" Hidden="true" />
+      <Field Name="textCUIT" Hidden="true" />
+      <Field Name="textDireccion" Hidden="true" />
+      <Field Name="textRazonSocial" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAQAIQAGgEBQAEAiCQBAECIAAAgAAAEACAAACAABA=</HashCode>
+      <FileName>UserControls\Clientes\Alta_Cliente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_Administration.Tabs.ABM_Dispositivos">
+    <Position X="36.25" Y="14.5" Width="3.5" />
+    <Members>
+      <Field Name="BotonAgregarDispositivoCCTV" Hidden="true" />
+      <Field Name="BotonEliminarSucursal" Hidden="true" />
+      <Field Name="buttonEditarSucursal" Hidden="true" />
+      <Field Name="clienteLabel" Hidden="true" />
+      <Field Name="comboCliente" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="estado" Hidden="true" />
+      <Field Name="id" Hidden="true" />
+      <Field Name="idSuc" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="marca" Hidden="true" />
+      <Field Name="modelo" Hidden="true" />
+      <Field Name="nombre" Hidden="true" />
+      <Field Name="nombreSuc" Hidden="true" />
+      <Field Name="numeroSuc" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="panel2" Hidden="true" />
+      <Field Name="tablaGrabadoresDigitales" Hidden="true" />
+      <Field Name="tablaSucursales" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AgQECEAAACwQCATMAQyIoAACgAiAAAAABgAAgQwIAwA=</HashCode>
+      <FileName>UserControls\DispositivosCCTV\ABM_Dispositivos.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="alta_Dispositivo" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="listaGrabadores" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MTN_Administration.Alta_Camara">
+    <Position X="46.25" Y="15.25" Width="3.25" />
+    <Members>
+      <Field Name="botonCargarFoto" Hidden="true" />
+      <Field Name="bunifuCustomLabel1" Hidden="true" />
+      <Field Name="bunifuCustomLabel10" Hidden="true" />
+      <Field Name="bunifuCustomLabel2" Hidden="true" />
+      <Field Name="bunifuCustomLabel3" Hidden="true" />
+      <Field Name="bunifuCustomLabel4" Hidden="true" />
+      <Field Name="bunifuCustomLabel5" Hidden="true" />
+      <Field Name="bunifuCustomLabel6" Hidden="true" />
+      <Field Name="bunifuCustomLabel7" Hidden="true" />
+      <Field Name="bunifuCustomLabel8" Hidden="true" />
+      <Field Name="bunifuCustomLabel9" Hidden="true" />
+      <Field Name="buttonCancelarAlta" Hidden="true" />
+      <Field Name="buttonGuardarAlta" Hidden="true" />
+      <Field Name="comboBoxEstado" Hidden="true" />
+      <Field Name="comboBoxMarca" Hidden="true" />
+      <Field Name="comboBoxModelo" Hidden="true" />
+      <Field Name="comboBoxPos" Hidden="true" />
+      <Field Name="comboBoxTecnologia" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="DatePickerFechaInstalacion" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="labelPosicion" Hidden="true" />
+      <Field Name="pictureFoto" Hidden="true" />
+      <Field Name="t" Hidden="true" />
+      <Field Name="Text_Gateway_OCT_1" Hidden="true" />
+      <Field Name="Text_Gateway_OCT_2" Hidden="true" />
+      <Field Name="Text_Gateway_OCT_3" Hidden="true" />
+      <Field Name="Text_Gateway_OCT_4" Hidden="true" />
+      <Field Name="Text_Mask_OCT_1" Hidden="true" />
+      <Field Name="Text_Mask_OCT_2" Hidden="true" />
+      <Field Name="Text_Mask_OCT_3" Hidden="true" />
+      <Field Name="Text_Mask_OCT_4" Hidden="true" />
+      <Field Name="Text_NumeroSerie" Hidden="true" />
+      <Field Name="Text_Observaciones" Hidden="true" />
+      <Field Name="TextIP_OCT_1" Hidden="true" />
+      <Field Name="TextIP_OCT_2" Hidden="true" />
+      <Field Name="TextIP_OCT_3" Hidden="true" />
+      <Field Name="TextIP_OCT_4" Hidden="true" />
+      <Field Name="textNombre" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>IAAIAAAAACoAAAAFAASABAECCAAAoAAAYByAAEABYBA=</HashCode>
+      <FileName>UserControls\DispositivosCCTV\Alta_Camara.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_Administration.Alta_Dispositivo">
+    <Position X="41.25" Y="14.5" Width="3.5" />
+    <Members>
+      <Field Name="botonAgregarCamara" Hidden="true" />
+      <Field Name="botonEliminarCamara" Hidden="true" />
+      <Field Name="botonModificarCamara" Hidden="true" />
+      <Field Name="bunifuCustomLabel10" Hidden="true" />
+      <Field Name="bunifuCustomLabel11" Hidden="true" />
+      <Field Name="bunifuCustomLabel2" Hidden="true" />
+      <Field Name="bunifuCustomLabel3" Hidden="true" />
+      <Field Name="bunifuCustomLabel4" Hidden="true" />
+      <Field Name="bunifuCustomLabel5" Hidden="true" />
+      <Field Name="bunifuCustomLabel6" Hidden="true" />
+      <Field Name="bunifuCustomLabel7" Hidden="true" />
+      <Field Name="bunifuCustomLabel8" Hidden="true" />
+      <Field Name="bunifuCustomLabel9" Hidden="true" />
+      <Field Name="buttonCancelarAlta" Hidden="true" />
+      <Field Name="buttonGuardarAlta" Hidden="true" />
+      <Field Name="comboBoxCliente" Hidden="true" />
+      <Field Name="comboBoxEstado" Hidden="true" />
+      <Field Name="comboBoxMarca" Hidden="true" />
+      <Field Name="comboBoxModelo" Hidden="true" />
+      <Field Name="comboBoxSucursal" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="DatePicketFechaDeInstalacion" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="Estado" Hidden="true" />
+      <Field Name="id" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="labelCliente" Hidden="true" />
+      <Field Name="labelSucursal" Hidden="true" />
+      <Field Name="nombre" Hidden="true" />
+      <Field Name="Pos" Hidden="true" />
+      <Field Name="t" Hidden="true" />
+      <Field Name="tablaCamaras" Hidden="true" />
+      <Field Name="Text_Gateway_OCT_1" Hidden="true" />
+      <Field Name="Text_Gateway_OCT_2" Hidden="true" />
+      <Field Name="Text_Gateway_OCT_3" Hidden="true" />
+      <Field Name="Text_Gateway_OCT_4" Hidden="true" />
+      <Field Name="Text_Mask_OCT_1" Hidden="true" />
+      <Field Name="Text_Mask_OCT_2" Hidden="true" />
+      <Field Name="Text_Mask_OCT_3" Hidden="true" />
+      <Field Name="Text_Mask_OCT_4" Hidden="true" />
+      <Field Name="Text_NumeroSerie" Hidden="true" />
+      <Field Name="text_Observaciones" Hidden="true" />
+      <Field Name="TextIP_OCT_1" Hidden="true" />
+      <Field Name="TextIP_OCT_2" Hidden="true" />
+      <Field Name="TextIP_OCT_3" Hidden="true" />
+      <Field Name="TextIP_OCT_4" Hidden="true" />
+      <Field Name="textNombre" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>YAIcAAAAAGoAAICECYGBBgACiASAgAAAZAwAAEUBYig=</HashCode>
+      <FileName>UserControls\DispositivosCCTV\Alta_Dispositivo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="alta_Camara" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MTN_RestAPI.Models.DispositivoCCTV">
+    <Position X="31.25" Y="14.75" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Models.Cliente">
+    <Position X="31.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_Administration.Tabs.ABM_Incidentes" BaseTypeListCollapsed="true">
+    <Position X="36.25" Y="22" Width="3.25" />
+    <Members>
+      <Field Name="asignado" Hidden="true" />
+      <Field Name="BotonAgregarIncidente" Hidden="true" />
+      <Field Name="BotonVerIncidente" Hidden="true" />
+      <Field Name="bunifuCustomLabel1" Hidden="true" />
+      <Field Name="bunifuCustomLabel2" Hidden="true" />
+      <Field Name="bunifuCustomLabel3" Hidden="true" />
+      <Field Name="bunifuCustomLabel4" Hidden="true" />
+      <Field Name="bunifuCustomLabel5" Hidden="true" />
+      <Field Name="bunifuCustomLabel6" Hidden="true" />
+      <Field Name="bunifuCustomLabel7" Hidden="true" />
+      <Field Name="bunifuDragControl1" Hidden="true" />
+      <Field Name="bunifuElipse1" Hidden="true" />
+      <Field Name="buttonCancelarIncidente" Hidden="true" />
+      <Field Name="buttonReabrir" Hidden="true" />
+      <Field Name="Camara" Hidden="true" />
+      <Field Name="cliente" Hidden="true" />
+      <Field Name="close" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="criticidad" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="Dispositivo" Hidden="true" />
+      <Field Name="estado" Hidden="true" />
+      <Field Name="estadoIncidente" Hidden="true" />
+      <Field Name="filtroAlarmas" Hidden="true" />
+      <Field Name="filtroCCTV" Hidden="true" />
+      <Field Name="Header" Hidden="true" />
+      <Field Name="headerIncidentePicture" Hidden="true" />
+      <Field Name="id" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="LabelswitchEstadoIncidenteCerrado" Hidden="true" />
+      <Field Name="LabelSwitchEstadoIncidenteProceso" Hidden="true" />
+      <Field Name="minimize" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="panel2" Hidden="true" />
+      <Field Name="panel3" Hidden="true" />
+      <Field Name="panelSwitches" Hidden="true" />
+      <Field Name="panelTabla" Hidden="true" />
+      <Field Name="progressBar" Hidden="true" />
+      <Field Name="SearchIcon" Hidden="true" />
+      <Field Name="severidad" Hidden="true" />
+      <Field Name="sucursal" Hidden="true" />
+      <Field Name="switchAlarmas" Hidden="true" />
+      <Field Name="switchCCTV" Hidden="true" />
+      <Field Name="switchCriticidadAlta" Hidden="true" />
+      <Field Name="switchCriticidadBaja" Hidden="true" />
+      <Field Name="switchCriticidadMedia" Hidden="true" />
+      <Field Name="switchCriticidadMuyAlta" Hidden="true" />
+      <Field Name="switchEstadoIncidenteAbierto" Hidden="true" />
+      <Field Name="switchEstadoIncidenteCancelado" Hidden="true" />
+      <Field Name="switchEstadoIncidenteCerrado" Hidden="true" />
+      <Field Name="switchEstadoIncidenteProceso" Hidden="true" />
+      <Field Name="switchEstadoIncidenteReabierto" Hidden="true" />
+      <Field Name="tablaIncidentes" Hidden="true" />
+      <Field Name="textBuscarTecnico" Hidden="true" />
+      <Field Name="timer1" Hidden="true" />
+      <Field Name="tipoDispositivo" Hidden="true" />
+      <Field Name="TituloHeader" Hidden="true" />
+      <Field Name="transiciones" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>BhTmCoIQAKwAEgARECrAzAAigAIYYYIAAO0oRU7EBgA=</HashCode>
+      <FileName>UserControls\Incidentes\ABM_Incidentes.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="alta_Incidentes" />
+      <Field Name="ver_Incidente" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="listaIncidentes" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MTN_Administration.Tabs.Alta_Incidente">
+    <Position X="46.5" Y="21" Width="3" />
+    <Members>
+      <Field Name="bunifuCustomLabel4" Hidden="true" />
+      <Field Name="bunifuCustomLabel5" Hidden="true" />
+      <Field Name="bunifuCustomLabel6" Hidden="true" />
+      <Field Name="bunifuCustomLabel7" Hidden="true" />
+      <Field Name="bunifuCustomLabel8" Hidden="true" />
+      <Field Name="bunifuFlatButton1" Hidden="true" />
+      <Field Name="bunifuThinButton22" Hidden="true" />
+      <Field Name="bunifuTransition1" Hidden="true" />
+      <Field Name="buttonCancelar" Hidden="true" />
+      <Field Name="ButtonFinalizar" Hidden="true" />
+      <Field Name="buttonSiguiente" Hidden="true" />
+      <Field Name="comboBoxCriticidad" Hidden="true" />
+      <Field Name="comboBoxEstado" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="dataGridViewTextBoxColumn2" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="filtroAlarmas" Hidden="true" />
+      <Field Name="filtroCCTV" Hidden="true" />
+      <Field Name="filtroTodo" Hidden="true" />
+      <Field Name="id_cam" Hidden="true" />
+      <Field Name="id_cliente" Hidden="true" />
+      <Field Name="id_disp" Hidden="true" />
+      <Field Name="id_sucursal" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="labelCliente" Hidden="true" />
+      <Field Name="labelSucursal" Hidden="true" />
+      <Field Name="nombreCliente" Hidden="true" />
+      <Field Name="nombreSucursal" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="panel2" Hidden="true" />
+      <Field Name="pictureBox1" Hidden="true" />
+      <Field Name="pictureBox2" Hidden="true" />
+      <Field Name="SearchIcon" Hidden="true" />
+      <Field Name="sliderFiltroDispositivo" Hidden="true" />
+      <Field Name="tablaClientes" Hidden="true" />
+      <Field Name="tablaMantenible" Hidden="true" />
+      <Field Name="tablaSucursales" Hidden="true" />
+      <Field Name="textBuscarCliente" Hidden="true" />
+      <Field Name="TextBuscarMantenible" Hidden="true" />
+      <Field Name="textBuscarSucural" Hidden="true" />
+      <Field Name="TextFalla" Hidden="true" />
+      <Field Name="tipo" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>I0oElEIBCGwYAIaAAAHAJAASgQCIAAAARCgQIZRAACA=</HashCode>
+      <FileName>UserControls\Incidentes\Alta_Incidente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_Administration.Tabs.Ver_Incidente">
+    <Position X="42.25" Y="24" Width="2.25" />
+    <Members>
+      <Field Name="bunifuCustomLabel1" Hidden="true" />
+      <Field Name="bunifuCustomLabel3" Hidden="true" />
+      <Field Name="bunifuCustomLabel4" Hidden="true" />
+      <Field Name="bunifuCustomLabel5" Hidden="true" />
+      <Field Name="bunifuCustomLabel7" Hidden="true" />
+      <Field Name="bunifuCustomLabel8" Hidden="true" />
+      <Field Name="buttonCancelar" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="labelCliente" Hidden="true" />
+      <Field Name="labelSucursal" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="textCamara" Hidden="true" />
+      <Field Name="textCamaraMarca" Hidden="true" />
+      <Field Name="textCamaraModelo" Hidden="true" />
+      <Field Name="textCliente" Hidden="true" />
+      <Field Name="textCriticidad" Hidden="true" />
+      <Field Name="textDispositivo" Hidden="true" />
+      <Field Name="textDispositivoMarca" Hidden="true" />
+      <Field Name="textDispositivoModelo" Hidden="true" />
+      <Field Name="textEstado" Hidden="true" />
+      <Field Name="TextFalla" Hidden="true" />
+      <Field Name="textSucursal" Hidden="true" />
+      <Field Name="textSucursalCiudad" Hidden="true" />
+      <Field Name="textSucursalProvincia" Hidden="true" />
+      <Field Name="textTipoFalla" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>KEIEAIIAACgAAIGACAGAAIAiEACAAQAABAgAAQQAAAA=</HashCode>
+      <FileName>UserControls\Incidentes\Ver_Incidente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_RestAPI.Models.Incidente">
+    <Position X="31.25" Y="22" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_Administration.Tabs.ABM_Mantenimientos" BaseTypeListCollapsed="true">
+    <Position X="36.5" Y="31" Width="3.5" />
+    <Members>
+      <Field Name="BotonAgregarMantenimiento" Hidden="true" />
+      <Field Name="BotonVerMantenimiento" Hidden="true" />
+      <Field Name="bunifuCustomLabel1" Hidden="true" />
+      <Field Name="bunifuCustomLabel2" Hidden="true" />
+      <Field Name="bunifuCustomLabel3" Hidden="true" />
+      <Field Name="bunifuCustomLabel6" Hidden="true" />
+      <Field Name="bunifuDragControl1" Hidden="true" />
+      <Field Name="bunifuElipse1" Hidden="true" />
+      <Field Name="buttonCerrarMantenimiento" Hidden="true" />
+      <Field Name="buttonReprogramarMantenimiento" Hidden="true" />
+      <Field Name="cliente" Hidden="true" />
+      <Field Name="close" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="espaciadorTop" Hidden="true" />
+      <Field Name="estadoMantenimiento" Hidden="true" />
+      <Field Name="Header" Hidden="true" />
+      <Field Name="headerIncidentePicture" Hidden="true" />
+      <Field Name="id" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="LabelswitchEstadoIncidenteCerrado" Hidden="true" />
+      <Field Name="LabelSwitchEstadoIncidenteProceso" Hidden="true" />
+      <Field Name="minimize" Hidden="true" />
+      <Field Name="panel2" Hidden="true" />
+      <Field Name="panel3" Hidden="true" />
+      <Field Name="panelSwitches" Hidden="true" />
+      <Field Name="panelTabla" Hidden="true" />
+      <Field Name="progressBar" Hidden="true" />
+      <Field Name="SearchIcon" Hidden="true" />
+      <Field Name="severidad" Hidden="true" />
+      <Field Name="sucursal" Hidden="true" />
+      <Field Name="switchEstadoMantenimeintoAbierto" Hidden="true" />
+      <Field Name="switchEstadoMantenimeintoAsignado" Hidden="true" />
+      <Field Name="switchEstadoMantenimeintoCancelado" Hidden="true" />
+      <Field Name="switchEstadoMantenimeintoCerrado" Hidden="true" />
+      <Field Name="switchEstadoMantenimeintoDemorado" Hidden="true" />
+      <Field Name="switchEstadoMantenimeintoProgreso" Hidden="true" />
+      <Field Name="tablaMantenimientos" Hidden="true" />
+      <Field Name="tecnico" Hidden="true" />
+      <Field Name="textBuscarTecnico" Hidden="true" />
+      <Field Name="timer1" Hidden="true" />
+      <Field Name="tipoMantenimiento" Hidden="true" />
+      <Field Name="TituloHeader" Hidden="true" />
+      <Field Name="transiciones" Hidden="true" />
+    </Members>
+    <AssociationLine Name="Alta_Manteniminto" Type="MTN_Administration.Tabs.Alta_Manteniminto" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="38.562" Y="31" />
+        <Point X="38.562" Y="29.874" />
+        <Point X="47" Y="29.874" />
+        <Point X="47" Y="30.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.14" Y="0.298" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ver_Mantenimiento" Type="MTN_Administration.Tabs.Ver_Mantenimiento" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="37.188" Y="31" />
+        <Point X="37.188" Y="29.16" />
+        <Point X="54.375" Y="29.16" />
+        <Point X="54.375" Y="30.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.12" Y="0.602" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="cerrar_Mantenimiento" Type="MTN_Administration.Tabs.Cerrar_Mantenimiento" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="37.75" Y="31" />
+        <Point X="37.75" Y="29.54" />
+        <Point X="50.75" Y="29.54" />
+        <Point X="50.75" Y="30.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.17" Y="0.492" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>BETCgoQQACwIMAAREQLIAAICqAkKIYpCAI0IYwIAAjA=</HashCode>
+      <FileName>UserControls\Mantenimientos\ABM_Mantenimientos.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Alta_Manteniminto" />
+      <Field Name="ver_Mantenimiento" />
+      <Field Name="reprogramar_Mantenimiento" />
+      <Field Name="cerrar_Mantenimiento" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="listaMantenimientos" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MTN_Administration.Tabs.Alta_Manteniminto">
+    <Position X="45.5" Y="30.5" Width="3" />
+    <Members>
+      <Field Name="asignado" Hidden="true" />
+      <Field Name="bunifuCustomLabel1" Hidden="true" />
+      <Field Name="bunifuCustomLabel2" Hidden="true" />
+      <Field Name="bunifuCustomLabel3" Hidden="true" />
+      <Field Name="bunifuCustomLabel4" Hidden="true" />
+      <Field Name="bunifuCustomLabel5" Hidden="true" />
+      <Field Name="bunifuCustomLabel6" Hidden="true" />
+      <Field Name="bunifuCustomLabel7" Hidden="true" />
+      <Field Name="bunifuCustomLabel8" Hidden="true" />
+      <Field Name="bunifuCustomLabel9" Hidden="true" />
+      <Field Name="bunifuThinButton21" Hidden="true" />
+      <Field Name="buttonAtras" Hidden="true" />
+      <Field Name="buttonGuardar" Hidden="true" />
+      <Field Name="buttonSiguiente" Hidden="true" />
+      <Field Name="camara" Hidden="true" />
+      <Field Name="checkBoxTecnico1" Hidden="true" />
+      <Field Name="checkboxTecnico2" Hidden="true" />
+      <Field Name="comboBoxTecnico1" Hidden="true" />
+      <Field Name="comboBoxTecnico2" Hidden="true" />
+      <Field Name="comboBoxTipoMantenimiento" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="criticidad" Hidden="true" />
+      <Field Name="datePicker" Hidden="true" />
+      <Field Name="dipositivo" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="estado" Hidden="true" />
+      <Field Name="id" Hidden="true" />
+      <Field Name="id_1" Hidden="true" />
+      <Field Name="id_2" Hidden="true" />
+      <Field Name="id_cliente" Hidden="true" />
+      <Field Name="id_criticidad" Hidden="true" />
+      <Field Name="id_estado_incidente" Hidden="true" />
+      <Field Name="id_sucursal" Hidden="true" />
+      <Field Name="id_tipo_mantenible" Hidden="true" />
+      <Field Name="Incidente" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="labelCliente" Hidden="true" />
+      <Field Name="labelSucursal" Hidden="true" />
+      <Field Name="nombreCliente" Hidden="true" />
+      <Field Name="nombreSucursal" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="panel2" Hidden="true" />
+      <Field Name="pictureBox1" Hidden="true" />
+      <Field Name="pictureBox2" Hidden="true" />
+      <Field Name="rangeHora" Hidden="true" />
+      <Field Name="SearchIcon" Hidden="true" />
+      <Field Name="tablaClientes" Hidden="true" />
+      <Field Name="tablaIncidentes" Hidden="true" />
+      <Field Name="tablaSucursales" Hidden="true" />
+      <Field Name="textBuscarCliente" Hidden="true" />
+      <Field Name="TextBuscarIncidente" Hidden="true" />
+      <Field Name="textBuscarSucural" Hidden="true" />
+      <Field Name="TextDetalles" Hidden="true" />
+      <Field Name="textHoraFin" Hidden="true" />
+      <Field Name="textHoraInicio" Hidden="true" />
+      <Field Name="textMinutosFin" Hidden="true" />
+      <Field Name="textMinutosInicio" Hidden="true" />
+      <Field Name="tipo" Hidden="true" />
+      <Field Name="transiciones" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>QFAkHEYIaWw4QICB0AiQpEAGhQCMEAAABCgQIQRIAqo=</HashCode>
+      <FileName>UserControls\Mantenimientos\Alta_Mantenimiento.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_Administration.Tabs.Cerrar_Mantenimiento">
+    <Position X="49" Y="30.5" Width="3.5" />
+    <Members>
+      <Field Name="asignado" Hidden="true" />
+      <Field Name="asignado_asignado" Hidden="true" />
+      <Field Name="bunifuCustomLabel4" Hidden="true" />
+      <Field Name="bunifuCustomLabel7" Hidden="true" />
+      <Field Name="bunifuMetroTextbox1" Hidden="true" />
+      <Field Name="buttonCancelar" Hidden="true" />
+      <Field Name="buttonGuardar" Hidden="true" />
+      <Field Name="camara" Hidden="true" />
+      <Field Name="camara_asignado" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="criticidad" Hidden="true" />
+      <Field Name="criticidad_asignado" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="dispositivo" Hidden="true" />
+      <Field Name="dispositivo_asignado" Hidden="true" />
+      <Field Name="estado" Hidden="true" />
+      <Field Name="estado_asignado" Hidden="true" />
+      <Field Name="id" Hidden="true" />
+      <Field Name="id_1" Hidden="true" />
+      <Field Name="id_2" Hidden="true" />
+      <Field Name="id_asignado" Hidden="true" />
+      <Field Name="id_criticidad" Hidden="true" />
+      <Field Name="id_estado_incidente" Hidden="true" />
+      <Field Name="id_tipo_mantenible" Hidden="true" />
+      <Field Name="imageList1" Hidden="true" />
+      <Field Name="Incidente" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="panel" Hidden="true" />
+      <Field Name="pictureBox1" Hidden="true" />
+      <Field Name="pictureBox2" Hidden="true" />
+      <Field Name="tablaIncidentesAsignados" Hidden="true" />
+      <Field Name="tablaIncidentesResueltos" Hidden="true" />
+      <Field Name="TextBuscarIncidente" Hidden="true" />
+      <Field Name="TextDetalles" Hidden="true" />
+      <Field Name="tipo" Hidden="true" />
+      <Field Name="tipo_asignado" Hidden="true" />
+      <Field Name="transiciones" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>QAAEDA4IMCwBSAxBAAGQxAACCAQMEAgMFAgAIQRAAgA=</HashCode>
+      <FileName>UserControls\Mantenimientos\Cerrar_Mantenimiento.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_Administration.Tabs.Reprogramar_Mantenimiento">
+    <Position X="41.5" Y="30.5" Width="3.5" />
+    <Members>
+      <Field Name="asignado" Hidden="true" />
+      <Field Name="asignado_asignado" Hidden="true" />
+      <Field Name="bunifuCustomLabel1" Hidden="true" />
+      <Field Name="bunifuCustomLabel2" Hidden="true" />
+      <Field Name="bunifuCustomLabel3" Hidden="true" />
+      <Field Name="bunifuCustomLabel4" Hidden="true" />
+      <Field Name="bunifuCustomLabel5" Hidden="true" />
+      <Field Name="bunifuCustomLabel6" Hidden="true" />
+      <Field Name="bunifuCustomLabel7" Hidden="true" />
+      <Field Name="bunifuCustomLabel8" Hidden="true" />
+      <Field Name="bunifuCustomLabel9" Hidden="true" />
+      <Field Name="bunifuMetroTextbox1" Hidden="true" />
+      <Field Name="buttonCancelar" Hidden="true" />
+      <Field Name="buttonCancelarModificarIncidentes" Hidden="true" />
+      <Field Name="buttonEditarListaIncidentes" Hidden="true" />
+      <Field Name="buttonGuardarCambiosIncidentes" Hidden="true" />
+      <Field Name="buttonGuardarMantenimiento" Hidden="true" />
+      <Field Name="camara" Hidden="true" />
+      <Field Name="camara_asignado" Hidden="true" />
+      <Field Name="checkBoxTecnico1" Hidden="true" />
+      <Field Name="checkBoxTecnico2" Hidden="true" />
+      <Field Name="comboBoxTecnico1" Hidden="true" />
+      <Field Name="comboBoxTecnico2" Hidden="true" />
+      <Field Name="comboBoxTipoMantenimiento" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="criticidad" Hidden="true" />
+      <Field Name="criticidad_asignado" Hidden="true" />
+      <Field Name="datePicker" Hidden="true" />
+      <Field Name="dipositivo" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="dispositivo_asignado" Hidden="true" />
+      <Field Name="estado" Hidden="true" />
+      <Field Name="estado_asignado" Hidden="true" />
+      <Field Name="id" Hidden="true" />
+      <Field Name="id_1" Hidden="true" />
+      <Field Name="id_2" Hidden="true" />
+      <Field Name="id_asignado" Hidden="true" />
+      <Field Name="id_criticidad" Hidden="true" />
+      <Field Name="id_estado_incidente" Hidden="true" />
+      <Field Name="id_tipo_mantenible" Hidden="true" />
+      <Field Name="imageList1" Hidden="true" />
+      <Field Name="Incidente" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="labelCliente" Hidden="true" />
+      <Field Name="panel" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="pictureBox1" Hidden="true" />
+      <Field Name="pictureBox2" Hidden="true" />
+      <Field Name="rangeHora" Hidden="true" />
+      <Field Name="tablaIncidentesAsignados" Hidden="true" />
+      <Field Name="tablaIncidentesNoAsignados" Hidden="true" />
+      <Field Name="TextBuscarIncidente" Hidden="true" />
+      <Field Name="TextDetalles" Hidden="true" />
+      <Field Name="textHoraFin" Hidden="true" />
+      <Field Name="textHoraInicio" Hidden="true" />
+      <Field Name="textMinutosFin" Hidden="true" />
+      <Field Name="textMinutosInicio" Hidden="true" />
+      <Field Name="tipo" Hidden="true" />
+      <Field Name="tipo_asignado" Hidden="true" />
+      <Field Name="transiciones" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAELAYIeSyBQIxB2AGQzEAGCAQMEAgIlAgIIwRIAoo=</HashCode>
+      <FileName>UserControls\Mantenimientos\Reprogramar_Mantenimiento.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_Administration.Tabs.Ver_Mantenimiento" BaseTypeListCollapsed="true">
+    <Position X="53" Y="30.5" Width="2.75" />
+    <Members>
+      <Field Name="asignado" Hidden="true" />
+      <Field Name="bunifuCustomLabel1" Hidden="true" />
+      <Field Name="bunifuCustomLabel10" Hidden="true" />
+      <Field Name="bunifuCustomLabel11" Hidden="true" />
+      <Field Name="bunifuCustomLabel12" Hidden="true" />
+      <Field Name="bunifuCustomLabel13" Hidden="true" />
+      <Field Name="bunifuCustomLabel2" Hidden="true" />
+      <Field Name="bunifuCustomLabel3" Hidden="true" />
+      <Field Name="bunifuCustomLabel7" Hidden="true" />
+      <Field Name="bunifuThinButton21" Hidden="true" />
+      <Field Name="buttonVerIncidente" Hidden="true" />
+      <Field Name="camara" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="criticidad" Hidden="true" />
+      <Field Name="dipositivo" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="estado" Hidden="true" />
+      <Field Name="fecha" Hidden="true" />
+      <Field Name="id" Hidden="true" />
+      <Field Name="id_1" Hidden="true" />
+      <Field Name="id_2" Hidden="true" />
+      <Field Name="id_criticidad" Hidden="true" />
+      <Field Name="id_estado_incidente" Hidden="true" />
+      <Field Name="id_tipo_mantenible" Hidden="true" />
+      <Field Name="Incidente" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="labelCliente" Hidden="true" />
+      <Field Name="labelSucursal" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="tablaIncidentes" Hidden="true" />
+      <Field Name="textCliente" Hidden="true" />
+      <Field Name="textEstado" Hidden="true" />
+      <Field Name="textHoraFin" Hidden="true" />
+      <Field Name="textHoraInicio" Hidden="true" />
+      <Field Name="TextObservaciones" Hidden="true" />
+      <Field Name="textSucursal" Hidden="true" />
+      <Field Name="textSucursalCiudad" Hidden="true" />
+      <Field Name="textSucursalProvincia" Hidden="true" />
+      <Field Name="textTecnico1_Apellido" Hidden="true" />
+      <Field Name="textTecnico1_nombre" Hidden="true" />
+      <Field Name="textTecnico1_Rango" Hidden="true" />
+      <Field Name="textTecnico2_Apellido" Hidden="true" />
+      <Field Name="textTecnico2_nombre" Hidden="true" />
+      <Field Name="textTecnico2_Rango" Hidden="true" />
+      <Field Name="textTipoMantenimiento" Hidden="true" />
+      <Field Name="tipo" Hidden="true" />
+      <Field Name="transiciones" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>4EGEDAIAIawAQICBGACQhICCgQCMkAEABAgwAQQAAog=</HashCode>
+      <FileName>UserControls\Mantenimientos\Ver_Mantenimiento.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MTN_RestAPI.Models.Mantenimiento">
+    <Position X="31.25" Y="29.75" Width="2.25" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Estado" />
+      <Property Name="id_tipo_mantenimiento" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MTN_Administration.Tabs.ABM_Sucursales">
+    <Position X="36.25" Y="0.75" Width="3.25" />
+    <Members>
+      <Field Name="BotonAgregarSucursal" Hidden="true" />
+      <Field Name="BotonEliminarSucursal" Hidden="true" />
+      <Field Name="buttonEditarSucursal" Hidden="true" />
+      <Field Name="clienteLabel" Hidden="true" />
+      <Field Name="comboCliente" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="direccion" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="id" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="localidad" Hidden="true" />
+      <Field Name="nombre" Hidden="true" />
+      <Field Name="numero" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="panel2" Hidden="true" />
+      <Field Name="provincia" Hidden="true" />
+      <Field Name="SearchIcon" Hidden="true" />
+      <Field Name="tablaSucursales" Hidden="true" />
+      <Field Name="textBuscar" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAACAEAAACgAIADMAQaIgAASgIAIAAQAAgEAgQgCQkA=</HashCode>
+      <FileName>UserControls\Sucursales\ABM_Sucursales.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="alta_Sucursal" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="listaSucursales" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MTN_Administration.Alta_Sucursales">
+    <Position X="41" Y="0.75" Width="3.25" />
+    <Members>
+      <Field Name="botonCargarFoto" Hidden="true" />
+      <Field Name="bunifuCustomLabel1" Hidden="true" />
+      <Field Name="bunifuCustomLabel4" Hidden="true" />
+      <Field Name="bunifuCustomLabel6" Hidden="true" />
+      <Field Name="bunifuCustomLabel7" Hidden="true" />
+      <Field Name="buttonCancelarAlta" Hidden="true" />
+      <Field Name="buttonGuardarAlta" Hidden="true" />
+      <Field Name="comboBoxLocalidad" Hidden="true" />
+      <Field Name="comboBoxProvincia" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="pictureFoto" Hidden="true" />
+      <Field Name="t" Hidden="true" />
+      <Field Name="textDireccion" Hidden="true" />
+      <Field Name="textNombre" Hidden="true" />
+      <Field Name="textNumero" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAGoEBQAEAACABAESIAAAgAAAAAyAAAQAACA=</HashCode>
+      <FileName>UserControls\Sucursales\Alta_Sucursal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_Administration.ABM_Tecnicos">
+    <Position X="36.5" Y="5" Width="3" />
+    <Members>
+      <Field Name="apellido" Hidden="true" />
+      <Field Name="BotonEliminarTecnico" Hidden="true" />
+      <Field Name="ButtonAgregarTecnico" Hidden="true" />
+      <Field Name="buttonEditarTecnico" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="direccion" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="filtroAnalistas" Hidden="true" />
+      <Field Name="filtroJefes" Hidden="true" />
+      <Field Name="filtroLideres" Hidden="true" />
+      <Field Name="filtroSupervisores" Hidden="true" />
+      <Field Name="filtroTodosTecnicos" Hidden="true" />
+      <Field Name="id" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="legajo" Hidden="true" />
+      <Field Name="localidad" Hidden="true" />
+      <Field Name="nombre" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="panel2" Hidden="true" />
+      <Field Name="provincia" Hidden="true" />
+      <Field Name="SearchIcon" Hidden="true" />
+      <Field Name="sliderFiltroTecnicos" Hidden="true" />
+      <Field Name="tablaTecnicos" Hidden="true" />
+      <Field Name="textBuscarTecnico" Hidden="true" />
+      <Field Name="tipo_empleado" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Enum Name="MTN_Administration.ABM_Tecnicos.FiltosTecnicos" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>UserControls\Tecnicos\ABM_Tecnicos.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAKAAEEACxIIACAAQCJACAigCUIARAlIAKAASAAAgA=</HashCode>
+      <FileName>UserControls\Tecnicos\ABM_Tecnicos.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="alta_Tecnico" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="listaTecnicos" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MTN_Administration.Alta_Tecnico">
+    <Position X="41" Y="5.25" Width="3.25" />
+    <Members>
+      <Field Name="botonCargarFoto" Hidden="true" />
+      <Field Name="bunifuCustomLabel1" Hidden="true" />
+      <Field Name="bunifuCustomLabel2" Hidden="true" />
+      <Field Name="bunifuCustomLabel3" Hidden="true" />
+      <Field Name="bunifuCustomLabel4" Hidden="true" />
+      <Field Name="bunifuCustomLabel5" Hidden="true" />
+      <Field Name="bunifuCustomLabel6" Hidden="true" />
+      <Field Name="bunifuCustomLabel7" Hidden="true" />
+      <Field Name="bunifuCustomLabel8" Hidden="true" />
+      <Field Name="buttonCancelarAltaTecnico" Hidden="true" />
+      <Field Name="buttonGuardarAltaTecnico" Hidden="true" />
+      <Field Name="comboBoxLocalidad" Hidden="true" />
+      <Field Name="comboBoxProvincia" Hidden="true" />
+      <Field Name="comboBoxTipoDocumento" Hidden="true" />
+      <Field Name="comboBoxTipoEmpleado" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="labelTipoDocumento" Hidden="true" />
+      <Field Name="pictureFoto" Hidden="true" />
+      <Field Name="textApellido" Hidden="true" />
+      <Field Name="textDireccion" Hidden="true" />
+      <Field Name="textDocumento" Hidden="true" />
+      <Field Name="textLegajo" Hidden="true" />
+      <Field Name="textNombre" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAEFAIAACiGBQAEAACABAECJAAJAAAAIQiAAACEAAI=</HashCode>
+      <FileName>UserControls\Tecnicos\Alta_Tecnico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTN_RestAPI.Models.Sucursal">
+    <Position X="30.75" Y="1" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Models.Tecnico">
+    <Position X="30.75" Y="5.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Controllers.CamarasController">
+    <Position X="4" Y="25.75" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Controllers.ChecksumController">
+    <Position X="11.75" Y="25.75" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Controllers.ClientesController">
+    <Position X="9.25" Y="25.75" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Controllers.DispositivosCCTVController">
+    <Position X="4" Y="28.25" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Controllers.IncidentesController">
+    <Position X="13.5" Y="28" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Controllers.MantenimientoController">
+    <Position X="7" Y="28.25" Width="3" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Controllers.SucursalesController">
+    <Position X="10.25" Y="28.25" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Controllers.TecnicosController">
+    <Position X="6.75" Y="25.75" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Controllers.UtilesController">
+    <Position X="14.75" Y="25.75" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Models.Dispositivo">
+    <Position X="28" Y="15.75" Width="2" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MTN_RestAPI.Models.Localidad">
+    <Position X="17" Y="20" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Models.MarcaCCTV">
+    <Position X="13.25" Y="20" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Models.ModeloCamara">
+    <Position X="11.25" Y="20" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Models.ModeloCCTV">
+    <Position X="9" Y="20" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Models.Provincia">
+    <Position X="15" Y="20" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Models.Resultado&lt;T&gt;">
+    <Position X="18" Y="27" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Models.TecnologiaCamara">
+    <Position X="7" Y="20" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MTN_RestAPI.Models.Camara">
+    <Position X="31.25" Y="17.25" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="MTN_RestAPI.Models.Mantenible">
+    <Position X="25.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="MTN_RestAPI.Models.TypeEstadoMantenimiento" Collapsed="true">
+    <Position X="27.75" Y="30.75" Width="2.25" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="MTN_RestAPI.Models.TypeTipoMantenimiento" Collapsed="true">
+    <Position X="27.75" Y="31.75" Width="2" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="MTN_RestAPI.Models.TypeCriticidad">
+    <Position X="3.5" Y="20" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="MTN_RestAPI.Models.TypeDocumento">
+    <Position X="4.5" Y="21.75" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="MTN_RestAPI.Models.TypeEmpleado">
+    <Position X="5.25" Y="20" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="MTN_RestAPI.Models.TypeEstadoIncidente">
+    <Position X="1.5" Y="20" Width="1.75" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="MTN_RestAPI.Models.TypeTipoMantenible">
+    <Position X="2.25" Y="21.75" Width="1.75" />
+    <TypeIdentifier />
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

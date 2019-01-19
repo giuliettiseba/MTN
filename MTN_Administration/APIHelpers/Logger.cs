@@ -3,8 +3,8 @@
 namespace MTN_Administration.APIHelpers
 {
     /// <summary>
-    /// Construir un controlador para almacenar el log en la base de datos.
-    /// 
+    /// Logger de eventos. Funcion no implementada en su totalidad. 
+    /// Falta implementar controlador para almacenar eventos en la base de datos 
     /// </summary>
     public class Logger
     {
@@ -24,7 +24,6 @@ namespace MTN_Administration.APIHelpers
                 default:
                     break;
             }
-
         }
 
         public enum Severity {

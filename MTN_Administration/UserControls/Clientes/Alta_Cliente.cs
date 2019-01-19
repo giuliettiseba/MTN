@@ -13,14 +13,19 @@ using MTN_Administration.Alerts;
 
 namespace MTN_Administration
 {
+    /// <summary>
+    /// Interfaz para dar de alta o modificar un cliente 
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class Alta_Cliente : UserControl
     {
-
-
         private int id_cliente;
         private APIHelper aPIHelper;
 
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Alta_Cliente"/> class.
+        /// </summary>
+        /// <param name="aPIHelper">a pi helper.</param>
         public Alta_Cliente(APIHelper aPIHelper)
         {
             if (!this.DesignMode)
@@ -30,6 +35,11 @@ namespace MTN_Administration
             }
         }
 
+
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.UserControl.Load" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -40,7 +50,12 @@ namespace MTN_Administration
         }
 
 
-
+        /// <summary>
+        /// Handles the click event of the BotonCargarFoto control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <exception cref="Exception">No se pede cargar archivo</exception>
         private void BotonCargarFoto_click(object sender, EventArgs e)
         {
             // Se crea el OpenFileDialog
@@ -64,7 +79,11 @@ namespace MTN_Administration
             }
         }
 
-
+        /// <summary>
+        /// Handles the onItemSelected event of the ComboBoxProvincia control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ComboBoxProvincia_onItemSelected(object sender, EventArgs e)
         {
                 comboBoxLocalidad.SelectedIndex = -1;
@@ -76,6 +95,10 @@ namespace MTN_Administration
                 comboBoxLocalidad.Enabled = true;
         }
 
+        /// <summary>
+        /// Carga los datos del cliente especificado
+        /// </summary>
+        /// <param name="cliente">The cliente.</param>
         public void Cargar(Cliente cliente)
         {
             id_cliente = cliente.Id;
@@ -86,6 +109,11 @@ namespace MTN_Administration
             textDireccion.Text = cliente.Direccion;
         }
 
+        /// <summary>
+        /// Handles the Click event of the ButtonGuardarAltaCliente control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ButtonGuardarAltaCliente_Click(object sender, EventArgs e)
         {
             Cliente newCliente = new Cliente();
@@ -103,7 +131,11 @@ namespace MTN_Administration
             this.Dispose();
         }
 
-
+        /// <summary>
+        /// Handles the Click event of the ButtonCancelarAltaTecnico control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ButtonCancelarAltaTecnico_Click(object sender, EventArgs e)
         {
             this.Dispose();
