@@ -68,7 +68,7 @@
             this.buttonCancelarAlta.Margin = new System.Windows.Forms.Padding(5);
             this.buttonCancelarAlta.Name = "buttonCancelarAlta";
             this.buttonCancelarAlta.Size = new System.Drawing.Size(181, 41);
-            this.buttonCancelarAlta.TabIndex = 11;
+            this.buttonCancelarAlta.TabIndex = 6;
             this.buttonCancelarAlta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.buttonCancelarAlta.Click += new System.EventHandler(this.ButtonCancelarAltaTecnico_Click);
             // 
@@ -94,7 +94,7 @@
             this.buttonGuardarAlta.Margin = new System.Windows.Forms.Padding(5);
             this.buttonGuardarAlta.Name = "buttonGuardarAlta";
             this.buttonGuardarAlta.Size = new System.Drawing.Size(181, 41);
-            this.buttonGuardarAlta.TabIndex = 10;
+            this.buttonGuardarAlta.TabIndex = 5;
             this.buttonGuardarAlta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.buttonGuardarAlta.Click += new System.EventHandler(this.ButtonGuardarAltaCliente_Click);
             // 
@@ -123,7 +123,7 @@
             this.textCUIT.Margin = new System.Windows.Forms.Padding(4);
             this.textCUIT.Name = "textCUIT";
             this.textCUIT.Size = new System.Drawing.Size(404, 29);
-            this.textCUIT.TabIndex = 3;
+            this.textCUIT.TabIndex = 1;
             this.textCUIT.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // labelProvincia
@@ -162,7 +162,7 @@
             this.textDireccion.Margin = new System.Windows.Forms.Padding(4);
             this.textDireccion.Name = "textDireccion";
             this.textDireccion.Size = new System.Drawing.Size(404, 29);
-            this.textDireccion.TabIndex = 8;
+            this.textDireccion.TabIndex = 4;
             this.textDireccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // pictureFoto
@@ -213,7 +213,7 @@
             this.comboBoxProvincia.Location = new System.Drawing.Point(16, 225);
             this.comboBoxProvincia.Name = "comboBoxProvincia";
             this.comboBoxProvincia.Size = new System.Drawing.Size(404, 29);
-            this.comboBoxProvincia.TabIndex = 6;
+            this.comboBoxProvincia.TabIndex = 2;
             this.comboBoxProvincia.SelectedIndexChanged += new System.EventHandler(this.ComboBoxProvincia_onItemSelected);
             // 
             // comboBoxLocalidad
@@ -228,7 +228,7 @@
             this.comboBoxLocalidad.Location = new System.Drawing.Point(16, 299);
             this.comboBoxLocalidad.Name = "comboBoxLocalidad";
             this.comboBoxLocalidad.Size = new System.Drawing.Size(404, 29);
-            this.comboBoxLocalidad.TabIndex = 7;
+            this.comboBoxLocalidad.TabIndex = 3;
             // 
             // labelLocalidad
             // 

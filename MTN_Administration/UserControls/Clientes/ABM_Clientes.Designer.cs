@@ -78,7 +78,7 @@
             this.textBuscarCliente.Margin = new System.Windows.Forms.Padding(4);
             this.textBuscarCliente.Name = "textBuscarCliente";
             this.textBuscarCliente.Size = new System.Drawing.Size(299, 26);
-            this.textBuscarCliente.TabIndex = 12;
+            this.textBuscarCliente.TabIndex = 0;
             this.textBuscarCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.textBuscarCliente.OnValueChanged += new System.EventHandler(this.TextBuscarTecnico_OnValueChanged);
             // 
@@ -125,7 +125,7 @@
             this.BotonEliminarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BotonEliminarCliente.Name = "BotonEliminarCliente";
             this.BotonEliminarCliente.Size = new System.Drawing.Size(181, 41);
-            this.BotonEliminarCliente.TabIndex = 17;
+            this.BotonEliminarCliente.TabIndex = 2;
             this.BotonEliminarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BotonEliminarCliente.Click += new System.EventHandler(this.BotonEliminarCliente_Click);
             // 
@@ -151,7 +151,7 @@
             this.buttonEditarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonEditarCliente.Name = "buttonEditarCliente";
             this.buttonEditarCliente.Size = new System.Drawing.Size(181, 41);
-            this.buttonEditarCliente.TabIndex = 16;
+            this.buttonEditarCliente.TabIndex = 1;
             this.buttonEditarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.buttonEditarCliente.Click += new System.EventHandler(this.ButtonEditarCliente_Click);
             // 
@@ -177,7 +177,7 @@
             this.BotonAgregarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BotonAgregarCliente.Name = "BotonAgregarCliente";
             this.BotonAgregarCliente.Size = new System.Drawing.Size(181, 41);
-            this.BotonAgregarCliente.TabIndex = 15;
+            this.BotonAgregarCliente.TabIndex = 0;
             this.BotonAgregarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BotonAgregarCliente.Click += new System.EventHandler(this.BotonAgregarCliente_Click);
             // 
@@ -249,7 +249,7 @@
             this.tablaClientes.ShowRowErrors = false;
             this.tablaClientes.Size = new System.Drawing.Size(695, 463);
             this.tablaClientes.TabIndex = 5;
-            this.tablaClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaClientes_CellDoubleClick);
+            this.tablaClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaClientes_CellDoubleClick);
             // 
             // id
             // 

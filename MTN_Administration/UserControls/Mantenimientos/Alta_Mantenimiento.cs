@@ -29,12 +29,12 @@ namespace MTN_Administration.Tabs
         public Alta_Manteniminto(APIHelper aPIHelper)
         {
             this.aPIHelper = aPIHelper;
+            InitializeComponent();
 
             panel2.Visible = false;
             panel1.Location = new System.Drawing.Point(0, 0);
             panel2.Location = new System.Drawing.Point(0, 0);
 
-            InitializeComponent();
             this.rangeHora.RangeMax = 36;
             this.rangeHora.RangeMin = 18;
 
@@ -175,7 +175,7 @@ namespace MTN_Administration.Tabs
 
             Alert.ShowAlert(resultado);
             ((ABM_Mantenimientos)Parent).RefreshTabla();
-            ((ABM_Mantenimientos)Parent).showPanelSwitchs();
+            ((ABM_Mantenimientos)Parent).ShowPanelSwitchs();
             Dispose();
         }
 
@@ -261,7 +261,7 @@ namespace MTN_Administration.Tabs
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BotonCancelar_Click(object sender, EventArgs e)
         {
-            ((ABM_Mantenimientos)Parent).showPanelSwitchs();
+            ((ABM_Mantenimientos)Parent).ShowPanelSwitchs();
             Dispose();
         }
 

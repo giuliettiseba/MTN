@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MTN_RestAPI.Models
 {
-    public interface Mantenible
+    public interface IMantenible
     {
         int Id { get; set; }
         String Nombre { get; set; }
-        int Id_estado { get; set; }
+        TypeEstadoMantenible Id_estado { get; set; }
     }
 
 }

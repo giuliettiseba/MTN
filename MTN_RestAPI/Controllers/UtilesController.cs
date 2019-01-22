@@ -95,15 +95,7 @@ namespace MTN_RestAPI.Controllers
 
          
 
-                case "Estados":
-                    List<Estado> estados = new List<Estado>();
-                    using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
-                    {
-                        estados = db.Query<Estado>("Select * FROM Estados").ToList();
-                    }
-                    return Ok(estados);
-
-                case "TecnologiaCamara":
+               case "TecnologiaCamara":
                     List<TecnologiaCamara> tecnologias = new List<TecnologiaCamara>();
                     using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MTNdb"].ConnectionString))
                     {

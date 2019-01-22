@@ -32,14 +32,6 @@ namespace MTN_Administration
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-        }
-
-        /// <summary>
-        /// Limpiars the todo.
-        /// </summary>
-        private void LimpiarTodo()
-        {
-
             /// Populate combobox provincias
             provincias = aPIHelper.GetProvincias();
             comboBoxProvincia.DisplayMember = "value";
@@ -51,13 +43,6 @@ namespace MTN_Administration
 
             /// Populate Combobox Tipo de empleado
             comboBoxTipoEmpleado.DataSource = Enum.GetValues(typeof(TypeEmpleado));
-
-            id_tecnico = 0;
-            textNombre.Text = "";
-            textApellido.Text = "";
-            textDocumento.Text = "";
-            textLegajo.Text = "";
-            textDireccion.Text = "";
 
             comboBoxTipoEmpleado.SelectedIndex = -1;
 
@@ -138,7 +123,7 @@ namespace MTN_Administration
         /// <param name="tecnico">The tecnico.</param>
         internal void Cargar(Tecnico tecnico)
         {
-            LimpiarTodo();
+
             id_tecnico = tecnico.Id;
             textNombre.Text = tecnico.Nombre;
             textApellido.Text = tecnico.Apellido;
@@ -149,7 +134,6 @@ namespace MTN_Administration
             comboBoxProvincia.SelectedValue = aPIHelper.GetProvincia(tecnico.Id_localidad);
             comboBoxLocalidad.SelectedValue = tecnico.Id_localidad;
             textDireccion.Text = tecnico.Direccion;
-            this.BringToFront();
         }
 
 
@@ -231,5 +215,6 @@ namespace MTN_Administration
                 Alert.ShowAlert("ERROR" + Environment.NewLine + ex.Message, AlertType.error); // Muestra la notificacion con el error correspondiente
             }
         }
+
     }
 }

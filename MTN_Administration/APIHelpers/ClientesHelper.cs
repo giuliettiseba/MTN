@@ -153,7 +153,7 @@ namespace MTN_Administration.APIHelpers
             catch (Exception e)
             {
 
-                return new MensajeAlerta("Error" + Environment.NewLine + newCliente.Nombre, AlertType.error);
+                return new MensajeAlerta("Error: " + e.ToString()+ Environment.NewLine + newCliente.Nombre, AlertType.error);
             }
         }
 

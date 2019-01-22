@@ -87,7 +87,7 @@ namespace MTN_Administration.Alerts
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void close_Click(object sender, EventArgs e)
+        private void Close_Click(object sender, EventArgs e)
         {
             cerrar.Start();
         }
@@ -98,7 +98,7 @@ namespace MTN_Administration.Alerts
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -130,7 +130,7 @@ namespace MTN_Administration.Alerts
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cerrar_Tick(object sender, EventArgs e)
+        private void Cerrar_Tick(object sender, EventArgs e)
         {
             if (this.Opacity > 0)
             {

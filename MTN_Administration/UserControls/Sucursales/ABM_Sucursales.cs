@@ -86,7 +86,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void textBuscar_OnValueChanged(object sender, EventArgs e)
+        private void TextBuscar_OnValueChanged(object sender, EventArgs e)
         {
             RefreshTable(textBuscar.Text);
         }
@@ -98,11 +98,13 @@ namespace MTN_Administration.Tabs
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BotonAgregarSucursal_Click(object sender, EventArgs e)
         {
-            this.alta_Sucursal = new Alta_Sucursales((int)comboCliente.SelectedValue, aPIHelper);
-            this.alta_Sucursal.Location = new System.Drawing.Point(0, 0);
-            this.alta_Sucursal.Name = "alta_Cliente";
-            this.alta_Sucursal.Size = new System.Drawing.Size(727, 561);
-            this.alta_Sucursal.TabIndex = 6;
+            this.alta_Sucursal = new Alta_Sucursales((int)comboCliente.SelectedValue, aPIHelper)
+            {
+                Location = new System.Drawing.Point(0, 0),
+                Name = "alta_Cliente",
+                Size = new System.Drawing.Size(727, 561),
+                TabIndex = 6
+            };
             this.Controls.Add(this.alta_Sucursal);
             this.alta_Sucursal.BringToFront();
         }
@@ -143,7 +145,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void comboCliente_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshTable();
         }

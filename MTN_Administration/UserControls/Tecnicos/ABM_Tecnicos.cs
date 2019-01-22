@@ -184,7 +184,7 @@ namespace MTN_Administration
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void textBuscarTecnico_OnValueChanged(object sender, EventArgs e)
+        private void TextBuscarTecnico_OnValueChanged(object sender, EventArgs e)
         {
             RefreshTable(textBuscarTecnico.Text);
         }
@@ -228,12 +228,15 @@ namespace MTN_Administration
             // 
             // alta_Tecnico1
             // 
-            this.alta_Tecnico = new Alta_Tecnico(aPIHelper);
-            this.alta_Tecnico.Location = new System.Drawing.Point(0, 0);
-            this.alta_Tecnico.Name = "alta_Tecnico1";
-            this.alta_Tecnico.Size = new System.Drawing.Size(727, 561);
-            this.alta_Tecnico.TabIndex = 6;
+            this.alta_Tecnico = new Alta_Tecnico(aPIHelper)
+            {
+                Location = new System.Drawing.Point(0, 0),
+                Name = "alta_Tecnico1",
+                Size = new System.Drawing.Size(727, 561),
+                TabIndex = 6
+            };
             this.Controls.Add(this.alta_Tecnico);
+            alta_Tecnico.BringToFront();
 
         }
 

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Incidentes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Incidentes));
             this.Header = new System.Windows.Forms.Panel();
             this.headerIncidentePicture = new System.Windows.Forms.PictureBox();
             this.minimize = new System.Windows.Forms.Label();
@@ -41,7 +41,6 @@
             this.close = new System.Windows.Forms.Label();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.transiciones = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.panelSwitches = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.switchEstadoIncidenteReabierto = new Bunifu.Framework.UI.BunifuiOSSwitch();
@@ -88,6 +87,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.transition = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.headerIncidentePicture)).BeginInit();
             this.panelSwitches.SuspendLayout();
@@ -105,7 +105,7 @@
             this.Header.Controls.Add(this.minimize);
             this.Header.Controls.Add(this.TituloHeader);
             this.Header.Controls.Add(this.close);
-            this.transiciones.SetDecoration(this.Header, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.Header, BunifuAnimatorNS.DecorationType.None);
             this.Header.Dock = System.Windows.Forms.DockStyle.Top;
             this.Header.Location = new System.Drawing.Point(0, 0);
             this.Header.Name = "Header";
@@ -114,7 +114,7 @@
             // 
             // headerIncidentePicture
             // 
-            this.transiciones.SetDecoration(this.headerIncidentePicture, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.headerIncidentePicture, BunifuAnimatorNS.DecorationType.None);
             this.headerIncidentePicture.Image = global::MTN_Administration.Properties.Resources._027_report;
             this.headerIncidentePicture.Location = new System.Drawing.Point(37, 8);
             this.headerIncidentePicture.Name = "headerIncidentePicture";
@@ -129,7 +129,7 @@
             this.minimize.AutoSize = true;
             this.minimize.BackColor = System.Drawing.SystemColors.Window;
             this.minimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.minimize, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.minimize, BunifuAnimatorNS.DecorationType.None);
             this.minimize.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.minimize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.minimize.Location = new System.Drawing.Point(1189, 9);
@@ -137,13 +137,13 @@
             this.minimize.Size = new System.Drawing.Size(12, 17);
             this.minimize.TabIndex = 63;
             this.minimize.Text = "-";
-            this.minimize.Click += new System.EventHandler(this.minimize_Click);
+            this.minimize.Click += new System.EventHandler(this.Minimize_Click);
             // 
             // TituloHeader
             // 
             this.TituloHeader.AutoSize = true;
             this.TituloHeader.BackColor = System.Drawing.SystemColors.Window;
-            this.transiciones.SetDecoration(this.TituloHeader, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.TituloHeader, BunifuAnimatorNS.DecorationType.None);
             this.TituloHeader.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TituloHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.TituloHeader.Location = new System.Drawing.Point(96, 9);
@@ -157,7 +157,7 @@
             this.close.AutoSize = true;
             this.close.BackColor = System.Drawing.SystemColors.Window;
             this.close.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.close, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.close, BunifuAnimatorNS.DecorationType.None);
             this.close.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.close.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.close.Location = new System.Drawing.Point(1212, 9);
@@ -165,7 +165,7 @@
             this.close.Size = new System.Drawing.Size(16, 17);
             this.close.TabIndex = 62;
             this.close.Text = "X";
-            this.close.Click += new System.EventHandler(this.close_Click);
+            this.close.Click += new System.EventHandler(this.Close_Click);
             // 
             // bunifuDragControl1
             // 
@@ -178,27 +178,6 @@
             // 
             this.bunifuElipse1.ElipseRadius = 20;
             this.bunifuElipse1.TargetControl = this;
-            // 
-            // transiciones
-            // 
-            this.transiciones.AnimationType = BunifuAnimatorNS.AnimationType.HorizSlide;
-            this.transiciones.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(0);
-            animation1.RotateCoeff = 0F;
-            animation1.RotateLimit = 0F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.transiciones.DefaultAnimation = animation1;
             // 
             // panelSwitches
             // 
@@ -226,7 +205,7 @@
             this.panelSwitches.Controls.Add(this.switchEstadoIncidenteAbierto);
             this.panelSwitches.Controls.Add(this.filtroCCTV);
             this.panelSwitches.Controls.Add(this.filtroAlarmas);
-            this.transiciones.SetDecoration(this.panelSwitches, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.panelSwitches, BunifuAnimatorNS.DecorationType.None);
             this.panelSwitches.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSwitches.Location = new System.Drawing.Point(0, 0);
             this.panelSwitches.Name = "panelSwitches";
@@ -236,7 +215,7 @@
             // bunifuCustomLabel5
             // 
             this.bunifuCustomLabel5.AutoSize = true;
-            this.transiciones.SetDecoration(this.bunifuCustomLabel5, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.bunifuCustomLabel5, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel5.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.bunifuCustomLabel5.ForeColor = System.Drawing.Color.Silver;
             this.bunifuCustomLabel5.Location = new System.Drawing.Point(83, 449);
@@ -251,7 +230,7 @@
             this.switchEstadoIncidenteReabierto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchEstadoIncidenteReabierto.BackgroundImage")));
             this.switchEstadoIncidenteReabierto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchEstadoIncidenteReabierto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.switchEstadoIncidenteReabierto, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.switchEstadoIncidenteReabierto, BunifuAnimatorNS.DecorationType.None);
             this.switchEstadoIncidenteReabierto.Location = new System.Drawing.Point(38, 447);
             this.switchEstadoIncidenteReabierto.Name = "switchEstadoIncidenteReabierto";
             this.switchEstadoIncidenteReabierto.OffColor = System.Drawing.Color.Gray;
@@ -264,7 +243,7 @@
             // bunifuCustomLabel7
             // 
             this.bunifuCustomLabel7.AutoSize = true;
-            this.transiciones.SetDecoration(this.bunifuCustomLabel7, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.bunifuCustomLabel7, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel7.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.bunifuCustomLabel7.ForeColor = System.Drawing.Color.Silver;
             this.bunifuCustomLabel7.Location = new System.Drawing.Point(83, 419);
@@ -279,7 +258,7 @@
             this.switchEstadoIncidenteCancelado.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchEstadoIncidenteCancelado.BackgroundImage")));
             this.switchEstadoIncidenteCancelado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchEstadoIncidenteCancelado.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.switchEstadoIncidenteCancelado, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.switchEstadoIncidenteCancelado, BunifuAnimatorNS.DecorationType.None);
             this.switchEstadoIncidenteCancelado.Location = new System.Drawing.Point(38, 417);
             this.switchEstadoIncidenteCancelado.Name = "switchEstadoIncidenteCancelado";
             this.switchEstadoIncidenteCancelado.OffColor = System.Drawing.Color.Gray;
@@ -292,7 +271,7 @@
             // bunifuCustomLabel4
             // 
             this.bunifuCustomLabel4.AutoSize = true;
-            this.transiciones.SetDecoration(this.bunifuCustomLabel4, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.bunifuCustomLabel4, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel4.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.bunifuCustomLabel4.ForeColor = System.Drawing.Color.Silver;
             this.bunifuCustomLabel4.Location = new System.Drawing.Point(81, 271);
@@ -304,7 +283,7 @@
             // bunifuCustomLabel3
             // 
             this.bunifuCustomLabel3.AutoSize = true;
-            this.transiciones.SetDecoration(this.bunifuCustomLabel3, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.bunifuCustomLabel3, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel3.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.Silver;
             this.bunifuCustomLabel3.Location = new System.Drawing.Point(81, 243);
@@ -316,7 +295,7 @@
             // bunifuCustomLabel2
             // 
             this.bunifuCustomLabel2.AutoSize = true;
-            this.transiciones.SetDecoration(this.bunifuCustomLabel2, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.bunifuCustomLabel2, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel2.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.Silver;
             this.bunifuCustomLabel2.Location = new System.Drawing.Point(81, 215);
@@ -328,7 +307,7 @@
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
-            this.transiciones.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.Silver;
             this.bunifuCustomLabel1.Location = new System.Drawing.Point(81, 187);
@@ -343,7 +322,7 @@
             this.switchCriticidadMuyAlta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchCriticidadMuyAlta.BackgroundImage")));
             this.switchCriticidadMuyAlta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchCriticidadMuyAlta.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.switchCriticidadMuyAlta, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.switchCriticidadMuyAlta, BunifuAnimatorNS.DecorationType.None);
             this.switchCriticidadMuyAlta.Location = new System.Drawing.Point(36, 184);
             this.switchCriticidadMuyAlta.Name = "switchCriticidadMuyAlta";
             this.switchCriticidadMuyAlta.OffColor = System.Drawing.Color.Gray;
@@ -355,7 +334,7 @@
             // 
             // SearchIcon
             // 
-            this.transiciones.SetDecoration(this.SearchIcon, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.SearchIcon, BunifuAnimatorNS.DecorationType.None);
             this.SearchIcon.Image = global::MTN_Administration.Properties.Resources._029_search;
             this.SearchIcon.Location = new System.Drawing.Point(150, 22);
             this.SearchIcon.Name = "SearchIcon";
@@ -367,7 +346,7 @@
             // LabelswitchEstadoIncidenteCerrado
             // 
             this.LabelswitchEstadoIncidenteCerrado.AutoSize = true;
-            this.transiciones.SetDecoration(this.LabelswitchEstadoIncidenteCerrado, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.LabelswitchEstadoIncidenteCerrado, BunifuAnimatorNS.DecorationType.None);
             this.LabelswitchEstadoIncidenteCerrado.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.LabelswitchEstadoIncidenteCerrado.ForeColor = System.Drawing.Color.Silver;
             this.LabelswitchEstadoIncidenteCerrado.Location = new System.Drawing.Point(82, 362);
@@ -383,7 +362,7 @@
             this.textBuscarTecnico.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(43)))), ((int)(((byte)(55)))));
             this.textBuscarTecnico.BorderThickness = 1;
             this.textBuscarTecnico.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.transiciones.SetDecoration(this.textBuscarTecnico, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.textBuscarTecnico, BunifuAnimatorNS.DecorationType.None);
             this.textBuscarTecnico.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBuscarTecnico.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBuscarTecnico.isPassword = false;
@@ -397,7 +376,7 @@
             // LabelSwitchEstadoIncidenteProceso
             // 
             this.LabelSwitchEstadoIncidenteProceso.AutoSize = true;
-            this.transiciones.SetDecoration(this.LabelSwitchEstadoIncidenteProceso, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.LabelSwitchEstadoIncidenteProceso, BunifuAnimatorNS.DecorationType.None);
             this.LabelSwitchEstadoIncidenteProceso.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.LabelSwitchEstadoIncidenteProceso.ForeColor = System.Drawing.Color.Silver;
             this.LabelSwitchEstadoIncidenteProceso.Location = new System.Drawing.Point(82, 391);
@@ -409,7 +388,7 @@
             // bunifuCustomLabel6
             // 
             this.bunifuCustomLabel6.AutoSize = true;
-            this.transiciones.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel6.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.bunifuCustomLabel6.ForeColor = System.Drawing.Color.Silver;
             this.bunifuCustomLabel6.Location = new System.Drawing.Point(82, 333);
@@ -424,7 +403,7 @@
             this.switchCriticidadBaja.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchCriticidadBaja.BackgroundImage")));
             this.switchCriticidadBaja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchCriticidadBaja.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.switchCriticidadBaja, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.switchCriticidadBaja, BunifuAnimatorNS.DecorationType.None);
             this.switchCriticidadBaja.Location = new System.Drawing.Point(36, 271);
             this.switchCriticidadBaja.Name = "switchCriticidadBaja";
             this.switchCriticidadBaja.OffColor = System.Drawing.Color.Gray;
@@ -440,7 +419,7 @@
             this.switchEstadoIncidenteProceso.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchEstadoIncidenteProceso.BackgroundImage")));
             this.switchEstadoIncidenteProceso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchEstadoIncidenteProceso.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.switchEstadoIncidenteProceso, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.switchEstadoIncidenteProceso, BunifuAnimatorNS.DecorationType.None);
             this.switchEstadoIncidenteProceso.Location = new System.Drawing.Point(37, 389);
             this.switchEstadoIncidenteProceso.Name = "switchEstadoIncidenteProceso";
             this.switchEstadoIncidenteProceso.OffColor = System.Drawing.Color.Gray;
@@ -456,7 +435,7 @@
             this.switchAlarmas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchAlarmas.BackgroundImage")));
             this.switchAlarmas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchAlarmas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.switchAlarmas, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.switchAlarmas, BunifuAnimatorNS.DecorationType.None);
             this.switchAlarmas.Enabled = false;
             this.switchAlarmas.Location = new System.Drawing.Point(37, 118);
             this.switchAlarmas.Name = "switchAlarmas";
@@ -472,7 +451,7 @@
             this.switchCriticidadMedia.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchCriticidadMedia.BackgroundImage")));
             this.switchCriticidadMedia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchCriticidadMedia.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.switchCriticidadMedia, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.switchCriticidadMedia, BunifuAnimatorNS.DecorationType.None);
             this.switchCriticidadMedia.Location = new System.Drawing.Point(36, 242);
             this.switchCriticidadMedia.Name = "switchCriticidadMedia";
             this.switchCriticidadMedia.OffColor = System.Drawing.Color.Gray;
@@ -488,7 +467,7 @@
             this.switchEstadoIncidenteCerrado.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchEstadoIncidenteCerrado.BackgroundImage")));
             this.switchEstadoIncidenteCerrado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchEstadoIncidenteCerrado.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.switchEstadoIncidenteCerrado, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.switchEstadoIncidenteCerrado, BunifuAnimatorNS.DecorationType.None);
             this.switchEstadoIncidenteCerrado.Location = new System.Drawing.Point(37, 360);
             this.switchEstadoIncidenteCerrado.Name = "switchEstadoIncidenteCerrado";
             this.switchEstadoIncidenteCerrado.OffColor = System.Drawing.Color.Gray;
@@ -504,7 +483,7 @@
             this.switchCCTV.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchCCTV.BackgroundImage")));
             this.switchCCTV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchCCTV.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.switchCCTV, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.switchCCTV, BunifuAnimatorNS.DecorationType.None);
             this.switchCCTV.Location = new System.Drawing.Point(37, 90);
             this.switchCCTV.Name = "switchCCTV";
             this.switchCCTV.OffColor = System.Drawing.Color.Gray;
@@ -519,7 +498,7 @@
             this.switchCriticidadAlta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchCriticidadAlta.BackgroundImage")));
             this.switchCriticidadAlta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchCriticidadAlta.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.switchCriticidadAlta, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.switchCriticidadAlta, BunifuAnimatorNS.DecorationType.None);
             this.switchCriticidadAlta.Location = new System.Drawing.Point(36, 213);
             this.switchCriticidadAlta.Name = "switchCriticidadAlta";
             this.switchCriticidadAlta.OffColor = System.Drawing.Color.Gray;
@@ -535,7 +514,7 @@
             this.switchEstadoIncidenteAbierto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchEstadoIncidenteAbierto.BackgroundImage")));
             this.switchEstadoIncidenteAbierto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchEstadoIncidenteAbierto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.switchEstadoIncidenteAbierto, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.switchEstadoIncidenteAbierto, BunifuAnimatorNS.DecorationType.None);
             this.switchEstadoIncidenteAbierto.Location = new System.Drawing.Point(37, 331);
             this.switchEstadoIncidenteAbierto.Name = "switchEstadoIncidenteAbierto";
             this.switchEstadoIncidenteAbierto.OffColor = System.Drawing.Color.Gray;
@@ -553,7 +532,7 @@
             this.filtroCCTV.BorderRadius = 0;
             this.filtroCCTV.ButtonText = "CCTV";
             this.filtroCCTV.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.filtroCCTV, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.filtroCCTV, BunifuAnimatorNS.DecorationType.None);
             this.filtroCCTV.DisabledColor = System.Drawing.Color.Gray;
             this.filtroCCTV.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filtroCCTV.ForeColor = System.Drawing.Color.Silver;
@@ -591,7 +570,7 @@
             this.filtroAlarmas.BorderRadius = 0;
             this.filtroAlarmas.ButtonText = "Alarmas";
             this.filtroAlarmas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.filtroAlarmas, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.filtroAlarmas, BunifuAnimatorNS.DecorationType.None);
             this.filtroAlarmas.DisabledColor = System.Drawing.Color.Gray;
             this.filtroAlarmas.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filtroAlarmas.ForeColor = System.Drawing.Color.Silver;
@@ -627,7 +606,7 @@
             this.panel2.Controls.Add(this.buttonCancelarIncidente);
             this.panel2.Controls.Add(this.BotonVerIncidente);
             this.panel2.Controls.Add(this.BotonAgregarIncidente);
-            this.transiciones.SetDecoration(this.panel2, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.panel2, BunifuAnimatorNS.DecorationType.None);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(194, 630);
             this.panel2.Name = "panel2";
@@ -645,7 +624,7 @@
             this.buttonReabrir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonReabrir.BackgroundImage")));
             this.buttonReabrir.ButtonText = "Reabir Incidente";
             this.buttonReabrir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.buttonReabrir, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.buttonReabrir, BunifuAnimatorNS.DecorationType.None);
             this.buttonReabrir.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReabrir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.buttonReabrir.IdleBorderThickness = 1;
@@ -659,7 +638,7 @@
             this.buttonReabrir.Size = new System.Drawing.Size(166, 41);
             this.buttonReabrir.TabIndex = 93;
             this.buttonReabrir.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonReabrir.Click += new System.EventHandler(this.buttonReabrir_Click);
+            this.buttonReabrir.Click += new System.EventHandler(this.ButtonReabrir_Click);
             // 
             // buttonCancelarIncidente
             // 
@@ -672,7 +651,7 @@
             this.buttonCancelarIncidente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonCancelarIncidente.BackgroundImage")));
             this.buttonCancelarIncidente.ButtonText = "Cancelar Incidente";
             this.buttonCancelarIncidente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.buttonCancelarIncidente, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.buttonCancelarIncidente, BunifuAnimatorNS.DecorationType.None);
             this.buttonCancelarIncidente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelarIncidente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.buttonCancelarIncidente.IdleBorderThickness = 1;
@@ -686,7 +665,7 @@
             this.buttonCancelarIncidente.Size = new System.Drawing.Size(166, 41);
             this.buttonCancelarIncidente.TabIndex = 92;
             this.buttonCancelarIncidente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonCancelarIncidente.Click += new System.EventHandler(this.buttonCancelarIncidente_Click_1);
+            this.buttonCancelarIncidente.Click += new System.EventHandler(this.ButtonCancelarIncidente_Click_1);
             // 
             // BotonVerIncidente
             // 
@@ -699,7 +678,7 @@
             this.BotonVerIncidente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BotonVerIncidente.BackgroundImage")));
             this.BotonVerIncidente.ButtonText = "Ver Incidente";
             this.BotonVerIncidente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.BotonVerIncidente, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.BotonVerIncidente, BunifuAnimatorNS.DecorationType.None);
             this.BotonVerIncidente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotonVerIncidente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.BotonVerIncidente.IdleBorderThickness = 1;
@@ -726,7 +705,7 @@
             this.BotonAgregarIncidente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BotonAgregarIncidente.BackgroundImage")));
             this.BotonAgregarIncidente.ButtonText = "Agregar Incidente";
             this.BotonAgregarIncidente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transiciones.SetDecoration(this.BotonAgregarIncidente, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.BotonAgregarIncidente, BunifuAnimatorNS.DecorationType.None);
             this.BotonAgregarIncidente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotonAgregarIncidente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.BotonAgregarIncidente.IdleBorderThickness = 1;
@@ -744,7 +723,7 @@
             // 
             // panel3
             // 
-            this.transiciones.SetDecoration(this.panel3, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.panel3, BunifuAnimatorNS.DecorationType.None);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Location = new System.Drawing.Point(1215, 0);
             this.panel3.Name = "panel3";
@@ -786,7 +765,7 @@
             this.criticidad,
             this.asignado,
             this.estadoIncidente});
-            this.transiciones.SetDecoration(this.tablaIncidentes, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.tablaIncidentes, BunifuAnimatorNS.DecorationType.None);
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -814,7 +793,7 @@
             this.tablaIncidentes.ShowRowErrors = false;
             this.tablaIncidentes.Size = new System.Drawing.Size(1021, 630);
             this.tablaIncidentes.TabIndex = 70;
-            this.tablaIncidentes.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.tablaIncidentes_CellMouseDoubleClick);
+            this.tablaIncidentes.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.TablaIncidentes_CellMouseDoubleClick);
             // 
             // id
             // 
@@ -885,7 +864,7 @@
             this.panelTabla.Controls.Add(this.panel3);
             this.panelTabla.Controls.Add(this.panel2);
             this.panelTabla.Controls.Add(this.panelSwitches);
-            this.transiciones.SetDecoration(this.panelTabla, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.panelTabla, BunifuAnimatorNS.DecorationType.None);
             this.panelTabla.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTabla.Location = new System.Drawing.Point(0, 55);
             this.panelTabla.Name = "panelTabla";
@@ -895,7 +874,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.progressBar);
-            this.transiciones.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 35);
             this.panel1.Name = "panel1";
@@ -904,7 +883,7 @@
             // 
             // progressBar
             // 
-            this.transiciones.SetDecoration(this.progressBar, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this.progressBar, BunifuAnimatorNS.DecorationType.None);
             this.progressBar.Location = new System.Drawing.Point(0, 6);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(1240, 10);
@@ -913,7 +892,28 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // transition
+            // 
+            this.transition.AnimationType = BunifuAnimatorNS.AnimationType.HorizSlide;
+            this.transition.Cursor = null;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.transition.DefaultAnimation = animation1;
             // 
             // ABM_Incidentes
             // 
@@ -924,7 +924,7 @@
             this.Controls.Add(this.panelTabla);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Header);
-            this.transiciones.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
+            this.transition.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ABM_Incidentes";
@@ -946,14 +946,12 @@
 
         #endregion
         private System.Windows.Forms.Panel Header;
-        private System.Windows.Forms.DataGridViewTextBoxColumn severidad;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private System.Windows.Forms.Label minimize;
         private System.Windows.Forms.Label close;
         private System.Windows.Forms.PictureBox headerIncidentePicture;
         private System.Windows.Forms.Label TituloHeader;
-        private BunifuAnimatorNS.BunifuTransition transiciones;
         private System.Windows.Forms.Panel panelTabla;
         private Bunifu.Framework.UI.BunifuCustomDataGrid tablaIncidentes;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
@@ -1000,5 +998,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Timer timer1;
+        private BunifuAnimatorNS.BunifuTransition transition;
     }
 }

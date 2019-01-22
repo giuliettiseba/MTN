@@ -795,11 +795,11 @@
             this.transiciones.SetDecoration(this.bunifuCustomLabel5, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel5.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel5.ForeColor = System.Drawing.Color.Silver;
-            this.bunifuCustomLabel5.Location = new System.Drawing.Point(111, 209);
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(213, 219);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
-            this.bunifuCustomLabel5.Size = new System.Drawing.Size(253, 30);
+            this.bunifuCustomLabel5.Size = new System.Drawing.Size(140, 30);
             this.bunifuCustomLabel5.TabIndex = 97;
-            this.bunifuCustomLabel5.Text = "Tipo Mantenimiento";
+            this.bunifuCustomLabel5.Text = "Hora Inicio";
             // 
             // bunifuCustomLabel6
             // 
@@ -807,11 +807,11 @@
             this.transiciones.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel6.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel6.ForeColor = System.Drawing.Color.Silver;
-            this.bunifuCustomLabel6.Location = new System.Drawing.Point(684, 214);
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(809, 219);
             this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
-            this.bunifuCustomLabel6.Size = new System.Drawing.Size(253, 30);
+            this.bunifuCustomLabel6.Size = new System.Drawing.Size(108, 30);
             this.bunifuCustomLabel6.TabIndex = 98;
-            this.bunifuCustomLabel6.Text = "Tipo Mantenimiento";
+            this.bunifuCustomLabel6.Text = "Hora Fin";
             // 
             // panel2
             // 
@@ -1001,11 +1001,6 @@
         private Bunifu.Framework.UI.BunifuCustomDataGrid tablaIncidentes;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_tipo_mantenible;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_criticidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_estado_incidente;
         private System.Windows.Forms.DataGridViewTextBoxColumn asignado;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dipositivo;

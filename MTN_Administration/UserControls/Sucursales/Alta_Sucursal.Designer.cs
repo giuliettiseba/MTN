@@ -72,7 +72,7 @@
             this.textNombre.Margin = new System.Windows.Forms.Padding(4);
             this.textNombre.Name = "textNombre";
             this.textNombre.Size = new System.Drawing.Size(404, 29);
-            this.textNombre.TabIndex = 3;
+            this.textNombre.TabIndex = 1;
             this.textNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuCustomLabel6
@@ -111,7 +111,7 @@
             this.textDireccion.Margin = new System.Windows.Forms.Padding(4);
             this.textDireccion.Name = "textDireccion";
             this.textDireccion.Size = new System.Drawing.Size(404, 29);
-            this.textDireccion.TabIndex = 8;
+            this.textDireccion.TabIndex = 4;
             this.textDireccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // comboBoxProvincia
@@ -126,7 +126,7 @@
             this.comboBoxProvincia.Location = new System.Drawing.Point(16, 225);
             this.comboBoxProvincia.Name = "comboBoxProvincia";
             this.comboBoxProvincia.Size = new System.Drawing.Size(404, 29);
-            this.comboBoxProvincia.TabIndex = 6;
+            this.comboBoxProvincia.TabIndex = 2;
             this.comboBoxProvincia.SelectedIndexChanged += new System.EventHandler(this.ComboBoxProvincia_onItemSelected);
             // 
             // bunifuCustomLabel7
@@ -190,7 +190,7 @@
             this.botonCargarFoto.Margin = new System.Windows.Forms.Padding(5);
             this.botonCargarFoto.Name = "botonCargarFoto";
             this.botonCargarFoto.Size = new System.Drawing.Size(253, 30);
-            this.botonCargarFoto.TabIndex = 9;
+            this.botonCargarFoto.TabIndex = 5;
             this.botonCargarFoto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.botonCargarFoto.Click += new System.EventHandler(this.BotonCargarFoto_click);
             // 
@@ -226,7 +226,7 @@
             this.buttonCancelarAlta.Margin = new System.Windows.Forms.Padding(5);
             this.buttonCancelarAlta.Name = "buttonCancelarAlta";
             this.buttonCancelarAlta.Size = new System.Drawing.Size(181, 41);
-            this.buttonCancelarAlta.TabIndex = 11;
+            this.buttonCancelarAlta.TabIndex = 7;
             this.buttonCancelarAlta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.buttonCancelarAlta.Click += new System.EventHandler(this.ButtonCancelarAlta_Click);
             // 
@@ -252,9 +252,9 @@
             this.buttonGuardarAlta.Margin = new System.Windows.Forms.Padding(5);
             this.buttonGuardarAlta.Name = "buttonGuardarAlta";
             this.buttonGuardarAlta.Size = new System.Drawing.Size(181, 41);
-            this.buttonGuardarAlta.TabIndex = 10;
+            this.buttonGuardarAlta.TabIndex = 6;
             this.buttonGuardarAlta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonGuardarAlta.Click += new System.EventHandler(this.buttonGuardarAltaSucursal_Click);
+            this.buttonGuardarAlta.Click += new System.EventHandler(this.ButtonGuardarAltaSucursal_Click);
             // 
             // comboBoxLocalidad
             // 
@@ -268,7 +268,7 @@
             this.comboBoxLocalidad.Location = new System.Drawing.Point(16, 299);
             this.comboBoxLocalidad.Name = "comboBoxLocalidad";
             this.comboBoxLocalidad.Size = new System.Drawing.Size(404, 29);
-            this.comboBoxLocalidad.TabIndex = 7;
+            this.comboBoxLocalidad.TabIndex = 3;
             // 
             // Alta_Sucursales
             // 

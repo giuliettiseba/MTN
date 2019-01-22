@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MTN_RestAPI.Models
 {
-    public abstract class Dispositivo : Mantenible
+    public abstract class Dispositivo : IMantenible
     {
         public int Id { get; set; }
         public String Nombre { get; set; }
@@ -17,7 +17,7 @@ namespace MTN_RestAPI.Models
         public String Ip { get; set; }
         public String Mask { get; set; }
         public String Gateway { get; set; }
-        public int Id_estado { get; set; }
+        public TypeEstadoMantenible Id_estado { get; set; }
         
 
     }

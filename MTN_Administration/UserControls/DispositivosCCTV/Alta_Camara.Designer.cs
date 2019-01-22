@@ -84,7 +84,7 @@
             this.textNombre.Margin = new System.Windows.Forms.Padding(4);
             this.textNombre.Name = "textNombre";
             this.textNombre.Size = new System.Drawing.Size(359, 29);
-            this.textNombre.TabIndex = 3;
+            this.textNombre.TabIndex = 0;
             this.textNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuCustomLabel7
@@ -111,8 +111,8 @@
             this.comboBoxMarca.Location = new System.Drawing.Point(210, 84);
             this.comboBoxMarca.Name = "comboBoxMarca";
             this.comboBoxMarca.Size = new System.Drawing.Size(167, 29);
-            this.comboBoxMarca.TabIndex = 7;
-            this.comboBoxMarca.SelectedIndexChanged += new System.EventHandler(this.comboBoxMarca_SelectedIndexChanged);
+            this.comboBoxMarca.TabIndex = 2;
+            this.comboBoxMarca.SelectedIndexChanged += new System.EventHandler(this.ComboBoxMarca_SelectedIndexChanged);
             // 
             // comboBoxModelo
             // 
@@ -126,7 +126,7 @@
             this.comboBoxModelo.Location = new System.Drawing.Point(18, 136);
             this.comboBoxModelo.Name = "comboBoxModelo";
             this.comboBoxModelo.Size = new System.Drawing.Size(160, 29);
-            this.comboBoxModelo.TabIndex = 25;
+            this.comboBoxModelo.TabIndex = 3;
             // 
             // bunifuCustomLabel6
             // 
@@ -152,7 +152,7 @@
             this.comboBoxEstado.Location = new System.Drawing.Point(210, 136);
             this.comboBoxEstado.Name = "comboBoxEstado";
             this.comboBoxEstado.Size = new System.Drawing.Size(167, 29);
-            this.comboBoxEstado.TabIndex = 27;
+            this.comboBoxEstado.TabIndex = 4;
             // 
             // bunifuCustomLabel2
             // 
@@ -176,7 +176,7 @@
             this.DatePickerFechaInstalacion.Location = new System.Drawing.Point(18, 349);
             this.DatePickerFechaInstalacion.Name = "DatePickerFechaInstalacion";
             this.DatePickerFechaInstalacion.Size = new System.Drawing.Size(303, 36);
-            this.DatePickerFechaInstalacion.TabIndex = 29;
+            this.DatePickerFechaInstalacion.TabIndex = 17;
             this.DatePickerFechaInstalacion.Value = new System.DateTime(2018, 12, 24, 0, 35, 13, 965);
             // 
             // bunifuCustomLabel3
@@ -203,7 +203,7 @@
             this.comboBoxTecnologia.Location = new System.Drawing.Point(18, 84);
             this.comboBoxTecnologia.Name = "comboBoxTecnologia";
             this.comboBoxTecnologia.Size = new System.Drawing.Size(161, 29);
-            this.comboBoxTecnologia.TabIndex = 31;
+            this.comboBoxTecnologia.TabIndex = 1;
             // 
             // bunifuCustomLabel1
             // 
@@ -243,7 +243,7 @@
             this.Text_Observaciones.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Observaciones.Name = "Text_Observaciones";
             this.Text_Observaciones.Size = new System.Drawing.Size(680, 32);
-            this.Text_Observaciones.TabIndex = 8;
+            this.Text_Observaciones.TabIndex = 20;
             this.Text_Observaciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // TextIP_OCT_1
@@ -260,7 +260,7 @@
             this.TextIP_OCT_1.Margin = new System.Windows.Forms.Padding(4);
             this.TextIP_OCT_1.Name = "TextIP_OCT_1";
             this.TextIP_OCT_1.Size = new System.Drawing.Size(51, 29);
-            this.TextIP_OCT_1.TabIndex = 33;
+            this.TextIP_OCT_1.TabIndex = 5;
             this.TextIP_OCT_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // t
@@ -301,7 +301,7 @@
             this.TextIP_OCT_2.Margin = new System.Windows.Forms.Padding(4);
             this.TextIP_OCT_2.Name = "TextIP_OCT_2";
             this.TextIP_OCT_2.Size = new System.Drawing.Size(51, 29);
-            this.TextIP_OCT_2.TabIndex = 35;
+            this.TextIP_OCT_2.TabIndex = 6;
             this.TextIP_OCT_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // TextIP_OCT_3
@@ -318,7 +318,7 @@
             this.TextIP_OCT_3.Margin = new System.Windows.Forms.Padding(4);
             this.TextIP_OCT_3.Name = "TextIP_OCT_3";
             this.TextIP_OCT_3.Size = new System.Drawing.Size(51, 29);
-            this.TextIP_OCT_3.TabIndex = 36;
+            this.TextIP_OCT_3.TabIndex = 7;
             this.TextIP_OCT_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // TextIP_OCT_4
@@ -335,7 +335,7 @@
             this.TextIP_OCT_4.Margin = new System.Windows.Forms.Padding(4);
             this.TextIP_OCT_4.Name = "TextIP_OCT_4";
             this.TextIP_OCT_4.Size = new System.Drawing.Size(51, 29);
-            this.TextIP_OCT_4.TabIndex = 37;
+            this.TextIP_OCT_4.TabIndex = 8;
             this.TextIP_OCT_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // Text_Mask_OCT_4
@@ -352,7 +352,7 @@
             this.Text_Mask_OCT_4.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Mask_OCT_4.Name = "Text_Mask_OCT_4";
             this.Text_Mask_OCT_4.Size = new System.Drawing.Size(51, 29);
-            this.Text_Mask_OCT_4.TabIndex = 42;
+            this.Text_Mask_OCT_4.TabIndex = 12;
             this.Text_Mask_OCT_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // Text_Mask_OCT_3
@@ -369,7 +369,7 @@
             this.Text_Mask_OCT_3.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Mask_OCT_3.Name = "Text_Mask_OCT_3";
             this.Text_Mask_OCT_3.Size = new System.Drawing.Size(51, 29);
-            this.Text_Mask_OCT_3.TabIndex = 41;
+            this.Text_Mask_OCT_3.TabIndex = 11;
             this.Text_Mask_OCT_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // Text_Mask_OCT_2
@@ -386,7 +386,7 @@
             this.Text_Mask_OCT_2.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Mask_OCT_2.Name = "Text_Mask_OCT_2";
             this.Text_Mask_OCT_2.Size = new System.Drawing.Size(51, 29);
-            this.Text_Mask_OCT_2.TabIndex = 40;
+            this.Text_Mask_OCT_2.TabIndex = 10;
             this.Text_Mask_OCT_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuCustomLabel8
@@ -415,7 +415,7 @@
             this.Text_Mask_OCT_1.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Mask_OCT_1.Name = "Text_Mask_OCT_1";
             this.Text_Mask_OCT_1.Size = new System.Drawing.Size(51, 29);
-            this.Text_Mask_OCT_1.TabIndex = 38;
+            this.Text_Mask_OCT_1.TabIndex = 9;
             this.Text_Mask_OCT_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // Text_Gateway_OCT_1
@@ -432,7 +432,7 @@
             this.Text_Gateway_OCT_1.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Gateway_OCT_1.Name = "Text_Gateway_OCT_1";
             this.Text_Gateway_OCT_1.Size = new System.Drawing.Size(51, 29);
-            this.Text_Gateway_OCT_1.TabIndex = 38;
+            this.Text_Gateway_OCT_1.TabIndex = 13;
             this.Text_Gateway_OCT_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuCustomLabel9
@@ -461,7 +461,7 @@
             this.Text_Gateway_OCT_2.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Gateway_OCT_2.Name = "Text_Gateway_OCT_2";
             this.Text_Gateway_OCT_2.Size = new System.Drawing.Size(51, 29);
-            this.Text_Gateway_OCT_2.TabIndex = 40;
+            this.Text_Gateway_OCT_2.TabIndex = 14;
             this.Text_Gateway_OCT_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // Text_Gateway_OCT_3
@@ -478,7 +478,7 @@
             this.Text_Gateway_OCT_3.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Gateway_OCT_3.Name = "Text_Gateway_OCT_3";
             this.Text_Gateway_OCT_3.Size = new System.Drawing.Size(51, 29);
-            this.Text_Gateway_OCT_3.TabIndex = 41;
+            this.Text_Gateway_OCT_3.TabIndex = 15;
             this.Text_Gateway_OCT_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // Text_Gateway_OCT_4
@@ -495,7 +495,7 @@
             this.Text_Gateway_OCT_4.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Gateway_OCT_4.Name = "Text_Gateway_OCT_4";
             this.Text_Gateway_OCT_4.Size = new System.Drawing.Size(51, 29);
-            this.Text_Gateway_OCT_4.TabIndex = 42;
+            this.Text_Gateway_OCT_4.TabIndex = 16;
             this.Text_Gateway_OCT_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // botonCargarFoto
@@ -555,7 +555,7 @@
             this.buttonCancelarAlta.Margin = new System.Windows.Forms.Padding(5);
             this.buttonCancelarAlta.Name = "buttonCancelarAlta";
             this.buttonCancelarAlta.Size = new System.Drawing.Size(181, 41);
-            this.buttonCancelarAlta.TabIndex = 11;
+            this.buttonCancelarAlta.TabIndex = 22;
             this.buttonCancelarAlta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.buttonCancelarAlta.Click += new System.EventHandler(this.ButtonCancelarAlta_Click);
             // 
@@ -581,9 +581,9 @@
             this.buttonGuardarAlta.Margin = new System.Windows.Forms.Padding(5);
             this.buttonGuardarAlta.Name = "buttonGuardarAlta";
             this.buttonGuardarAlta.Size = new System.Drawing.Size(181, 41);
-            this.buttonGuardarAlta.TabIndex = 10;
+            this.buttonGuardarAlta.TabIndex = 21;
             this.buttonGuardarAlta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonGuardarAlta.Click += new System.EventHandler(this.buttonGuardarAltaCamara_Click);
+            this.buttonGuardarAlta.Click += new System.EventHandler(this.ButtonGuardarAltaCamara_Click);
             // 
             // bunifuCustomLabel10
             // 
@@ -611,7 +611,7 @@
             this.Text_NumeroSerie.Margin = new System.Windows.Forms.Padding(4);
             this.Text_NumeroSerie.Name = "Text_NumeroSerie";
             this.Text_NumeroSerie.Size = new System.Drawing.Size(299, 29);
-            this.Text_NumeroSerie.TabIndex = 45;
+            this.Text_NumeroSerie.TabIndex = 18;
             this.Text_NumeroSerie.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // comboBoxPos
@@ -626,7 +626,7 @@
             this.comboBoxPos.Location = new System.Drawing.Point(439, 411);
             this.comboBoxPos.Name = "comboBoxPos";
             this.comboBoxPos.Size = new System.Drawing.Size(140, 29);
-            this.comboBoxPos.TabIndex = 48;
+            this.comboBoxPos.TabIndex = 19;
             // 
             // labelPosicion
             // 

@@ -17,7 +17,7 @@ namespace MTN_Administration.APIHelpers
     public class MantenimientoHelper
     {
 
-        private string _partialurl;
+        private readonly string _partialurl;
         private ChecksumHelper _checksumHelper;
         private List<Mantenimiento> _mantenimientos;
 
@@ -95,7 +95,7 @@ namespace MTN_Administration.APIHelpers
                         /// agrega los incidentes al manentimiento
                         foreach (Incidente incidente in newMantenimiento.Incidentes)
                         {
-                            addRelationMantenimientoIncidente(newMantenimiento.Id, incidente.Id);
+                            AddRelationMantenimientoIncidente(newMantenimiento.Id, incidente.Id);
                         }
                         return new MensajeAlerta("Agregado" + Environment.NewLine + newMantenimiento.Id, AlertType.success);
                     }
@@ -104,11 +104,11 @@ namespace MTN_Administration.APIHelpers
                         webClient.QueryString.Add("id", newMantenimiento.Id.ToString());
                         webClient.UploadValues(url, "PUT", webClient.QueryString);
                         /// Limpia los incidentes de un mantenimiento 
-                        removeRelationesMantenimiento(newMantenimiento.Id);
+                        RemoveRelationesMantenimiento(newMantenimiento.Id);
                         ///Agrega la relacion entre los incidentes y el mantenimiento
                         foreach (Incidente incidente in newMantenimiento.Incidentes)
                         {
-                            addRelationMantenimientoIncidente(newMantenimiento.Id, incidente.Id);
+                            AddRelationMantenimientoIncidente(newMantenimiento.Id, incidente.Id);
                         }
                         return new MensajeAlerta("Modificado" + Environment.NewLine + newMantenimiento.Id, AlertType.success);
                     }
@@ -116,7 +116,7 @@ namespace MTN_Administration.APIHelpers
             }
             catch (Exception e)
             {
-                return new MensajeAlerta("Error" + Environment.NewLine + newMantenimiento.Detalles, AlertType.error);
+                return new MensajeAlerta("Error: " + e.ToString() + Environment.NewLine + newMantenimiento.Detalles, AlertType.error);
             }
         }
 
@@ -124,9 +124,9 @@ namespace MTN_Administration.APIHelpers
         /// Elimina las relaciones de un mantenimiento
         /// </summary>
         /// <param name="id">The identifier.</param>
-        private void removeRelationesMantenimiento(int id)
+        private void RemoveRelationesMantenimiento(int id)
         {
-            String url = _partialurl + "Mantenimiento/"+id;
+            String url = _partialurl + "Mantenimiento/" + id;
             using (WebClient webClient = new WebClient())
             {
                 //webClient.QueryString.Add("id_mantenimiento", id.ToString());
@@ -145,7 +145,7 @@ namespace MTN_Administration.APIHelpers
             if (_mantenimientos == null) GetMantenimientos();
             foreach (Mantenimiento mantenimiento in _mantenimientos)
             {
-            a = mantenimiento.Incidentes.Find(x => x.Id == id_incidente);
+                a = mantenimiento.Incidentes.Find(x => x.Id == id_incidente);
                 if (a != null) return true;
             }
             return false;
@@ -168,7 +168,7 @@ namespace MTN_Administration.APIHelpers
         /// </summary>
         /// <param name="id_mantenimiento">The id1.</param>
         /// <param name="id_incidente">The id2.</param>
-        private void addRelationMantenimientoIncidente(int id_mantenimiento, int id_incidente)
+        private void    AddRelationMantenimientoIncidente(int id_mantenimiento, int id_incidente)
         {
             String url = _partialurl + "Mantenimiento";
             using (WebClient webClient = new WebClient())
@@ -189,6 +189,6 @@ namespace MTN_Administration.APIHelpers
         }
     }
 }
-    
-            
-            
+
+
+

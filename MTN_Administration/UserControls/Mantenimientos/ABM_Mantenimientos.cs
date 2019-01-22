@@ -16,8 +16,8 @@ namespace MTN_Administration.Tabs
     /// Interfaz de administracion de mantenimientos
     /// </summary>
     /// <seealso cref="System.Windows.Forms.Form" />
-    /// <seealso cref="MTN_Administration.Tabs.Animated" />
-    public partial class ABM_Mantenimientos : Form, Animated
+    /// <seealso cref="MTN_Administration.Tabs.IAnimated" />
+    public partial class ABM_Mantenimientos : Form, IAnimated
     {
         APIHelper aPIHelper;
         private List<Mantenimiento> listaMantenimientos;
@@ -55,7 +55,7 @@ namespace MTN_Administration.Tabs
         internal void RefreshTabla()
         {
 
-            tablaMantenimientos.Rows.Clear();
+            //tablaMantenimientos.Rows.Clear();
             listaMantenimientos = aPIHelper.GetMantenimientosHelper().GetMantenimientos();
 
             // Llenar la tabla de mantenimientos
@@ -82,17 +82,16 @@ namespace MTN_Administration.Tabs
             mantenimiento.Estado == TypeEstadoMantenimiento.Progreso && switchEstadoMantenimeintoProgreso.Value
             )
             {
-                tablaMantenimientos.Rows.Add();
-                tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["id"].Value = mantenimiento.Id;
-                tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["cliente"].Value = aPIHelper.GetClientesHelper().GetCliente(mantenimiento.Id_Cliente).Nombre;
-                tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["sucursal"].Value = aPIHelper.GetSucursalesHelper().GetSucursal(mantenimiento.Id_Cliente, mantenimiento.Id_Sucursal).Nombre;
-                tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["tipoMantenimiento"].Value = (TypeTipoMantenimiento)mantenimiento.id_tipo_mantenimiento;
 
                 Tecnico tecnico1 = aPIHelper.GetTecnicosHelper().GetTecnico(mantenimiento.Tecnico1);
-                if (tecnico1 != null)
-                    tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["tecnico"].Value = tecnico1.Nombre;
-
-                tablaMantenimientos.Rows[tablaMantenimientos.Rows.Count - 1].Cells["estadoMantenimiento"].Value = (TypeEstadoMantenimiento)mantenimiento.Estado;
+                string nombreTecnico = "";
+                if (tecnico1 != null) nombreTecnico = tecnico1.ApellidoYNombre;
+                tablaMantenimientos.Rows.Add(mantenimiento.Id,
+                aPIHelper.GetClientesHelper().GetCliente(mantenimiento.Id_Cliente).Nombre,
+                 aPIHelper.GetSucursalesHelper().GetSucursal(mantenimiento.Id_Cliente, mantenimiento.Id_Sucursal).Nombre,
+                 mantenimiento.id_tipo_mantenimiento,
+                 nombreTecnico,
+                 mantenimiento.Estado);
             }
 
         }
@@ -103,7 +102,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void close_Click(object sender, EventArgs e)
+        private void Close_Click(object sender, EventArgs e)
         {
             Dispose();
         }
@@ -113,7 +112,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void minimize_Click(object sender, EventArgs e)
+        private void Minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
@@ -121,7 +120,7 @@ namespace MTN_Administration.Tabs
         /// <summary>
         /// Animacion de ventana
         /// </summary>
-        public void showPanelSwitchs()
+        public void ShowPanelSwitchs()
         {
             transiciones.Show(panelTabla);
         }
@@ -136,12 +135,14 @@ namespace MTN_Administration.Tabs
         private void BotonAgregarMantenimiento_Click(object sender, EventArgs e)
         {
             transiciones.HideSync(panelTabla);
-            Alta_Manteniminto = new Alta_Manteniminto(aPIHelper);
-            Alta_Manteniminto.Dock = System.Windows.Forms.DockStyle.Fill;
-            Alta_Manteniminto.Location = new System.Drawing.Point(236, 39);
-            Alta_Manteniminto.Name = "crear_Manteniminto";
-            Alta_Manteniminto.Size = new System.Drawing.Size(739, 561);
-            Alta_Manteniminto.TabIndex = 2;
+            Alta_Manteniminto = new Alta_Manteniminto(aPIHelper)
+            {
+                Dock = System.Windows.Forms.DockStyle.Fill,
+                Location = new System.Drawing.Point(236, 39),
+                Name = "crear_Manteniminto",
+                Size = new System.Drawing.Size(739, 561),
+                TabIndex = 2
+            };
             Controls.Add(this.Alta_Manteniminto);
             Alta_Manteniminto.BringToFront();
         }
@@ -157,14 +158,14 @@ namespace MTN_Administration.Tabs
         {
             transiciones.HideSync(panelTabla);
 
-            int id_mantenimiento = Convert.ToInt16(tablaMantenimientos.SelectedRows[0].Cells["id"].Value);
-            Mantenimiento mantenimiento = aPIHelper.GetMantenimientosHelper().GetMantenimiento(id_mantenimiento);
-            ver_Mantenimiento = new Ver_Mantenimiento(aPIHelper, mantenimiento);
-            ver_Mantenimiento.Dock = System.Windows.Forms.DockStyle.Fill;
-            ver_Mantenimiento.Location = new System.Drawing.Point(236, 39);
-            ver_Mantenimiento.Name = "ver_Manteniminto";
-            ver_Mantenimiento.Size = new System.Drawing.Size(739, 561);
-            ver_Mantenimiento.TabIndex = 2;
+            ver_Mantenimiento = new Ver_Mantenimiento(aPIHelper, ObtenerManetnimientoSeleccionado())
+            {
+                Dock = System.Windows.Forms.DockStyle.Fill,
+                Location = new System.Drawing.Point(236, 39),
+                Name = "ver_Manteniminto",
+                Size = new System.Drawing.Size(739, 561),
+                TabIndex = 2
+            };
             Controls.Add(this.ver_Mantenimiento);
             ver_Mantenimiento.BringToFront();
         }
@@ -175,9 +176,9 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
-        private void tablaMantenimientos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void TablaMantenimientos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            buttonReprogramarMantenimiento_Click(null, null);
+            ButtonReprogramarMantenimiento_Click(null, null);
         }
 
 
@@ -188,20 +189,27 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonReprogramarMantenimiento_Click(object sender, EventArgs e)
+        private void ButtonReprogramarMantenimiento_Click(object sender, EventArgs e)
         {
             transiciones.HideSync(panelTabla);
 
-            int id_mantenimiento = Convert.ToInt16(tablaMantenimientos.SelectedRows[0].Cells["id"].Value);
-            Mantenimiento mantenimiento = aPIHelper.GetMantenimientosHelper().GetMantenimiento(id_mantenimiento);
-            reprogramar_Mantenimiento = new Reprogramar_Mantenimiento(aPIHelper, mantenimiento);
-            reprogramar_Mantenimiento.Dock = System.Windows.Forms.DockStyle.Fill;
-            reprogramar_Mantenimiento.Location = new System.Drawing.Point(236, 39);
-            reprogramar_Mantenimiento.Name = "reprogramar_Mantenimiento";
-            reprogramar_Mantenimiento.Size = new System.Drawing.Size(739, 561);
-            reprogramar_Mantenimiento.TabIndex = 2;
+            reprogramar_Mantenimiento = new Reprogramar_Mantenimiento(aPIHelper, ObtenerManetnimientoSeleccionado())
+            {
+                Dock = System.Windows.Forms.DockStyle.Fill,
+                Location = new System.Drawing.Point(236, 39),
+                Name = "reprogramar_Mantenimiento",
+                Size = new System.Drawing.Size(739, 561),
+                TabIndex = 2
+            };
             Controls.Add(this.reprogramar_Mantenimiento);
             reprogramar_Mantenimiento.BringToFront();
+        }
+
+        private Mantenimiento ObtenerManetnimientoSeleccionado()
+        {
+
+            int id_mantenimiento = Convert.ToInt16(tablaMantenimientos.SelectedRows[0].Cells["id"].Value);
+            return aPIHelper.GetMantenimientosHelper().GetMantenimiento(id_mantenimiento);
         }
 
         private Cerrar_Mantenimiento cerrar_Mantenimiento;
@@ -211,18 +219,18 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonCerrarMantenimiento_Click(object sender, EventArgs e)
+        private void ButtonCerrarMantenimiento_Click(object sender, EventArgs e)
         {
             transiciones.HideSync(panelTabla);
 
-            int id_mantenimiento = Convert.ToInt16(tablaMantenimientos.SelectedRows[0].Cells["id"].Value);
-            Mantenimiento mantenimiento = aPIHelper.GetMantenimientosHelper().GetMantenimiento(id_mantenimiento);
-            cerrar_Mantenimiento = new Cerrar_Mantenimiento(aPIHelper, mantenimiento);
-            cerrar_Mantenimiento.Dock = System.Windows.Forms.DockStyle.Fill;
-            cerrar_Mantenimiento.Location = new System.Drawing.Point(236, 39);
-            cerrar_Mantenimiento.Name = "cerrar_Mantenimiento";
-            cerrar_Mantenimiento.Size = new System.Drawing.Size(739, 561);
-            cerrar_Mantenimiento.TabIndex = 2;
+            cerrar_Mantenimiento = new Cerrar_Mantenimiento(aPIHelper, ObtenerManetnimientoSeleccionado())
+            {
+                Dock = System.Windows.Forms.DockStyle.Fill,
+                Location = new System.Drawing.Point(236, 39),
+                Name = "cerrar_Mantenimiento",
+                Size = new System.Drawing.Size(739, 561),
+                TabIndex = 2
+            };
             Controls.Add(this.cerrar_Mantenimiento);
             cerrar_Mantenimiento.BringToFront();
         }
@@ -246,7 +254,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             if (tick == 100)
             {
@@ -261,6 +269,17 @@ namespace MTN_Administration.Tabs
                 tick += 1;
                 progressBar.Value = tick;
             }
+        }
+
+        private void TablaMantenimientos_SelectionChanged(object sender, EventArgs e)
+        {
+            TypeEstadoMantenimiento estado = ObtenerManetnimientoSeleccionado().Estado;
+            if (estado == TypeEstadoMantenimiento.Asignado ||
+                estado == TypeEstadoMantenimiento.Demorado ||
+                estado == TypeEstadoMantenimiento.Progreso)
+                buttonCerrarMantenimiento.Visible = true;
+            else
+                buttonCerrarMantenimiento.Visible = false;
         }
     }
 }

@@ -44,7 +44,7 @@ namespace MTN_Administration.APIHelpers
 
         ////////////////////////////////////DISPOSITIVOS CCTV/////////////////////////////////////////////////
 
-        Dictionary<int, List<DispositivoCCTV>> cacheDispositivosSucursal = new Dictionary<int, List<DispositivoCCTV>>();
+        private Dictionary<int, List<DispositivoCCTV>> cacheDispositivosSucursal = new Dictionary<int, List<DispositivoCCTV>>();
 
         /// <summary>
         /// Obtiene los dispositivos de grabacion de una sucursal dada
@@ -154,7 +154,7 @@ namespace MTN_Administration.APIHelpers
 
         /////////////////////////////////////////////////////GET CAMARAS///////////////////////////////////////////////////////////////
 
-        Dictionary<int, List<Camara>> cacheCamarasDispositivo = new Dictionary<int, List<Camara>>();
+        private Dictionary<int, List<Camara>> cacheCamarasDispositivo = new Dictionary<int, List<Camara>>();
 
         /// <summary>
         /// Obtiene las camaras de un grabador.

@@ -15,9 +15,9 @@ namespace MTN_Administration.APIHelpers
     public class SucursalesHelper
     {
 
-        private String _partialurl;
+        private readonly String _partialurl;
         private ChecksumHelper _checksumHelper;
-        Dictionary<int, List<Sucursal>> cacheSucursales = new Dictionary<int, List<Sucursal>>();
+        private Dictionary<int, List<Sucursal>> cacheSucursales = new Dictionary<int, List<Sucursal>>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SucursalesHelper"/> class.

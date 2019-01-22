@@ -62,7 +62,7 @@ namespace MTN_Administration.Tabs
 
             comboBoxTipoMantenimiento.DataSource = Enum.GetValues(typeof(TypeTipoMantenimiento));
 
-            bunifuRange1_RangeChanged(null, null); // revisar
+            BunifuRange1_RangeChanged(null, null); // revisar
 
             TextDetalles.Text = mantenimiento.Detalles;
 
@@ -86,7 +86,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void bunifuRange1_RangeChanged(object sender, EventArgs e)
+        private void BunifuRange1_RangeChanged(object sender, EventArgs e)
         {
             textHoraInicio.Text = (rangeHora.RangeMin / 2).ToString();
             int minIni;
@@ -104,7 +104,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonGuardar_Click(object sender, EventArgs e)
+        private void ButtonGuardar_Click(object sender, EventArgs e)
         {
             mantenimiento.id_tipo_mantenimiento = (TypeTipoMantenimiento)comboBoxTipoMantenimiento.SelectedValue;
             mantenimiento.Fecha = datePicker.Value;
@@ -135,7 +135,7 @@ namespace MTN_Administration.Tabs
             MensajeAlerta resultado = aPIHelper.GetMantenimientosHelper().AddManteniento(mantenimiento);
             Alert.ShowAlert(resultado);
             ((ABM_Mantenimientos)Parent).RefreshTabla();
-            ((ABM_Mantenimientos)Parent).showPanelSwitchs();
+            ((ABM_Mantenimientos)Parent).ShowPanelSwitchs();
             Dispose();
         }
 
@@ -147,7 +147,7 @@ namespace MTN_Administration.Tabs
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BotonCancelar_Click(object sender, EventArgs e)
         {
-            ((ABM_Mantenimientos)Parent).showPanelSwitchs();
+            ((ABM_Mantenimientos)Parent).ShowPanelSwitchs();
             Dispose();
         }
 
@@ -204,7 +204,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonEditarListaIncidentes_Click(object sender, EventArgs e)
+        private void ButtonEditarListaIncidentes_Click(object sender, EventArgs e)
         {
             transiciones.HideSync(panel); // animacion
 
@@ -279,7 +279,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
-         private void tablaIncidentesNoAsignados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+         private void TablaIncidentesNoAsignados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int id_incidente_seleccionado = Convert.ToInt16(tablaIncidentesNoAsignados.SelectedRows[0].Cells[0].Value);
             Incidente item = listaIncidentesNoAsignados.Find(x => x.Id == id_incidente_seleccionado);
@@ -296,7 +296,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
-        private void tablaIncidentesAsignados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void TablaIncidentesAsignados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int id_incidente_seleccionado = Convert.ToInt16(tablaIncidentesAsignados.SelectedRows[0].Cells[0].Value);
             Incidente item = listaIncidentesAsignados.Find(x => x.Id == id_incidente_seleccionado);
@@ -312,7 +312,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonGuardarCambiosIncidentes_Click(object sender, EventArgs e)
+        private void ButtonGuardarCambiosIncidentes_Click(object sender, EventArgs e)
         {
             panel.Visible = true;
             transiciones.Hide(panel1);
@@ -327,7 +327,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonCancelarModificarIncidentes_Click(object sender, EventArgs e)
+        private void ButtonCancelarModificarIncidentes_Click(object sender, EventArgs e)
         {
             panel.Visible = true;
             transiciones.Hide(panel1);
@@ -340,9 +340,9 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonCancelar_Click(object sender, EventArgs e)
+        private void ButtonCancelar_Click(object sender, EventArgs e)
         {
-            ((ABM_Mantenimientos)Parent).showPanelSwitchs();
+            ((ABM_Mantenimientos)Parent).ShowPanelSwitchs();
             Dispose();
         }
     }

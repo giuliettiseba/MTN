@@ -143,7 +143,7 @@
             this.textBuscarTecnico.Size = new System.Drawing.Size(254, 26);
             this.textBuscarTecnico.TabIndex = 12;
             this.textBuscarTecnico.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBuscarTecnico.OnValueChanged += new System.EventHandler(this.textBuscarTecnico_OnValueChanged);
+            this.textBuscarTecnico.OnValueChanged += new System.EventHandler(this.TextBuscarTecnico_OnValueChanged);
             // 
             // filtroAnalistas
             // 

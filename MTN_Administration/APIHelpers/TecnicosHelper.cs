@@ -15,9 +15,9 @@ namespace MTN_Administration.APIHelpers
     public class TecnicosHelper
     {
 
-        private String _partialurl;
+        private readonly String _partialurl;
         private ChecksumHelper checksumHelper;
-        List<Tecnico> tecnicos;
+        private List<Tecnico> tecnicos;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TecnicosHelper"/> class.

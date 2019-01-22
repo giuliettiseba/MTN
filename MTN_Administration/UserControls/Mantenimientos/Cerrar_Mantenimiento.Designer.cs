@@ -232,7 +232,7 @@
             this.tablaIncidentesResueltos.ShowRowErrors = false;
             this.tablaIncidentesResueltos.Size = new System.Drawing.Size(580, 345);
             this.tablaIncidentesResueltos.TabIndex = 101;
-            this.tablaIncidentesResueltos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaIncidentesResueltos_CellDoubleClick);
+            this.tablaIncidentesResueltos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaIncidentesResueltos_CellDoubleClick);
             // 
             // id_asignado
             // 
@@ -333,7 +333,7 @@
             this.tablaIncidentesAsignados.ShowRowErrors = false;
             this.tablaIncidentesAsignados.Size = new System.Drawing.Size(580, 345);
             this.tablaIncidentesAsignados.TabIndex = 100;
-            this.tablaIncidentesAsignados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaIncidentesAsignados_CellDoubleClick);
+            this.tablaIncidentesAsignados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaIncidentesAsignados_CellDoubleClick);
             // 
             // TextBuscarIncidente
             // 
@@ -401,7 +401,7 @@
             this.buttonGuardar.Size = new System.Drawing.Size(200, 41);
             this.buttonGuardar.TabIndex = 55;
             this.buttonGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
+            this.buttonGuardar.Click += new System.EventHandler(this.ButtonGuardar_Click);
             // 
             // buttonCancelar
             // 
@@ -428,7 +428,7 @@
             this.buttonCancelar.Size = new System.Drawing.Size(181, 41);
             this.buttonCancelar.TabIndex = 54;
             this.buttonCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
+            this.buttonCancelar.Click += new System.EventHandler(this.ButtonCancelar_Click);
             // 
             // imageList1
             // 
@@ -507,11 +507,6 @@
 
         #endregion
         private BunifuAnimatorNS.BunifuTransition transiciones;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_tipo_mantenible;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_criticidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_estado_incidente;
         private Bunifu.Framework.UI.BunifuThinButton2 buttonGuardar;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
         private CustomTextBox TextDetalles;

@@ -9,10 +9,19 @@ using System.Collections.Generic;
 
 namespace MTN_RestAPI.Controllers
 {
+
+    /// <summary>
+    /// Controlador de Incidentes
+    /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     public class IncidentesController : ApiController
     {
         static readonly string connectionStringSettings = "MTNdb";
 
+        /// <summary>
+        /// Obtiene una lista de los incidentes de la base de datos
+        /// </summary>
+        /// <returns></returns>
         public IHttpActionResult GetAll()
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings[connectionStringSettings].ConnectionString))

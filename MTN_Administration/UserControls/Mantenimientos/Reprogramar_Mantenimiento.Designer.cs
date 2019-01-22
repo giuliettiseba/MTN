@@ -210,7 +210,7 @@
             this.rangeHora.RangeMin = 18;
             this.rangeHora.Size = new System.Drawing.Size(1021, 30);
             this.rangeHora.TabIndex = 92;
-            this.rangeHora.RangeChanged += new System.EventHandler(this.bunifuRange1_RangeChanged);
+            this.rangeHora.RangeChanged += new System.EventHandler(this.BunifuRange1_RangeChanged);
             // 
             // bunifuCustomLabel2
             // 
@@ -478,7 +478,7 @@
             this.buttonGuardarMantenimiento.Size = new System.Drawing.Size(181, 41);
             this.buttonGuardarMantenimiento.TabIndex = 55;
             this.buttonGuardarMantenimiento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonGuardarMantenimiento.Click += new System.EventHandler(this.buttonGuardar_Click);
+            this.buttonGuardarMantenimiento.Click += new System.EventHandler(this.ButtonGuardar_Click);
             // 
             // buttonCancelar
             // 
@@ -505,7 +505,7 @@
             this.buttonCancelar.Size = new System.Drawing.Size(181, 41);
             this.buttonCancelar.TabIndex = 54;
             this.buttonCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
+            this.buttonCancelar.Click += new System.EventHandler(this.ButtonCancelar_Click);
             // 
             // buttonEditarListaIncidentes
             // 
@@ -532,7 +532,7 @@
             this.buttonEditarListaIncidentes.Size = new System.Drawing.Size(1171, 41);
             this.buttonEditarListaIncidentes.TabIndex = 54;
             this.buttonEditarListaIncidentes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonEditarListaIncidentes.Click += new System.EventHandler(this.buttonEditarListaIncidentes_Click);
+            this.buttonEditarListaIncidentes.Click += new System.EventHandler(this.ButtonEditarListaIncidentes_Click);
             // 
             // panel1
             // 
@@ -656,7 +656,7 @@
             this.tablaIncidentesAsignados.ShowRowErrors = false;
             this.tablaIncidentesAsignados.Size = new System.Drawing.Size(580, 520);
             this.tablaIncidentesAsignados.TabIndex = 83;
-            this.tablaIncidentesAsignados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaIncidentesAsignados_CellDoubleClick);
+            this.tablaIncidentesAsignados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaIncidentesAsignados_CellDoubleClick);
             // 
             // id_asignado
             // 
@@ -757,7 +757,7 @@
             this.tablaIncidentesNoAsignados.ShowRowErrors = false;
             this.tablaIncidentesNoAsignados.Size = new System.Drawing.Size(580, 540);
             this.tablaIncidentesNoAsignados.TabIndex = 82;
-            this.tablaIncidentesNoAsignados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaIncidentesNoAsignados_CellDoubleClick);
+            this.tablaIncidentesNoAsignados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaIncidentesNoAsignados_CellDoubleClick);
             // 
             // id
             // 
@@ -861,7 +861,7 @@
             this.buttonGuardarCambiosIncidentes.Size = new System.Drawing.Size(181, 47);
             this.buttonGuardarCambiosIncidentes.TabIndex = 55;
             this.buttonGuardarCambiosIncidentes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonGuardarCambiosIncidentes.Click += new System.EventHandler(this.buttonGuardarCambiosIncidentes_Click);
+            this.buttonGuardarCambiosIncidentes.Click += new System.EventHandler(this.ButtonGuardarCambiosIncidentes_Click);
             // 
             // buttonCancelarModificarIncidentes
             // 
@@ -888,7 +888,7 @@
             this.buttonCancelarModificarIncidentes.Size = new System.Drawing.Size(181, 47);
             this.buttonCancelarModificarIncidentes.TabIndex = 54;
             this.buttonCancelarModificarIncidentes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonCancelarModificarIncidentes.Click += new System.EventHandler(this.buttonCancelarModificarIncidentes_Click);
+            this.buttonCancelarModificarIncidentes.Click += new System.EventHandler(this.ButtonCancelarModificarIncidentes_Click);
             // 
             // imageList1
             // 
@@ -920,11 +920,6 @@
 
         #endregion
         private BunifuAnimatorNS.BunifuTransition transiciones;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_tipo_mantenible;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_criticidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_estado_incidente;
         private Bunifu.Framework.UI.BunifuCustomLabel labelCliente;
         private Bunifu.Framework.UI.BunifuThinButton2 buttonGuardarMantenimiento;
         private CustomComboBox comboBoxTipoMantenimiento;

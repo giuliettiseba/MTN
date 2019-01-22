@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace MTN_RestAPI.Models
+﻿namespace MTN_RestAPI.Models
 {
+    /// <summary>
+    /// Tipo Criticidad
+    /// </summary>
     public enum TypeCriticidad
     {
         Urgente = 1,

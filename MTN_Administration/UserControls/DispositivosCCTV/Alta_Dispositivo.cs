@@ -62,9 +62,8 @@ namespace MTN_Administration
             comboBoxMarca.DataSource = new BindingSource(aPIHelper.GetCCTVHelper().GetMarcaCCTV(), null);
 
             /// Populate Combobox Estado
-            comboBoxEstado.DisplayMember = "value";
-            comboBoxEstado.ValueMember = "key";
-            comboBoxEstado.DataSource = new BindingSource(aPIHelper.GetEstados(), null);
+            comboBoxEstado.DataSource = Enum.GetValues(typeof(TypeEstadoMantenible));
+
 
 
             /// Populate Combobox Cliente
@@ -103,22 +102,24 @@ namespace MTN_Administration
             tablaCamaras.Rows[tablaCamaras.Rows.Count - 1].Cells["id"].Value = camara.Id;
 
 
-            Image image;
+            Image image = null;
             switch (camara.Id_estado)
             {
-                case 1:
+                case TypeEstadoMantenible.Normal:
                     image = image_ok;
                     break;
-                case 2:
+                case TypeEstadoMantenible.No_Conecta:
                     image = image_error;
                     break;
-                case 3:
+                case TypeEstadoMantenible.Falla:
                     image = image_warning;
                     break;
 
-                default:
+                case TypeEstadoMantenible.En_Reparacion:
                     image = image_warning;
                     break;
+
+
             }
             tablaCamaras.Rows[tablaCamaras.Rows.Count - 1].Cells["estado"].Value = image;
         }
@@ -175,7 +176,7 @@ namespace MTN_Administration
             Text_NumeroSerie.Text = grabadorDigital.Sn;
             text_Observaciones.Text = grabadorDigital.Observaciones;
 
-            comboBoxEstado.SelectedValue = grabadorDigital.Id_estado;
+            comboBoxEstado.SelectedItem = grabadorDigital.Id_estado;
 
             RefreshTableCamaras();
         }
@@ -185,7 +186,7 @@ namespace MTN_Administration
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonGuardarAltaDispositivo_Click(object sender, EventArgs e)
+        private void ButtonGuardarAltaDispositivo_Click(object sender, EventArgs e)
         {
             try /// Mejorar la validacion de datos
             {
@@ -216,7 +217,7 @@ namespace MTN_Administration
                 newDispositivoCCTV.Fecha_insta = DatePicketFechaDeInstalacion.Value;
 
                 newDispositivoCCTV.Sn = Text_NumeroSerie.Text;
-                newDispositivoCCTV.Id_estado = (int)comboBoxEstado.SelectedValue;
+                newDispositivoCCTV.Id_estado = (TypeEstadoMantenible)comboBoxEstado.SelectedItem;
 
                 newDispositivoCCTV.Observaciones = text_Observaciones.Text;
 
@@ -240,7 +241,7 @@ namespace MTN_Administration
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void comboBoxMarca_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxModelo.DisplayMember = "nombre";
             comboBoxModelo.ValueMember = "id";
@@ -254,15 +255,26 @@ namespace MTN_Administration
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void botonAgregarCamara_Click(object sender, EventArgs e)
+        private void BotonAgregarCamara_Click(object sender, EventArgs e)
         {
-            this.alta_Camara = new Alta_Camara(id_dispositivo, aPIHelper);
-            this.alta_Camara.Location = new System.Drawing.Point(0, 0);
-            this.alta_Camara.Name = "alta_Camara";
-            this.alta_Camara.Size = new System.Drawing.Size(727, 561);
-            this.alta_Camara.TabIndex = 6;
-            this.Controls.Add(this.alta_Camara);
-            this.alta_Camara.BringToFront();
+            if (id_dispositivo == 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Para poder agregar camaras primero debe guardar los cambios del grabador", "Confirmación", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                    ButtonGuardarAltaDispositivo_Click(null, null);
+            }
+            else
+            {
+                this.alta_Camara = new Alta_Camara(id_dispositivo, aPIHelper)
+                {
+                    Location = new System.Drawing.Point(0, 0),
+                    Name = "alta_Camara",
+                    Size = new System.Drawing.Size(727, 561),
+                    TabIndex = 6
+                };
+                this.Controls.Add(this.alta_Camara);
+                this.alta_Camara.BringToFront();
+            }
         }
 
         /// <summary>
@@ -271,11 +283,11 @@ namespace MTN_Administration
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void botonModificarCamara_Click(object sender, EventArgs e)
+        private void BotonModificarCamara_Click(object sender, EventArgs e)
         {
             int id_camara = (int)tablaCamaras.SelectedRows[0].Cells["id"].Value;
             Camara camara = aPIHelper.GetCCTVHelper().GetCamara(id_dispositivo, id_camara);
-            botonAgregarCamara_Click(sender, e);
+            BotonAgregarCamara_Click(sender, e);
             this.alta_Camara.Cargar(camara);
         }
 
@@ -285,7 +297,7 @@ namespace MTN_Administration
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void comboBoxCliente_SelectedValueChanged(object sender, EventArgs e)
+        private void ComboBoxCliente_SelectedValueChanged(object sender, EventArgs e)
         {
             /// Polulate Combobox Sucursales
             comboBoxSucursal.DisplayMember = "Nombre";
@@ -302,7 +314,7 @@ namespace MTN_Administration
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void botonEliminarCamara_Click(object sender, EventArgs e)
+        private void BotonEliminarCamara_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Esta seguro que quiere eliminar la camara", "Confirmación", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -319,9 +331,9 @@ namespace MTN_Administration
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
-        private void tablaCamaras_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void TablaCamaras_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            botonModificarCamara_Click(sender, e);
+            BotonModificarCamara_Click(sender, e);
         }
     }
 }

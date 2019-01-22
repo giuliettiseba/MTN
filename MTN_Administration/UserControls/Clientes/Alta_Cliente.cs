@@ -116,13 +116,14 @@ namespace MTN_Administration
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ButtonGuardarAltaCliente_Click(object sender, EventArgs e)
         {
-            Cliente newCliente = new Cliente();
-            newCliente.Id = id_cliente;
-            newCliente.Nombre = textRazonSocial.Text;
-            newCliente.CUIT = textCUIT.Text;
-            newCliente.Direccion = textDireccion.Text;
-            newCliente.Id_localidad = (int) comboBoxLocalidad.SelectedValue;
-            //   newTecnico.foto = ImageProcess.imageToByteArray(pictureFoto.Image);
+            Cliente newCliente = new Cliente
+            {
+                Id = id_cliente,
+                Nombre = textRazonSocial.Text,
+                CUIT = textCUIT.Text,
+                Direccion = textDireccion.Text,
+                Id_localidad = (int)comboBoxLocalidad.SelectedValue
+            };
 
             MensajeAlerta resultado = aPIHelper.GetClientesHelper().AddCliente(newCliente);
             Alert.ShowAlert(resultado);

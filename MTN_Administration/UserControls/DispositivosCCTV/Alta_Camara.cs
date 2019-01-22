@@ -60,9 +60,7 @@ namespace MTN_Administration
             comboBoxTecnologia.DataSource = new BindingSource(aPIHelper.GetTecnologiaCamara(), null);
 
             // Populate Combobox Estado
-            comboBoxEstado.DisplayMember = "value";
-            comboBoxEstado.ValueMember = "key";
-            comboBoxEstado.DataSource = new BindingSource(aPIHelper.GetEstados(), null);
+            comboBoxEstado.DataSource = Enum.GetValues(typeof(TypeEstadoMantenible));
 
             // Populate Combobox Posiciones diponibles
             comboBoxPos.DataSource = new BindingSource(aPIHelper.GetCCTVHelper().GetPosicionesDisponibles(id_dispositivo), null);
@@ -74,7 +72,7 @@ namespace MTN_Administration
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void comboBoxMarca_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxModelo.DisplayMember = "nombre";
             comboBoxModelo.ValueMember = "id";
@@ -132,7 +130,7 @@ namespace MTN_Administration
             Text_NumeroSerie.Text = camara.Sn;
             Text_Observaciones.Text = camara.Observaciones;
 
-            comboBoxEstado.SelectedValue = camara.Id_estado;
+            comboBoxEstado.SelectedItem = camara.Id_estado;
 
             comboBoxPos.SelectedItem = camara.Pos;
         }
@@ -144,27 +142,24 @@ namespace MTN_Administration
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonGuardarAltaCamara_Click(object sender, EventArgs e)
+        private void ButtonGuardarAltaCamara_Click(object sender, EventArgs e)
         {
+
 
             Camara newCamara = new Camara();
 
             newCamara.Id = this.id_camara;
             newCamara.Nombre = textNombre.Text;
-
             newCamara.Id_modelo = (int)comboBoxModelo.SelectedValue;
-            newCamara.Id_estado = (int)comboBoxEstado.SelectedValue;
-
+            newCamara.Id_estado = (TypeEstadoMantenible)comboBoxEstado.SelectedItem;
             newCamara.Ip = TextIP_OCT_1.Text + ".";
             newCamara.Ip += TextIP_OCT_2.Text + ".";
             newCamara.Ip += TextIP_OCT_3.Text + ".";
             newCamara.Ip += TextIP_OCT_4.Text;
-
             newCamara.Mask = Text_Mask_OCT_1.Text + ".";
             newCamara.Mask += Text_Mask_OCT_2.Text + ".";
             newCamara.Mask += Text_Mask_OCT_3.Text + ".";
             newCamara.Mask += Text_Mask_OCT_4.Text;
-
             newCamara.Gateway = Text_Gateway_OCT_1.Text + ".";
             newCamara.Gateway += Text_Gateway_OCT_2.Text + ".";
             newCamara.Gateway += Text_Gateway_OCT_3.Text + ".";

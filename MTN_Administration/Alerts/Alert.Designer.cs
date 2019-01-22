@@ -90,7 +90,7 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 5000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // show
             // 
@@ -101,7 +101,7 @@
             // cerrar
             // 
             this.cerrar.Interval = 50;
-            this.cerrar.Tick += new System.EventHandler(this.cerrar_Tick);
+            this.cerrar.Tick += new System.EventHandler(this.Cerrar_Tick);
             // 
             // close
             // 
@@ -115,7 +115,7 @@
             this.close.Size = new System.Drawing.Size(23, 23);
             this.close.TabIndex = 4;
             this.close.Text = "X";
-            this.close.Click += new System.EventHandler(this.close_Click);
+            this.close.Click += new System.EventHandler(this.Close_Click);
             // 
             // Alert
             // 

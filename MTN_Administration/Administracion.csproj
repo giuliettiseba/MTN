@@ -182,7 +182,6 @@
       <DependentUpon>Alta_Tecnico.cs</DependentUpon>
     </Compile>
     <Compile Include="APIHelpers\APIHelper.cs" />
-    <Compile Include="ImageProcess.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>

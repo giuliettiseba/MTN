@@ -95,7 +95,7 @@
             this.textBuscar.Size = new System.Drawing.Size(299, 26);
             this.textBuscar.TabIndex = 15;
             this.textBuscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBuscar.OnValueChanged += new System.EventHandler(this.textBuscar_OnValueChanged);
+            this.textBuscar.OnValueChanged += new System.EventHandler(this.TextBuscar_OnValueChanged);
             // 
             // clienteLabel
             // 
@@ -317,7 +317,7 @@
             this.comboCliente.Name = "comboCliente";
             this.comboCliente.Size = new System.Drawing.Size(275, 25);
             this.comboCliente.TabIndex = 13;
-            this.comboCliente.SelectedIndexChanged += new System.EventHandler(this.comboCliente_SelectedIndexChanged);
+            this.comboCliente.SelectedIndexChanged += new System.EventHandler(this.ComboCliente_SelectedIndexChanged);
             // 
             // ABM_Sucursales
             // 

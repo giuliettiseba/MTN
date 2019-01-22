@@ -1,7 +1,7 @@
 ﻿namespace MTN_Administration.Tabs
 {
-    internal interface Animated
+    internal interface IAnimated
     {
-        void showPanelSwitchs();
+        void ShowPanelSwitchs();
     }
 }

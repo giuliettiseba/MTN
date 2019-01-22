@@ -13,9 +13,15 @@ using System.Windows.Forms;
 
 namespace MTN_Administration
 {
+
+    /// <summary>
+    /// Interfaz Principal
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class Home : Form
     {
-        APIHelper aPIHelper;
+        private APIHelper aPIHelper;
+
         // private static readonly string _host = "http://mtnapi-ee7fc8b4.eastus.cloudapp.azure.com"; // azure
         private static readonly string _host = "http://localhost";
         // private static readonly string _port = "80"; /// Azure PORT
@@ -28,9 +34,13 @@ namespace MTN_Administration
         private ABM_Clientes aBM_Clientes;
         private ABM_Sucursales aBM_Sucursales;
         private ABM_Dispositivos aBM_Dispositivos;
-private ABM_Mantenimientos aBM_Mantenimientos;
+        private ABM_Mantenimientos aBM_Mantenimientos;
         private Dashboard dashboard;
+        private ABM_Incidentes aBM_Incidentes;
 
+        /// <summary>
+        /// Gets the required creation parameters when the control handle is created.
+        /// </summary>
         protected override CreateParams CreateParams
         {
             get
@@ -41,57 +51,89 @@ private ABM_Mantenimientos aBM_Mantenimientos;
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Home"/> class.
+        /// </summary>
         public Home()
         {
+            // Muestra el splash screen
             Thread t = new Thread(new ThreadStart(SplashScreen));
             t.Start();
 
             if (!this.DesignMode)
             {
-                aPIHelper = new APIHelper(_partialurl);
+
+                aPIHelper = new APIHelper(_partialurl); /// Inicializa una nueva instancia de un API Helper con los parametros del servidor IIS
                 InitializeComponent();
+
+                // Centra la ventana
                 this.Top = (Screen.PrimaryScreen.Bounds.Height / 2) - (this.Height / 2);
                 this.Left = (Screen.PrimaryScreen.Bounds.Width / 2) - (this.Width / 2);
+
                 Bunifu.Framework.Lib.Elipse.Apply(this, 20);
+
+                DashBoardButton_Click(null, null);
             }
             t.Abort();
         }
 
+        /// <summary>
+        /// Splash screen.
+        /// </summary>
         private void SplashScreen()
         {
-            Application.Run(new Splash());
+            try
+            {
+                Application.Run(new Splash());
+            }
+            catch {
 
+            }
         }
 
-        internal APIHelper GetAPIHelper()
-        {
-            return aPIHelper;
-        }
-
+        /// <summary>
+        /// Handles the Click event of the Close control.
+        /// Cierra la aplicacion
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void Close_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Handles the Click event of the Minimize control.
+        /// Minimiza la aplicacion
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void Minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
+
+        /// <summary>
+        /// Handles the Click event of the DashBoardButton control.
+        /// Nuestra el dashboard
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void DashBoardButton_Click(object sender, EventArgs e)
         {
-
-         
             DisposeAllPanels();
             // 
             // DASHBOARD
             // 
-            dashboard = new Dashboard(aPIHelper);
-            dashboard.Dock = System.Windows.Forms.DockStyle.Fill;
-            dashboard.Location = new System.Drawing.Point(236, 39);
-            dashboard.Name = "dashboard1";
-            dashboard.Size = new System.Drawing.Size(739, 561);
-            dashboard.TabIndex = 2;
+            dashboard = new Dashboard(aPIHelper)
+            {
+                Dock = System.Windows.Forms.DockStyle.Fill,
+                Location = new System.Drawing.Point(236, 39),
+                Name = "dashboard1",
+                Size = new System.Drawing.Size(739, 561),
+                TabIndex = 2
+            };
             Controls.Add(this.dashboard);
 
             dashboard.BringToFront();
@@ -100,20 +142,24 @@ private ABM_Mantenimientos aBM_Mantenimientos;
         }
 
 
-
-
+        /// <summary>
+        /// Handles the Click event of the ClientesButton control.
+        /// Muestra la interfaz Clientes
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ClientesButton_Click(object sender, EventArgs e)
         {
             DisposeAllPanels();
-            // 
-            // ABM_CLIENTES
-            // 
-            aBM_Clientes = new ABM_Clientes(aPIHelper);
-            aBM_Clientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            aBM_Clientes.Location = new System.Drawing.Point(236, 39);
-            aBM_Clientes.Name = "aBM_Clientes1";
-            aBM_Clientes.Size = new System.Drawing.Size(739, 561);
-            aBM_Clientes.TabIndex = 2;
+
+            aBM_Clientes = new ABM_Clientes(aPIHelper)
+            {
+                Dock = System.Windows.Forms.DockStyle.Fill,
+                Location = new System.Drawing.Point(236, 39),
+                Name = "aBM_Clientes1",
+                Size = new System.Drawing.Size(739, 561),
+                TabIndex = 2
+            };
             Controls.Add(this.aBM_Clientes);
 
             aBM_Clientes.BringToFront();
@@ -122,16 +168,24 @@ private ABM_Mantenimientos aBM_Mantenimientos;
 
         }
 
+        /// <summary>
+        /// Handles the Click event of the SucuralesButton control.
+        /// Muestra la interfaz Sucursales
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void SucuralesButton_Click(object sender, EventArgs e)
         {
-
             DisposeAllPanels();
-            aBM_Sucursales = new ABM_Sucursales(aPIHelper);
-            aBM_Sucursales.Dock = System.Windows.Forms.DockStyle.Fill;
-            aBM_Sucursales.Location = new System.Drawing.Point(236, 39);
-            aBM_Sucursales.Name = "aBM_Sucursales";
-            aBM_Sucursales.Size = new System.Drawing.Size(739, 561);
-            aBM_Sucursales.TabIndex = 2;
+
+            aBM_Sucursales = new ABM_Sucursales(aPIHelper)
+            {
+                Dock = System.Windows.Forms.DockStyle.Fill,
+                Location = new System.Drawing.Point(236, 39),
+                Name = "aBM_Sucursales",
+                Size = new System.Drawing.Size(739, 561),
+                TabIndex = 2
+            };
             Controls.Add(this.aBM_Sucursales);
 
             aBM_Sucursales.BringToFront();
@@ -140,15 +194,23 @@ private ABM_Mantenimientos aBM_Mantenimientos;
             ShowHeaderIcon(headerSucursalesPicture);
         }
 
+        /// <summary>
+        /// Handles the Click event of the BotonDispositivos control.
+        /// Muestra la interfaz Dispositivos
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BotonDispositivos_Click(object sender, EventArgs e)
         {
             DisposeAllPanels();
-            aBM_Dispositivos = new ABM_Dispositivos(aPIHelper);
-            aBM_Dispositivos.Dock = System.Windows.Forms.DockStyle.Fill;
-            aBM_Dispositivos.Location = new System.Drawing.Point(236, 39);
-            aBM_Dispositivos.Name = "aBM_Dispositivos";
-            aBM_Dispositivos.Size = new System.Drawing.Size(739, 561);
-            aBM_Dispositivos.TabIndex = 2;
+            aBM_Dispositivos = new ABM_Dispositivos(aPIHelper)
+            {
+                Dock = System.Windows.Forms.DockStyle.Fill,
+                Location = new System.Drawing.Point(236, 39),
+                Name = "aBM_Dispositivos",
+                Size = new System.Drawing.Size(739, 561),
+                TabIndex = 2
+            };
             Controls.Add(this.aBM_Dispositivos);
             aBM_Dispositivos.BringToFront();
             TituloHeader.Text = "Administracion de Dispositivos";
@@ -156,6 +218,77 @@ private ABM_Mantenimientos aBM_Mantenimientos;
 
         }
 
+
+        /// <summary>
+        /// Handles the event of the TecnicosButton_Click control.
+        /// Muestra la interfaz de administracion de tecnicos
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void TecnicosButton_Click_1(object sender, EventArgs e)
+        {
+
+            DisposeAllPanels();
+            aBM_Tecnicos = new ABM_Tecnicos(aPIHelper)
+            {
+                Dock = System.Windows.Forms.DockStyle.Fill,
+                Location = new System.Drawing.Point(236, 39),
+                Name = "aBM_Tecnicos",
+                Size = new System.Drawing.Size(739, 561),
+                TabIndex = 2
+            };
+            Controls.Add(this.aBM_Tecnicos);
+            aBM_Tecnicos.BringToFront();
+            TituloHeader.Text = "Administracion de Tecnicos";
+            ShowHeaderIcon(headerTecnicoPicture);
+
+        }
+
+
+
+        /// <summary>
+        /// Handles the Click event of the BottonIncidente control.
+        /// muestra la interfaz de administracion de incidentes
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void BottonIncidente_Click(object sender, EventArgs e)
+        {
+
+            aBM_Incidentes = new ABM_Incidentes(aPIHelper)
+            {
+                Owner = this,
+                Name = "aBM_Incidentes",
+                TabIndex = 2
+            };
+            aBM_Incidentes.Show();
+            aBM_Incidentes.BringToFront();
+        }
+
+
+        /// <summary>
+        /// Handles the Click event of the BotoMantenimientos control.
+        /// Muestra la interfaz de administracion de mantenimientos
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void BotoMantenimientos_Click(object sender, EventArgs e)
+        {
+            aBM_Mantenimientos = new ABM_Mantenimientos(aPIHelper)
+            {
+                Owner = this,
+                Dock = System.Windows.Forms.DockStyle.Fill,
+                Name = "aBM_Mantenimientos",
+                TabIndex = 2
+            };
+            aBM_Mantenimientos.Show();
+            aBM_Mantenimientos.BringToFront();
+        }
+
+        /// <summary>
+        /// Cambia el icono del header 
+        /// </summary>
+        /// <param name="selectedPic">The selected pic.</param>
         private void ShowHeaderIcon(PictureBox selectedPic)
         {
             if (selectedPic != headerDashboardPicture) headerDashboardPicture.Hide();
@@ -168,6 +301,7 @@ private ABM_Mantenimientos aBM_Mantenimientos;
 
 
 
+        // Cierra el panel que se esta mostrando
         private void DisposeAllPanels()
         {
 
@@ -175,57 +309,7 @@ private ABM_Mantenimientos aBM_Mantenimientos;
             if (aBM_Clientes != null) aBM_Clientes.Dispose();
             if (aBM_Sucursales != null) aBM_Sucursales.Dispose();
             if (aBM_Dispositivos != null) aBM_Dispositivos.Dispose();
-            if (aBM_Incidentes != null) aBM_Incidentes.Dispose();
-        }
-
-        private void TecnicosButton_Click_1(object sender, EventArgs e)
-        {
-
-            DisposeAllPanels();
-            aBM_Tecnicos = new ABM_Tecnicos(aPIHelper);
-            aBM_Tecnicos.Dock = System.Windows.Forms.DockStyle.Fill;
-            aBM_Tecnicos.Location = new System.Drawing.Point(236, 39);
-            aBM_Tecnicos.Name = "aBM_Tecnicos";
-            aBM_Tecnicos.Size = new System.Drawing.Size(739, 561);
-            aBM_Tecnicos.TabIndex = 2;
-            Controls.Add(this.aBM_Tecnicos);
-            aBM_Tecnicos.BringToFront();
-            TituloHeader.Text = "Administracion de Tecnicos";
-            ShowHeaderIcon(headerTecnicoPicture);
-
-        }
-
-        ABM_Incidentes aBM_Incidentes;
-
-        private void BottonIncidente_Click(object sender, EventArgs e)
-        {
-
-            //DisposeAllPanels();
-            aBM_Incidentes = new ABM_Incidentes(aPIHelper);
-            aBM_Incidentes.Owner = this;
-            //  aBM_Incidentes.Dock = System.Windows.Forms.DockStyle.Fill;
-            aBM_Incidentes.Name = "aBM_Incidentes";
-            aBM_Incidentes.TabIndex = 2;
-            //Controls.Add(this.aBM_Incidentes);
-            aBM_Incidentes.Show();
-            aBM_Incidentes.BringToFront();
-            //TituloHeader.Text = "Administracion de Incidentes";
-            //ShowHeaderIcon(headerIncidentePicture);
-        }
-
-
-
-
-
-        private void BunifuFlatButton1_Click_1(object sender, EventArgs e)
-        {
-            aBM_Mantenimientos = new ABM_Mantenimientos(aPIHelper);
-            aBM_Mantenimientos.Owner = this;
-            aBM_Mantenimientos.Dock = System.Windows.Forms.DockStyle.Fill;
-            aBM_Mantenimientos.Name = "aBM_Mantenimientos";
-            aBM_Mantenimientos.TabIndex = 2;
-            aBM_Mantenimientos.Show();
-            aBM_Mantenimientos.BringToFront();
+            if (dashboard != null) dashboard.Dispose();
 
         }
 

@@ -14,7 +14,7 @@ using MTN_Administration.Alerts;
 namespace MTN_Administration.Tabs
 {
     /// <summary>Intefaz ABM Incidentes</summary>
-    public partial class ABM_Incidentes : Form, Animated
+    public partial class ABM_Incidentes : Form, IAnimated
     {
 
         APIHelper aPIHelper;
@@ -91,17 +91,17 @@ namespace MTN_Administration.Tabs
                 tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["sucursal"].Value = aPIHelper.GetSucursalesHelper().GetSucursal(incidente.Id_cliente, incidente.Id_suc).Nombreynumero;
                 tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["tipoDispositivo"].Value = incidente.Id_tipo_mantenible;
                 tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["dispositivo"].Value = dispositivoCCTV.Nombre;
-                
+
                 if (incidente.Id_2 != 0)/// Si el incidente es en una camara muestra el estado de la camara
                 {
                     Camara camara = aPIHelper.GetCCTVHelper().GetCamara(incidente.Id_1, incidente.Id_2); // Obtiene la camara del incidente. 
                     tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["camara"].Value = camara.Nombre;
-                    tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["estado"].Value = aPIHelper.GetEstado(camara.Id_estado);
+                    tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["estado"].Value = camara.Id_estado.ToString();
                 }
                 else // sino muestra el estado del grabador
-                    tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["estado"].Value = aPIHelper.GetEstado(dispositivoCCTV.Id_estado);
+                    tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["estado"].Value = dispositivoCCTV.Id_estado.ToString();
 
-                tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["asignado"].Value = aPIHelper.GetMantenimientosHelper().TieneMantenimientoAsignado(incidente.Id) ? "Si" : "No"; 
+                tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["asignado"].Value = aPIHelper.GetMantenimientosHelper().TieneMantenimientoAsignado(incidente.Id) ? "Si" : "No";
 
                 tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["criticidad"].Value = (TypeCriticidad)incidente.Id_criticidad;
                 tablaIncidentes.Rows[tablaIncidentes.Rows.Count - 1].Cells["estadoIncidente"].Value = (TypeEstadoIncidente)incidente.Id_estado_incidente;
@@ -113,7 +113,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void close_Click(object sender, EventArgs e)
+        private void Close_Click(object sender, EventArgs e)
         {
             Dispose();
         }
@@ -123,7 +123,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void minimize_Click(object sender, EventArgs e)
+        private void Minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
@@ -135,7 +135,7 @@ namespace MTN_Administration.Tabs
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BotonAgregarIncidente_Click(object sender, EventArgs e)
         {
-            transiciones.HideSync(panelTabla);
+            transition.HideSync(panelTabla);
             alta_Incidentes = new Alta_Incidente(aPIHelper);
             alta_Incidentes.Dock = System.Windows.Forms.DockStyle.Fill;
             alta_Incidentes.Location = new System.Drawing.Point(236, 39);
@@ -155,15 +155,17 @@ namespace MTN_Administration.Tabs
         private void BotonVerIncidente_Click(object sender, EventArgs e)
         {
 
-            transiciones.HideSync(panelTabla);
+            transition.HideSync(panelTabla);
             int id_incidente_seleccionado = Convert.ToInt16(tablaIncidentes.SelectedRows[0].Cells["id"].Value);
             Incidente incidente = aPIHelper.GetIncidenteHelper().GetIncidente(id_incidente_seleccionado);
-            ver_Incidente = new Ver_Incidente(aPIHelper, incidente);
-            ver_Incidente.Dock = System.Windows.Forms.DockStyle.Fill;
-            ver_Incidente.Location = new System.Drawing.Point(236, 39);
-            ver_Incidente.Name = "alta_incidentes";
-            ver_Incidente.Size = new System.Drawing.Size(739, 561);
-            ver_Incidente.TabIndex = 2;
+            ver_Incidente = new Ver_Incidente(aPIHelper, incidente)
+            {
+                Dock = System.Windows.Forms.DockStyle.Fill,
+                Location = new System.Drawing.Point(236, 39),
+                Name = "alta_incidentes",
+                Size = new System.Drawing.Size(739, 561),
+                TabIndex = 2
+            };
             Controls.Add(this.ver_Incidente);
             ver_Incidente.BringToFront();
         }
@@ -171,9 +173,9 @@ namespace MTN_Administration.Tabs
         /// <summary>
         /// Animacion para mostrar el panel ABM
         /// </summary>
-        public void showPanelSwitchs()
+        public void ShowPanelSwitchs()
         {
-            transiciones.Show(panelTabla);
+            transition.Show(panelTabla);
         }
 
         /// <summary>
@@ -181,7 +183,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="DataGridViewCellMouseEventArgs"/> instance containing the event data.</param>
-        private void tablaIncidentes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void TablaIncidentes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             BotonVerIncidente_Click(null, null);
         }
@@ -199,7 +201,7 @@ namespace MTN_Administration.Tabs
         }
 
 
- 
+
 
 
 
@@ -210,7 +212,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             if (tick == 100)
             {
@@ -232,17 +234,21 @@ namespace MTN_Administration.Tabs
         /// Cambia el estado del incidente seleccionado
         /// </summary>
         /// <param name="estadoIncidente">The estado incidente.</param>
-        private void cambiarEstadoIncidente(TypeEstadoIncidente estadoIncidente)
+        private void CambiarEstadoIncidente(TypeEstadoIncidente estadoIncidente)
         {
             int id_incidente_seleccionado = Convert.ToInt16(tablaIncidentes.SelectedRows[0].Cells["id"].Value);
-            Incidente incidente = aPIHelper.GetIncidenteHelper().GetIncidente(id_incidente_seleccionado);
-            incidente.Id_estado_incidente = (int)estadoIncidente;
 
-            MensajeAlerta resultado = aPIHelper.GetIncidenteHelper().AddIncidente(incidente);
-            Alert.ShowAlert(resultado);
+            DialogResult dialogResult = MessageBox.Show("Esta seguro que quiere cambiar el estado a " + estadoIncidente.ToString() +" del incidente "+ id_incidente_seleccionado.ToString(), "Cambio de Estado", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Incidente incidente = aPIHelper.GetIncidenteHelper().GetIncidente(id_incidente_seleccionado);
+                incidente.Id_estado_incidente = (int)estadoIncidente;
 
-            RefreshTablaIncidentes();
+                MensajeAlerta resultado = aPIHelper.GetIncidenteHelper().AddIncidente(incidente);
+                Alert.ShowAlert(resultado);
 
+                RefreshTablaIncidentes();
+            }
         }
 
         /// <summary>
@@ -250,9 +256,9 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonCancelarIncidente_Click_1(object sender, EventArgs e)
+        private void ButtonCancelarIncidente_Click_1(object sender, EventArgs e)
         {
-            cambiarEstadoIncidente(TypeEstadoIncidente.Cancelado);
+            CambiarEstadoIncidente(TypeEstadoIncidente.Cancelado);
             RefreshTablaIncidentes();
         }
 
@@ -262,9 +268,9 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonReabrir_Click(object sender, EventArgs e)
+        private void ButtonReabrir_Click(object sender, EventArgs e)
         {
-            cambiarEstadoIncidente(TypeEstadoIncidente.Reabierto);
+            CambiarEstadoIncidente(TypeEstadoIncidente.Reabierto);
             RefreshTablaIncidentes();
         }
 

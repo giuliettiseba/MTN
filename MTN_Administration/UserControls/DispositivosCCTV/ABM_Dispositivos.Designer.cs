@@ -95,7 +95,7 @@
             this.comboCliente.Name = "comboCliente";
             this.comboCliente.Size = new System.Drawing.Size(625, 29);
             this.comboCliente.TabIndex = 13;
-            this.comboCliente.SelectedIndexChanged += new System.EventHandler(this.comboCliente_SelectedIndexChanged);
+            this.comboCliente.SelectedIndexChanged += new System.EventHandler(this.ComboCliente_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -176,7 +176,7 @@
             this.tablaSucursales.ShowRowErrors = false;
             this.tablaSucursales.Size = new System.Drawing.Size(234, 463);
             this.tablaSucursales.TabIndex = 18;
-            this.tablaSucursales.SelectionChanged += new System.EventHandler(this.tablaSucursales_SelectionChanged);
+            this.tablaSucursales.SelectionChanged += new System.EventHandler(this.TablaSucursales_SelectionChanged);
             // 
             // idSuc
             // 
@@ -316,7 +316,7 @@
             this.buttonEditarSucursal.Size = new System.Drawing.Size(181, 41);
             this.buttonEditarSucursal.TabIndex = 16;
             this.buttonEditarSucursal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonEditarSucursal.Click += new System.EventHandler(this.buttonEditarDispositivo_Click);
+            this.buttonEditarSucursal.Click += new System.EventHandler(this.ButtonEditarDispositivo_Click);
             // 
             // BotonAgregarDispositivoCCTV
             // 

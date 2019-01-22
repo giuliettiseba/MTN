@@ -97,11 +97,13 @@ namespace MTN_Administration.Tabs
         /// <param name="e"></param>
         private void BotonAgregarCliente_Click(object sender, EventArgs e)
         {
-            this.alta_Cliente = new Alta_Cliente(aPIHelper);
-            this.alta_Cliente.Location = new System.Drawing.Point(0, 0);
-            this.alta_Cliente.Name = "alta_Cliente";
-            this.alta_Cliente.Size = new System.Drawing.Size(727, 561);
-            this.alta_Cliente.TabIndex = 6;
+            this.alta_Cliente = new Alta_Cliente(aPIHelper)
+            {
+                Location = new System.Drawing.Point(0, 0),
+                Name = "alta_Cliente",
+                Size = new System.Drawing.Size(727, 561),
+                TabIndex = 6
+            };
             this.Controls.Add(this.alta_Cliente);
             this.alta_Cliente.BringToFront();
         }
@@ -151,7 +153,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
-        private void tablaClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void TablaClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             ButtonEditarCliente_Click(sender, e);
         }

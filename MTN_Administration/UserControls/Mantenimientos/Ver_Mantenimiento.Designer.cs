@@ -201,7 +201,7 @@
             this.tablaIncidentes.ShowRowErrors = false;
             this.tablaIncidentes.Size = new System.Drawing.Size(1186, 137);
             this.tablaIncidentes.TabIndex = 82;
-            this.tablaIncidentes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaIncidentes_CellDoubleClick);
+            this.tablaIncidentes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaIncidentes_CellDoubleClick);
             // 
             // id
             // 
@@ -688,7 +688,7 @@
             this.buttonVerIncidente.Size = new System.Drawing.Size(181, 41);
             this.buttonVerIncidente.TabIndex = 54;
             this.buttonVerIncidente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonVerIncidente.Click += new System.EventHandler(this.buttonVerIncidente_Click);
+            this.buttonVerIncidente.Click += new System.EventHandler(this.ButtonVerIncidente_Click);
             // 
             // bunifuCustomLabel3
             // 
@@ -744,11 +744,6 @@
         private Bunifu.Framework.UI.BunifuCustomDataGrid tablaIncidentes;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_tipo_mantenible;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_criticidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_estado_incidente;
         private System.Windows.Forms.DataGridViewTextBoxColumn asignado;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dipositivo;

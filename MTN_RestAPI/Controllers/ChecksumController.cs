@@ -57,7 +57,7 @@ namespace MTN_RestAPI.Controllers
                 }
                 try
                 {
-                    int checksum = db.Query<int>(sp, new { id_2 = id_2 }, commandType: CommandType.StoredProcedure).First();
+                    int checksum = db.Query<int>(sp, new { id_2 }, commandType: CommandType.StoredProcedure).First();
                     return Ok(checksum);
                 }
                 catch { return Ok(0); }

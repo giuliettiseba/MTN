@@ -16,7 +16,7 @@ namespace MTN_Administration.APIHelpers
     public class IncidenteHelper
     {
 
-        private string _partialurl;
+        private readonly string _partialurl;
         private ChecksumHelper _checksumHelper;
         private List<Incidente> _incidentes;
 
@@ -64,8 +64,6 @@ namespace MTN_Administration.APIHelpers
                     webClient.QueryString.Add("Id_criticidad", newIncidente.Id_criticidad.ToString());
                     webClient.QueryString.Add("Id_estado_incidente", newIncidente.Id_estado_incidente.ToString());
 
-                    //webClient.QueryString.Add("asigado", newIncidente.Asignado.ToString());
-
                     if (newIncidente.Id == 0)
                     {
                         webClient.UploadValues(url, "POST", webClient.QueryString);
@@ -84,7 +82,7 @@ namespace MTN_Administration.APIHelpers
             catch (Exception e)
             {
 
-                return new MensajeAlerta("Error" + Environment.NewLine + newIncidente.Id, AlertType.error);
+                return new MensajeAlerta("Error: " + e.ToString() + Environment.NewLine + newIncidente.Id, AlertType.error);
             }
         }
 

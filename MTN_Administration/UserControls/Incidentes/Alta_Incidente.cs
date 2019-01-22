@@ -18,7 +18,7 @@ namespace MTN_Administration.Tabs
     /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class Alta_Incidente : UserControl
     {
-        APIHelper aPIHelper;
+        private APIHelper aPIHelper;
         private readonly Bitmap image_ok;
         private readonly Bitmap image_error;
         private readonly Bitmap image_warning;
@@ -59,12 +59,8 @@ namespace MTN_Administration.Tabs
                 AddItem(cliente);
             }
 
-            /// Populate combobox Estados sin el estado OK ya que se generara un incidente sobre un dispositivo con fallas
-            comboBoxEstado.DisplayMember = "value";
-            comboBoxEstado.ValueMember = "key";
-            Dictionary<int, string> estadosSinOK = new Dictionary<int, string>(aPIHelper.GetEstados());
-            estadosSinOK.Remove(1);
-            comboBoxEstado.DataSource = new BindingSource(estadosSinOK, null);
+            /// Populate combobox Estados 
+            comboBoxEstado.DataSource = Enum.GetValues(typeof(TypeEstadoMantenible));
 
 
             /// Populate combobox Criticidad 
@@ -116,7 +112,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.Windows.Forms.KeyEventArgs" /> instance containing the event data.</param>
-        private void textBuscarCliente_KeyUp(object sender, KeyEventArgs e)
+        private void TextBuscarCliente_KeyUp(object sender, KeyEventArgs e)
         {
             tablaClientes.Rows.Clear();  // Eliminar clientes
             
@@ -124,38 +120,10 @@ namespace MTN_Administration.Tabs
             {
                 if (cliente.Nombre.ToUpper().Contains(textBuscarCliente.Text.ToUpper())) AddItem(cliente); // Inserta una fila en la tabla clientes si el nombre del cliente contiene la palabra ingresada en el cuadro de busqueda. 
             }
-
             tablaClientes.Refresh(); // Refrescar tabla
-
         }
 
-        /// <summary>
-        /// Handles the SelectionChanged event of the tablaClientes control.
-        /// Cuando cambia la seleccion del cliente seleccionado muestra la lista de sucursales 
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs" /> instance containing the event data.</param>
-        private void tablaClientes_SelectionChanged(object sender, EventArgs e)
-        {
-
-            tablaSucursales.Rows.Clear();  // Eliminar sucursales
-            try
-            {
-                int id_cliente_Seleccionado = Convert.ToInt16(tablaClientes.SelectedRows[0].Cells["id_cliente"].Value);
-                IEnumerable<Sucursal> listaSucursales = aPIHelper.GetSucursalesHelper().GetSucursales(id_cliente_Seleccionado);
-                foreach (Sucursal sucursal in listaSucursales)
-                {
-                    if (sucursal.Nombre.ToUpper().Contains(textBuscarCliente.Text.ToUpper())) AddItem(sucursal); // Inserta una fila en la tabla clientes si el nombre del cliente contiene la palabra ingresada en el cuadro de busqueda. 
-                }
-            }
-            catch (Exception)
-            {
-                // el cliente no tiene sucursales para mostrar
-            }
-
-            tablaSucursales.Refresh(); // Refrescar tabla
-        }
-
+        
 
         /// <summary>
         /// Handles the Click event of the buttonSiguiente control.
@@ -163,7 +131,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonSiguiente_Click(object sender, EventArgs e)
+        private void ButtonSiguiente_Click(object sender, EventArgs e)
         {
             bunifuTransition1.HideSync(panel1);
             bunifuTransition1.ShowSync(panel2);
@@ -188,9 +156,9 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonCancelar_Click(object sender, EventArgs e)
+        private void ButtonCancelar_Click(object sender, EventArgs e)
         {
-            ((ABM_Incidentes)Parent).showPanelSwitchs();
+            ((ABM_Incidentes)Parent).ShowPanelSwitchs();
             Dispose();
         }
 
@@ -202,7 +170,7 @@ namespace MTN_Administration.Tabs
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ButtonFinalizar_Click(object sender, EventArgs e)
         {
-            Mantenible mantenible;
+            IMantenible mantenible;
 
             /// Crear un nuevo incidente
             Incidente newIncidente = new Incidente();
@@ -223,7 +191,7 @@ namespace MTN_Administration.Tabs
             string sel_tipoMantenible = (String)rowMantenible[0].Cells["tipo"].Value;
 
             /// obtener del combobox el nuevo estado para el dispositivo
-            int id_estado = (int)comboBoxEstado.SelectedValue;
+            TypeEstadoMantenible id_estado = (TypeEstadoMantenible)comboBoxEstado.SelectedItem;
 
 
             switch (sel_tipoMantenible)
@@ -280,10 +248,36 @@ namespace MTN_Administration.Tabs
             Alert.ShowAlert(resultado);
 
             ((ABM_Incidentes)Parent).RefreshTablaIncidentes();
-            ((Animated)Parent).showPanelSwitchs();
+            ((IAnimated)Parent).ShowPanelSwitchs();
             Dispose();
         }
 
+        /// <summary>
+        /// Handles the SelectionChanged event of the tablaClientes control.
+        /// Cuando cambia la seleccion del cliente seleccionado muestra la lista de sucursales 
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs" /> instance containing the event data.</param>
+        private void TablaClientes_SelectionChanged(object sender, EventArgs e)
+        {
+
+            tablaSucursales.Rows.Clear();  // Eliminar sucursales
+            try
+            {
+                int id_cliente_Seleccionado = Convert.ToInt16(tablaClientes.SelectedRows[0].Cells["id_cliente"].Value);
+                List<Sucursal> listaSucursales = aPIHelper.GetSucursalesHelper().GetSucursales(id_cliente_Seleccionado);
+                foreach (Sucursal sucursal in listaSucursales)
+                {
+                    if (sucursal.Nombre.ToUpper().Contains(textBuscarCliente.Text.ToUpper())) AddItem(sucursal); // Inserta una fila en la tabla clientes si el nombre del cliente contiene la palabra ingresada en el cuadro de busqueda. 
+                }
+            }
+            catch (Exception)
+            {
+                // el cliente no tiene sucursales para mostrar
+            }
+
+            tablaSucursales.Refresh(); // Refrescar tabla
+        }
 
         /// <summary>
         /// Handles the SelectionChanged event of the tablaSucursales control.
@@ -291,7 +285,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void tablaSucursales_SelectionChanged(object sender, EventArgs e)
+        private void TablaSucursales_SelectionChanged(object sender, EventArgs e)
         {
             tablaMantenible.Rows.Clear();  // Eliminar los dispositivos de la tabla
 
@@ -301,11 +295,11 @@ namespace MTN_Administration.Tabs
                 List<DispositivoCCTV> listadispositivoCCTV = aPIHelper.GetCCTVHelper().GetDispositivosCCTVSucursal(id_sucursal_Seleccionada);
                 foreach (DispositivoCCTV dispositivoCCTV in listadispositivoCCTV)
                 {
-                    if (dispositivoCCTV.Nombre.ToUpper().Contains(TextBuscarMantenible.Text.ToUpper())) AddItem(dispositivoCCTV);
+                    if (dispositivoCCTV.Nombre.ToUpper().Contains(TextBuscarMantenible.Text.ToUpper())) AddItem(dispositivoCCTV); // Agrega los grabadores
                     List<Camara> listaCamaras = aPIHelper.GetCCTVHelper().GetCamarasDispositivo(dispositivoCCTV.Id);
                     foreach (Camara camara in listaCamaras)
                     {
-                        if (camara.Nombre.ToUpper().Contains(TextBuscarMantenible.Text.ToUpper())) AddItem(dispositivoCCTV, camara);
+                        if (camara.Nombre.ToUpper().Contains(TextBuscarMantenible.Text.ToUpper())) AddItem(dispositivoCCTV, camara); // Para cada grabador agrega sus camaras
                     }
                 }
             }
@@ -328,17 +322,17 @@ namespace MTN_Administration.Tabs
             sliderFiltroDispositivo.Width = ((Bunifu.Framework.UI.BunifuFlatButton)sender).Width;
         }
 
-        private void filtroTodo_Click(object sender, EventArgs e)
+        private void FiltroTodo_Click(object sender, EventArgs e)
         {
             MoverSliderSeveridad(sender);
         }
 
-        private void filtroCCTV_Click(object sender, EventArgs e)
+        private void FiltroCCTV_Click(object sender, EventArgs e)
         {
             MoverSliderSeveridad(sender);
         }
 
-        private void filtroAlarmas_Click(object sender, EventArgs e)
+        private void FiltroAlarmas_Click(object sender, EventArgs e)
         {
             MoverSliderSeveridad(sender);
         }

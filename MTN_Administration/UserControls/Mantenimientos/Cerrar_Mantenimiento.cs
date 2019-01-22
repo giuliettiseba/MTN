@@ -98,7 +98,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonGuardar_Click(object sender, EventArgs e)
+        private void ButtonGuardar_Click(object sender, EventArgs e)
         {
             mantenimiento.Detalles = TextDetalles.Text;
 
@@ -119,7 +119,7 @@ namespace MTN_Administration.Tabs
             MensajeAlerta resultado = aPIHelper.GetMantenimientosHelper().AddManteniento(mantenimiento);
             Alert.ShowAlert(resultado);
             ((ABM_Mantenimientos)Parent).RefreshTabla();
-            ((ABM_Mantenimientos)Parent).showPanelSwitchs();
+            ((ABM_Mantenimientos)Parent).ShowPanelSwitchs();
             Dispose();
         }
 
@@ -129,9 +129,9 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonCancelar_Click(object sender, EventArgs e)
+        private void ButtonCancelar_Click(object sender, EventArgs e)
         {
-            ((ABM_Mantenimientos)Parent).showPanelSwitchs();
+            ((ABM_Mantenimientos)Parent).ShowPanelSwitchs();
             Dispose();
         }
 
@@ -143,7 +143,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tablaIncidentesAsignados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void TablaIncidentesAsignados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int id_incidente_seleccionado = Convert.ToInt16(tablaIncidentesAsignados.SelectedRows[0].Cells[0].Value);
             Incidente item = listaIncidentesAsignados.Find(x => x.Id == id_incidente_seleccionado);
@@ -160,7 +160,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
-        private void tablaIncidentesResueltos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void TablaIncidentesResueltos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int id_incidente_seleccionado = Convert.ToInt16(tablaIncidentesResueltos.SelectedRows[0].Cells[0].Value);
             var item = listaIncidentesResueltos.Single(x => x.Id == id_incidente_seleccionado);

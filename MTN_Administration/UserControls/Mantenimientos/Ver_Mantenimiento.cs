@@ -16,8 +16,8 @@ namespace MTN_Administration.Tabs
     /// Interfaz para ver un mantenimiento
     /// </summary>
     /// <seealso cref="System.Windows.Forms.UserControl" />
-    /// <seealso cref="MTN_Administration.Tabs.Animated" />
-    public partial class Ver_Mantenimiento : UserControl, Animated
+    /// <seealso cref="MTN_Administration.Tabs.IAnimated" />
+    public partial class Ver_Mantenimiento : UserControl, IAnimated
     {
         private APIHelper aPIHelper;
         private Mantenimiento mantenimiento;
@@ -104,7 +104,7 @@ namespace MTN_Administration.Tabs
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void Cerrar_Click(object sender, EventArgs e)
         {
-            ((ABM_Mantenimientos)Parent).showPanelSwitchs();
+            ((ABM_Mantenimientos)Parent).ShowPanelSwitchs();
             Dispose();
         }
 
@@ -115,15 +115,15 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
-        private void tablaIncidentes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void TablaIncidentes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            buttonVerIncidente_Click(null, null);
+            ButtonVerIncidente_Click(null, null);
         }
 
         /// <summary>
         /// Animacion
         /// </summary>
-        public void showPanelSwitchs()
+        public void ShowPanelSwitchs()
         {
             transiciones.Show(panel1);
         }
@@ -135,17 +135,19 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonVerIncidente_Click(object sender, EventArgs e)
+        private void ButtonVerIncidente_Click(object sender, EventArgs e)
         {
             int id_incidente_seleccionado = Convert.ToInt16(tablaIncidentes.SelectedRows[0].Cells["id"].Value);
             transiciones.HideSync(panel1);
             Incidente incidente = aPIHelper.GetIncidenteHelper().GetIncidente(id_incidente_seleccionado);
-            ver_Incidente = new Ver_Incidente(aPIHelper, incidente);
-            ver_Incidente.Dock = System.Windows.Forms.DockStyle.Fill;
-            ver_Incidente.Location = new System.Drawing.Point(236, 39);
-            ver_Incidente.Name = "alta_incidentes";
-            ver_Incidente.Size = new System.Drawing.Size(739, 561);
-            ver_Incidente.TabIndex = 2;
+            ver_Incidente = new Ver_Incidente(aPIHelper, incidente)
+            {
+                Dock = System.Windows.Forms.DockStyle.Fill,
+                Location = new System.Drawing.Point(236, 39),
+                Name = "alta_incidentes",
+                Size = new System.Drawing.Size(739, 561),
+                TabIndex = 2
+            };
             Controls.Add(this.ver_Incidente);
             ver_Incidente.BringToFront();
         }

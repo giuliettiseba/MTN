@@ -19,7 +19,7 @@ namespace MTN_Administration.Tabs
     /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class ABM_Dispositivos : UserControl
     {
-        APIHelper aPIHelper;
+        private APIHelper aPIHelper;
         private Alta_Dispositivo alta_Dispositivo;
         private List<DispositivoCCTV> listaGrabadores;
         private Bitmap image_ok;
@@ -57,14 +57,13 @@ namespace MTN_Administration.Tabs
         /// </summary>
         public void RefreshTableDispositivos()
         {
-            
-            tablaGrabadoresDigitales.Refresh();
+            tablaGrabadoresDigitales.Rows.Clear();
             listaGrabadores = aPIHelper.GetCCTVHelper().GetDispositivosCCTVSucursal(GetSucursalSeleccionada());
             foreach (DispositivoCCTV grabador in listaGrabadores)
             {
                 AddItem(grabador);
             }
-            tablaGrabadoresDigitales.Rows.Clear();
+            tablaGrabadoresDigitales.Refresh();
         }
 
 
@@ -81,22 +80,22 @@ namespace MTN_Administration.Tabs
             tablaGrabadoresDigitales.Rows[tablaGrabadoresDigitales.Rows.Count - 1].Cells["modelo"].Value = _modelo.Nombre;
             tablaGrabadoresDigitales.Rows[tablaGrabadoresDigitales.Rows.Count - 1].Cells["marca"].Value = aPIHelper.GetCCTVHelper().GetMarcaCCTV(_modelo.Id_marca).Nombre;
 
-            Image image;
+            Image image = null;
             switch (grabador.Id_estado)
             {
-                case 1:
+                case TypeEstadoMantenible.Normal:
                     image = image_ok;
                     break;
-                case 2:
+                case TypeEstadoMantenible.No_Conecta:
                     image = image_error;
                     break;
-                case 3:
+                case TypeEstadoMantenible.Falla:
+                    image = image_warning;
+                    break;
+                case TypeEstadoMantenible.En_Reparacion:
                     image = image_warning;
                     break;
 
-                default:
-                    image = image_warning;
-                    break;
             }
             tablaGrabadoresDigitales.Rows[tablaGrabadoresDigitales.Rows.Count - 1].Cells["estado"].Value = image;
         }
@@ -111,11 +110,13 @@ namespace MTN_Administration.Tabs
         {
             if (GetSucursalSeleccionada() != 0)
             {
-                this.alta_Dispositivo = new Alta_Dispositivo(aPIHelper, ObtenerClienteSeleccionado().Id, GetSucursalSeleccionada());
-                this.alta_Dispositivo.Location = new System.Drawing.Point(0, 0);
-                this.alta_Dispositivo.Name = "alta_Cliente";
-                this.alta_Dispositivo.Size = new System.Drawing.Size(727, 561);
-                this.alta_Dispositivo.TabIndex = 6;
+                this.alta_Dispositivo = new Alta_Dispositivo(aPIHelper, ObtenerClienteSeleccionado().Id, GetSucursalSeleccionada())
+                {
+                    Location = new System.Drawing.Point(0, 0),
+                    Name = "alta_Cliente",
+                    Size = new System.Drawing.Size(727, 561),
+                    TabIndex = 6
+                };
                 this.Controls.Add(this.alta_Dispositivo);
                 this.alta_Dispositivo.BringToFront();
             }
@@ -132,7 +133,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonEditarDispositivo_Click(object sender, EventArgs e)
+        private void ButtonEditarDispositivo_Click(object sender, EventArgs e)
         {
             // obtengo el id del dispositivo seleccionado en la tabla
             int id_dispositivoCCTV = (int)tablaGrabadoresDigitales.SelectedRows[0].Cells["id"].Value;
@@ -156,7 +157,7 @@ namespace MTN_Administration.Tabs
         /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void TablaDipositivo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            buttonEditarDispositivo_Click(sender, e);
+            ButtonEditarDispositivo_Click(sender, e);
         }
 
 
@@ -218,7 +219,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-         private void comboCliente_SelectedIndexChanged(object sender, EventArgs e)
+         private void ComboCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshComboSucursales((int)comboCliente.SelectedValue);
         }
@@ -259,7 +260,7 @@ namespace MTN_Administration.Tabs
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void tablaSucursales_SelectionChanged(object sender, EventArgs e)
+        private void TablaSucursales_SelectionChanged(object sender, EventArgs e)
         {
             RefreshTableDispositivos();
         }

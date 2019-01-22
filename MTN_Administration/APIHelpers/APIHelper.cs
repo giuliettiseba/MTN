@@ -14,21 +14,18 @@ namespace MTN_Administration
     /// </summary>
     public class APIHelper
     {
-        private string partialurl;
+        private readonly string partialurl;
+        private readonly ClientesHelper clientesHelper;
+        private readonly SucursalesHelper sucursalesHelper;
+        private readonly CCTVHelper cCTVHelper;
+        private readonly TecnicosHelper tecnicosHelper;
+        private readonly IncidenteHelper incidentesHelper;
+        private readonly MantenimientoHelper mantenimientoHelper;
         private ChecksumHelper checksumHelper;
-        private ClientesHelper clientesHelper;
-        private SucursalesHelper sucursalesHelper;
-        private CCTVHelper cCTVHelper;
-        private TecnicosHelper tecnicosHelper;
         private FileStorageHelper fileStorageHelper;
-        private IncidenteHelper incidentesHelper;
-        private MantenimientoHelper mantenimientoHelper;
 
         List<Localidad> localidades;
         private Dictionary<int, string> provincias;
-        private Dictionary<int, string> tipoDocumento;
-        private Dictionary<int, string> tipoEmpleado;
-        private Dictionary<int, string> estados;
         private Dictionary<int, string> tecnologiasCamaras;
 
         /// <summary>
@@ -51,7 +48,6 @@ namespace MTN_Administration
 
             GetLocalidades(); // Lista almacenada en archivo, solo se consulta el checksum, si este cambia con respecto al almacenado se pullea la tabla
             GetProvincias();
-            GetEstados();
             GetTecnologiaCamara();
         }
 
@@ -127,18 +123,7 @@ namespace MTN_Administration
                     url = partialurl + "Utiles/Provincias";
                     diccionario = provincias;
                     break;
-                case "TipoDocuementos":
-                    url = partialurl + "Utiles/TipoDocumento";
-                    diccionario = tipoDocumento;
-                    break;
-                case "TipoEmpleado":
-                    url = partialurl + "Utiles/TipoEmpleado";
-                    diccionario = tipoEmpleado;
-                    break;
-                case "Estados":
-                    url = partialurl + "Utiles/Estados";
-                    diccionario = estados;
-                    break;
+
                 case "TecnologiaCamara":
                     url = partialurl + "Utiles/TecnologiaCamara";
                     diccionario = tecnologiasCamaras;
@@ -176,32 +161,6 @@ namespace MTN_Administration
             return tecnologiasCamaras;
         }
 
-        //////////////////////////////////////////////ESTADOS//////////////////////////////////////////////////////////////////////////////
-
-        /// <summary>
-        /// Si el diccionario esta vacio, obtiene de la base de datos la tabla Estados, sino retorna el diccionario almacenado en memoria
-        /// </summary>
-        /// <returns>Diccionario de estados</returns>
-        internal Dictionary<int, string> GetEstados()
-        {
-            if (estados == null)
-            {
-                estados = new Dictionary<int, string>();
-                Get("Estados");
-            }
-            return estados;
-        }
-
-        /// <summary>
-        /// Obtiene el desde un id el string de un estado
-        /// </summary>
-        /// <param name="id">id del estado</param>
-        /// <returns>String del estado</returns>
-        internal string GetEstado(int id)
-        {
-            if (estados == null) GetEstados();
-            return estados[id];
-        }
 
         ////////////////////////////////////////////////LOCALIDADES////////////////////////////////////////////////////////////////////////
 

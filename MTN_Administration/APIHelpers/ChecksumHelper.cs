@@ -13,8 +13,8 @@ namespace MTN_Administration.APIHelpers
     /// </summary>
     public class ChecksumHelper
     {
-        Dictionary<String, int> _checksums;
-        private string _partialurl;
+        private Dictionary<String, int> _checksums;
+        private readonly string _partialurl;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ChecksumHelper"/> class.

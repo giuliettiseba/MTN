@@ -135,16 +135,18 @@ namespace MTN_Administration
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void buttonGuardarAltaSucursal_Click(object sender, EventArgs e)
+        private void ButtonGuardarAltaSucursal_Click(object sender, EventArgs e)
         {
-            Sucursal newSucursal = new Sucursal();
-            newSucursal.Id = id_sucursal;
-            newSucursal.Numero = textNumero.Text;
-            newSucursal.Nombre = textNombre.Text;
-            newSucursal.Id_cliente = id_cliente;
-            newSucursal.Direccion = textDireccion.Text;
-            newSucursal.Id_localidad = (int) comboBoxLocalidad.SelectedValue;
-            //   newTecnico.foto = ImageProcess.imageToByteArray(pictureFoto.Image); 
+            Sucursal newSucursal = new Sucursal
+            {
+                Id = id_sucursal,
+                Numero = textNumero.Text,
+                Nombre = textNombre.Text,
+                Id_cliente = id_cliente,
+                Direccion = textDireccion.Text,
+                Id_localidad = (int)comboBoxLocalidad.SelectedValue
+            };
+            
 
             MensajeAlerta resultado = aPIHelper.GetSucursalesHelper().AddSucursal(newSucursal);
             Alert.ShowAlert(resultado);

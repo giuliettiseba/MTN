@@ -482,7 +482,7 @@
             this.tablaSucursales.ShowRowErrors = false;
             this.tablaSucursales.Size = new System.Drawing.Size(461, 257);
             this.tablaSucursales.TabIndex = 66;
-            this.tablaSucursales.SelectionChanged += new System.EventHandler(this.tablaSucursales_SelectionChanged);
+            this.tablaSucursales.SelectionChanged += new System.EventHandler(this.TablaSucursales_SelectionChanged);
             // 
             // id_sucursal
             // 
@@ -596,7 +596,7 @@
             this.tablaClientes.ShowRowErrors = false;
             this.tablaClientes.Size = new System.Drawing.Size(461, 266);
             this.tablaClientes.TabIndex = 62;
-            this.tablaClientes.SelectionChanged += new System.EventHandler(this.tablaClientes_SelectionChanged);
+            this.tablaClientes.SelectionChanged += new System.EventHandler(this.TablaClientes_SelectionChanged);
             // 
             // id_cliente
             // 
@@ -626,7 +626,7 @@
             this.textBuscarCliente.Size = new System.Drawing.Size(307, 35);
             this.textBuscarCliente.TabIndex = 59;
             this.textBuscarCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBuscarCliente.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBuscarCliente_KeyUp);
+            this.textBuscarCliente.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBuscarCliente_KeyUp);
             // 
             // SearchIcon
             // 
@@ -664,7 +664,7 @@
             this.BotonSiguiente.Size = new System.Drawing.Size(181, 41);
             this.BotonSiguiente.TabIndex = 55;
             this.BotonSiguiente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.BotonSiguiente.Click += new System.EventHandler(this.buttonSiguiente_Click);
+            this.BotonSiguiente.Click += new System.EventHandler(this.ButtonSiguiente_Click);
             // 
             // buttonCancelar
             // 
@@ -691,7 +691,7 @@
             this.buttonCancelar.Size = new System.Drawing.Size(181, 41);
             this.buttonCancelar.TabIndex = 54;
             this.buttonCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
+            this.buttonCancelar.Click += new System.EventHandler(this.ButtonCancelar_Click);
             // 
             // labelCliente
             // 

@@ -95,7 +95,7 @@
             this.textNombre.Margin = new System.Windows.Forms.Padding(4);
             this.textNombre.Name = "textNombre";
             this.textNombre.Size = new System.Drawing.Size(299, 29);
-            this.textNombre.TabIndex = 3;
+            this.textNombre.TabIndex = 0;
             this.textNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuCustomLabel7
@@ -131,7 +131,7 @@
             this.buttonCancelarAlta.Margin = new System.Windows.Forms.Padding(5);
             this.buttonCancelarAlta.Name = "buttonCancelarAlta";
             this.buttonCancelarAlta.Size = new System.Drawing.Size(181, 41);
-            this.buttonCancelarAlta.TabIndex = 11;
+            this.buttonCancelarAlta.TabIndex = 26;
             this.buttonCancelarAlta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.buttonCancelarAlta.Click += new System.EventHandler(this.ButtonCancelarAlta_Click);
             // 
@@ -157,9 +157,9 @@
             this.buttonGuardarAlta.Margin = new System.Windows.Forms.Padding(5);
             this.buttonGuardarAlta.Name = "buttonGuardarAlta";
             this.buttonGuardarAlta.Size = new System.Drawing.Size(181, 41);
-            this.buttonGuardarAlta.TabIndex = 10;
+            this.buttonGuardarAlta.TabIndex = 25;
             this.buttonGuardarAlta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonGuardarAlta.Click += new System.EventHandler(this.buttonGuardarAltaDispositivo_Click);
+            this.buttonGuardarAlta.Click += new System.EventHandler(this.ButtonGuardarAltaDispositivo_Click);
             // 
             // comboBoxMarca
             // 
@@ -173,8 +173,8 @@
             this.comboBoxMarca.Location = new System.Drawing.Point(16, 84);
             this.comboBoxMarca.Name = "comboBoxMarca";
             this.comboBoxMarca.Size = new System.Drawing.Size(140, 25);
-            this.comboBoxMarca.TabIndex = 7;
-            this.comboBoxMarca.SelectedIndexChanged += new System.EventHandler(this.comboBoxMarca_SelectedIndexChanged);
+            this.comboBoxMarca.TabIndex = 1;
+            this.comboBoxMarca.SelectedIndexChanged += new System.EventHandler(this.ComboBoxMarca_SelectedIndexChanged);
             // 
             // botonAgregarCamara
             // 
@@ -200,7 +200,7 @@
             this.botonAgregarCamara.Size = new System.Drawing.Size(119, 29);
             this.botonAgregarCamara.TabIndex = 22;
             this.botonAgregarCamara.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.botonAgregarCamara.Click += new System.EventHandler(this.botonAgregarCamara_Click);
+            this.botonAgregarCamara.Click += new System.EventHandler(this.BotonAgregarCamara_Click);
             // 
             // botonModificarCamara
             // 
@@ -226,7 +226,7 @@
             this.botonModificarCamara.Size = new System.Drawing.Size(128, 29);
             this.botonModificarCamara.TabIndex = 23;
             this.botonModificarCamara.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.botonModificarCamara.Click += new System.EventHandler(this.botonModificarCamara_Click);
+            this.botonModificarCamara.Click += new System.EventHandler(this.BotonModificarCamara_Click);
             // 
             // botonEliminarCamara
             // 
@@ -252,7 +252,7 @@
             this.botonEliminarCamara.Size = new System.Drawing.Size(119, 29);
             this.botonEliminarCamara.TabIndex = 24;
             this.botonEliminarCamara.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.botonEliminarCamara.Click += new System.EventHandler(this.botonEliminarCamara_Click);
+            this.botonEliminarCamara.Click += new System.EventHandler(this.BotonEliminarCamara_Click);
             // 
             // comboBoxModelo
             // 
@@ -266,7 +266,7 @@
             this.comboBoxModelo.Location = new System.Drawing.Point(173, 85);
             this.comboBoxModelo.Name = "comboBoxModelo";
             this.comboBoxModelo.Size = new System.Drawing.Size(160, 25);
-            this.comboBoxModelo.TabIndex = 25;
+            this.comboBoxModelo.TabIndex = 2;
             // 
             // bunifuCustomLabel6
             // 
@@ -291,7 +291,7 @@
             this.comboBoxEstado.Location = new System.Drawing.Point(16, 409);
             this.comboBoxEstado.Name = "comboBoxEstado";
             this.comboBoxEstado.Size = new System.Drawing.Size(140, 25);
-            this.comboBoxEstado.TabIndex = 27;
+            this.comboBoxEstado.TabIndex = 17;
             // 
             // bunifuCustomLabel2
             // 
@@ -316,7 +316,7 @@
             this.DatePicketFechaDeInstalacion.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.DatePicketFechaDeInstalacion.Name = "DatePicketFechaDeInstalacion";
             this.DatePicketFechaDeInstalacion.Size = new System.Drawing.Size(303, 36);
-            this.DatePicketFechaDeInstalacion.TabIndex = 29;
+            this.DatePicketFechaDeInstalacion.TabIndex = 15;
             this.DatePicketFechaDeInstalacion.Value = new System.DateTime(2018, 12, 24, 0, 35, 13, 965);
             // 
             // bunifuCustomLabel3
@@ -355,7 +355,7 @@
             this.text_Observaciones.Margin = new System.Windows.Forms.Padding(4);
             this.text_Observaciones.Name = "text_Observaciones";
             this.text_Observaciones.Size = new System.Drawing.Size(690, 38);
-            this.text_Observaciones.TabIndex = 8;
+            this.text_Observaciones.TabIndex = 20;
             this.text_Observaciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // TextIP_OCT_1
@@ -372,7 +372,7 @@
             this.TextIP_OCT_1.Margin = new System.Windows.Forms.Padding(4);
             this.TextIP_OCT_1.Name = "TextIP_OCT_1";
             this.TextIP_OCT_1.Size = new System.Drawing.Size(51, 29);
-            this.TextIP_OCT_1.TabIndex = 33;
+            this.TextIP_OCT_1.TabIndex = 3;
             this.TextIP_OCT_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // t
@@ -411,7 +411,7 @@
             this.TextIP_OCT_2.Margin = new System.Windows.Forms.Padding(4);
             this.TextIP_OCT_2.Name = "TextIP_OCT_2";
             this.TextIP_OCT_2.Size = new System.Drawing.Size(51, 29);
-            this.TextIP_OCT_2.TabIndex = 35;
+            this.TextIP_OCT_2.TabIndex = 4;
             this.TextIP_OCT_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // TextIP_OCT_3
@@ -428,7 +428,7 @@
             this.TextIP_OCT_3.Margin = new System.Windows.Forms.Padding(4);
             this.TextIP_OCT_3.Name = "TextIP_OCT_3";
             this.TextIP_OCT_3.Size = new System.Drawing.Size(51, 29);
-            this.TextIP_OCT_3.TabIndex = 36;
+            this.TextIP_OCT_3.TabIndex = 5;
             this.TextIP_OCT_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // TextIP_OCT_4
@@ -445,7 +445,7 @@
             this.TextIP_OCT_4.Margin = new System.Windows.Forms.Padding(4);
             this.TextIP_OCT_4.Name = "TextIP_OCT_4";
             this.TextIP_OCT_4.Size = new System.Drawing.Size(51, 29);
-            this.TextIP_OCT_4.TabIndex = 37;
+            this.TextIP_OCT_4.TabIndex = 6;
             this.TextIP_OCT_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // Text_Mask_OCT_4
@@ -462,7 +462,7 @@
             this.Text_Mask_OCT_4.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Mask_OCT_4.Name = "Text_Mask_OCT_4";
             this.Text_Mask_OCT_4.Size = new System.Drawing.Size(51, 29);
-            this.Text_Mask_OCT_4.TabIndex = 42;
+            this.Text_Mask_OCT_4.TabIndex = 10;
             this.Text_Mask_OCT_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // Text_Mask_OCT_3
@@ -479,7 +479,7 @@
             this.Text_Mask_OCT_3.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Mask_OCT_3.Name = "Text_Mask_OCT_3";
             this.Text_Mask_OCT_3.Size = new System.Drawing.Size(51, 29);
-            this.Text_Mask_OCT_3.TabIndex = 41;
+            this.Text_Mask_OCT_3.TabIndex = 9;
             this.Text_Mask_OCT_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // Text_Mask_OCT_2
@@ -496,7 +496,7 @@
             this.Text_Mask_OCT_2.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Mask_OCT_2.Name = "Text_Mask_OCT_2";
             this.Text_Mask_OCT_2.Size = new System.Drawing.Size(51, 29);
-            this.Text_Mask_OCT_2.TabIndex = 40;
+            this.Text_Mask_OCT_2.TabIndex = 8;
             this.Text_Mask_OCT_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuCustomLabel8
@@ -524,7 +524,7 @@
             this.Text_Mask_OCT_1.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Mask_OCT_1.Name = "Text_Mask_OCT_1";
             this.Text_Mask_OCT_1.Size = new System.Drawing.Size(51, 29);
-            this.Text_Mask_OCT_1.TabIndex = 38;
+            this.Text_Mask_OCT_1.TabIndex = 7;
             this.Text_Mask_OCT_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // Text_Gateway_OCT_1
@@ -541,7 +541,7 @@
             this.Text_Gateway_OCT_1.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Gateway_OCT_1.Name = "Text_Gateway_OCT_1";
             this.Text_Gateway_OCT_1.Size = new System.Drawing.Size(51, 29);
-            this.Text_Gateway_OCT_1.TabIndex = 38;
+            this.Text_Gateway_OCT_1.TabIndex = 11;
             this.Text_Gateway_OCT_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuCustomLabel9
@@ -569,7 +569,7 @@
             this.Text_Gateway_OCT_2.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Gateway_OCT_2.Name = "Text_Gateway_OCT_2";
             this.Text_Gateway_OCT_2.Size = new System.Drawing.Size(51, 29);
-            this.Text_Gateway_OCT_2.TabIndex = 40;
+            this.Text_Gateway_OCT_2.TabIndex = 12;
             this.Text_Gateway_OCT_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // Text_Gateway_OCT_3
@@ -586,7 +586,7 @@
             this.Text_Gateway_OCT_3.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Gateway_OCT_3.Name = "Text_Gateway_OCT_3";
             this.Text_Gateway_OCT_3.Size = new System.Drawing.Size(51, 29);
-            this.Text_Gateway_OCT_3.TabIndex = 41;
+            this.Text_Gateway_OCT_3.TabIndex = 13;
             this.Text_Gateway_OCT_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // Text_Gateway_OCT_4
@@ -603,7 +603,7 @@
             this.Text_Gateway_OCT_4.Margin = new System.Windows.Forms.Padding(4);
             this.Text_Gateway_OCT_4.Name = "Text_Gateway_OCT_4";
             this.Text_Gateway_OCT_4.Size = new System.Drawing.Size(51, 29);
-            this.Text_Gateway_OCT_4.TabIndex = 42;
+            this.Text_Gateway_OCT_4.TabIndex = 14;
             this.Text_Gateway_OCT_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuCustomLabel10
@@ -631,7 +631,7 @@
             this.Text_NumeroSerie.Margin = new System.Windows.Forms.Padding(4);
             this.Text_NumeroSerie.Name = "Text_NumeroSerie";
             this.Text_NumeroSerie.Size = new System.Drawing.Size(299, 29);
-            this.Text_NumeroSerie.TabIndex = 45;
+            this.Text_NumeroSerie.TabIndex = 16;
             this.Text_NumeroSerie.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuCustomLabel11
@@ -668,7 +668,7 @@
             this.comboBoxSucursal.Location = new System.Drawing.Point(431, 409);
             this.comboBoxSucursal.Name = "comboBoxSucursal";
             this.comboBoxSucursal.Size = new System.Drawing.Size(275, 25);
-            this.comboBoxSucursal.TabIndex = 47;
+            this.comboBoxSucursal.TabIndex = 19;
             // 
             // labelCliente
             // 
@@ -693,8 +693,8 @@
             this.comboBoxCliente.Location = new System.Drawing.Point(176, 409);
             this.comboBoxCliente.Name = "comboBoxCliente";
             this.comboBoxCliente.Size = new System.Drawing.Size(237, 25);
-            this.comboBoxCliente.TabIndex = 49;
-            this.comboBoxCliente.SelectedIndexChanged += new System.EventHandler(this.comboBoxCliente_SelectedValueChanged);
+            this.comboBoxCliente.TabIndex = 18;
+            this.comboBoxCliente.SelectedIndexChanged += new System.EventHandler(this.ComboBoxCliente_SelectedValueChanged);
             // 
             // tablaCamaras
             // 
@@ -726,8 +726,14 @@
             this.nombre,
             this.Estado,
             this.id});
-
-            this.tablaCamaras.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(49)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaCamaras.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaCamaras.DoubleBuffered = true;
             this.tablaCamaras.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.tablaCamaras.EnableHeadersVisualStyles = false;
@@ -755,8 +761,8 @@
             this.tablaCamaras.ShowEditingIcon = false;
             this.tablaCamaras.ShowRowErrors = false;
             this.tablaCamaras.Size = new System.Drawing.Size(366, 266);
-            this.tablaCamaras.TabIndex = 51;
-            this.tablaCamaras.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCamaras_CellDoubleClick);
+            this.tablaCamaras.TabIndex = 21;
+            this.tablaCamaras.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaCamaras_CellDoubleClick);
             // 
             // Pos
             // 
