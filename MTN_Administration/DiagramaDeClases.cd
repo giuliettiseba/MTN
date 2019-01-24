@@ -2,13 +2,6 @@
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="MTN_Administration.APIHelper">
     <Position X="8.5" Y="3.25" Width="3.5" />
-    <AssociationLine Name="checksumHelper" Type="MTN_Administration.APIHelpers.ChecksumHelper" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="8.5" Y="7.875" />
-        <Point X="6.625" Y="7.875" />
-        <Point X="6.625" Y="10.75" />
-      </Path>
-    </AssociationLine>
     <AssociationLine Name="clientesHelper" Type="MTN_Administration.APIHelpers.ClientesHelper" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="12" Y="6.5" />
@@ -37,19 +30,26 @@
         <Point X="13.844" Y="10.75" />
       </Path>
     </AssociationLine>
+    <AssociationLine Name="checksumHelper" Type="MTN_Administration.APIHelpers.ChecksumHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="7.875" />
+        <Point X="6.625" Y="7.875" />
+        <Point X="6.625" Y="10.75" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>DEEABgAwIYKAAABQABAQMCAFAAAIBGAQAAQAAJAAQAA=</HashCode>
+      <HashCode>DEEABgAgIYKAAABQABAAMCAEAAAIBGAQAAAAABAAQAA=</HashCode>
       <FileName>APIHelpers\APIHelper.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="checksumHelper" />
       <Field Name="clientesHelper" />
       <Field Name="sucursalesHelper" />
       <Field Name="cCTVHelper" />
       <Field Name="tecnicosHelper" />
-      <Field Name="fileStorageHelper" />
       <Field Name="incidentesHelper" />
       <Field Name="mantenimientoHelper" />
+      <Field Name="checksumHelper" />
+      <Field Name="fileStorageHelper" />
     </ShowAsAssociation>
   </Class>
   <Class Name="MTN_Administration.APIHelpers.CCTVHelper">
@@ -69,7 +69,7 @@
   <Class Name="MTN_Administration.APIHelpers.ClientesHelper">
     <Position X="15.75" Y="10.75" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAgAAAEAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAIEIBA=</HashCode>
+      <HashCode>AAgAAAEAQAgAAAAAAAAAAAAAAAAQAAAAAAAAAAIEIBA=</HashCode>
       <FileName>APIHelpers\ClientesHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -90,7 +90,7 @@
   <Class Name="MTN_Administration.APIHelpers.MantenimientoHelper">
     <Position X="22" Y="10.75" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>BAAABAEAAAAQAAQAAAAAAAAAAAAACAAAAAAAQSACABA=</HashCode>
+      <HashCode>AAAABAUAAAAQAAQAAAAAAAACAAAACAAAAAAAQSAAABA=</HashCode>
       <FileName>APIHelpers\MantenimientoHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -135,7 +135,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>hAACEACAACgQIBAAQQCIICQCkAQIAAAAAgAAAQAAAkA=</HashCode>
+      <HashCode>hAACEACAACgQIBAAQQCIIGQCkAAIAAAAAgAAAQAAAkA=</HashCode>
       <FileName>UserControls\Clientes\ABM_Clientes.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -196,7 +196,7 @@
       <Field Name="tablaSucursales" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AgQECEAAACwQCATMAQyIoAACgAiAAAAABgAAgQwIAwA=</HashCode>
+      <HashCode>AgQECEAAACwQCATMAASIoAACgAgAAgAAlgAAgQwIAwA=</HashCode>
       <FileName>UserControls\DispositivosCCTV\ABM_Dispositivos.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -251,7 +251,7 @@
       <Field Name="textNombre" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>IAAIAAAAACoAAAAFAASABAECCAAAoAAAYByAAEABYBA=</HashCode>
+      <HashCode>IAAIAAAAACoAAAAFAASABAECCAAAsAAAQAyACEABYBA=</HashCode>
       <FileName>UserControls\DispositivosCCTV\Alta_Camara.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -307,7 +307,7 @@
       <Field Name="textNombre" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>YAIcAAAAAGoAAICECYGBBgACiASAgAAAZAwAAEUBYig=</HashCode>
+      <HashCode>YAINAAAAAGoAAICGAAGAhACCiASAgAAATBwAGEUBYig=</HashCode>
       <FileName>UserControls\DispositivosCCTV\Alta_Dispositivo.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -364,7 +364,6 @@
       <Field Name="panelTabla" Hidden="true" />
       <Field Name="progressBar" Hidden="true" />
       <Field Name="SearchIcon" Hidden="true" />
-      <Field Name="severidad" Hidden="true" />
       <Field Name="sucursal" Hidden="true" />
       <Field Name="switchAlarmas" Hidden="true" />
       <Field Name="switchCCTV" Hidden="true" />
@@ -382,10 +381,10 @@
       <Field Name="timer1" Hidden="true" />
       <Field Name="tipoDispositivo" Hidden="true" />
       <Field Name="TituloHeader" Hidden="true" />
-      <Field Name="transiciones" Hidden="true" />
+      <Field Name="transition" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>BhTmCoIQAKwAEgARECrAzAAigAIYYYIAAO0oRU7EBgA=</HashCode>
+      <HashCode>BoRmCoIQAKgEIgARECqAxAAiwAIYQYIAQKsoTUpUBgA=</HashCode>
       <FileName>UserControls\Incidentes\ABM_Incidentes.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -400,17 +399,17 @@
   <Class Name="MTN_Administration.Tabs.Alta_Incidente">
     <Position X="46.5" Y="21" Width="3" />
     <Members>
+      <Field Name="BotonAtras" Hidden="true" />
+      <Field Name="BotonSiguiente" Hidden="true" />
       <Field Name="bunifuCustomLabel4" Hidden="true" />
       <Field Name="bunifuCustomLabel5" Hidden="true" />
       <Field Name="bunifuCustomLabel6" Hidden="true" />
       <Field Name="bunifuCustomLabel7" Hidden="true" />
       <Field Name="bunifuCustomLabel8" Hidden="true" />
       <Field Name="bunifuFlatButton1" Hidden="true" />
-      <Field Name="bunifuThinButton22" Hidden="true" />
       <Field Name="bunifuTransition1" Hidden="true" />
       <Field Name="buttonCancelar" Hidden="true" />
       <Field Name="ButtonFinalizar" Hidden="true" />
-      <Field Name="buttonSiguiente" Hidden="true" />
       <Field Name="comboBoxCriticidad" Hidden="true" />
       <Field Name="comboBoxEstado" Hidden="true" />
       <Field Name="components" Hidden="true" />
@@ -444,7 +443,7 @@
       <Field Name="tipo" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>I0oElEIBCGwYAIaAAAHAJAASgQCIAAAARCgQIZRAACA=</HashCode>
+      <HashCode>IwgElEIBJGgYAIKUAADAIAASgAAIAAAgxCkQAYRgADA=</HashCode>
       <FileName>UserControls\Incidentes\Alta_Incidente.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -480,7 +479,7 @@
       <Field Name="textTipoFalla" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>KEIEAIIAACgAAIGACAGAAIAiEACAAQAABAgAAQQAAAA=</HashCode>
+      <HashCode>KEIAAKIAACgAAIGACECAAIAiEACAAQAAAAgAAQAAAAA=</HashCode>
       <FileName>UserControls\Incidentes\Ver_Incidente.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -520,7 +519,6 @@
       <Field Name="panelTabla" Hidden="true" />
       <Field Name="progressBar" Hidden="true" />
       <Field Name="SearchIcon" Hidden="true" />
-      <Field Name="severidad" Hidden="true" />
       <Field Name="sucursal" Hidden="true" />
       <Field Name="switchEstadoMantenimeintoAbierto" Hidden="true" />
       <Field Name="switchEstadoMantenimeintoAsignado" Hidden="true" />
@@ -570,7 +568,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>BETCgoQQACwIMAAREQLIAAICqAkKIYpCAI0IYwIAAjA=</HashCode>
+      <HashCode>BEZCgoSQAC0IIAAREQKoAAICyAkKAYhCAIsIYwIRAjA=</HashCode>
       <FileName>UserControls\Mantenimientos\ABM_Mantenimientos.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -614,13 +612,8 @@
       <Method Name="Dispose" Hidden="true" />
       <Field Name="estado" Hidden="true" />
       <Field Name="id" Hidden="true" />
-      <Field Name="id_1" Hidden="true" />
-      <Field Name="id_2" Hidden="true" />
       <Field Name="id_cliente" Hidden="true" />
-      <Field Name="id_criticidad" Hidden="true" />
-      <Field Name="id_estado_incidente" Hidden="true" />
       <Field Name="id_sucursal" Hidden="true" />
-      <Field Name="id_tipo_mantenible" Hidden="true" />
       <Field Name="Incidente" Hidden="true" />
       <Method Name="InitializeComponent" Hidden="true" />
       <Field Name="labelCliente" Hidden="true" />
@@ -648,7 +641,7 @@
       <Field Name="transiciones" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>QFAkHEYIaWw4QICB0AiQpEAGhQCMEAAABCgQIQRIAqo=</HashCode>
+      <HashCode>QFAkHEYIaWw4QICA0AiApEAGhQCIAAAAACgQIQBKAqo=</HashCode>
       <FileName>UserControls\Mantenimientos\Alta_Mantenimiento.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -673,12 +666,7 @@
       <Field Name="estado" Hidden="true" />
       <Field Name="estado_asignado" Hidden="true" />
       <Field Name="id" Hidden="true" />
-      <Field Name="id_1" Hidden="true" />
-      <Field Name="id_2" Hidden="true" />
       <Field Name="id_asignado" Hidden="true" />
-      <Field Name="id_criticidad" Hidden="true" />
-      <Field Name="id_estado_incidente" Hidden="true" />
-      <Field Name="id_tipo_mantenible" Hidden="true" />
       <Field Name="imageList1" Hidden="true" />
       <Field Name="Incidente" Hidden="true" />
       <Method Name="InitializeComponent" Hidden="true" />
@@ -694,7 +682,7 @@
       <Field Name="transiciones" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>QAAEDA4IMCwBSAxBAAGQxAACCAQMEAgMFAgAIQRAAgA=</HashCode>
+      <HashCode>QAgEDA4AMCwASAxAAACAxAACCAQAAAgMEAkAIQFAAgA=</HashCode>
       <FileName>UserControls\Mantenimientos\Cerrar_Mantenimiento.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -735,12 +723,7 @@
       <Field Name="estado" Hidden="true" />
       <Field Name="estado_asignado" Hidden="true" />
       <Field Name="id" Hidden="true" />
-      <Field Name="id_1" Hidden="true" />
-      <Field Name="id_2" Hidden="true" />
       <Field Name="id_asignado" Hidden="true" />
-      <Field Name="id_criticidad" Hidden="true" />
-      <Field Name="id_estado_incidente" Hidden="true" />
-      <Field Name="id_tipo_mantenible" Hidden="true" />
       <Field Name="imageList1" Hidden="true" />
       <Field Name="Incidente" Hidden="true" />
       <Method Name="InitializeComponent" Hidden="true" />
@@ -763,7 +746,7 @@
       <Field Name="transiciones" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAAELAYIeSyBQIxB2AGQzEAGCAQMEAgIlAgIIwRIAoo=</HashCode>
+      <HashCode>AAgELoYAeSwAQIxA2ACAxEAGCAQIACgIkAkIIwFCAso=</HashCode>
       <FileName>UserControls\Mantenimientos\Reprogramar_Mantenimiento.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -789,11 +772,6 @@
       <Field Name="estado" Hidden="true" />
       <Field Name="fecha" Hidden="true" />
       <Field Name="id" Hidden="true" />
-      <Field Name="id_1" Hidden="true" />
-      <Field Name="id_2" Hidden="true" />
-      <Field Name="id_criticidad" Hidden="true" />
-      <Field Name="id_estado_incidente" Hidden="true" />
-      <Field Name="id_tipo_mantenible" Hidden="true" />
       <Field Name="Incidente" Hidden="true" />
       <Method Name="InitializeComponent" Hidden="true" />
       <Field Name="labelCliente" Hidden="true" />
@@ -819,7 +797,7 @@
       <Field Name="transiciones" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>4EGEDAIAIawAQICBGACQhICCgQCMkAEABAgwAQQAAog=</HashCode>
+      <HashCode>4EEADAIAIawAQICACACChICCgQCIAAEAEAowAQQAAog=</HashCode>
       <FileName>UserControls\Mantenimientos\Ver_Mantenimiento.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -856,7 +834,7 @@
       <Field Name="textBuscar" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAACAEAAACgAIADMAQaIgAASgIAIAAQAAgEAgQgCQkA=</HashCode>
+      <HashCode>AAACAEAAACgAIADMAQSIgAASgIAIAIQAAAEAgQgCQkA=</HashCode>
       <FileName>UserControls\Sucursales\ABM_Sucursales.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -888,7 +866,7 @@
       <Field Name="textNumero" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAGoEBQAEAACABAESIAAAgAAAAAyAAAQAACA=</HashCode>
+      <HashCode>AAAAAAIAAGoEBQAEAACABAECIAAAkAAAAAyAAAQAACA=</HashCode>
       <FileName>UserControls\Sucursales\Alta_Sucursal.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -929,7 +907,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>QAAKAAEEACxIIACAAQCJACAigCUIARAlIAKAASAAAgA=</HashCode>
+      <HashCode>QAAKAAEEACxIIACAQQCJACAigCUIgRAlIAKAASAAAgA=</HashCode>
       <FileName>UserControls\Tecnicos\ABM_Tecnicos.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -969,7 +947,7 @@
       <Field Name="textNombre" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAAEFAIAACiGBQAEAACABAECJAAJAAAAIQiAAACEAAI=</HashCode>
+      <HashCode>AQAEFAIAACiGBQAEAACABAECJAAAAAAAAQiAAACAAAA=</HashCode>
       <FileName>UserControls\Tecnicos\Alta_Tecnico.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -998,7 +976,7 @@
     <TypeIdentifier />
   </Class>
   <Class Name="MTN_RestAPI.Controllers.IncidentesController">
-    <Position X="13.5" Y="28" Width="2.25" />
+    <Position X="13.5" Y="28.25" Width="2.25" />
     <TypeIdentifier />
   </Class>
   <Class Name="MTN_RestAPI.Controllers.MantenimientoController">
@@ -1020,6 +998,9 @@
   <Class Name="MTN_RestAPI.Models.Dispositivo">
     <Position X="28" Y="15.75" Width="2" />
     <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Id_estado" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="MTN_RestAPI.Models.Localidad">
@@ -1043,7 +1024,7 @@
     <TypeIdentifier />
   </Class>
   <Class Name="MTN_RestAPI.Models.Resultado&lt;T&gt;">
-    <Position X="18" Y="27" Width="2" />
+    <Position X="16.25" Y="28.25" Width="2" />
     <TypeIdentifier />
   </Class>
   <Class Name="MTN_RestAPI.Models.TecnologiaCamara">
@@ -1054,16 +1035,12 @@
     <Position X="31.25" Y="17.25" Width="1.75" />
     <TypeIdentifier />
   </Class>
-  <Interface Name="MTN_RestAPI.Models.Mantenible">
-    <Position X="25.75" Y="16.5" Width="1.5" />
-    <TypeIdentifier />
-  </Interface>
-  <Enum Name="MTN_RestAPI.Models.TypeEstadoMantenimiento" Collapsed="true">
-    <Position X="27.75" Y="30.75" Width="2.25" />
+  <Enum Name="MTN_RestAPI.Models.TypeEstadoMantenimiento">
+    <Position X="27.5" Y="29.75" Width="2.25" />
     <TypeIdentifier />
   </Enum>
-  <Enum Name="MTN_RestAPI.Models.TypeTipoMantenimiento" Collapsed="true">
-    <Position X="27.75" Y="31.75" Width="2" />
+  <Enum Name="MTN_RestAPI.Models.TypeTipoMantenimiento">
+    <Position X="27.5" Y="32" Width="2" />
     <TypeIdentifier />
   </Enum>
   <Enum Name="MTN_RestAPI.Models.TypeCriticidad">
@@ -1084,6 +1061,10 @@
   </Enum>
   <Enum Name="MTN_RestAPI.Models.TypeTipoMantenible">
     <Position X="2.25" Y="21.75" Width="1.75" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="MTN_RestAPI.Models.TypeEstadoMantenible">
+    <Position X="25.25" Y="16.75" Width="1.5" />
     <TypeIdentifier />
   </Enum>
   <Font Name="Segoe UI" Size="9" />

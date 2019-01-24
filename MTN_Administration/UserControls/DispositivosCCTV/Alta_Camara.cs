@@ -145,39 +145,48 @@ namespace MTN_Administration
         private void ButtonGuardarAltaCamara_Click(object sender, EventArgs e)
         {
 
+            try
+            {
+                if (textNombre.Text == "")
+                    throw new Exception("Debe ingresar un nombre"); // Valida que se este cargado un nombre
 
-            Camara newCamara = new Camara();
+                Camara newCamara = new Camara();
 
-            newCamara.Id = this.id_camara;
-            newCamara.Nombre = textNombre.Text;
-            newCamara.Id_modelo = (int)comboBoxModelo.SelectedValue;
-            newCamara.Id_estado = (TypeEstadoMantenible)comboBoxEstado.SelectedItem;
-            newCamara.Ip = TextIP_OCT_1.Text + ".";
-            newCamara.Ip += TextIP_OCT_2.Text + ".";
-            newCamara.Ip += TextIP_OCT_3.Text + ".";
-            newCamara.Ip += TextIP_OCT_4.Text;
-            newCamara.Mask = Text_Mask_OCT_1.Text + ".";
-            newCamara.Mask += Text_Mask_OCT_2.Text + ".";
-            newCamara.Mask += Text_Mask_OCT_3.Text + ".";
-            newCamara.Mask += Text_Mask_OCT_4.Text;
-            newCamara.Gateway = Text_Gateway_OCT_1.Text + ".";
-            newCamara.Gateway += Text_Gateway_OCT_2.Text + ".";
-            newCamara.Gateway += Text_Gateway_OCT_3.Text + ".";
-            newCamara.Gateway += Text_Gateway_OCT_4.Text;
+                newCamara.Id = this.id_camara;
+                newCamara.Nombre = textNombre.Text;
+                newCamara.Id_modelo = (int)comboBoxModelo.SelectedValue;
+                newCamara.Id_estado = (TypeEstadoMantenible)comboBoxEstado.SelectedItem;
+                newCamara.Ip = TextIP_OCT_1.Text + ".";
+                newCamara.Ip += TextIP_OCT_2.Text + ".";
+                newCamara.Ip += TextIP_OCT_3.Text + ".";
+                newCamara.Ip += TextIP_OCT_4.Text;
+                newCamara.Mask = Text_Mask_OCT_1.Text + ".";
+                newCamara.Mask += Text_Mask_OCT_2.Text + ".";
+                newCamara.Mask += Text_Mask_OCT_3.Text + ".";
+                newCamara.Mask += Text_Mask_OCT_4.Text;
+                newCamara.Gateway = Text_Gateway_OCT_1.Text + ".";
+                newCamara.Gateway += Text_Gateway_OCT_2.Text + ".";
+                newCamara.Gateway += Text_Gateway_OCT_3.Text + ".";
+                newCamara.Gateway += Text_Gateway_OCT_4.Text;
 
-            newCamara.Fecha_insta = DatePickerFechaInstalacion.Value;
+                newCamara.Fecha_insta = DatePickerFechaInstalacion.Value;
 
-            newCamara.Sn = Text_NumeroSerie.Text;
-            newCamara.Observaciones = Text_Observaciones.Text;
+                newCamara.Sn = Text_NumeroSerie.Text;
+                newCamara.Observaciones = Text_Observaciones.Text;
 
-            newCamara.Id_dispositivo = id_dispositivo;
-            newCamara.Pos = (int)comboBoxPos.SelectedValue;
+                newCamara.Id_dispositivo = id_dispositivo;
+                newCamara.Pos = (int)comboBoxPos.SelectedValue;
 
-            MensajeAlerta resultado =aPIHelper.GetCCTVHelper().AddCamara(newCamara);
-            Alert.ShowAlert(resultado);
+                MensajeAlerta resultado = aPIHelper.GetCCTVHelper().AddCamara(newCamara);
+                Alert.ShowAlert(resultado);
 
-            ((Alta_Dispositivo)this.Parent).RefreshTableCamaras();
-            this.Dispose();
+                ((Alta_Dispositivo)this.Parent).RefreshTableCamaras();
+                this.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlert("ERROR" + Environment.NewLine + ex.Message, AlertType.error); // Muestra la notificacion con el error correspondiente
+            }
         }
     }
 }

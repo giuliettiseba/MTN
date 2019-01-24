@@ -190,6 +190,11 @@ namespace MTN_Administration
         {
             try /// Mejorar la validacion de datos
             {
+                if (textNombre.Text == "")
+                    throw new Exception("Debe ingresar un nombre"); // Valida que se este cargado un nombre
+
+
+
                 DispositivoCCTV newDispositivoCCTV = new DispositivoCCTV();
 
                 newDispositivoCCTV.Id_sucursal = (int)comboBoxSucursal.SelectedValue;
@@ -226,6 +231,8 @@ namespace MTN_Administration
 
                 ((ABM_Dispositivos)this.Parent).RefreshTableDispositivos();
                 this.Dispose();
+
+
             }
             catch (Exception ex)
             {

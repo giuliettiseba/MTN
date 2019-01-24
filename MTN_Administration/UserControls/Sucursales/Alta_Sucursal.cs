@@ -55,7 +55,7 @@ namespace MTN_Administration
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ButtonCancelarAlta_Click(object sender, EventArgs e)
         {
-           this.Dispose();
+            this.Dispose();
         }
 
 
@@ -137,22 +137,35 @@ namespace MTN_Administration
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ButtonGuardarAltaSucursal_Click(object sender, EventArgs e)
         {
-            Sucursal newSucursal = new Sucursal
+            try
             {
-                Id = id_sucursal,
-                Numero = textNumero.Text,
-                Nombre = textNombre.Text,
-                Id_cliente = id_cliente,
-                Direccion = textDireccion.Text,
-                Id_localidad = (int)comboBoxLocalidad.SelectedValue
-            };
-            
+                if (!int.TryParse(textNumero.Text, out int nl))
+                    throw new Exception("Numero de la sucursal debe ser un numero." + Environment.NewLine + "Sin Guiones ni espacios.");  // Valida que el numero de legajo sea un numero
 
-            MensajeAlerta resultado = aPIHelper.GetSucursalesHelper().AddSucursal(newSucursal);
-            Alert.ShowAlert(resultado);
+                if (textNombre.Text == "")
+                    throw new Exception("Debe ingresar un nombre"); // Valida que se este cargado un nombre
 
-            ((ABM_Sucursales)this.Parent).RefreshTable();
-            this.Dispose();
+                Sucursal newSucursal = new Sucursal
+                {
+                    Id = id_sucursal,
+                    Numero = textNumero.Text,
+                    Nombre = textNombre.Text,
+                    Id_cliente = id_cliente,
+                    Direccion = textDireccion.Text,
+                    Id_localidad = (int)comboBoxLocalidad.SelectedValue
+                };
+
+                MensajeAlerta resultado = aPIHelper.GetSucursalesHelper().AddSucursal(newSucursal);
+                Alert.ShowAlert(resultado);
+
+                ((ABM_Sucursales)this.Parent).RefreshTable();
+                this.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlert("ERROR" + Environment.NewLine + ex.Message, AlertType.error); // Muestra la notificacion con el error correspondiente
+            }
+
         }
     }
 }

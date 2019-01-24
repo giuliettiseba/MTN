@@ -54,9 +54,8 @@ namespace MTN_Administration.Tabs
         /// </summary>
         internal void RefreshTabla()
         {
-
-            //tablaMantenimientos.Rows.Clear();
             listaMantenimientos = aPIHelper.GetMantenimientosHelper().GetMantenimientos();
+            tablaMantenimientos.Rows.Clear();
 
             // Llenar la tabla de mantenimientos
             foreach (Mantenimiento mantenimiento in listaMantenimientos)
@@ -207,7 +206,7 @@ namespace MTN_Administration.Tabs
 
         private Mantenimiento ObtenerManetnimientoSeleccionado()
         {
-
+            
             int id_mantenimiento = Convert.ToInt16(tablaMantenimientos.SelectedRows[0].Cells["id"].Value);
             return aPIHelper.GetMantenimientosHelper().GetMantenimiento(id_mantenimiento);
         }
@@ -273,13 +272,20 @@ namespace MTN_Administration.Tabs
 
         private void TablaMantenimientos_SelectionChanged(object sender, EventArgs e)
         {
-            TypeEstadoMantenimiento estado = ObtenerManetnimientoSeleccionado().Estado;
-            if (estado == TypeEstadoMantenimiento.Asignado ||
-                estado == TypeEstadoMantenimiento.Demorado ||
-                estado == TypeEstadoMantenimiento.Progreso)
-                buttonCerrarMantenimiento.Visible = true;
-            else
-                buttonCerrarMantenimiento.Visible = false;
+            try
+            {
+                TypeEstadoMantenimiento estado = ObtenerManetnimientoSeleccionado().Estado;
+                if (estado == TypeEstadoMantenimiento.Asignado ||
+                    estado == TypeEstadoMantenimiento.Demorado ||
+                    estado == TypeEstadoMantenimiento.Progreso)
+                    buttonCerrarMantenimiento.Visible = true;
+                else
+                    buttonCerrarMantenimiento.Visible = false;
+
+            }
+            catch {
+                // No hay elemento seleccionado
+            }
         }
     }
 }

@@ -86,13 +86,13 @@ namespace MTN_Administration
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ComboBoxProvincia_onItemSelected(object sender, EventArgs e)
         {
-                comboBoxLocalidad.SelectedIndex = -1;
-                int id_provincia = (int)comboBoxProvincia.SelectedValue;
-                Dictionary<int, string> localidades = aPIHelper.GetLocalidades(id_provincia);
-                comboBoxLocalidad.DataSource = new BindingSource(localidades, null);
-                comboBoxLocalidad.DisplayMember = "value";
-                comboBoxLocalidad.ValueMember = "key";
-                comboBoxLocalidad.Enabled = true;
+            comboBoxLocalidad.SelectedIndex = -1;
+            int id_provincia = (int)comboBoxProvincia.SelectedValue;
+            Dictionary<int, string> localidades = aPIHelper.GetLocalidades(id_provincia);
+            comboBoxLocalidad.DataSource = new BindingSource(localidades, null);
+            comboBoxLocalidad.DisplayMember = "value";
+            comboBoxLocalidad.ValueMember = "key";
+            comboBoxLocalidad.Enabled = true;
         }
 
         /// <summary>
@@ -116,20 +116,38 @@ namespace MTN_Administration
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ButtonGuardarAltaCliente_Click(object sender, EventArgs e)
         {
-            Cliente newCliente = new Cliente
+
+            try
             {
-                Id = id_cliente,
-                Nombre = textRazonSocial.Text,
-                CUIT = textCUIT.Text,
-                Direccion = textDireccion.Text,
-                Id_localidad = (int)comboBoxLocalidad.SelectedValue
-            };
+                if (textRazonSocial.Text == "")
+                    throw new Exception("Debe ingresar una Razon Social"); // Valida que se este cargado un nombre
 
-            MensajeAlerta resultado = aPIHelper.GetClientesHelper().AddCliente(newCliente);
-            Alert.ShowAlert(resultado);
+                if (!long.TryParse(textCUIT.Text, out long nl))
+                    throw new Exception("Numero de CUIT debe ser un numero. Sin Guiones ni espacios.");  // Valida que el numero de legajo sea un numero
 
-            ((ABM_Clientes)this.Parent).RefreshTable();
-            this.Dispose();
+
+
+                Cliente newCliente = new Cliente
+                {
+                    Id = id_cliente,
+                    Nombre = textRazonSocial.Text,
+                    CUIT = textCUIT.Text,
+                    Direccion = textDireccion.Text,
+                    Id_localidad = (int)comboBoxLocalidad.SelectedValue
+                };
+
+                MensajeAlerta resultado = aPIHelper.GetClientesHelper().AddCliente(newCliente);
+                Alert.ShowAlert(resultado);
+
+                ((ABM_Clientes)this.Parent).RefreshTable();
+                this.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlert("ERROR" + Environment.NewLine + ex.Message, AlertType.error); // Muestra la notificacion con el error correspondiente
+            }
+
+
         }
 
         /// <summary>
